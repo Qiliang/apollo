@@ -1,21 +1,7 @@
 Ext.define('Kits.view.zhiDu.ZhiDuList', {
     extend: 'Ext.grid.Panel',
     title: '制度列表',
-    store: Ext.create('Ext.data.Store', {
-        fields: ['zdmc', 'fbnf', 'cjsj','cjr','id'],
-        pageSize: 3,
-        data: [
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'1' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'2' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'3' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'4' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'5' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'6' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'7' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'8' },
-            { 'zdmc': '制度1',  'fbnf': '2017','cjsj': '2017-01-01 13:00:00','cjr':'张三','id':'9' },
-        ]
-    }),
+    store: Ext.create('Kits.store.ZhiDu', {pageSize: 3}),
     tools: [
         {
             type: 'refresh',
@@ -56,8 +42,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
         }],
     bbar: {
         xtype: 'pagingtoolbar',
-        displayInfo: true,
-        emptyMsg: "无数据...",
+        displayInfo: true
     },
     columns: [
         {
@@ -92,8 +77,10 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
                         height: 600,
                         width: 900,
                         layout: 'fit',
+                        closeToolText:'关闭',
+                        // closeAction:'hide',
                         modal:true,
-                        items: Ext.create('Kits.view.zhiDu.ZhiDuView',{})
+                        items: Ext.create('Kits.view.zhiDu.ZhiDuView',{a:new Date()})
                     }).show();
                     // alert("查看 " + rec.get('id'));
                 }
