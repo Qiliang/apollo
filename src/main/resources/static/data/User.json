@@ -1,0 +1,8 @@
+[
+  {"id":1,"name":"张三","code":"13476850981","pass":"***","alive":true,"role":""},
+  {"id":2,"name":"李四","code":"43894834343","pass":"***","alive":true,"role":""},
+  {"id":3,"name":"王五","code":"13676850981","pass":"***","alive":true,"role":""},
+  {"id":4,"name":"赵六","code":"12476850981","pass":"***","alive":true,"role":""},
+  {"id":5,"name":"test","code":"13476456981","pass":"***","alive":false,"role":""},
+  {"id":6,"name":"demo","code":"13456850981","pass":"***","alive":false,"role":""}
+]
