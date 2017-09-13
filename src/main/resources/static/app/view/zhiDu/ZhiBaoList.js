@@ -12,19 +12,35 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
         }
     ],
     tbar: [
-        {
-            xtype: 'textfield',
-            fieldLabel: '报送任务名称',
-            name: 'bsrwmc',
-        },
-        {
-            xtype: 'button',
-            text: '查询',
-            handler: function () {
-                var grid = this.up('grid');
-                grid.getStore().load();
+            {
+                xtype: 'textfield',
+                fieldLabel: '报送任务名称',
+                name: 'bsrwmc',
+            },
+            {
+                xtype: 'button',
+                text: '查询',
+                handler: function () {
+                    var grid = this.up('grid');
+                    grid.getStore().load();
+                }
+            },
+            {
+                xtype: 'button',
+                text: '添加',
+                handler: function () {
+                    Ext.create('Ext.window.Window', {
+                        title: '添加直报',
+                        height: 400,
+                        width: 600,
+                        layout: 'fit',
+                        modal: true,
+                        closeToolText:'关闭',
+                        items: Ext.create('Kits.view.zhiDu.AddZhiBaoView', {})
+                    }).show();
+                }
             }
-        }],
+    ],
     bbar: {
         xtype: 'pagingtoolbar',
         displayInfo: true,
