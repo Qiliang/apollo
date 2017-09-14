@@ -54,26 +54,23 @@ Ext.define('Kits.view.tables.A302', {
     columns: [
         {
             text: '指 标 名 称',
-            width: 200,
             columns: [{
                 text: '甲',
-                flex: 1,
+                width:200,
                 dataIndex: '甲',
             }]
         }, {
             text: '计量单位',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '乙',
                 align: 'center',
                 dataIndex: '乙',
             }]
         }, {
             text: '面积(千公顷)',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '1',
                 align: 'center',
                 dataIndex: '1',
@@ -88,9 +85,8 @@ Ext.define('Kits.view.tables.A302', {
             }]
         }, {
             text: '总产量(吨)',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '2',
                 align: 'center',
                 dataIndex: '2',
@@ -105,9 +101,8 @@ Ext.define('Kits.view.tables.A302', {
             }]
         }, {
             text: '单产(公斤)',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '3',
                 align: 'center',
                 dataIndex: '3',

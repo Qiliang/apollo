@@ -22,7 +22,6 @@ Ext.define('Kits.view.tables.A304', {
 
         fields: ['甲', '乙', '1', '2'],
         data: [
-            ['甲', '乙', '1', '2'],
             ['一、蔬菜', '1'],
             ['其中：芹  菜', '2'],
             ['             油  菜', '3'],
@@ -46,26 +45,23 @@ Ext.define('Kits.view.tables.A304', {
     columns: [
         {
             text: '指 标 名 称',
-            width: 200,
             columns: [{
                 text: '甲',
-                flex: 1,
+                width:200,
                 dataIndex: '甲',
             }]
         }, {
             text: '计量单位',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '乙',
                 align: 'center',
                 dataIndex: '乙',
             }]
         }, {
             text: '播种面积',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '1',
                 align: 'center',
                 dataIndex: '1',
@@ -80,9 +76,8 @@ Ext.define('Kits.view.tables.A304', {
             }]
         }, {
             text: '产量',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '2',
                 align: 'center',
                 dataIndex: '2',

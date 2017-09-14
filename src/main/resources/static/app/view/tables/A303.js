@@ -102,26 +102,23 @@ Ext.define('Kits.view.tables.A303', {
     columns: [
         {
             text: '指 标 名 称',
-            width: 200,
             columns: [{
                 text: '甲',
-                flex: 1,
+                width:200,
                 dataIndex: '甲',
             }]
         }, {
             text: '计量单位',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '乙',
                 align: 'center',
                 dataIndex: '乙',
             }]
         }, {
             text: '播种面积',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '1',
                 align: 'center',
                 dataIndex: '1',
@@ -136,9 +133,8 @@ Ext.define('Kits.view.tables.A303', {
             }]
         }, {
             text: '产量',
-            width: 200,
             columns: [{
-                flex: 1,
+                width:200,
                 text: '2',
                 align: 'center',
                 dataIndex: '2',

@@ -65,6 +65,11 @@ Ext.define('Kits.view.Menu', {
                             leaf: true,
                             text: '设施农业生产情况',
                             cmp: 'Kits.view.tables.A304'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '茶叶、水果及食用坚果生产情况',
+                            cmp: 'Kits.view.tables.A306'
                         }
                     ]
                 },

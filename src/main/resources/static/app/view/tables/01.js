@@ -70,36 +70,32 @@ Ext.define('Kits.view.tables.01', {
     columns: [
         {
             text: '指 标 名 称',
-            width: 200,
             columns: [{
                 text: '甲',
-                flex: 1,
+                width:200,
                 dataIndex: '甲',
             }]
         }, {
             text: '计量单位',
-            width: 200,
             columns: [{
-                flex: 1,
                 text: '乙',
+                width:200,
                 align: 'center',
                 dataIndex: '乙',
             }]
         }, {
             text: '代  码',
-            width: 200,
             columns: [{
-                flex: 1,
                 text: '丙',
+                width:200,
                 align: 'center',
                 dataIndex: '丙',
             }]
         }, {
             text: '数量',
-            width: 200,
             columns: [{
-                flex: 1,
                 text: '1',
+                width:200,
                 align: 'center',
                 dataIndex: '1',
                 editor: {
