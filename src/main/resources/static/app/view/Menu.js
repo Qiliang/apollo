@@ -70,6 +70,31 @@ Ext.define('Kits.view.Menu', {
                             leaf: true,
                             text: '茶叶、水果及食用坚果生产情况',
                             cmp: 'Kits.view.tables.A306'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '林 业 生 产 情 况',
+                            cmp: 'Kits.view.tables.A307'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '主 要 畜 禽 生 产 情 况',
+                            cmp: 'Kits.view.tables.A308'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '非 主 要 畜 禽 生 产 情 况',
+                            cmp: 'Kits.view.tables.A309'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '畜 禽 规 模 养 殖 情 况',
+                            cmp: 'Kits.view.tables.05'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '渔 业 生 产 情 况',
+                            cmp: 'Kits.view.tables.06'
                         }
                     ]
                 },

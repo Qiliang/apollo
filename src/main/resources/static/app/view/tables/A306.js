@@ -10,7 +10,7 @@ Ext.define('Kits.view.tables.A306', {
             html: '2016年',
         },
         {
-            html: '表    号：A302表<br /> ' +
+            html: '表    号：A306表<br /> ' +
             '制表机关：国家统计局 <br />' +
             '文    号：国统字(2016)122号<br />' +
             '有效期至：2017年6月<br />' +
@@ -65,7 +65,14 @@ Ext.define('Kits.view.tables.A306', {
 
     columns: [
         {
-            text: '名 称',
+            text: '指标名称',
+            columns: [{
+                text: '甲',
+                width:200,
+                dataIndex: '甲',
+            }]
+        }, {
+            text: '计量单位',
             columns: [{
                 text: '甲',
                 width:200,
