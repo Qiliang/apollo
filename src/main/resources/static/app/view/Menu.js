@@ -27,6 +27,79 @@ Ext.define('Kits.view.Menu', {
                 },
                 {
                     iconCls: 'x-fa fa-folder-o',
+                    text: '--表--',
+
+                    children: [
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 业 生 产 条 件（一）',
+                            cmp: 'Kits.view.tables.01',
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 业 生 产 条 件（二）',
+                            cmp: 'Kits.view.tables.02',
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农业机械化情况',
+                            cmp: 'Kits.view.tables.03'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 村 劳 动 力 转 移 情 况',
+                            cmp: 'Kits.view.tables.04'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮 食 作 物 生 产 情 况',
+                            cmp: 'Kits.view.tables.A302'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经 济 作 物 生 产 情 况',
+                            cmp: 'Kits.view.tables.A303'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '设施农业生产情况',
+                            cmp: 'Kits.view.tables.A304'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '茶叶、水果及食用坚果生产情况',
+                            cmp: 'Kits.view.tables.A306'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '林 业 生 产 情 况',
+                            cmp: 'Kits.view.tables.A307'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '主 要 畜 禽 生 产 情 况',
+                            cmp: 'Kits.view.tables.A308'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '非 主 要 畜 禽 生 产 情 况',
+                            cmp: 'Kits.view.tables.A309'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '畜 禽 规 模 养 殖 情 况',
+                            cmp: 'Kits.view.tables.05'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '渔 业 生 产 情 况',
+                            cmp: 'Kits.view.tables.06'
+                        }
+                    ]
+                },
+                {
+                    iconCls: 'x-fa fa-folder-o',
                     text: '制度管理',
                     children: [
                         {

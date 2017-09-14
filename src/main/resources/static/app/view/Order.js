@@ -1,34 +1,102 @@
 Ext.define('Kits.view.Order', {
     extend: 'Ext.grid.Panel',
-    title: '订单',
-    store: Ext.create('Kits.store.Order'),
+    title: '粮 食 作 物 生 产 情 况',
 
-    tools: [
-        {
-            type: 'refresh',
-            tooltip: '刷新',
-            callback: function (panel, tool, event) {
-                panel.getStore().load();
+    source: {
+        "id": "xxxx",
+        "name": "粮食作物产情况",
+        "fields": [
+            {
+                "id": "xxxx",
+                "name": "字段1",
+                "type": "string"
+            },
+            {
+                "id": "xxxx",
+                "name": "字段2",
+                "type": "int"
             }
-        }
-    ],
+        ],
+        "tpl": "xxxxxggggggxxxxxxxxx",
+        "checks": [
+            {
+                "id": "checks1",
+                "refs": [
+                    "xx1",
+                    "xx2",
+                    "字段id"
+                ],
+                "description": "约束的提示111",
+                "expression": "约束的表达式1111"
+            },
+            {
+                "id": "checks2",
+                "refs": [
+                    "xx1"
+                ],
+                "description": "约束的提示2222",
+                "expression": "约束的表达式2222"
+            }
+        ]
+    },
 
+    listeners: {
+        afterrender: function (me) {
+
+        }
+
+    },
+
+    store: Ext.create('Ext.data.ArrayStore', {
+
+        fields: ['甲', '乙', '1', '2', '3'],
+        data: [
+            ['粮食作物', '1', '', '', ''],
+            ['    (一)夏收粮食', '2', '', '', ''],
+            ['  1.小麦', '3', '', '', '']
+        ]
+
+
+    }),
+
+
+    defaults: {
+        flex: 1
+    },
     columns: [
-        {text: 'id', dataIndex: 'id',flex:1},
-        {text: '描述', dataIndex: 'description',flex:4},
-        {text: '下单时间', dataIndex: 'time', width: 150, xtype: 'datecolumn', format: 'Y-m-d H:i:s'},
-        {text: '状态', dataIndex: 'state',flex:1},
-        {text: '客户', dataIndex: 'userName',flex:1},
-        {text: '地址', dataIndex: 'userAddress',flex:1},
-        {text: '电话', dataIndex: 'userPhone',flex:1},
-        {text: '备注', dataIndex: 'remark',flex:1},
-        {text: '店铺', dataIndex: 'shopName',flex:1},
-        {text: '系统创建时间', dataIndex: 'createdDate', width: 150, xtype: 'datecolumn', format: 'Y-m-d H:i:s'},
-        {text: '系统最后修改时间', dataIndex: 'lastModifiedDate', width: 150, xtype: 'datecolumn', format: 'Y-m-d H:i:s'}
-        // {text: '店铺经度', dataIndex: 'shopLng'},
-        // {text: '店铺纬度', dataIndex: 'shopLat'},
-        // {text: '用户经度', dataIndex: 'orderLng'},
-        // {text: '用户纬度', dataIndex: 'orderLat'}
+        {
+            text: '字段',
+            columns: [{
+                text: '甲',
+                dataIndex: '甲',
+            }]
+        }, {
+            text: '代码',
+            columns: [{
+                text: '乙',
+                align: 'center',
+                dataIndex: '乙',
+            }]
+        }, {
+            text: '面积(千公顷)',
+            columns: [{
+                text: '1',
+                dataIndex: '1',
+            }]
+        }, {
+            text: '总产量(吨)',
+            columns: [{
+                text: '2',
+                dataIndex: '2',
+            }]
+        }, {
+            text: '单产(公斤)',
+            columns: [{
+                text: '3',
+                dataIndex: '3',
+            }]
+        },
+
     ],
     bbar: {
         xtype: 'pagingtoolbar',
