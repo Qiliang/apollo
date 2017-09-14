@@ -1,7 +1,7 @@
-Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
+Ext.define('Kits.view.shuJuLuRu.TianBaoList', {
     extend: 'Ext.grid.Panel',
-    title: '直报定时提醒列表',
-    store: Ext.create('Kits.store.ZhiBaoSchedule', {pageSize: 3}),
+    title: '填报列表',
+    store: Ext.create('Kits.store.ZhiBao', {pageSize: 3}),
     tools: [
         {
             type: 'refresh',
@@ -14,8 +14,24 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
     tbar: [
         {
             xtype: 'textfield',
-            fieldLabel: '任务名称',
-            name: 'rwmc',
+            fieldLabel: '报送任务名称',
+            name: 'bsrwmc',
+        },
+        {
+            xtype: 'combobox',
+            fieldLabel: '发布年份',
+            queryMode: 'local',
+            name:'fbnf',
+            displayField: 'value',
+            valueField: 'key',
+            editable: false,
+            emptyText: "--请选择年份--",
+            store: [
+                { key: '', value: '全部' },
+                { key: '2017', value: '2017年' },
+                { key: '2016', value: '2016年' },
+                { key: '2015', value: '2015年' }
+            ]
         },
         {
             xtype: 'button',
@@ -23,20 +39,6 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
             handler:function () {
                 var grid = this.up('grid');
                 grid.getStore().load();
-            }
-        },{
-            xtype: 'button',
-            text: '添加',
-            handler: function () {
-                Ext.create('Ext.window.Window', {
-                    title: '添加直报',
-                    height: 400,
-                    width: 600,
-                    layout: 'fit',
-                    modal: true,
-                    closeToolText:'关闭',
-                    items: Ext.create('Kits.view.zhiDu.AddZhiBaoScheduleView', {})
-                }).show();
             }
         }],
     bbar: {
@@ -49,31 +51,30 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
         },
         {
             text: '任务名称',
-            dataIndex: 'rwmc'
+            dataIndex: 'bsrwmc',
+            width:220,
+        },
+        {
+            text: '报送开始时间',
+            dataIndex: 'kssj',
+            width:150
+        },
+        {
+            text: '报送截止时间',
+            dataIndex: 'jssj',
+            width:150
         },
         {
             text: '所属制度名称',
-            dataIndex: 'sszdmc'
+            dataIndex: 'sszd'
         },
         {
             text: '所属表名',
-            dataIndex: 'ssbm'
+            dataIndex: 'ssb'
         },
         {
-            text: '提醒开始时间',
-            dataIndex: 'txkssj'
-        },
-        {
-            text: '提醒结束时间',
-            dataIndex: 'txjssj'
-        },
-        {
-            text: '提醒频率',
-            dataIndex: 'txpl'
-        },
-        {
-            text: '提醒时间',
-            dataIndex: 'txsj'
+            text: '验收状态',
+            dataIndex: 'yszt'
         },
         {
             text: '操作',
@@ -81,10 +82,11 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
             width:70,
             items: [{
                 iconCls: 'x-fa fa-pencil-square-o',
-                tooltip: '修改',
+                tooltip: '填报',
                 handler: function(grid, rowIndex, colIndex) {
+                    //TODO 判断验收状态是否为未验收，未验收前可以修改
                     Ext.create('Ext.window.Window', {
-                        title: '修改',
+                        title: '填报',
                         height: 400,
                         width: 600,
                         layout: 'fit',
@@ -96,8 +98,8 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
                     // alert("查看 " + rec.get('id'));
                 }
             },'-',{
-                iconCls: 'x-fa fa-trash-o',
-                tooltip: '删除',
+                iconCls: 'x-fa fa-eye',
+                tooltip: '查看',
                 handler: function (grid, rowIndex, colIndex) {
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
                     }, this);

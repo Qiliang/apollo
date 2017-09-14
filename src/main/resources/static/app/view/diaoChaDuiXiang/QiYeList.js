@@ -1,7 +1,7 @@
-Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
+Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
     extend: 'Ext.grid.Panel',
-    title: '直报定时提醒列表',
-    store: Ext.create('Kits.store.ZhiBaoSchedule', {pageSize: 3}),
+    title: '企业列表',
+    store: Ext.create('Kits.store.QiYe', {pageSize: 3}),
     tools: [
         {
             type: 'refresh',
@@ -14,8 +14,14 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
     tbar: [
         {
             xtype: 'textfield',
-            fieldLabel: '任务名称',
-            name: 'rwmc',
+            fieldLabel: '企业名称',
+            width:220,
+            name: 'qymc',
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: '组织机构代码',
+            name: 'zzjgdm',
         },
         {
             xtype: 'button',
@@ -35,7 +41,21 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
                     layout: 'fit',
                     modal: true,
                     closeToolText:'关闭',
-                    items: Ext.create('Kits.view.zhiDu.AddZhiBaoScheduleView', {})
+                    items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView', {})
+                }).show();
+            }
+        },{
+            xtype: 'button',
+            text: '导入',
+            handler: function () {
+                Ext.create('Ext.window.Window', {
+                    title: '添加直报',
+                    height: 200,
+                    width: 400,
+                    layout: 'fit',
+                    modal: true,
+                    closeToolText:'关闭',
+                    items: Ext.create('Kits.view.diaoChaDuiXiang.importView', {})
                 }).show();
             }
         }],
@@ -48,32 +68,24 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
             xtype: 'rownumberer'
         },
         {
-            text: '任务名称',
-            dataIndex: 'rwmc'
+            text: '企业名称',
+            dataIndex: 'qymc'
         },
         {
-            text: '所属制度名称',
-            dataIndex: 'sszdmc'
+            text: '组织机构代码',
+            dataIndex: 'zzjgdm'
         },
         {
-            text: '所属表名',
-            dataIndex: 'ssbm'
+            text: '所在地址',
+            dataIndex: 'szdz'
         },
         {
-            text: '提醒开始时间',
-            dataIndex: 'txkssj'
+            text: '行业类别代码',
+            dataIndex: 'hylbdm'
         },
         {
-            text: '提醒结束时间',
-            dataIndex: 'txjssj'
-        },
-        {
-            text: '提醒频率',
-            dataIndex: 'txpl'
-        },
-        {
-            text: '提醒时间',
-            dataIndex: 'txsj'
+            text: '登记注册类别',
+            dataIndex: 'djzclb'
         },
         {
             text: '操作',
@@ -91,7 +103,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoScheduleList', {
                         closeToolText:'关闭',
                         // closeAction:'hide',
                         modal:true,
-                        items: Ext.create('Kits.view.zhiDu.AddZhiBaoScheduleView',{a:new Date()})
+                        items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView',{a:new Date()})
                     }).show();
                     // alert("查看 " + rec.get('id'));
                 }

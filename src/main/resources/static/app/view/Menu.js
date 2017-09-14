@@ -55,12 +55,12 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '行政区划',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.diaoChaDuiXiang.xzqh'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '企业101表信息列表',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.diaoChaDuiXiang.QiYeList'
                         }
                         ]
                 },
@@ -73,17 +73,17 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '登录',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuLuRu.denglu'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '数据填报列表',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.shuJuLuRu.TianBaoList'
                         }, {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史数据列表',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuLuRu.TianBaoLiShiList'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
