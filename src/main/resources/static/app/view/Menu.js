@@ -27,6 +27,49 @@ Ext.define('Kits.view.Menu', {
                 },
                 {
                     iconCls: 'x-fa fa-folder-o',
+                    text: '--表--',
+
+                    children: [
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 业 生 产 条 件（一）',
+                            cmp: 'Kits.view.tables.01',
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 业 生 产 条 件（二）',
+                            cmp: 'Kits.view.tables.02',
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农业机械化情况',
+                            cmp: 'Kits.view.tables.03'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 村 劳 动 力 转 移 情 况',
+                            cmp: 'Kits.view.tables.04'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮 食 作 物 生 产 情 况',
+                            cmp: 'Kits.view.tables.A302'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经 济 作 物 生 产 情 况',
+                            cmp: 'Kits.view.tables.A303'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '设施农业生产情况',
+                            cmp: 'Kits.view.tables.A304'
+                        }
+                    ]
+                },
+                {
+                    iconCls: 'x-fa fa-folder-o',
                     text: '制度管理',
                     children: [
                         {
