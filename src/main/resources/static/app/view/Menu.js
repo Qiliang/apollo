@@ -184,12 +184,12 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史基础数据导入',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.liShiShuju.Simplemport'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史综合数据导入',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.liShiShuju.ComplexImport'
                         }
                     ]
                 },
@@ -206,7 +206,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史综合数据查询',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.data.Shop'
                         }
                     ]
                 },
@@ -222,26 +222,26 @@ Ext.define('Kits.view.Menu', {
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
-                            text: '权限管理',
-                            cmp: 'Kits.view.data.Rider'
+                            text: '角色管理',
+                            cmp: 'Kits.view.quanXian.Role'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
-                            text: '组织结构管理',
-                            cmp: 'Kits.view.data.Rider'
+                            text: '机构管理',
+                            cmp: 'Kits.view.quanXian.Branch'
                         }
                     ]
                 },
                 {
                     iconCls: 'x-fa fa-send-o',
                     text: '消息通知',
-                    cmp: 'Kits.view.Messages',
+                    cmp: 'Kits.view.xiTong.Message',
                     leaf: true
                 },
                 {
                     iconCls: 'x-fa fa-database',
                     text: '数据备份',
-                    cmp: 'Kits.view.Backup',
+                    cmp: 'Kits.view.xiTong.Backup',
                     leaf: true
                 }
             ]

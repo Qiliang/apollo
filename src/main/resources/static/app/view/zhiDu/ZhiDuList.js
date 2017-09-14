@@ -1,13 +1,7 @@
 Ext.define('Kits.view.zhiDu.ZhiDuList', {
     extend: 'Ext.grid.Panel',
     title: '制度列表',
-    store: Ext.create('Kits.store.User'),
-    plugins: [{
-        ptype: 'rowediting',
-        clicksToMoveEditor: 1,
-        autoCancel: false
-    }],
-
+    store: Ext.create('Kits.store.ZhiDu', {pageSize: 3}),
     tools: [
         {
             type: 'refresh',
@@ -17,84 +11,78 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
             }
         }
     ],
-    tbar: [{
-        iconCls: 'x-fa fa-plus',
-        text: '用户',
-        handler: function () {
-            var me = this.up('grid');
-            var rec = Ext.create('Kits.model.User', {
-                id: null
-            });
-
-            me.getStore().insert(0, rec);
-        }
-    }],
-
+    tbar: [
+        {
+            xtype: 'textfield',
+            fieldLabel: '制度名称',
+            name: 'zdmc',
+        },
+        {
+            xtype: 'combobox',
+            fieldLabel: '发布年份',
+            queryMode: 'local',
+            name:'fbnf',
+            displayField: 'value',
+            valueField: 'key',
+            editable: false,
+            emptyText: "--请选择年份--",
+            store: [
+                { key: '', value: '全部' },
+                { key: '2017', value: '2017年' },
+                { key: '2016', value: '2016年' },
+                { key: '2015', value: '2015年' }
+            ]
+        },
+        {
+            xtype: 'button',
+            text: '查询',
+            handler:function () {
+                alert('查询！！！');
+            }
+        }],
+    bbar: {
+        xtype: 'pagingtoolbar',
+        displayInfo: true
+    },
     columns: [
         {
             xtype: 'rownumberer'
         },
         {
-            text: '名称',
-            dataIndex: 'name',
-            editor: {
-                allowBlank: false
-            }
+            text: '制度名称',
+            dataIndex: 'zdmc'
         },
         {
-            text: '登录名',
-            dataIndex: 'loginName',
-            editor: {
-                allowBlank: false
-            }
+            text: '发布年份',
+            dataIndex: 'fbnf'
         },
         {
-            text: '登录密码',
-            dataIndex: 'loginPassword',
-            editor: {
-                allowBlank: false
-            }
+            text: '创建时间',
+            dataIndex: 'cjsj'
         },
         {
-            text: '状态',
-            dataIndex: 'alive',
-            editor: {
-                xtype: 'checkbox',
-                cls: 'x-grid-checkheader-editor'
-            }
+            text: '创建人',
+            dataIndex: 'cjr'
         },
         {
-            text: '角色',
-            dataIndex: 'role',
-            editor: {
-                allowBlank: false,
-                xtype: 'combo',
-                displayField: 'name',
-                valueField: 'value',
-                store: Ext.create('Ext.data.Store', {
-                    fields: ['name', 'value'],
-                    data: [{name: "管理员", value: "ADMIN"}, {name: "调度员", value: "SCHEDULE"}]
-                })
-                // data:['a','b','c']
-            }
-        },
-        {
-            xtype: 'actioncolumn',
-            width: 30,
-
-            sortable: false,
-            menuDisabled: true,
+            text: '操作',
+            xtype:'actioncolumn',
+            width:50,
             items: [{
-                iconCls: 'actionColumnRed x-fa fa-ban',
-                tooltip: '删除',
-                style: {
-                    width: '95%',
-                    color: 'red'
-                },
-                handler: function (view, recIndex, cellIndex, item, e, record) {
-                    Ext.Msg.confirm('确认', '确认删除?', function (r) {
-                        if (r == 'yes') record.drop();
-                    }, this);
+                iconCls: 'x-fa fa-eye',
+                tooltip: '查看',
+                handler: function(grid, rowIndex, colIndex) {
+                    Ext.create('Ext.window.Window', {
+                        title: '查看制度',
+                        height: 600,
+                        width: 900,
+                        layout: 'fit',
+                        closeToolText:'关闭',
+                        // closeAction:'hide',
+                        modal:true,
+                        items: Ext.create('Kits.view.zhiDu.ZhiDuView',{a:new Date()})
+                    }).show();
+                    // alert("查看 " + rec.get('id'));
                 }
             }]
         }

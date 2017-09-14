@@ -1,9 +1,12 @@
-Ext.define('Kits.store.User', {
+Ext.define('Kits.store.Role', {
     extend: 'Ext.data.Store',
-    model: 'Kits.model.User',
+    fields:[
+        {name: 'id', type: 'string'},
+        {name: 'name', type: 'string'}
+    ],
     proxy: {
         type: 'rest',
-        url: '/data/User.json',
+        url: '/data/Role.json',
         reader: {
             type: 'json'
         }
