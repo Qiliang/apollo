@@ -173,6 +173,18 @@ Ext.define('Kits.view.Menu', {
                 },
                 {
                     iconCls: 'x-fa fa-folder-o',
+                    text: '--汇总表--',
+                    children: [
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农村基层组织及户数、人口、从业人员情况',
+                            cmp: 'Kits.view.tablehz.SNN01'
+                        }
+                    ]
+                },
+                {
+                    iconCls: 'x-fa fa-folder-o',
                     text: '制度管理',
                     children: [
                         {

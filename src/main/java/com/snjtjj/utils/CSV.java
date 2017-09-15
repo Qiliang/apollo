@@ -7,10 +7,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-/**
- * Created by XQL on 2017/9/12.
- */
 public class CSV {
+
 
     public static void main(String[] args) {
         File dir = new File("C:\\Users\\XQL\\Desktop\\农业");
