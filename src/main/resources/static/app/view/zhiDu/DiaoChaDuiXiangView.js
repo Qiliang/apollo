@@ -310,7 +310,7 @@ Ext.define('Kits.view.zhiDu.DiaoChaDuiXiangView', {
     ],
     buttons: [
         {
-            text: '提交', handler: function (e) {
+            text: '选择', handler: function (e) {
             var grid = Ext.getCmp('targetGrid');
             var store = grid.getStore();
             if(grid.getStore().getData().length==0){

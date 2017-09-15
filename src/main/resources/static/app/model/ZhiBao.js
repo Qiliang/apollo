@@ -9,7 +9,9 @@ Ext.define('Kits.model.ZhiBao', {
         {name: 'ssb', type: 'string'},
         {name: 'ytb', type: 'string'},
         {name: 'wtb', type: 'string'},
-        {name: 'tbl', type: 'string'}
+        {name: 'tbl', type: 'string'},
+        {name: 'yszt', type: 'string'}
+
     ]
 
 })

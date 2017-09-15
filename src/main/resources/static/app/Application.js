@@ -4,6 +4,7 @@ Ext.define('Kits.Application', {
 
     requires: [
         'Kits.override.ProxyServer',
+        'Kits.override.AdvancedVType',
         'Kits.override.Sorter',
         'Kits.view.Main',
         'Kits.view.Login'

@@ -147,7 +147,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
                     // alert("查看 " + rec.get('id'));
                 }
             }, '-', {
-                iconCls: 'x-fa fa-ban',
+                iconCls: 'x-fa fa-trash-o',
                 tooltip: '删除',
                 handler: function (grid, rowIndex, colIndex) {
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {

@@ -31,7 +31,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuView', {
             ],
             listeners: {
                 select : function(grid, record, index, eOpts ){
-                    var cmp = Ext.getCmp('Kits.view.zhiDu.ZhiDuView.center');
+                    var cmp = Ext.getCmp('ZhiDuViewCenter');
                     if(cmp)
                         cmp.update(record.get("tableHtml"));
                     console.log(record.get("name"));
@@ -41,7 +41,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuView', {
         {
             collapsible: false,
             xtype:'panel',
-            id:'Kits.view.zhiDu.ZhiDuView.center',
+            id:'ZhiDuViewCenter',
             layout: 'fit',
             region: 'center',
             margin: '5 0 0 0',
