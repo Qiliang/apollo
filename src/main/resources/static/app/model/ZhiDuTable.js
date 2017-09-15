@@ -4,7 +4,9 @@ Ext.define('Kits.model.ZhiDuTable', {
     fields: [
         {name: 'id',  type: 'string'},
         {name: 'name',  type: 'string'},
-        {name:'tableHtml',type:'string'}
+        {name:'tableHtml',type:'string'},
+        {name:'sszdmc',type:'string'},
+        {name:'sszdid',type:'string'}
     ]
 
 })

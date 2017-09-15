@@ -4,7 +4,9 @@ Ext.define('Kits.model.QiYe', {
     fields: [
         {name: 'id',  type: 'string'},
         {name: 'qymc',  type: 'string'},
-        {name: 'zzjgdm', type: 'string'}
+        {name: 'szdz', type: 'string'},
+        {name: 'hylbdm', type: 'string'},
+        {name: 'djzclb', type: 'string'}
     ]
 
 })

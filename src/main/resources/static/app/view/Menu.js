@@ -95,7 +95,80 @@ Ext.define('Kits.view.Menu', {
                             leaf: true,
                             text: '渔 业 生 产 情 况',
                             cmp: 'Kits.view.tables.06'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 林 牧 渔 业 总 产 值',
+                            cmp: 'Kits.view.tables.M301'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农林牧渔业总产值年度计算表',
+                            cmp: 'Kits.view.tables.M304'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 林 牧 渔 业 增 加 值 计 算 表',
+                            cmp: 'Kits.view.tables.M302'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '县(市)社会经济基本情况',
+                            cmp: 'Kits.view.tables.G301-2'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '乡(镇)社会经济基本情况',
+                            cmp: 'Kits.view.tables.G101'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮食作物生产情况季节报表',
+                            cmp: 'Kits.view.tables.A402'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况季节报表',
+                            cmp: 'Kits.view.tables.A403'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农业生产经营单位农作物播种面积情况',
+                            cmp: 'Kits.view.tables.A403'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '全年主要农林牧渔产品产量及产值预计',
+                            cmp: 'Kits.view.tables.END02'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '畜 禽 水 产 季 节 报',
+                            cmp: 'Kits.view.tables.A406'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '蔬菜、瓜果生产情况',
+                            cmp: 'Kits.view.tables.A412'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农林牧渔业总产值年度计算表',
+                            cmp: 'Kits.view.tables.M401'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农林牧渔业总产值季度计算表',
+                            cmp: 'Kits.view.tables.M404'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农 村 劳 动 力 转 移 季 报',
+                            cmp: 'Kits.view.tables.END01'
                         }
+
+
+
                     ]
                 },
                 {
@@ -128,12 +201,12 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '行政区划',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.diaoChaDuiXiang.xzqh'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '企业101表信息列表',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.diaoChaDuiXiang.QiYeList'
                         }
                         ]
                 },
@@ -146,17 +219,17 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '登录',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuLuRu.denglu'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '数据填报列表',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.shuJuLuRu.TianBaoList'
                         }, {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史数据列表',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuLuRu.TianBaoLiShiList'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,

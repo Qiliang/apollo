@@ -108,7 +108,7 @@ Ext.define('Kits.view.tables.A303', {
                 dataIndex: '甲',
             }]
         }, {
-            text: '计量单位',
+            text: '代码',
             columns: [{
                 width:200,
                 text: '乙',
