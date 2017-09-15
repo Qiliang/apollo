@@ -1,5 +1,6 @@
-Ext.define('Kits.view.zhiDu.YanShouView', {
+Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
     extend: 'Ext.panel.Panel',
+    scrollable:true,
     layout: {
         type: 'table',
         columns: 1,
@@ -21,17 +22,14 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
             // me.remove(Ext.getCmp('qysyj'));
         }
     },
-    buttons:[{
-        xtype: 'button',
-        text: '验收',
-        handler:function () {
-            alert('验收！！！');
-        }
-    }],
     items: [
         {
             title:'填报内容（表1）',
-            html:'填报内容',
+            layout:'fit',
+            height:1900,
+            items:[
+                Ext.create("Kits.view.tables.01",{})
+            ]
         },{
             id:'zysyj',
             title:'镇验收意见',
