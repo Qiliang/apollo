@@ -90,7 +90,7 @@ Ext.define('Kits.view.zhiDu.YanShouListView', {
                                 layout: 'fit',
                                 modal: true,
                                 closeToolText:'关闭',
-                                items: Ext.create('Kits.view.zhiDu.YanShouView', {bbar:[]})
+                                items: Ext.create('Kits.view.zhiDu.YanShouView', {buttons:[]})
                             }).show();
                         }
                     }]

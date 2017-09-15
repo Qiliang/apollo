@@ -85,8 +85,16 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoLiShiList', {
                 iconCls: 'x-fa fa-eye',
                 tooltip: '查看',
                 handler: function (grid, rowIndex, colIndex) {
-                    Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
-                    }, this);
+                    Ext.create('Ext.window.Window', {
+                        title: '查看',
+                        height: 700,
+                        width: 1100,
+                        layout: 'fit',
+                        closeToolText:'关闭',
+                        // closeAction:'hide',
+                        modal:true,
+                        items: Ext.create('Kits.view.shuJuLuRu.TianBaoView',{a:new Date()})
+                    }).show();
                 }
             }]
         }
