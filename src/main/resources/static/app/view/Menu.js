@@ -246,7 +246,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '个人中心',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.shuJuLuRu.AddGeRenZhongXin'
                         }
                     ]
                 },
