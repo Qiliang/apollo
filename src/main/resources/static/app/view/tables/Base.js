@@ -68,7 +68,7 @@ Ext.define('Kits.view.tables.Base', {
                         clicksToEdit: 1,
                         listeners: {
                             beforeedit: function (editor, context, eOpts) {
-                                return !Ext.Array.contains(Ext.Object.getValues(context.record.data), '—');
+                                return !Ext.Array.contains(Ext.Object.getValues(context.value), '—');
                             }
                         },
                     }

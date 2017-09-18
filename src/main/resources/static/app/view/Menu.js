@@ -134,7 +134,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '农业生产经营单位农作物播种面积情况',
-                            cmp: 'Kits.view.tables.A403'
+                            cmp: 'Kits.view.tables.A404'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
