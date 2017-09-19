@@ -134,7 +134,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '农业生产经营单位农作物播种面积情况',
-                            cmp: 'Kits.view.tables.A403'
+                            cmp: 'Kits.view.tables.A404'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
@@ -275,7 +275,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '常规汇总',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuHuiZong.BaseTabeView'
                         }
                     ]
                 },
@@ -287,7 +287,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '基础数据查询',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.shuJuChaXun.BaseQuery'
                         }
                     ]
                 },
@@ -299,7 +299,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史基础数据导入',
-                            cmp: 'Kits.view.liShiShuju.Simplemport'
+                            cmp: 'Kits.view.liShiShuju.SimpleImport'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
@@ -316,12 +316,12 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史基础数据查询',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.liShiShuju.SimpleQuery'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '历史综合数据查询',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.liShiShuju.ComplexQuery'
                         }
                     ]
                 },

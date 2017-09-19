@@ -1,4 +1,4 @@
-Ext.define('Kits.view.liShiShuju.Simplemport', {
+Ext.define('Kits.view.liShiShuju.SimpleImport', {
     extend: 'Ext.panel.Panel',
     title: '历史基础数据导入',
     layout: 'center',

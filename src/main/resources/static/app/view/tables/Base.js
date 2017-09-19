@@ -4,7 +4,17 @@ Ext.define('Kits.view.tables.Base', {
 
     initComponent: function () {
         var me = this;
-
+        Ext.apply(this.columns[0].columns[0],{
+            renderer: function (value, record) {
+                var i = record.record.data['i'];
+                var indent = [];
+                while(i > 0){
+                    i = i-1;
+                    indent.push('&nbsp;&nbsp;&nbsp;&nbsp;')
+                }
+                return indent.join('')+ value;
+            }
+        });
 
         var items = Ext.clone(me.defConfig.items);
         Ext.apply(items[0].items, this.headerItems);
@@ -58,7 +68,7 @@ Ext.define('Kits.view.tables.Base', {
                         clicksToEdit: 1,
                         listeners: {
                             beforeedit: function (editor, context, eOpts) {
-                                return !Ext.Array.contains(Ext.Object.getValues(context.record.data), '—');
+                                return !Ext.Array.contains(Ext.Object.getValues(context.value), '—');
                             }
                         },
                     }
