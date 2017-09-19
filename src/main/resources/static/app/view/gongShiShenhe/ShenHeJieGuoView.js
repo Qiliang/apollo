@@ -92,13 +92,6 @@ Ext.define('Kits.view.gongShiShenhe.ShenHeJieGuoView', {
                         clicksToEdit: 1
                     }
                 },
-                tbar: [
-                    {
-                        text: '修改',
-                        handler: function () {
-                            alert('修改')
-                        },
-                    }],
                 store: Ext.create('Kits.store.ZhiBiao', {}),
                 columns: [
                     {
