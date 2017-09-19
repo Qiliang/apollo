@@ -1,6 +1,9 @@
 Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
     extend: 'Ext.panel.Panel',
     scrollable:true,
+    requires: [
+        'Kits.view.tables.01'
+    ],
     layout: {
         type: 'table',
         columns: 1,
@@ -25,11 +28,8 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
     items: [
         {
             title:'填报内容（表1）',
-            layout:'fit',
             height:1900,
-            items:[
-                Ext.create("Kits.view.tables.01",{})
-            ]
+            xtype:'tables01'
         },{
             id:'zysyj',
             title:'镇验收意见',

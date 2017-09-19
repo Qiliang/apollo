@@ -1,0 +1,9 @@
+{"totalCount":1000,"list":[
+  {"id":1,"name":"指标1","unit":"个","code":"001","count":"1"},
+  {"id":2,"name":"指标2","unit":"个","code":"002","count":"4"},
+  {"id":3,"name":"指标3","unit":"个","code":"003","count":"1"},
+  {"id":4,"name":"指标4","unit":"个","code":"004","count":"5"},
+  {"id":5,"name":"指标5","unit":"个","code":"005","count":"1"},
+  {"id":6,"name":"指标6","unit":"个","code":"006","count":"1"},
+  {"id":7,"name":"指标7","unit":"个","code":"007","count":"1"}
+]}

@@ -61,13 +61,14 @@ Ext.define('Kits.view.shuJuLuRu.AddGeRenZhongXin', {
                 inputType: 'password',
                 emptyMsg: '密码',
             }
-        ],
-
-        buttons: [
-            {
-                defaultAlign:'center',
-                text: '提交',
-                handler: function (e) {
+        ]
+    },{
+        layout: 'center',
+        width:600,
+        items: [{
+            xtype: 'button',
+            text: '提交',
+            handler: function (e) {
                 alert('提交1');
                 var form = this.up('form').getForm();
                 if (form.isValid()) {
@@ -82,7 +83,6 @@ Ext.define('Kits.view.shuJuLuRu.AddGeRenZhongXin', {
                     });
                 }
             }
-            }
-        ]
+        }]
     }]
 });

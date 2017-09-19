@@ -258,12 +258,12 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '基础报送信息公式审核',
-                            cmp: 'Kits.view.data.Shop'
+                            cmp: 'Kits.view.gongShiShenhe.GongShiShenHeList'
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '审核公式查看',
-                            cmp: 'Kits.view.data.Rider'
+                            cmp: 'Kits.view.gongShiShenhe.GongShiList'
                         }
                     ]
                 },
