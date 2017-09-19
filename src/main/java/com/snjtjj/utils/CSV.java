@@ -127,7 +127,7 @@ public class CSV {
                 String v = value(cell);
                 if ("BLANK".equals(v)) return;
                 Optional<CellRangeAddress> regionOptional = sheet.getMergedRegions().stream().filter(r -> r.isInRange(cell)).findAny();
-                Column column = null;
+                Column column;
                 if (regionOptional.isPresent()) {
                     CellRangeAddress region = regionOptional.get();
                     column = new Column(region.getFirstRow(), region.getFirstColumn(), region.getLastRow(), region.getLastColumn(), v);
@@ -137,7 +137,6 @@ public class CSV {
                 System.out.println(String.format("%s,%s  %s,%s  %s", column.getRow1(), column.getCell1(), column.getRow2(), column.getCell2(), column.getText()));
 
                 List<Column> parents = columnFlats.stream().filter(c -> c.getRow2() + 1 == cell.getRowIndex()).collect(Collectors.toList());
-                //Collections.reverse(parents);
                 if (parents.size() > 0) {
                     Column last = null;
                     for (int j = 0; j < parents.size(); j++) {
@@ -148,9 +147,6 @@ public class CSV {
 
                         }
                     }
-
-                    //Column last = parents.stream().filter(c -> c.getRow() < cell.getRowIndex()).findFirst().get();
-                    //Column last = parents.get(0);
                     if (last.getColumns() == null) last.setColumns(new ArrayList<>());
                     last.getColumns().add(column);
                 } else {
@@ -159,9 +155,6 @@ public class CSV {
                 columnFlats.add(column);
                 //System.out.println(v);
             });
-            int index = i;
-            // List<Column> toRemove = columnFlats.stream().filter(c -> c.getRow() < index && c.getColumns() != null).collect(Collectors.toList());
-            //columnFlats.removeAll(toRemove);
         }
 
 
@@ -174,13 +167,10 @@ public class CSV {
 
     private static String value(Cell cell) {
         if (cell.getCellTypeEnum().equals(CellType.NUMERIC)) {
-            //System.out.println(String.format("%s,%s  %s", cell.getRowIndex(), cell.getColumnIndex(), cell.getNumericCellValue()));
             return String.valueOf(cell.getNumericCellValue());
         } else if (cell.getCellTypeEnum().equals(CellType.STRING)) {
-            //System.out.println(String.format("%s,%s  %s", cell.getRowIndex(), cell.getColumnIndex(), cell.getStringCellValue()));
             return cell.getStringCellValue();
         } else if (cell.getCellTypeEnum().equals(CellType.BLANK)) {
-            //System.out.println(String.format("%s,%s  %s", cell.getRowIndex(), cell.getColumnIndex(),"BLANK"));
             return "BLANK";
         }
         return "";
