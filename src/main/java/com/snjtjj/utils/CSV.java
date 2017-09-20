@@ -1,22 +1,14 @@
 package com.snjtjj.utils;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections4.IteratorUtils;
-import org.apache.commons.io.FileUtils;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.commons.io.FilenameUtils;
 
-import java.beans.Transient;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class CSV {
 
@@ -178,6 +170,85 @@ public class CSV {
 //        }
 //        return "";
 //    }
+
+    static class Node {
+        private String iconCls = "x-fa fa-table";
+        private String text;
+        private boolean leaf = true;
+        private List<Node> children;
+
+        public Node(String text) {
+            this.text = text;
+        }
+
+        public Node() {
+        }
+
+        public String getIconCls() {
+            return iconCls;
+        }
+
+        public void setIconCls(String iconCls) {
+            this.iconCls = iconCls;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public List<Node> getChildren() {
+            return children;
+        }
+
+        public void setChildren(List<Node> children) {
+            this.children = children;
+        }
+
+        public boolean isLeaf() {
+            return leaf;
+        }
+
+        public void setLeaf(boolean leaf) {
+            this.leaf = leaf;
+        }
+    }
+
+
+    public static void main(String[] args) throws JsonProcessingException {
+        Node root = new Node("2016");
+        listDir("C:\\Users\\XQL\\Documents\\Tencent Files\\3165867\\FileRecv\\历史数据", root);
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(root));
+    }
+
+
+    static void listDir(String parent, Node node) {
+        File root = new File(parent);
+        if (root.isFile()) {
+            return;
+        }
+        Arrays.stream(root.list()).forEach(dir -> {
+           // System.out.println(dir);
+            if (node.getChildren() == null) {
+                node.setChildren(new ArrayList<>());
+                node.setIconCls("x-fa fa-folder-o");
+                node.setLeaf(false);
+            }
+
+            Node child = new Node( FilenameUtils.getBaseName(dir));
+            node.getChildren().add(child);
+            listDir(parent + "\\" + dir, child);
+        });
+    }
+
+
 
 
 }
