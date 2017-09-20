@@ -1,9 +1,5 @@
 Ext.define('Kits.view.zhiDu.ZhiDuView', {
     extend: 'Ext.panel.Panel',
-    xtype: 'layout-border',
-    requires: [
-        'Ext.layout.container.Border'
-    ],
     layout: 'border',
     bodyBorder: false,
     defaults: {
@@ -32,20 +28,29 @@ Ext.define('Kits.view.zhiDu.ZhiDuView', {
             listeners: {
                 select : function(grid, record, index, eOpts ){
                     var cmp = Ext.getCmp('ZhiDuViewCenter');
-                    if(cmp)
-                        cmp.update(record.get("tableHtml"));
-                    console.log(record.get("name"));
+                    cmp.removeAll(true);
+                    cmp.add(Ext.create(record.get("tableName"),{height:2000,width:800}));
                 }
             }
         },
         {
-            collapsible: false,
             xtype:'panel',
-            id:'ZhiDuViewCenter',
-            layout: 'fit',
+            layout: 'table',
+            columns: 1,
+            tableAttrs: {
+                style: {
+                    width: '100%'
+                }
+            },
             region: 'center',
             margin: '5 0 0 0',
-            html:'请点击左侧选择要查看的表样'
+            scrollable:true,
+            items:[{
+                xtype:'panel',
+                id:'ZhiDuViewCenter',
+                layout: 'fit',
+                html:'请点击左侧选择要查看的表样'
+            }]
         }
     ]
 })

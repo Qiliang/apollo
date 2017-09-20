@@ -1,5 +1,6 @@
 Ext.define('Kits.view.tables.01', {
     extend: 'Kits.view.tables.Base',
+    xtype:'tables01',
     title: '农 业 生 产 条 件（一）',
     headerItems:[
         {

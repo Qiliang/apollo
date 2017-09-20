@@ -1,5 +1,9 @@
 Ext.define('Kits.view.zhiDu.YanShouView', {
     extend: 'Ext.panel.Panel',
+    requires: [
+        'Kits.view.tables.01'
+    ],
+    scrollable:true,
     layout: {
         type: 'table',
         columns: 1,
@@ -20,6 +24,7 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
             //动态删除验收意见
             // me.remove(Ext.getCmp('qysyj'));
         }
+
     },
     buttons:[{
         xtype: 'button',
@@ -31,7 +36,8 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
     items: [
         {
             title:'填报内容（表1）',
-            html:'填报内容',
+            xtype:'tables01',
+            height:1900
         },{
             id:'zysyj',
             title:'镇验收意见',
