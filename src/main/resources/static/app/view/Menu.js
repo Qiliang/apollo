@@ -163,12 +163,14 @@ Ext.define('Kits.view.Menu', {
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
-                            text: '农 村 劳 动 力 转 移 季 报',
+                            text: '农村劳动力转移季报',
                             cmp: 'Kits.view.tables.END01'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '畜特、水产、电讯季节报',
+                            cmp: 'Kits.view.tables.SND02'
                         }
-
-
-
                     ]
                 },
                 {
@@ -178,8 +180,152 @@ Ext.define('Kits.view.Menu', {
                         {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
-                            text: '农村基层组织及户数、人口、从业人员情况',
-                            cmp: 'Kits.view.tablehz.SNN01'
+                            text: '农村基层组织及户数、人口、从业人员情况(一)',
+                            cmp: 'Kits.view.tablehz.SNN01-1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农村基层组织及户数、人口、从业人员情况(二)',
+                            cmp: 'Kits.view.tablehz.SNN01-2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农业生产条件(一)',
+                            cmp: 'Kits.view.tablehz.SNN02-1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农业生产条件(二)',
+                            cmp: 'Kits.view.tablehz.SNN02-2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮食作物生产情况(一)',
+                            cmp: 'Kits.view.tablehz.SNN03-A1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮食作物生产情况(二)',
+                            cmp: 'Kits.view.tablehz.SNN03-A2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '粮食作物生产情况(三)',
+                            cmp: 'Kits.view.tablehz.SNN03-A3'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(一)',
+                            cmp: 'Kits.view.tablehz.SNN03-B1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(二)',
+                            cmp: 'Kits.view.tablehz.SNN03-B2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(三)',
+                            cmp: 'Kits.view.tablehz.SNN03-B3'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(四)',
+                            cmp: 'Kits.view.tablehz.SNN03-B4'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(五)',
+                            cmp: 'Kits.view.tablehz.SNN03-B5'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(六)',
+                            cmp: 'Kits.view.tablehz.SNN03-B6'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(七)',
+                            cmp: 'Kits.view.tablehz.SNN03-B7'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '经济作物生产情况(八)',
+                            cmp: 'Kits.view.tablehz.SNN03-B8'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '年末茶叶水果园情况',
+                            cmp: 'Kits.view.tablehz.SNN04'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '林业生产情况表(一)',
+                            cmp: 'Kits.view.tablehz.A307-1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '林业生产情况表(二)',
+                            cmp: 'Kits.view.tablehz.A307-2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '林业生产情况表(三)',
+                            cmp: 'Kits.view.tablehz.A307-3'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '设施农业生产情况',
+                            cmp: 'Kits.view.tablehz.A304'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '其他畜牲业生产情况',
+                            cmp: 'Kits.view.tablehz.A309'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '畜禽规模养殖情况',
+                            cmp: 'Kits.view.tablehz.A301'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农村劳动力转移情况(一)',
+                            cmp: 'Kits.view.tablehz.ENN04-1'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '农村劳动力转移情况(二)',
+                            cmp: 'Kits.view.tablehz.ENN04-2'
+                        },
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '渔业生产情况',
+                            cmp: 'Kits.view.tablehz.ENN06'
                         }
                     ]
                 },
