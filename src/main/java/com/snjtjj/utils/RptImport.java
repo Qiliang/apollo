@@ -26,6 +26,7 @@ import java.util.stream.Stream;
 
 public class RptImport {
 
+    static List<String> candidate = new ArrayList<String>(){{add("项目"); add("指标名称"); add("指 标 名 称"); add("地 区");add("指标");add("组织机构代码");add("全          省");add("代码");add("数据处理地");}};
     static class TreeNode {
         public String iconCls = "x-fa fa-table";
         public String text;
@@ -70,13 +71,17 @@ public class RptImport {
     static void listDir(String rootPath,TreeNode node){
         File root = new File(rootPath);
         if(root.isFile() || root.list() == null) {
-            if(rootPath.toUpperCase().endsWith(".XLS")){
-                if(node.parent.equals("服务业上报数据")){
-                    ReadXLS(rootPath,node);
+//            if (node.parent.equals("住户专业季度")) {
+                if (rootPath.toUpperCase().endsWith(".XLS")) {
+                    ReadXLS(rootPath, node);
                 }
-            }
-//            if(rootPath.toUpperCase().endsWith(".CSV")){
-//                ReadCSV(rootPath,node);
+                if(rootPath.toUpperCase().endsWith(".XLSX")){
+                    node.text = "【格式不支持】" + node.text;
+                    return;
+                }
+                if (rootPath.toUpperCase().endsWith(".CSV")) {
+                    ReadCSV(rootPath, node);
+                }
 //            }
             return;
         }
@@ -104,12 +109,22 @@ public class RptImport {
         try {
             wb = new HSSFWorkbook(fs);
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
-        NavScan scan = ScanXLS(wb);
-        node.text = scan.title.text;
-        model.put("title",scan.title.text);
-        model.put("fields",readFileds(wb,scan.field.row1));
+        if(wb == null){
+            node.text = "【格式错误】" + node.text;
+            return;
+        }
+        NavScan scan = ScanXLS(path,wb);
+        if(scan.field == null){
+            node.text = "【格式错误】" + node.text;
+            return;
+        }
+        if(scan.title != null && !candidate.contains(scan.title.text)) {
+            node.text = scan.title.text;
+        }
+        model.put("title", node.text);
+        model.put("fields",readFileds(wb,scan.field.row1,scan.field.cell1));
 
         List<CSVD.Column> columns = readColumns(wb,scan.header.row1,scan.header.row2,scan.header.cell1);
         ObjectMapper mapper = new ObjectMapper();
@@ -119,7 +134,6 @@ public class RptImport {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
         model.put("lines",readLines(wb,scan.data.row1,scan.data.row2,scan.data.cell1));
 
         try {
@@ -192,15 +206,19 @@ public class RptImport {
             e.printStackTrace();
         }
     }
-    static List<String> readFileds(Workbook wb,int beginRow){
+    static List<String> readFileds(Workbook wb,int beginRow,int beginCol){
         List<String> fields = new ArrayList<>();
         Sheet sheet = wb.getSheetAt(0);
         List<Row> rows = IteratorUtils.toList(sheet.rowIterator());
-        Row row = rows.get(beginRow);
-        IteratorUtils.toList(row.cellIterator()).forEach(cell -> {
-            String v = CSVD.value(cell);
-            if ("BLANK".equals(v)) return;
-            fields.add(v);
+        IteratorUtils.toList(sheet.rowIterator()).forEach(row -> {
+            if(row.getRowNum() == beginRow){
+                IteratorUtils.toList(row.cellIterator()).forEach(cell -> {
+                    String v = CSVD.value(cell);
+                    if(cell.getColumnIndex() >= beginCol && !"BLANK".equals(v)) {
+                        fields.add("col" + cell.getColumnIndex());
+                    }
+                });
+            }
         });
         return fields;
     }
@@ -208,16 +226,17 @@ public class RptImport {
         List<String> lines = new ArrayList<>();
         Sheet sheet = wb.getSheetAt(0);
         List<Row> rows = IteratorUtils.toList(sheet.rowIterator());
-        for (int i = beginRow; i < endRow; i++) {
-            Row row = rows.get(i);
-            List<Cell> cells = IteratorUtils.toList(row.cellIterator());
-            List<String> rowList = new ArrayList<>();
-            for(int j = beginCol; j < cells.size(); j++){
-                Cell cell = cells.get(j);
-                rowList.add(String.format("'%s'",valueFl(cell)));
+        IteratorUtils.toList(sheet.rowIterator()).forEach(row->{
+            if(row.getRowNum() >= beginRow && row.getRowNum() <= endRow) {
+                List<String> rowList = new ArrayList<>();
+                IteratorUtils.toList(row.cellIterator()).forEach(cell -> {
+                    if(cell.getColumnIndex() >= beginCol){
+                        rowList.add(String.format("'%s'",valueFl(cell)));
+                    }
+                });
+                lines.add(String.join(",",rowList));
             }
-            lines.add(String.join(",",rowList));
-        }
+        });
         return lines;
     }
     static String valueFl(Cell cell) {
@@ -235,59 +254,80 @@ public class RptImport {
         List<CSVD.Column> columns = new ArrayList<>();
         List<CSVD.Column> columnFlats = new ArrayList<>();
         List<Row> rows = IteratorUtils.toList(sheet.rowIterator());
-        for (int i = beginRow; i <= endRow; i++) {
-            Row row = rows.get(i);
-            IteratorUtils.toList(row.cellIterator()).forEach(cell -> {
-                String v = CSVD.value(cell);
-                if ("BLANK".equals(v)) return;
-                Optional<CellRangeAddress> regionOptional = sheet.getMergedRegions().stream().filter(r -> r.isInRange(cell)).findAny();
-                CSVD.Column column;
-                if (regionOptional.isPresent()) {
-                    CellRangeAddress region = regionOptional.get();
-                    Integer colspan = region.getLastRow() - region.getFirstRow();
-                    String labtext = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(colspan * 22 + 22 + colspan*13),v);
-                    column = new CSVD.Column(region.getFirstRow(), region.getFirstColumn(), region.getLastRow(), region.getLastColumn(), labtext);
-                }
-                else {
-                    String labtext = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),v);
-                    column = new CSVD.Column(cell.getRowIndex(), cell.getColumnIndex(), cell.getRowIndex(), cell.getColumnIndex(), labtext);
-                    if(beginCol == cell.getColumnIndex()){
-                        column.setWidth(120);
-                    }
-                    else {
-                        column.setWidth(60);
-                    }
-                }
-                column.setDataIndex(v);
-                List<CSVD.Column> parents = columnFlats.stream().filter(c -> c.getRow2() + 1 == cell.getRowIndex()).collect(Collectors.toList());
-                if (parents.size() > 0) {
-                    CSVD.Column last = null;
-                    for (int j = 0; j < parents.size(); j++) {
-                        CSVD.Column c1 = parents.get(j);
-                        if (c1.getCell1() <= column.getCell1() && c1.getCell2() >= column.getCell2()) {
-                            last = c1;
-                            break;
+        IteratorUtils.toList(sheet.rowIterator()).forEach(row ->{
+            if(row.getRowNum() >= beginRow && row.getRowNum() <= endRow) {
+                IteratorUtils.toList(row.cellIterator()).forEach(cell -> {
+                    if(cell.getColumnIndex() >= beginCol){
+                        String v = CSVD.value(cell);
+                        if ("BLANK".equals(v) && cell.getColumnIndex() > beginCol) return;
+                        Optional<CellRangeAddress> regionOptional = sheet.getMergedRegions().stream().filter(r -> r.isInRange(cell)).findAny();
+                        CSVD.Column column;
+                        if (regionOptional.isPresent()) {
+                            CellRangeAddress region = regionOptional.get();
+                            Integer colspan = region.getLastRow() - region.getFirstRow();
+                            String labtext = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(colspan * 22 + 22 + colspan * 13), v);
+                            column = new CSVD.Column(region.getFirstRow(), region.getFirstColumn(), region.getLastRow(), region.getLastColumn(), labtext);
+                        } else {
+                            String labtext = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22), v);
+                            column = new CSVD.Column(cell.getRowIndex(), cell.getColumnIndex(), cell.getRowIndex(), cell.getColumnIndex(), labtext);
+                            if (beginCol == cell.getColumnIndex()) {
+                                column.setWidth(120);
+                            } else {
+                                column.setWidth(60);
+                            }
                         }
-                    }
-                    if(last != null) {
-                        if (last.getColumns() == null) {
-                            last.setColumns(new ArrayList<>());
+                        column.setDataIndex("col" + cell.getColumnIndex());
+                        List<CSVD.Column> parents = columnFlats.stream().filter(c -> c.getRow2() + 1 == cell.getRowIndex()).collect(Collectors.toList());
+                        if (parents.size() > 0) {
+                            CSVD.Column last = null;
+                            for (int k = 0; k < parents.size(); k++) {
+                                CSVD.Column c1 = parents.get(k);
+                                if (c1.getCell1() <= column.getCell1() && c1.getCell2() >= column.getCell2()) {
+                                    last = c1;
+                                    break;
+                                }
+                            }
+                            if (last != null) {
+                                if (last.getColumns() == null) {
+                                    last.setColumns(new ArrayList<>());
+                                }
+                                last.setWidth(null);
+                                last.setDataIndex(null);
+                                last.getColumns().add(column);
+                            }
+                        } else {
+                            columns.add(column);
                         }
-                        last.setWidth(null);
-                        last.setDataIndex(null);
-                        last.getColumns().add(column);
+                        columnFlats.add(column);
                     }
-                } else {
-                    columns.add(column);
-                }
-                columnFlats.add(column);
-            });
-        }
+
+                });
+            }
+        });
         return columns;
     }
-    static NavScan ScanXLS(Workbook wb){
+    static NavScan ScanXLS(String path,Workbook wb){
         NavScan scan = new NavScan();
-        List<String> candidate = new ArrayList<String>(){{add("指 标 名 称"); add("地 区");add("指标");add("组织机构代码");add("全          省");add("代码");}};;
+        String appFile = FilenameUtils.getBaseName(path);
+        String[] app = appFile.split("\\.");
+        if(app.length == 2){
+            String[] num = app[1].split("-");
+            if(num.length == 2){
+                scan.title = new CSVD.Column(app[0],0,"");
+                scan.header = new CSVD.Column();
+                scan.field = new CSVD.Column();
+                scan.data = new CSVD.Column();
+                scan.header.row1 = Integer.parseInt(num[0]);
+                scan.header.row2 = Integer.parseInt(num[1]);
+                scan.field.row1 = Integer.parseInt(num[1]);
+                scan.data.row1 = scan.header.row2+1;
+                Sheet sheet = wb.getSheetAt(0);
+                List<Row> rows = IteratorUtils.toList(sheet.rowIterator());
+                scan.data.row2 = rows.size();
+            }
+            return scan;
+        }
+
         Sheet sheet = wb.getSheetAt(0);
         Arrays.stream(IteratorUtils.toArray(sheet.rowIterator())).forEach(r ->{
             Row row = (Row)r;
@@ -325,7 +365,7 @@ public class RptImport {
                     scan.data.row1 = cell.getRowIndex()+1;
                     scan.data.row2 = cell.getRowIndex()+1;
                 }
-                if(scan.data != null){
+                if(scan.data != null && cell.getRowIndex() > scan.data.row2){
                     scan.data.row2 = cell.getRowIndex();
                 }
             });

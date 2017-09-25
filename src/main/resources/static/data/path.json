@@ -25,11 +25,15 @@
             "children" : [ {
               "iconCls" : "x-fa fa-table",
               "text" : "202-1从业人员及工资总额基层表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员及工资总额基层表",
+              "itemid" : "2c096107135a80e2",
               "leaf" : true,
               "parent" : "一季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "202-1从业人员和工资总额汇总表",
+              "text" : "2016年一季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "alias" : "Kits.view.liShiShuju.2016年一季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "itemid" : "4ddde40275a94eca",
               "leaf" : true,
               "parent" : "一季度"
             } ],
@@ -41,11 +45,15 @@
             "children" : [ {
               "iconCls" : "x-fa fa-table",
               "text" : "202-1从业人员及工资总额基层表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员及工资总额基层表",
+              "itemid" : "2c096107135a80e2",
               "leaf" : true,
               "parent" : "三季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "202-1从业人员和工资情况汇总表",
+              "text" : "2016年三季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "alias" : "Kits.view.liShiShuju.2016年三季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "itemid" : "4c192d7cbcba11d5",
               "leaf" : true,
               "parent" : "三季度"
             } ],
@@ -57,11 +65,15 @@
             "children" : [ {
               "iconCls" : "x-fa fa-table",
               "text" : "202-1从业人员及工资总额基层表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员及工资总额基层表",
+              "itemid" : "2c096107135a80e2",
               "leaf" : true,
               "parent" : "二季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "202-1从业人员和工资情况汇总表",
+              "text" : "2016年二季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "alias" : "Kits.view.liShiShuju.2016年二季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
+              "itemid" : "80f4ab6501936b21",
               "leaf" : true,
               "parent" : "二季度"
             } ],
@@ -75,31 +87,43 @@
           "children" : [ {
             "iconCls" : "x-fa fa-table",
             "text" : "102-1从业人员和工资情况基层表",
+            "alias" : "Kits.view.liShiShuju.102-1从业人员和工资情况基层表",
+            "itemid" : "a5ee8acfa9cd0351",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "i301-1从业人员和工资情况汇总表.",
+            "text" : "从业人员和工资情况",
+            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
+            "itemid" : "4e161184077daa1a",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "i301-2从业人员和工资情况汇总表.",
+            "text" : "从业人员和工资情况",
+            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
+            "itemid" : "4e161184077daa1a",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "i301-3从业人员和工资情况汇总表.",
+            "text" : "从业人员和工资情况",
+            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
+            "itemid" : "4e161184077daa1a",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "i3014从业人员和工资情况汇总表汇总表..",
+            "text" : "从业人员和工资情况",
+            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
+            "itemid" : "4e161184077daa1a",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "i301从业人员和劳动报酬情况汇总表",
+            "text" : "从业人员和劳动报酬情况",
+            "alias" : "Kits.view.liShiShuju.从业人员和劳动报酬情况",
+            "itemid" : "17558ea36642b721",
             "leaf" : true,
             "parent" : "劳动工资年报"
           } ],
@@ -120,17 +144,23 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "神农架2016年住户调查资料(一季度)",
+        "text" : " 神农架2016年住户调查资料(一季度)",
+        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(一季度)",
+        "itemid" : "a130fd82a7fece4e",
         "leaf" : true,
         "parent" : "住户专业季度"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "神农架2016年住户调查资料(三季度)",
+        "text" : " 神农架2016年住户调查资料(前三季度)",
+        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(前三季度)",
+        "itemid" : "7d79772331e7a1d9",
         "leaf" : true,
         "parent" : "住户专业季度"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "神农架2016年住户调查资料(二季度)",
+        "text" : " 神农架2016年住户调查资料(二季度)",
+        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(二季度)",
+        "itemid" : "cbae167976f4d1dc",
         "leaf" : true,
         "parent" : "住户专业季度"
       } ],
@@ -141,7 +171,7 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年住户收支与生活状况调查年报表",
+        "text" : "【格式不支持】2016年住户收支与生活状况调查年报表",
         "leaf" : true,
         "parent" : "住户专业年报"
       } ],
@@ -152,22 +182,30 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年分市州居民可支配收入（1季度）",
+        "text" : "附件1",
+        "alias" : "Kits.view.liShiShuju.附件1",
+        "itemid" : "016024dfe03b3913",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年分市州居民可支配收入（前3季度）",
+        "text" : "2016年前三季度分市州居民收入核定结果",
+        "alias" : "Kits.view.liShiShuju.2016年前三季度分市州居民收入核定结果",
+        "itemid" : "94f858497a8356d7",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年分市州居民可支配收入（半年报）",
+        "text" : "附件",
+        "alias" : "Kits.view.liShiShuju.附件",
+        "itemid" : "7be64060ae157a42",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年分市州居民可支配收入（年报）",
+        "text" : "附件1",
+        "alias" : "Kits.view.liShiShuju.附件1",
+        "itemid" : "016024dfe03b3913",
         "leaf" : true,
         "parent" : "省队反馈数据"
       } ],
@@ -188,12 +226,12 @@
         "leaf" : false,
         "children" : [ {
           "iconCls" : "x-fa fa-table",
-          "text" : "MLK101-1法人单位基本情况",
+          "text" : "【格式错误】MLK101-1法人单位基本情况",
           "leaf" : true,
           "parent" : "基本单位名录库季报"
         }, {
           "iconCls" : "x-fa fa-table",
-          "text" : "MLK101-2产业活动单位基本情况",
+          "text" : "【格式错误】MLK101-2产业活动单位基本情况",
           "leaf" : true,
           "parent" : "基本单位名录库季报"
         } ],
@@ -217,6 +255,8 @@
         "children" : [ {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年12月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年12月神农架林区规格品价格一览表",
+          "itemid" : "e5669767d6d96013",
           "leaf" : true,
           "parent" : "居民消费价格年报"
         } ],
@@ -228,61 +268,85 @@
         "children" : [ {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年10月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年10月神农架林区规格品价格一览表",
+          "itemid" : "92d95e779e900f8c",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年11月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年11月神农架林区规格品价格一览表",
+          "itemid" : "a5bb3d24a659de4b",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年12月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年12月神农架林区规格品价格一览表",
+          "itemid" : "e5669767d6d96013",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
-          "text" : "2016年1月神农架林区规格品价格一览表",
+          "text" : "2016年规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年规格品价格一览表",
+          "itemid" : "c11464f6d3c8dc85",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年2月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年2月神农架林区规格品价格一览表",
+          "itemid" : "17ec9cfe0af615cd",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年3月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年3月神农架林区规格品价格一览表",
+          "itemid" : "2f982dcc99006e55",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年4月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年4月神农架林区规格品价格一览表",
+          "itemid" : "87b5f46c8d178f12",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年5月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年5月神农架林区规格品价格一览表",
+          "itemid" : "34dc98f311deef79",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年6月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年6月神农架林区规格品价格一览表",
+          "itemid" : "278ccb1e6fc80eb5",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年7月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年7月神农架林区规格品价格一览表",
+          "itemid" : "ce44957ea6fbc247",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年8月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年8月神农架林区规格品价格一览表",
+          "itemid" : "4239cb54f2f9baeb",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
           "text" : "2016年9月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年9月神农架林区规格品价格一览表",
+          "itemid" : "3591f8ceb90192ab",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         } ],
@@ -310,41 +374,57 @@
           "children" : [ {
             "iconCls" : "x-fa fa-table",
             "text" : "C203建筑业财务报表第4季报报基层表",
+            "alias" : "Kits.view.liShiShuju.C203建筑业财务报表第4季报报基层表",
+            "itemid" : "dcc92b8e47db50af",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C203建筑业财务表第1季报基层表",
+            "alias" : "Kits.view.liShiShuju.C203建筑业财务表第1季报基层表",
+            "itemid" : "ebb4ad269d1582b5",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C203建筑业财务表第2季报基层表",
+            "alias" : "Kits.view.liShiShuju.C203建筑业财务表第2季报基层表",
+            "itemid" : "c786c3bb025245dc",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C203建筑业财务表第3季报基层表",
+            "alias" : "Kits.view.liShiShuju.C203建筑业财务表第3季报基层表",
+            "itemid" : "a053c558fdd34b17",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C204-1建筑业生产情况表第1季报基层表",
+            "alias" : "Kits.view.liShiShuju.C204-1建筑业生产情况表第1季报基层表",
+            "itemid" : "f8dd9125a1bce306",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C204-1建筑业生产情况表第2季报基层表",
+            "alias" : "Kits.view.liShiShuju.C204-1建筑业生产情况表第2季报基层表",
+            "itemid" : "4236c7c9d7ee01de",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C204-1建筑业生产情况表第3季报基层表",
+            "alias" : "Kits.view.liShiShuju.C204-1建筑业生产情况表第3季报基层表",
+            "itemid" : "7f4e69de44b1073b",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C204-1建筑业生产情况表第4季报报基层表",
+            "alias" : "Kits.view.liShiShuju.C204-1建筑业生产情况表第4季报报基层表",
+            "itemid" : "ba013a31336110d0",
             "leaf" : true,
             "parent" : "建筑业基层表"
           } ],
@@ -362,11 +442,15 @@
           "children" : [ {
             "iconCls" : "x-fa fa-table",
             "text" : "C103建筑业财务报表年报基层表",
+            "alias" : "Kits.view.liShiShuju.C103建筑业财务报表年报基层表",
+            "itemid" : "c94a7aa24ac76766",
             "leaf" : true,
             "parent" : "建筑业基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "C204-1建筑业生产情况表年报基层表",
+            "alias" : "Kits.view.liShiShuju.C204-1建筑业生产情况表年报基层表",
+            "itemid" : "6659ad0cd3398b25",
             "leaf" : true,
             "parent" : "建筑业基层表"
           } ],
@@ -471,56 +555,78 @@
       "children" : [ {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-10月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-10月服务业基层报表",
+        "itemid" : "a720fa266f5d63d6",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-11月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-11月服务业基层报表",
+        "itemid" : "63a84b33f6c10de6",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-12月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-12月服务业基层报表",
+        "itemid" : "07ec80f86131f019",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-3月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-3月服务业基层报表",
+        "itemid" : "68ae61f863a70079",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-4月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-4月服务业基层报表",
+        "itemid" : "ab410487197ca25f",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-5月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-5月服务业基层报表",
+        "itemid" : "6030ba5bf03625d7",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-6月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-6月服务业基层报表",
+        "itemid" : "f9f7ed7b7ff90730",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-7月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-7月服务业基层报表",
+        "itemid" : "8cafaed89da85db6",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-8月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-8月服务业基层报表",
+        "itemid" : "91500a25e8c1cf43",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_1-9月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_1-9月服务业基层报表",
+        "itemid" : "6686c6ae8a1781d2",
         "leaf" : true,
         "parent" : "服务业基层报表"
       }, {
         "iconCls" : "x-fa fa-table",
         "text" : "429021_F203_2月服务业基层报表",
+        "alias" : "Kits.view.liShiShuju.429021_F203_2月服务业基层报表",
+        "itemid" : "c013fd424adf545a",
         "leaf" : true,
         "parent" : "服务业基层报表"
       } ],
@@ -546,11 +652,15 @@
           "children" : [ {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-12月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-12月批发零售商品销售和库存基层表",
+            "itemid" : "a433f3c2c8121854",
             "leaf" : true,
             "parent" : "基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-12月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-12月住宿餐饮基层报表",
+            "itemid" : "e94094f5016f71c3",
             "leaf" : true,
             "parent" : "基层表"
           } ],
@@ -565,7 +675,9 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+              "text" : "2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+              "alias" : "Kits.view.liShiShuju.2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+              "itemid" : "6958f9f723f80d56",
               "leaf" : true,
               "parent" : "上报数据"
             } ],
@@ -576,12 +688,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至12月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至12月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "反馈数据"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至12月社会品消费品零售总额（全省）",
+              "text" : "【格式不支持】2016年1至12月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "反馈数据"
             } ],
@@ -604,7 +716,7 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "省返2016年1-2季度销售额营业额增速",
+              "text" : "【格式错误】省返2016年1-2季度销售额营业额增速",
               "leaf" : true,
               "parent" : "1-2季度"
             } ],
@@ -615,12 +727,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至10月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至10月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "10月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至10月社会品消费品零售总额（全省）",
+              "text" : "【格式不支持】2016年1至10月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "10月"
             } ],
@@ -631,12 +743,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至10月社会品消费品零售总额（全省）",
+              "text" : "【格式不支持】2016年1至10月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "11月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至11月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至11月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "11月"
             } ],
@@ -647,12 +759,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至12月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至12月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "12月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至12月社会品消费品零售总额（全省）",
+              "text" : "【格式不支持】2016年1至12月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "12月"
             } ],
@@ -663,7 +775,9 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至2月社会品消费品零售总额.xls",
+              "text" : "2016年1至2月社会品消费品零售总额",
+              "alias" : "Kits.view.liShiShuju.2016年1至2月社会品消费品零售总额",
+              "itemid" : "ac8fe1d3a533bcc8",
               "leaf" : true,
               "parent" : "2月"
             } ],
@@ -684,7 +798,7 @@
               "parent" : "3月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至3月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至3月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "3月"
             } ],
@@ -695,12 +809,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至4月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至4月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "4月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至4月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至4月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "4月"
             } ],
@@ -711,12 +825,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至5月社会品消费品零售总额",
+              "text" : "【格式错误】2016年1至5月社会品消费品零售总额",
               "leaf" : true,
               "parent" : "5月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至5月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至5月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "5月"
             } ],
@@ -727,12 +841,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至5月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至5月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "6月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至6月社会品消费品零售总额.xls",
+              "text" : "【格式错误】2016年1至6月社会品消费品零售总额.xls",
               "leaf" : true,
               "parent" : "6月"
             } ],
@@ -743,7 +857,7 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至7月社会品消费品零售总额.xls",
+              "text" : "【格式错误】2016年1至7月社会品消费品零售总额.xls",
               "leaf" : true,
               "parent" : "7月"
             } ],
@@ -754,12 +868,12 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至8月社会品消费品零售总额.xls",
+              "text" : "【格式错误】2016年1至8月社会品消费品零售总额.xls",
               "leaf" : true,
               "parent" : "8月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至9月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至9月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "8月"
             } ],
@@ -770,22 +884,22 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2015年1-3季度四大行业累计销售额（营业额）",
+              "text" : "【格式不支持】2015年1-3季度四大行业累计销售额（营业额）",
               "leaf" : true,
               "parent" : "9月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至3季度社会品消费品零售总额增速",
+              "text" : "【格式错误】2016年1至3季度社会品消费品零售总额增速",
               "leaf" : true,
               "parent" : "9月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至9月社会品消费品零售总额.xls",
+              "text" : "【格式错误】2016年1至9月社会品消费品零售总额.xls",
               "leaf" : true,
               "parent" : "9月"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至9月社会品消费品零售总额（全省）",
+              "text" : "【格式错误】2016年1至9月社会品消费品零售总额（全省）",
               "leaf" : true,
               "parent" : "9月"
             } ],
@@ -799,111 +913,155 @@
           "children" : [ {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-11-3月批发零售商品销售库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-11-3月批发零售商品销售库存基层表",
+            "itemid" : "c07d75f1a4939b3f",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-11-4月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-11-4月批发零售商品销售和库存基层表",
+            "itemid" : "96a66202a9a489e5",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-10月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-10月批发零售商品销售和库存基层表",
+            "itemid" : "44d1c84401ef5359",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-11月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-11月批发零售商品销售和库存基层表",
+            "itemid" : "aaaeff944a5aafd9",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-12月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-12月批发零售商品销售和库存基层表",
+            "itemid" : "a433f3c2c8121854",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-5月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-5月批发零售商品销售和库存基层表",
+            "itemid" : "866f129281a81a82",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-6月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-6月批发零售商品销售和库存基层表",
+            "itemid" : "9be957f374d6c353",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-7月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-7月批发零售商品销售和库存基层表",
+            "itemid" : "7cf9909879630b72",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-8月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-8月批发零售商品销售和库存基层表",
+            "itemid" : "cad75cf0b37a5af4",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_1-9月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_1-9月批发零售商品销售和库存基层表",
+            "itemid" : "a684b551084523cb",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_E204-1_2月批发零售商品销售和库存基层表",
+            "alias" : "Kits.view.liShiShuju.429021_E204-1_2月批发零售商品销售和库存基层表",
+            "itemid" : "02667ccc85be6c4f",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-10月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-10月住宿餐饮基层报表",
+            "itemid" : "dc998c0a17169619",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-11月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-11月住宿餐饮基层报表",
+            "itemid" : "926915958fffcd56",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-12月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-12月住宿餐饮基层报表",
+            "itemid" : "e94094f5016f71c3",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-3月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-3月住宿餐饮基层报表",
+            "itemid" : "8d9669e133624d15",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-4月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-4月住宿餐饮基层报表",
+            "itemid" : "8b6365c5d97d190a",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-5月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-5月住宿餐饮基层报表",
+            "itemid" : "fa4695858f70f2c0",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-6月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-6月住宿餐饮基层报表",
+            "itemid" : "36fbf2cac7071337",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-7月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-7月住宿餐饮基层报表",
+            "itemid" : "69e131bb69e7c7a9",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-8月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-8月住宿餐饮基层报表",
+            "itemid" : "156139509fe3294e",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_1-9月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_1-9月住宿餐饮基层报表",
+            "itemid" : "65a2d35f6a381f26",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           }, {
             "iconCls" : "x-fa fa-table",
             "text" : "429021_S204-1_2月住宿餐饮基层报表",
+            "alias" : "Kits.view.liShiShuju.429021_S204-1_2月住宿餐饮基层报表",
+            "itemid" : "edb435d496f0f6a7",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 基层表"
           } ],
@@ -914,57 +1072,79 @@
           "leaf" : false,
           "children" : [ {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160003_20170523",
+            "text" : "2016年3月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年3月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "c4ca813fb2c25d5c",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160004_20170523",
+            "text" : "2016年4月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年4月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "a9bacb386b2e0207",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160005_20170523",
+            "text" : "2016年5月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年5月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "18e12705274cbdbb",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160006_20170523",
+            "text" : "2016年6月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年6月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "ae318795db190bde",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160007_20170523",
+            "text" : "2016年7月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年7月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "5297d69b2cb8ac40",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160008_20170523",
+            "text" : "2016年8月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年8月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "8c4f53245580c458",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160009_20170523",
+            "text" : "2016年9月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年9月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "b4e7d31b75ca42bb",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160010_20170523",
+            "text" : "2016年10月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年10月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "ed11e9a5d7fcfe6e",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160011_20170523",
+            "text" : "2016年11月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年11月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "743e186576a7207e",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160012_20170523",
+            "text" : "2016年12月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年12月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "26238dfbb0721c14",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+            "text" : "2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "alias" : "Kits.view.liShiShuju.2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
+            "itemid" : "6958f9f723f80d56",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           } ],
