@@ -44,6 +44,7 @@ public class CSVD {
         int cell2;
         String text;
         Integer width;
+        String dataIndex;
         List<Column> columns;
 
         public Column(int row1, int cell1, int row2, int cell2, String text) {
@@ -54,7 +55,11 @@ public class CSVD {
             this.text = text;
             this.width = null;
         }
-
+        public Column(String text,int width,String dataIndex) {
+            this.text = text;
+            this.width = width;
+            this.dataIndex = dataIndex;
+        }
         public Column() {
         }
 
@@ -117,6 +122,14 @@ public class CSVD {
 
         public void setWidth(Integer width) {
             this.width = width;
+        }
+
+        public String getDataIndex() {
+            return dataIndex;
+        }
+
+        public void setDataIndex(String dataIndex) {
+            this.dataIndex = dataIndex;
         }
     }
 
@@ -182,7 +195,7 @@ public class CSVD {
 
     }
 
-    private static String value(Cell cell) {
+    public static String value(Cell cell) {
         if (cell.getCellTypeEnum().equals(CellType.NUMERIC)) {
             return String.valueOf(cell.getNumericCellValue());
         } else if (cell.getCellTypeEnum().equals(CellType.STRING)) {
