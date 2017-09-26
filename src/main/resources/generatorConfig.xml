@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="C:/Users/XQL/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar" />
+    <classPathEntry location="/Users/bozhou/IdeaProjects/apollo/mysql-connector-java-5.1.44-bin.jar" />
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -23,7 +23,7 @@
         </javaTypeResolver>
 
         <!-- targetProject:生成PO类的位置 -->
-        <javaModelGenerator targetPackage="com.snjtjj.pojo"
+        <javaModelGenerator targetPackage="com.snjtjj.entity"
                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
@@ -34,8 +34,8 @@
            如果maven工程只是单独的一个工程，targetProject="src/main/java"
            若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
            targetProject="ecps-manager-mapper"，下同-->
-        <sqlMapGenerator targetPackage="com.snjtjj.mapper"
-                         targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
