@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/menu")
 public class MenuAPI {
     @GetMapping
-    public String menu(){
+    public String menu(String userId,@RequestHeader("Authorization") String Authorization){
+
         return null;
     }
 }

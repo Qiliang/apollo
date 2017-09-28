@@ -9,7 +9,6 @@ spring:
       INDENT_OUTPUT: true
 
 jwt:
-  header: Authorization
   secret: mySecret
   expiration: 604800
   route:

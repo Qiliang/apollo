@@ -14,9 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class UserRestController {
 
-    @Value("${jwt.header}")
-    private String tokenHeader;
-
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
@@ -25,7 +22,7 @@ public class UserRestController {
 
     @RequestMapping(value = "user", method = RequestMethod.GET)
     public JwtUser getAuthenticatedUser(HttpServletRequest request) {
-        String token = request.getHeader(tokenHeader).substring(7);
+        String token = request.getHeader("Authorization").substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
         return user;

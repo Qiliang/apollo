@@ -1,4 +1,4 @@
-package com.snjtjj;
+package com.snjtjj.common.config;
 
 import com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor;
 import org.apache.ibatis.cache.Cache;

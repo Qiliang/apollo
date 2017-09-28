@@ -26,9 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class AuthenticationRestController {
 
-    @Value("${jwt.header}")
-    private String tokenHeader;
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -60,7 +57,7 @@ public class AuthenticationRestController {
 
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
-        String token = request.getHeader(tokenHeader);
+        String token = request.getHeader("Authorization");
         String username = jwtTokenUtil.getUsernameFromToken(token);
         JwtUser user = (JwtUser) userDetailsService.loadUserByUsername(username);
 

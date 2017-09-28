@@ -5,13 +5,17 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import com.snjtjj.common.security.JwtUser;
 import com.snjtjj.entity.User;
+import com.snjtjj.mapper.UserMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * 用户工具类
  */
 public class UserUtils {
+
+	public static UserMapper userMapper = SpringUtil.getBean(UserMapper.class);
 
 	public static final String USER_CACHE = "userCache";
 	public static final String USER_CACHE_ID_ = "id_";
@@ -32,10 +36,10 @@ public class UserUtils {
 	public static User get(String id){
 //		User user = (User)CacheUtils.get(USER_CACHE, USER_CACHE_ID_ + id);
 //		if (user ==  null){
-//			user = userDao.get(id);
-//			if (user == null){
-//				return null;
-//			}
+		User user = userMapper.selectByPrimaryKey(id);
+		if (user == null){
+			return null;
+		}
 //			user.setRoleList(roleDao.findList(new Role(user)));
 //			CacheUtils.put(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
 //			CacheUtils.put(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
@@ -94,18 +98,18 @@ public class UserUtils {
 	 * @return 取不到返回 new User()
 	 */
 	public static User getUser(){
+		JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		Principal principal = getPrincipal();
-//		if (principal!=null){
-//			User user = get(principal.getId());
-//			if (user != null){
-//				return user;
-//			}
-//			return new User();
-//		}
-//		// 如果没有登录，则返回实例化空的User对象。
-//		return new User();
-		return null;
+		if (jwtUser!=null){
+			User user = get(jwtUser.getUser().getId());
+			if (user != null){
+				return user;
+			}
+			return new User();
+		}
+		// 如果没有登录，则返回实例化空的User对象。
+		return new User();
 	}
 
 	/**
