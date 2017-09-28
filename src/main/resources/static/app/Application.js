@@ -6,6 +6,7 @@ Ext.define('Kits.Application', {
         'Kits.override.ProxyServer',
         'Kits.override.AdvancedVType',
         'Kits.override.Sorter',
+        'Kits.override.ProxyAjax',
         'Kits.view.Main',
         'Kits.view.Login'
     ],
@@ -26,15 +27,15 @@ Ext.define('Kits.Application', {
     launch: function () {
 
         var token = Ext.util.Cookies.get('token');
-        //if(token){
+        if(token){
             this.setMainView({
                 xclass: 'Kits.view.Main'
             });
-        // }else{
-        //     this.setMainView({
-        //         xclass: 'Kits.view.Login'
-        //     });
-        // }
+        }else{
+            this.setMainView({
+                xclass: 'Kits.view.Login'
+            });
+        }
 
 
     }

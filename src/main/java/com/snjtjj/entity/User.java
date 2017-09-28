@@ -1,7 +1,9 @@
 
 package com.snjtjj.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.snjtjj.entity.base.DataEntity;
 import org.hibernate.validator.constraints.Length;
@@ -15,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class User extends DataEntity<User> {
 
     private static final long serialVersionUID = 1L;
-    //    private Office company;	// 归属公司
-//    private Office office;	// 归属部门
+    private String orgId;
     private String loginName;// 登录名
     private String loginPassword;// 密码
     private String displayName;    // 姓名
@@ -24,13 +25,10 @@ public class User extends DataEntity<User> {
     private Date lastLoginTime;    // 最后登陆日期
     private String oldLoginName;// 原登录名
     private String newPassword;    // 新密码
-
     private String oldLoginIp;    // 上次登陆IP
     private Date oldLoginDate;    // 上次登陆日期
-
-//    private Role role;	// 根据角色查询用户条件
-
-//    private List<Role> roleList = Lists.newArrayList(); // 拥有角色列表
+    private Date lastPasswordResetDate;
+    private List<Role> roleList = new ArrayList<>(); // 拥有角色列表
 
     public User() {
         super();
@@ -45,34 +43,10 @@ public class User extends DataEntity<User> {
         this.loginName = loginName;
     }
 
-//    public User(Role role){
-//        super();
-//        this.role = role;
-//    }
 
     public String getId() {
         return id;
     }
-
-//    @JsonIgnore
-//    @NotNull(message="归属公司不能为空")
-//    public Office getCompany() {
-//        return company;
-//    }
-
-//    public void setCompany(Office company) {
-//        this.company = company;
-//    }
-
-//    @JsonIgnore
-//    @NotNull(message="归属部门不能为空")
-//    public Office getOffice() {
-//        return office;
-//    }
-
-//    public void setOffice(Office office) {
-//        this.office = office;
-////    }
 
     @Length(min = 1, max = 100, message = "登录名长度必须介于 1 和 100 之间")
     public String getLoginName() {
@@ -163,40 +137,31 @@ public class User extends DataEntity<User> {
         this.oldLoginDate = oldLoginDate;
     }
 
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//
-//    @JsonIgnore
-//    public List<Role> getRoleList() {
-//        return roleList;
-//    }
-//
-//    public void setRoleList(List<Role> roleList) {
-//        this.roleList = roleList;
-//    }
-//
-//    @JsonIgnore
-//    public List<String> getRoleIdList() {
-//        List<String> roleIdList = Lists.newArrayList();
-//        for (Role role : roleList) {
-//            roleIdList.add(role.getId());
-//        }
-//        return roleIdList;
-//    }
-//
-//    public void setRoleIdList(List<String> roleIdList) {
-//        roleList = Lists.newArrayList();
-//        for (String roleId : roleIdList) {
-//            Role role = new Role();
-//            role.setId(roleId);
-//            roleList.add(role);
-//        }
-//    }
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    @JsonIgnore
+    public List<String> getRoleIdList() {
+        List<String> roleIdList = new ArrayList<>();
+        for (Role role : roleList) {
+            roleIdList.add(role.getId());
+        }
+        return roleIdList;
+    }
+
+    public void setRoleIdList(List<String> roleIdList) {
+        roleList = new ArrayList<>();
+        for (String roleId : roleIdList) {
+            Role role = new Role();
+            role.setId(roleId);
+            roleList.add(role);
+        }
+    }
 
     /**
      * 用户拥有的角色名称字符串, 多个角色名称用','分隔.
@@ -204,6 +169,7 @@ public class User extends DataEntity<User> {
 //    public String getRoleNames() {
 //        return Collections3.extractToString(roleList, "name", ",");
 //    }
+
     public boolean isAdmin() {
         return isAdmin(this.id);
     }
@@ -234,4 +200,19 @@ public class User extends DataEntity<User> {
         return this.loginName;
     }
 
+    public Date getLastPasswordResetDate() {
+        return lastPasswordResetDate;
+    }
+
+    public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+        this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+    public String getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(String orgId) {
+        this.orgId = orgId;
+    }
 }

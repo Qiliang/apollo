@@ -31,8 +31,9 @@ Ext.define('Kits.view.Login', {
                     panel.mask();
                     Ext.Ajax.request({
                         method: 'POST',
-                        url: '/api/login/',
+                        url: '/auth',
                         params:{
+                            // '${_csrf.parameterName}':'${_csrf.token}',
                             username:panel.down('textfield[name=user]').getValue(),
                             password:panel.down('textfield[name=pass]').getValue(),
                         },
@@ -44,7 +45,8 @@ Ext.define('Kits.view.Login', {
                                     align: 't'
                                 });
                             } else {
-                                Ext.util.Cookies.set('token', response.responseText);
+                                var res = JSON.parse(response.responseText);
+                                Ext.util.Cookies.set('token', res.token);
                                 window.location.reload();
                             }
                         }

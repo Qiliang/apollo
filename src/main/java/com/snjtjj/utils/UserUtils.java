@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.snjtjj.entity.User;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
  * 用户工具类
@@ -93,6 +94,7 @@ public class UserUtils {
 	 * @return 取不到返回 new User()
 	 */
 	public static User getUser(){
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		Principal principal = getPrincipal();
 //		if (principal!=null){
 //			User user = get(principal.getId());
