@@ -1,6 +1,5 @@
 package com.snjtjj.mapper;
 
-import com.snjtjj.common.persistence.PageBounds;
 import com.snjtjj.entity.Menu;
 import com.snjtjj.entity.MenuExample;
 import java.util.List;
@@ -18,8 +17,6 @@ public interface MenuMapper {
     int insert(Menu record);
 
     int insertSelective(Menu record);
-
-    List<Menu> selectByExample(MenuExample example, PageBounds pageBounds);
 
     List<Menu> selectByExample(MenuExample example);
 

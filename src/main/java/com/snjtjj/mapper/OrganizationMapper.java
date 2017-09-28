@@ -1,6 +1,5 @@
 package com.snjtjj.mapper;
 
-import com.snjtjj.common.persistence.PageBounds;
 import com.snjtjj.entity.Organization;
 import com.snjtjj.entity.OrganizationExample;
 import java.util.List;
@@ -18,8 +17,6 @@ public interface OrganizationMapper {
     int insert(Organization record);
 
     int insertSelective(Organization record);
-
-    List<Organization> selectByExample(OrganizationExample example, PageBounds pageBounds);
 
     List<Organization> selectByExample(OrganizationExample example);
 

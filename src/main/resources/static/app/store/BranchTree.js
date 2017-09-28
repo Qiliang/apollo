@@ -1,25 +1,18 @@
 Ext.define('Kits.store.BranchTree', {
     extend: 'Ext.data.TreeStore',
-    rootData: {
-        text: '神农架统计局',
-        expanded: true,
-        children: [
-            { leaf:true, text: '机构01' },
-            { leaf:true, text: '机构02' },
-            { leaf:true, text: '机构03' },
-            { leaf:true, text: '机构04' },
-            { leaf:true, text: '机构05' },
-            { leaf:true, text: '机构06' },
-            { leaf:true, text: '机构07' },
-            { leaf:true, text: '机构08' }
-        ]
+    proxy: {
+        type: 'ajax',
+        url: '/org',
+        method:'get'
     },
-
-    constructor: function (config) {
-        config = Ext.apply({
-            root: Ext.clone(this.rootData)
-        }, config);
-
-        this.callParent([config]);
-    }
+    root: {
+        text: '神龙架统计局',
+        id: '-1',
+        expanded: true
+    },
+    folderSort: true,
+    sorters: [{
+        property: 'sort',
+        direction: 'ASC'
+    }]
 });

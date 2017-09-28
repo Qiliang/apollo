@@ -6,13 +6,17 @@ Ext.define('Kits.store.Branch', {
         {name: 'desc', type: 'string'}
     ],
     proxy: {
-        type: 'rest',
-        url: '/data/Branch.json',
+        type: 'ajax',
+        url: '/org/getOrgListByPId',
         reader: {
-            type: 'json'
-        }
+            type: 'json',
+            rootProperty: 'list',
+            totalProperty: 'total'
+        },
+        limitParam:'limit',
+        pageParam:'page'
+
     },
     autoLoad: true,
     autoSync: true
-
 });

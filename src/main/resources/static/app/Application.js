@@ -7,6 +7,7 @@ Ext.define('Kits.Application', {
         'Kits.override.AdvancedVType',
         'Kits.override.Sorter',
         'Kits.override.ProxyAjax',
+        'Kits.override.ActionLoad',
         'Kits.view.Main',
         'Kits.view.Login'
     ],

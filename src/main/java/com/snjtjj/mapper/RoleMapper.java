@@ -1,6 +1,5 @@
 package com.snjtjj.mapper;
 
-import com.snjtjj.common.persistence.PageBounds;
 import com.snjtjj.entity.Role;
 import com.snjtjj.entity.RoleExample;
 import java.util.List;
@@ -20,8 +19,6 @@ public interface RoleMapper {
     int insertSelective(Role record);
 
     List<Role> selectByExample(RoleExample example);
-
-    List<Role> selectByExample(RoleExample example, PageBounds pageBounds);
 
     List<Role> selectByUserId(String userId);
 
