@@ -14,20 +14,32 @@ Ext.define('Kits.view.quanXian.Branch', {
         afterrender:function (me) {
         }
     },
+    pid:'',
     items: [
         {
             title: '组织机构',
             region: 'west',
             width: 240,
             xtype: 'treepanel',
+            itemId:'orgTreePanel',
+            tools: [
+                {
+                    type: 'refresh',
+                    tooltip: '刷新',
+                    callback: function (panel, tool, event) {
+                        panel.getStore().load();
+                    }
+                }
+            ],
             rootVisible: true,
             store: Ext.create('Kits.store.BranchTree'),
             listeners: {
                 cellclick : function (me, td, cellIndex, record, tr, rowIndex, e, eOpts )  {
                     var orgGrid = Ext.getCmp("orgGrid");
+                    this.up('panel').pid = record.data.id;
                     orgGrid.getStore().reload({
                         params : {
-                            pid : record.data.id
+                            pid : this.up('panel').pid
                         }
                     });
                 }
@@ -39,18 +51,33 @@ Ext.define('Kits.view.quanXian.Branch', {
             columnLines: true,
             id:'orgGrid',
             xtype: 'grid',
+            tools: [
+                {
+                    type: 'refresh',
+                    tooltip: '刷新',
+                    callback: function (panel, tool, event) {
+                        panel.getStore().load();
+                    }
+                }
+            ],
             tbar: [{
                 text: '添加组织机构',
                 handler: function () {
+                    var btn=this;
+                    var pid = this.up('grid').up('panel').pid;
                     var win = Ext.create('Ext.window.Window', {
                         title: '添加组织机构',
                         height: 300,
                         width: 600,
                         layout: 'fit',
                         closeToolText:'关闭',
-                        // closeAction:'hide',
                         modal:true,
-                        items: [Ext.create('Kits.view.quanXian.BranchView',{paraId:'1'})]
+                        items: [Ext.create('Kits.view.quanXian.BranchView',{paraPid:pid,
+                            callBack:function(){
+                                btn.up('grid').getStore().reload();
+                                btn.up('grid').up('panel').getComponent('orgTreePanel').getStore().reload();
+                                win.close();
+                        }})]
                     });
                     win.show();
                 },
@@ -85,7 +112,7 @@ Ext.define('Kits.view.quanXian.Branch', {
                 {
                     text: '负责人',
                     width: 150,
-                    dataIndex: 'masteer'
+                    dataIndex: 'master'
                 },
                 {
                     xtype: 'actioncolumn',
@@ -94,11 +121,49 @@ Ext.define('Kits.view.quanXian.Branch', {
                     sortable: false,
                     menuDisabled: true,
                     items: [{
+                        iconCls: 'x-fa fa-pencil-square-o',
+                        tooltip: '修改',
+                        handler: function(view, recIndex, cellIndex, item, e, record) {
+                            var btn=this;
+                            var win = Ext.create('Ext.window.Window', {
+                                title: '修改组织机构',
+                                height: 300,
+                                width: 600,
+                                layout: 'fit',
+                                closeToolText:'关闭',
+                                modal:true,
+                                items: [Ext.create('Kits.view.quanXian.BranchView',{
+                                    paraId:record.data.id,
+                                    callBack:function(){
+                                        btn.up('grid').getStore().reload();
+                                        btn.up('grid').up('panel').getComponent('orgTreePanel').getStore().reload();
+                                        win.close();
+                                    }})]
+                            });
+                            win.show();
+                        }
+                    },'-',{
                         iconCls: 'x-fa fa-trash-o',
                         tooltip: '删除',
                         handler: function (view, recIndex, cellIndex, item, e, record) {
+                            var btn=this;
                             Ext.Msg.confirm('确认', '确认删除?', function (r) {
-                                if (r == 'yes') record.drop();
+                                if (r == 'yes') {
+                                    Ext.Ajax.request({
+                                        url: '/org/deleteById',
+                                        params: { id: record.data.id},
+                                        method: 'POST',
+
+                                        success: function (response, options) {
+                                            btn.up('grid').getStore().reload();
+                                            btn.up('grid').up('panel').getComponent('orgTreePanel').getStore().reload();
+                                        },
+                                        failure: function (response, options) {
+                                            var res = JSON.parse(response.responseText);
+                                            Ext.MessageBox.alert('失败', '错误信息：' + res.message);
+                                        }
+                                    });
+                                }
                             }, this);
                         }
                     }]

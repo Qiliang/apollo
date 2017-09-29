@@ -2,61 +2,49 @@ package com.snjtjj.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.snjtjj.common.utils.ResponseException;
 import com.snjtjj.entity.Organization;
 import com.snjtjj.entity.OrganizationExample;
 import com.snjtjj.mapper.OrganizationMapper;
+import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bozhou on 2017/9/28.
+ * Created by bozhou on 2017/9/28. 913584875902427136
  */
 @Service
 public class OrganizationService {
     @Autowired
     private OrganizationMapper organizationMapper;
 
-    public void getOrgTreeList(List<TreeVo> treeList,List<Organization> allOrgList){
+    public TreeVo getOrgTreeList(TreeVo treeVo,List<Organization> allOrgList){
         List<Organization> removeList = new ArrayList<>();
-        if(treeList.size()==0){
-            for(Organization organization:allOrgList){
-                if(organization.getParentId().equals("-1")){
-                    TreeVo<Organization> treeVo = new TreeVo<>();
-                    treeVo.setAttrs(organization);
-                    treeVo.setId(organization.getId());
-                    treeVo.setParent_id(organization.getParentId());
-                    treeVo.setSort(organization.getSort());
-                    treeVo.setText(organization.getName());
-                    removeList.add(organization);
-                }
-            }
-            allOrgList.removeAll(removeList);
-        }else{
-            for(TreeVo<Organization> treeVo:treeList){
-                List<TreeVo> cList = new ArrayList<>();
-                for(Organization organization:allOrgList){
-                    if(organization.getParentId().equals(treeVo.getId())){
-                        TreeVo<Organization> cTreeVo = new TreeVo<>();
-                        cTreeVo.setAttrs(organization);
-                        cTreeVo.setId(organization.getId());
-                        cTreeVo.setParent_id(organization.getParentId());
-                        cTreeVo.setSort(organization.getSort());
-                        cTreeVo.setText(organization.getName());
-                        cList.add(cTreeVo);
-                        removeList.add(organization);
-                    }
-                }
-                allOrgList.removeAll(removeList);
-                treeVo.setChildren(cList);
-                treeVo.setLeaf(cList.size()>0);
-                getOrgTreeList(cList,allOrgList);
+        List<TreeVo> cList = new ArrayList<>();
+        for(Organization organization:allOrgList){
+            if(organization.getParentId().equals(treeVo.getId())){
+                TreeVo<Organization> cTreeVo = new TreeVo<>();
+                cTreeVo.setAttrs(organization);
+                cTreeVo.setId(organization.getId());
+                cTreeVo.setParent_id(organization.getParentId());
+                cTreeVo.setSort(organization.getSort());
+                cTreeVo.setText(organization.getName());
+                cList.add(cTreeVo);
+                removeList.add(organization);
             }
         }
-
+        treeVo.setLeaf(cList.size()==0);
+        allOrgList.removeAll(removeList);
+        for(TreeVo treeVo1:cList){
+            treeVo1 = getOrgTreeList(treeVo1,allOrgList);
+        }
+        treeVo.setChildren(cList);
+        return treeVo;
     }
 
     public List<Organization> allOrg(){
@@ -76,4 +64,32 @@ public class OrganizationService {
     public Organization getOrgById(String id){
         return organizationMapper.selectByPrimaryKey(id);
     }
+
+    public void save(Organization organization){
+        if(StringUtils.isBlank(organization.getParentId())){
+            organization.setParentId("-1");
+        }
+        organization.preInsert();
+        organizationMapper.insert(organization);
+    }
+
+    public void edit(Organization organization){
+        if(StringUtils.isBlank(organization.getParentId())){
+            organization.setParentId("-1");
+        }
+        organization.preUpdate();
+        organizationMapper.updateByPrimaryKeySelective(organization);
+    }
+
+    public void delete(String id){
+        //判断是否有子节点
+        OrganizationExample organizationExample = new OrganizationExample();
+        organizationExample.createCriteria().andParentIdEqualTo(id);
+        List<Organization> list = organizationMapper.selectByExample(organizationExample);
+        if(list.size()>0){
+            throw new ResponseException("无法删除有下属节点的组织机构！", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        organizationMapper.deleteByPrimaryKey(id);
+    }
+
 }

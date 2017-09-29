@@ -36,5 +36,11 @@ Ext.define('Kits.override.AdvancedVType', {
         return true;
     },
 
-    passwordText: 'Passwords do not match'
+    passwordText: 'Passwords do not match',
+
+    mobile:function(val){
+        var mobile = /^1[34578]\d{9}$/;
+        return mobile.test(val);
+    },
+    mobileText:'请输入正确的手机号码'
 });

@@ -44,8 +44,7 @@ public class UserUtils {
 //			CacheUtils.put(USER_CACHE, USER_CACHE_ID_ + user.getId(), user);
 //			CacheUtils.put(USER_CACHE, USER_CACHE_LOGIN_NAME_ + user.getLoginName(), user);
 //		}
-//		return user;
-		return null;
+		return user;
 	}
 	
 	/**
@@ -99,8 +98,6 @@ public class UserUtils {
 	 */
 	public static User getUser(){
 		JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		Principal principal = getPrincipal();
 		if (jwtUser!=null){
 			User user = get(jwtUser.getUser().getId());
 			if (user != null){

@@ -8,6 +8,8 @@ Ext.define('Kits.Application', {
         'Kits.override.Sorter',
         'Kits.override.ProxyAjax',
         'Kits.override.ActionLoad',
+        'Kits.override.ActionSubmit',
+        'Kits.override.Connection',
         'Kits.view.Main',
         'Kits.view.Login'
     ],

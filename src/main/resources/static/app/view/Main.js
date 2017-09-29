@@ -18,8 +18,10 @@ Ext.define('Kits.view.Main', {
         {
             region: 'north',
             height:40,
-            tbar:['->',{
-                text:'退出',
+            layout: 'border',
+            bodyBorder: false,
+            items:[{region: 'center',html:jwt_decode(getJwtToken()).sub+'欢迎进入系统'},
+                {region: 'east',xtype:'button',text:'退出',
                 handler:function(){
                     Ext.util.Cookies.set('token', '');
                     window.location.reload();

@@ -1,15 +1,4 @@
 Ext.define('Kits.override.ProxyServer', function () {
-    function getJwtToken() {
-        return Ext.util.Cookies.get("token");
-    }
-    function createAuthorizationTokenHeader() {
-        var token = getJwtToken();
-        if (token) {
-            return {"Authorization": "Bearer " + token};
-        } else {
-            return {};
-        }
-    }
     return {
         override: 'Ext.data.proxy.Server',
         encodeSorters: function (sorters, preventArray) {

@@ -1,15 +1,3 @@
-
-function getJwtToken() {
-    return Ext.util.Cookies.get("token");
-}
-function createAuthorizationTokenHeader() {
-    var token = getJwtToken();
-    if (token) {
-        return {"Authorization": "Bearer " + token};
-    } else {
-        return {};
-    }
-}
 Ext.define('Kits.view.Menu', {
     extend: 'Ext.list.Tree',
     rootVisible: false,
