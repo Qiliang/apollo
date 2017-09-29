@@ -51,6 +51,12 @@ public class OrganizationService {
         return organizationMapper.selectByExample(new OrganizationExample());
     }
 
+    public List<Organization> allOrg(String excludeId){
+        OrganizationExample organizationExample = new OrganizationExample();
+        organizationExample.createCriteria().andIdNotEqualTo(excludeId);
+        return organizationMapper.selectByExample(organizationExample);
+    }
+
     public PageInfo getOrgListByPId(String pid,Integer page,Integer limit){
         OrganizationExample organizationExample = new OrganizationExample();
         if(pid!=null&&!pid.equals("-1"))

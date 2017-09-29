@@ -24,10 +24,16 @@ public class OrganizationAPI {
      * @return
      */
     @GetMapping
-    public List<TreeVo> org(String userId) {
+    public List<TreeVo> org(String userId,@RequestParam(value = "excludeId",required = false) String excludeId) {
+        List<Organization> list =  new ArrayList<>();
         TreeVo treeVo = new TreeVo();
         treeVo.setId("-1");
-        organizationService.getOrgTreeList(treeVo, organizationService.allOrg());
+        if(StringUtils.isBlank(excludeId)){
+            list =  organizationService.allOrg();
+        }else{
+            list =  organizationService.allOrg(excludeId);
+        }
+        organizationService.getOrgTreeList(treeVo, list);
         return treeVo.getChildren();
     }
 

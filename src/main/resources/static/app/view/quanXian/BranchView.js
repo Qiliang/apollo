@@ -18,29 +18,73 @@ Ext.define('Kits.view.quanXian.BranchView', {
     },
     listeners: {
         afterrender: function (me) {
+            var btn = this;
             if (this.paraId) {
-                this.load({
-                    url: '/org/getOrgById',
-                    method: 'get',
-                    params: {id: this.paraId},
-                    failure:function (form, action) {
-                        Ext.Msg.alert('提示', "加载失败");
-                    }
-                });
-            }else{
-                if(this.paraPid){
-                    this.getComponent('pid').setValue(this.paraPid);
+                this.getComponent('pid').setUrl('/org?excludeId='+this.paraId);
+                this.getComponent('pid').store.addAfterListener("load",function(){
+                    btn.load({
+                        url: '/org/getOrgById',
+                        method: 'get',
+                        params: {id: btn.paraId},
+                        success: function(form, action) {
+                            var res = JSON.parse(action.response.responseText);
+                            if(res.data.parentId&&res.data.parentId!='-1'){
+                                var defaultRecord = btn.getComponent('pid').store.getNodeById(res.data.parentId);
+                                btn.getComponent('pid').setDefaultValue(defaultRecord.get('id'), defaultRecord.get('text'));
+                            }else{
+                                btn.getComponent('pid').setDefaultValue('-1', '无上级组织');
+                            }
+                        },
+                        failure: function (form, action) {
+                            Ext.Msg.alert('提示', "加载失败");
+                        }
+                    });
+                })
+
+            }
+            else {
+                if (this.paraPid) {
+                    this.getComponent('pid').setDefaultValue(this.paraPid);
                 }
             }
         }
     },
+    initComponent: function() {
+        var me = this;
+        me.items[1].url='/org?excludeId='+this.paraId;
+        me.callParent();
+    },
+
+
     items: [
         {xtype: 'hiddenfield', name: 'id'},
-        {xtype: 'hiddenfield', name: 'parentId',itemId:'pid'},
-        {xtype: 'textfield', fieldLabel: '组织机构名称', name: 'name', allowBlank: false, blankText: '组织机构名称为必填项',maxLength:50},
-        {xtype: 'textfield', fieldLabel: '组织机构代码', name: 'code', allowBlank: false, blankText: '组织机构代码为必填项',maxLength:50},
-        {xtype: 'textfield', fieldLabel: '电话号码', name: 'phone',maxLength:20,vtype:'mobile'},
-        {xtype: 'textfield', fieldLabel: '负责人', name: 'master',maxLength:10}
+        {
+            xtype: 'comboBoxTree',
+            itemId:'pid',
+            name: 'parentId',
+            fieldLabel: '所属组织',
+            editable: false,
+            emptyText: '请选择所属组织',
+            url:'/org'
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: '组织机构名称',
+            name: 'name',
+            allowBlank: false,
+            blankText: '组织机构名称为必填项',
+            maxLength: 50
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: '组织机构代码',
+            name: 'code',
+            allowBlank: false,
+            blankText: '组织机构代码为必填项',
+            maxLength: 50
+        },
+        {xtype: 'textfield', fieldLabel: '电话号码', name: 'phone', maxLength: 20, vtype: 'mobile'},
+        {xtype: 'textfield', fieldLabel: '负责人', name: 'master', maxLength: 10}
     ],
 
     buttons: [

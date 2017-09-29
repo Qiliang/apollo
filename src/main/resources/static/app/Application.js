@@ -11,7 +11,8 @@ Ext.define('Kits.Application', {
         'Kits.override.ActionSubmit',
         'Kits.override.Connection',
         'Kits.view.Main',
-        'Kits.view.Login'
+        'Kits.view.Login',
+        'Kits.ux.ComboBoxTree'
     ],
 
     // controllers: [
