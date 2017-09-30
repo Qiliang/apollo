@@ -14,6 +14,8 @@ public class Role extends DataEntity<Role> {
 
     private List<Menu> menuList;
 
+    private String remark;
+
     public String getName() {
         return name;
     }
@@ -45,5 +47,13 @@ public class Role extends DataEntity<Role> {
 
     public void setMenuList(List<Menu> menuList) {
         this.menuList = menuList;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

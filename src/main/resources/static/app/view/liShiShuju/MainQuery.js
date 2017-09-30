@@ -29,7 +29,6 @@ Ext.define('Kits.view.liShiShuju.MainQuery', {
                         var tabControl = this.up('tabpanel');
                         var aliasPath = item.data.alias;
                         if(aliasPath){
-                            debugger;
                             var itemid = 'tab-'+item.data.itemid;
                             var item = tabControl.child('#'+itemid);
                             if(!item){

@@ -17,15 +17,17 @@ Ext.define('Kits.view.Main', {
     items: [
         {
             region: 'north',
-            height:40,
+            height: 40,
             layout: 'border',
             bodyBorder: false,
-            items:[{region: 'center',html:jwt_decode(getJwtToken()).sub+'欢迎进入系统'},
-                {region: 'east',xtype:'button',text:'退出',
-                handler:function(){
-                    Ext.util.Cookies.set('token', '');
-                    window.location.reload();
-                }}]
+            items: [{region: 'center', html: '欢迎进入系统'},
+                {
+                    region: 'east', xtype: 'button', text: '退出',
+                    handler: function () {
+                        Ext.util.Cookies.set('token', '');
+                        window.location.reload();
+                    }
+                }]
         }
         ,
         {
@@ -38,7 +40,7 @@ Ext.define('Kits.view.Main', {
                 bodyPadding: 10
             },
             region: 'center',
-            items:[
+            items: [
                 {
                     width: 200,
                     layout: {
@@ -54,7 +56,7 @@ Ext.define('Kits.view.Main', {
                     tools: [
                         {
                             type: 'unpin',
-                            id:'menuUnpin',
+                            id: 'menuUnpin',
                             tooltip: '收起菜单',
                             callback: function (panel, tool, event) {
                                 panel.down('#menuPin').show();
@@ -68,7 +70,7 @@ Ext.define('Kits.view.Main', {
                         },
                         {
                             type: 'pin',
-                            id:'menuPin',
+                            id: 'menuPin',
                             hidden: true,
                             tooltip: '展开菜单',
                             callback: function (panel, tool, event) {
@@ -76,7 +78,7 @@ Ext.define('Kits.view.Main', {
                                 var menu = panel.down('#mainMenu');
                                 menu.setMicro(false);
                                 var ct = menu.ownerCt;
-                                if(ct.oldWidth)ct.setWidth(ct.oldWidth);
+                                if (ct.oldWidth) ct.setWidth(ct.oldWidth);
                                 this.hide();
                             }
                         }
@@ -85,9 +87,9 @@ Ext.define('Kits.view.Main', {
                 },
                 {
                     margin: '5 0 0 0',
-                    id:'center',
+                    id: 'center',
                     region: 'center',
-                    layout:'fit'
+                    layout: 'fit'
                 }
             ]
             //items:Ext.create('Kits.view.Shop',{})

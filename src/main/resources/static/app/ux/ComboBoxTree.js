@@ -211,7 +211,6 @@ Ext.define('Kits.ux.ComboBoxTree', {
         this.pathArray = [];
     },
     setUrl: function (value) {
-        debugger
         this.url = value;
     },
     alignPicker: function () {

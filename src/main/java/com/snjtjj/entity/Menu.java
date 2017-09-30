@@ -20,6 +20,8 @@ public class Menu extends DataEntity<Menu> {
 
     private List<Menu> children;
 
+    private Integer level;
+
     public String getIconcls() {
         return iconcls;
     }
@@ -74,5 +76,13 @@ public class Menu extends DataEntity<Menu> {
 
     public void setChildren(List<Menu> children) {
         this.children = children;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 }

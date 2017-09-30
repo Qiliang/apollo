@@ -1,17 +1,17 @@
 Ext.define('Kits.store.Role', {
     extend: 'Ext.data.Store',
-    fields:[
-        {name: 'id', type: 'string'},
-        {name: 'name', type: 'string'}
-    ],
     proxy: {
-        type: 'rest',
-        url: '/data/Role.json',
+        type: 'ajax',
+        url: '/role/getRoleList',
         reader: {
-            type: 'json'
-        }
+            type: 'json',
+            rootProperty: 'list',
+            totalProperty: 'total'
+        },
+        limitParam:'limit',
+        pageParam:'page'
+
     },
     autoLoad: true,
-    autoSync: true
-
+    autoSync: false
 });

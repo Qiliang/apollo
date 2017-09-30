@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.snjtjj.common.utils.ResponseException;
 import com.snjtjj.entity.Organization;
 import com.snjtjj.entity.OrganizationExample;
+import com.snjtjj.entity.base.BaseEntity;
 import com.snjtjj.mapper.OrganizationMapper;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.TreeVo;
@@ -48,19 +49,23 @@ public class OrganizationService {
     }
 
     public List<Organization> allOrg(){
-        return organizationMapper.selectByExample(new OrganizationExample());
+        OrganizationExample organizationExample = new OrganizationExample();
+        organizationExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
+        return organizationMapper.selectByExample(organizationExample);
     }
 
     public List<Organization> allOrg(String excludeId){
         OrganizationExample organizationExample = new OrganizationExample();
-        organizationExample.createCriteria().andIdNotEqualTo(excludeId);
+        organizationExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL).andIdNotEqualTo(excludeId);
         return organizationMapper.selectByExample(organizationExample);
     }
 
     public PageInfo getOrgListByPId(String pid,Integer page,Integer limit){
         OrganizationExample organizationExample = new OrganizationExample();
+        OrganizationExample.Criteria criteria = organizationExample.createCriteria();
         if(pid!=null&&!pid.equals("-1"))
-            organizationExample.createCriteria().andParentIdEqualTo(pid);
+            criteria.andParentIdEqualTo(pid);
+        criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         PageHelper.startPage(page,limit);
         List<Organization> list = organizationMapper.selectByExample(organizationExample);
         PageInfo pageInfo = new PageInfo(list);
@@ -95,7 +100,10 @@ public class OrganizationService {
         if(list.size()>0){
             throw new ResponseException("无法删除有下属节点的组织机构！", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        organizationMapper.deleteByPrimaryKey(id);
+        Organization organization = new Organization();
+        organization.setId(id);
+        organization.setDelFlag(BaseEntity.DEL_FLAG_DELETE);
+        organizationMapper.updateByPrimaryKeySelective(organization);
     }
 
 }

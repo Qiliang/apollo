@@ -20,7 +20,9 @@ public interface MenuMapper {
 
     List<Menu> selectByExample(MenuExample example);
 
-    List<Menu> selectByRoleId(String roleId);
+    List<Menu> getMenuListByUserId(String userId);
+
+    List<Menu> getMenuListByRoleId(String roleId);
 
     Menu selectByPrimaryKey(String id);
 
