@@ -3,11 +3,13 @@ Ext.define('Kits.model.User', {
     identifier: 'uuid',
     fields: [
         {name: 'id',  type: 'string'},
-        {name: 'name',  type: 'string'},
-        {name: 'loginName', type: 'string'},
+        {name: 'displayName',  type: 'string'},
+        {name: 'orgId', type: 'string'},
         {name: 'loginPassword', type: 'string'},
-        {name: 'role', type: 'string'},
-        {name: 'alive', type: 'boolean'}
+        {name: 'displayName', type: 'string'},
+        {name:'role',convert: function (value, record) {
+            return value.name;
+        }}
     ]
 
 })

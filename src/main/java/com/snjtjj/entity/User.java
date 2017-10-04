@@ -1,11 +1,13 @@
 
 package com.snjtjj.entity;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.snjtjj.entity.base.DataEntity;
+import com.snjtjj.utils.Collections3;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -28,7 +30,7 @@ public class User extends DataEntity<User> {
     private String oldLoginIp;    // 上次登陆IP
     private Date oldLoginDate;    // 上次登陆日期
     private Date lastPasswordResetDate;
-    private List<Role> roleList = new ArrayList<>(); // 拥有角色列表
+    private Role role; // 拥有角色列表
 
     public User() {
         super();
@@ -137,38 +139,13 @@ public class User extends DataEntity<User> {
         this.oldLoginDate = oldLoginDate;
     }
 
-    public List<Role> getRoleList() {
-        return roleList;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleList(List<Role> roleList) {
-        this.roleList = roleList;
+    public void setRole(Role role) {
+        this.role = role;
     }
-
-    @JsonIgnore
-    public List<String> getRoleIdList() {
-        List<String> roleIdList = new ArrayList<>();
-        for (Role role : roleList) {
-            roleIdList.add(role.getId());
-        }
-        return roleIdList;
-    }
-
-    public void setRoleIdList(List<String> roleIdList) {
-        roleList = new ArrayList<>();
-        for (String roleId : roleIdList) {
-            Role role = new Role();
-            role.setId(roleId);
-            roleList.add(role);
-        }
-    }
-
-    /**
-     * 用户拥有的角色名称字符串, 多个角色名称用','分隔.
-     */
-//    public String getRoleNames() {
-//        return Collections3.extractToString(roleList, "name", ",");
-//    }
 
     public boolean isAdmin() {
         return isAdmin(this.id);

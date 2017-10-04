@@ -36,7 +36,7 @@ Ext.define('Kits.override.AdvancedVType', {
         return true;
     },
 
-    passwordText: 'Passwords do not match',
+    passwordText: '前后密码不匹配',
 
     mobile:function(val){
         var mobile = /^1[34578]\d{9}$/;

@@ -18,7 +18,7 @@ Ext.define('Kits.view.quanXian.Role', {
                 modal: true,
                 items: [Ext.create('Kits.view.quanXian.RoleView', {
                     callBack: function () {
-                        btn.up('grid').getStore().reload();
+                        btn.up('grid').getStore().load();
                         win.close();
                     }
                 })]

@@ -27,6 +27,11 @@ public class RoleAPI {
         return roleService.getRoleList(page,limit);
     }
 
+    @GetMapping("/getAllRoleList")
+    public Object getAllRoleList(){
+        return roleService.getRoleList();
+    }
+
     @GetMapping("/getRoleById")
     public FormResponse<Role> getRoleById(@RequestParam(value = "id",required = false) String id){
         Role role = roleService.getRoleById(id);

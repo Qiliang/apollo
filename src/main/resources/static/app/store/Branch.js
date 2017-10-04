@@ -13,5 +13,5 @@ Ext.define('Kits.store.Branch', {
 
     },
     autoLoad: true,
-    autoSync: true
+    autoSync: false
 });

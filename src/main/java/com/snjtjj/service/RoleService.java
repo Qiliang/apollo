@@ -42,6 +42,13 @@ public class RoleService {
         return pageInfo;
     }
 
+    public List<Role> getRoleList(){
+        RoleExample roleExample = new RoleExample();
+        roleExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
+        List<Role> list = roleMapper.selectByExample(roleExample);
+        return list;
+    }
+
     public Role getRoleById(String roleId){
         return roleMapper.selectByPrimaryKey(roleId);
     }

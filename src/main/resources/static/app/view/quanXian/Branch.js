@@ -74,7 +74,7 @@ Ext.define('Kits.view.quanXian.Branch', {
                         modal:true,
                         items: [Ext.create('Kits.view.quanXian.BranchView',{paraPid:pid,
                             callBack:function(){
-                                btn.up('grid').getStore().reload();
+                                btn.up('grid').getStore().load();
                                 btn.up('grid').up('panel').getComponent('orgTreePanel').getStore().reload();
                                 win.close();
                         }})]

@@ -2,13 +2,16 @@ Ext.define('Kits.store.User', {
     extend: 'Ext.data.Store',
     model: 'Kits.model.User',
     proxy: {
-        type: 'rest',
-        url: '/data/User.json',
+        type: 'ajax',
+        url: '/users',
+        method:'GET',
         reader: {
-            type: 'json'
-        }
+            type: 'json',
+            rootProperty: 'list',
+            totalProperty: 'total'
+        },
+        limitParam:'limit',
+        pageParam:'page'
     },
-    autoLoad: true,
-    autoSync: true
-
+    autoLoad: true
 });
