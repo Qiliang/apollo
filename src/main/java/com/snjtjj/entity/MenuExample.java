@@ -175,73 +175,73 @@ public class MenuExample {
             return (Criteria) this;
         }
 
-        public Criteria andIconclsIsNull() {
-            addCriterion("iconCls is null");
+        public Criteria andIconClsIsNull() {
+            addCriterion("icon_cls is null");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsIsNotNull() {
-            addCriterion("iconCls is not null");
+        public Criteria andIconClsIsNotNull() {
+            addCriterion("icon_cls is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsEqualTo(String value) {
-            addCriterion("iconCls =", value, "iconcls");
+        public Criteria andIconClsEqualTo(String value) {
+            addCriterion("icon_cls =", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsNotEqualTo(String value) {
-            addCriterion("iconCls <>", value, "iconcls");
+        public Criteria andIconClsNotEqualTo(String value) {
+            addCriterion("icon_cls <>", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsGreaterThan(String value) {
-            addCriterion("iconCls >", value, "iconcls");
+        public Criteria andIconClsGreaterThan(String value) {
+            addCriterion("icon_cls >", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsGreaterThanOrEqualTo(String value) {
-            addCriterion("iconCls >=", value, "iconcls");
+        public Criteria andIconClsGreaterThanOrEqualTo(String value) {
+            addCriterion("icon_cls >=", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsLessThan(String value) {
-            addCriterion("iconCls <", value, "iconcls");
+        public Criteria andIconClsLessThan(String value) {
+            addCriterion("icon_cls <", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsLessThanOrEqualTo(String value) {
-            addCriterion("iconCls <=", value, "iconcls");
+        public Criteria andIconClsLessThanOrEqualTo(String value) {
+            addCriterion("icon_cls <=", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsLike(String value) {
-            addCriterion("iconCls like", value, "iconcls");
+        public Criteria andIconClsLike(String value) {
+            addCriterion("icon_cls like", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsNotLike(String value) {
-            addCriterion("iconCls not like", value, "iconcls");
+        public Criteria andIconClsNotLike(String value) {
+            addCriterion("icon_cls not like", value, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsIn(List<String> values) {
-            addCriterion("iconCls in", values, "iconcls");
+        public Criteria andIconClsIn(List<String> values) {
+            addCriterion("icon_cls in", values, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsNotIn(List<String> values) {
-            addCriterion("iconCls not in", values, "iconcls");
+        public Criteria andIconClsNotIn(List<String> values) {
+            addCriterion("icon_cls not in", values, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsBetween(String value1, String value2) {
-            addCriterion("iconCls between", value1, value2, "iconcls");
+        public Criteria andIconClsBetween(String value1, String value2) {
+            addCriterion("icon_cls between", value1, value2, "iconCls");
             return (Criteria) this;
         }
 
-        public Criteria andIconclsNotBetween(String value1, String value2) {
-            addCriterion("iconCls not between", value1, value2, "iconcls");
+        public Criteria andIconClsNotBetween(String value1, String value2) {
+            addCriterion("icon_cls not between", value1, value2, "iconCls");
             return (Criteria) this;
         }
 

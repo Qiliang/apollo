@@ -33,8 +33,6 @@ public class UserService {
     private UserRoleMapper userRoleMapper;
     @Autowired
     private RoleMapper roleMapper;
-    @Autowired
-    private OrganizationMapper organizationMapper;
 
     public PageInfo allUser(String orgId, Integer page, Integer limit, String displayName) {
         UserExample userExample = new UserExample();

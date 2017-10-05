@@ -8,7 +8,9 @@ Ext.define('Kits.model.User', {
         {name: 'loginPassword', type: 'string'},
         {name: 'displayName', type: 'string'},
         {name:'role',convert: function (value, record) {
-            return value.name;
+            if(value){
+                return value.name;
+            }
         }}
     ]
 

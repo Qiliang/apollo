@@ -3,7 +3,7 @@
 <mapper namespace="com.snjtjj.mapper.MenuMapper" >
   <resultMap id="BaseResultMap" type="com.snjtjj.entity.Menu" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
+    <result column="icon_cls" property="iconCls" jdbcType="VARCHAR" />
     <result column="text" property="text" jdbcType="VARCHAR" />
     <result column="leaf" property="leaf" jdbcType="BIT" />
     <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
@@ -75,7 +75,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, iconCls, text, leaf, parent_id, cmp, create_by, create_date, update_by, update_date, 
+    id, icon_cls, text, leaf, parent_id, cmp, create_by, create_date, update_by, update_date, 
     del_flag, sort, level
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.MenuExample" >
@@ -92,13 +92,18 @@
       order by ${orderByClause}
     </if>
   </select>
-
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
   <select id="getMenuListByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
     from menu where
     id in(select menu_id from role_menu where
-    role_id in(select role_id from user_role where user_id= #{userId,jdbcType=VARCHAR}))
+    role_id in(select role_id from user_role where user_id= #{userId,jdbcType=VARCHAR})) and del_flag='0' order by sort
   </select>
 
   <select id="getMenuListByRoleId" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -109,12 +114,6 @@
     role_id =#{roleId,jdbcType=VARCHAR}) AND level=2
   </select>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from menu
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from menu
     where id = #{id,jdbcType=VARCHAR}
@@ -126,11 +125,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.snjtjj.entity.Menu" >
-    insert into menu (id, iconCls, text, 
+    insert into menu (id, icon_cls, text, 
       leaf, parent_id, cmp, create_by, 
       create_date, update_by, update_date, 
       del_flag, sort, level)
-    values (#{id,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{iconCls,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, 
       #{leaf,jdbcType=BIT}, #{parentId,jdbcType=VARCHAR}, #{cmp,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
       #{delFlag,jdbcType=CHAR}, #{sort,jdbcType=DECIMAL}, #{level,jdbcType=INTEGER})
@@ -141,8 +140,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="iconcls != null" >
-        iconCls,
+      <if test="iconCls != null" >
+        icon_cls,
       </if>
       <if test="text != null" >
         text,
@@ -182,8 +181,8 @@
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="iconcls != null" >
-        #{iconcls,jdbcType=VARCHAR},
+      <if test="iconCls != null" >
+        #{iconCls,jdbcType=VARCHAR},
       </if>
       <if test="text != null" >
         #{text,jdbcType=VARCHAR},
@@ -232,8 +231,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.iconcls != null" >
-        iconCls = #{record.iconcls,jdbcType=VARCHAR},
+      <if test="record.iconCls != null" >
+        icon_cls = #{record.iconCls,jdbcType=VARCHAR},
       </if>
       <if test="record.text != null" >
         text = #{record.text,jdbcType=VARCHAR},
@@ -276,7 +275,7 @@
   <update id="updateByExample" parameterType="map" >
     update menu
     set id = #{record.id,jdbcType=VARCHAR},
-      iconCls = #{record.iconcls,jdbcType=VARCHAR},
+      icon_cls = #{record.iconCls,jdbcType=VARCHAR},
       text = #{record.text,jdbcType=VARCHAR},
       leaf = #{record.leaf,jdbcType=BIT},
       parent_id = #{record.parentId,jdbcType=VARCHAR},
@@ -295,8 +294,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.Menu" >
     update menu
     <set >
-      <if test="iconcls != null" >
-        iconCls = #{iconcls,jdbcType=VARCHAR},
+      <if test="iconCls != null" >
+        icon_cls = #{iconCls,jdbcType=VARCHAR},
       </if>
       <if test="text != null" >
         text = #{text,jdbcType=VARCHAR},
@@ -336,7 +335,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.Menu" >
     update menu
-    set iconCls = #{iconcls,jdbcType=VARCHAR},
+    set icon_cls = #{iconCls,jdbcType=VARCHAR},
       text = #{text,jdbcType=VARCHAR},
       leaf = #{leaf,jdbcType=BIT},
       parent_id = #{parentId,jdbcType=VARCHAR},

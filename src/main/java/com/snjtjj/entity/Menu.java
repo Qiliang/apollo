@@ -2,11 +2,11 @@ package com.snjtjj.entity;
 
 import com.snjtjj.entity.base.DataEntity;
 
+import java.util.Date;
 import java.util.List;
 
 public class Menu extends DataEntity<Menu> {
-
-    private String iconcls;
+    private String iconCls;
 
     private String text;
 
@@ -18,16 +18,24 @@ public class Menu extends DataEntity<Menu> {
 
     private Long sort;
 
-    private List<Menu> children;
-
     private Integer level;
 
-    public String getIconcls() {
-        return iconcls;
+    private List<Menu> children;
+
+    public String getId() {
+        return id;
     }
 
-    public void setIconcls(String iconcls) {
-        this.iconcls = iconcls == null ? null : iconcls.trim();
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
+
+    public String getIconCls() {
+        return iconCls;
+    }
+
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls == null ? null : iconCls.trim();
     }
 
     public String getText() {
@@ -62,6 +70,46 @@ public class Menu extends DataEntity<Menu> {
         this.cmp = cmp == null ? null : cmp.trim();
     }
 
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy == null ? null : createBy.trim();
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy == null ? null : updateBy.trim();
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(String delFlag) {
+        this.delFlag = delFlag == null ? null : delFlag.trim();
+    }
+
     public Long getSort() {
         return sort;
     }
@@ -70,19 +118,19 @@ public class Menu extends DataEntity<Menu> {
         this.sort = sort;
     }
 
-    public List<Menu> getChildren() {
-        return children;
-    }
-
-    public void setChildren(List<Menu> children) {
-        this.children = children;
-    }
-
     public Integer getLevel() {
         return level;
     }
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 }
