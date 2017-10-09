@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.A404', {
     extend: 'Kits.view.tables.Base',
     title: '农业生产经营单位农作物播种面积情况',
-
+    hzcolumn:'乙',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

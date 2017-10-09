@@ -1,7 +1,6 @@
 Ext.define('Kits.view.tables.03', {
     extend: 'Kits.view.tables.Base',
     title: '农  业  机  械  化  情  况',
-
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

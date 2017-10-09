@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.A403', {
     extend: 'Kits.view.tables.Base',
     title: '经济作物生产情况季节报表',
-
+    hzcolumn:'乙',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'
