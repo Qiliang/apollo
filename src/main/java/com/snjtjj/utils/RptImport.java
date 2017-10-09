@@ -71,7 +71,7 @@ public class RptImport {
     static void listDir(String rootPath,TreeNode node){
         File root = new File(rootPath);
         if(root.isFile() || root.list() == null) {
-//            if (node.parent.equals("住户专业季度")) {
+//            if (node.text.equals("i301从业人员和劳动报酬情况汇总表")) {
                 if (rootPath.toUpperCase().endsWith(".XLS")) {
                     ReadXLS(rootPath, node);
                 }
@@ -116,13 +116,13 @@ public class RptImport {
             return;
         }
         NavScan scan = ScanXLS(path,wb);
-        if(scan.field == null){
+        if(scan.field == null || node.text.startsWith("i301")){
             node.text = "【格式错误】" + node.text;
             return;
         }
-        if(scan.title != null && !candidate.contains(scan.title.text)) {
-            node.text = scan.title.text;
-        }
+//        if(scan.title != null && !candidate.contains(scan.title.text)) {
+//            node.text = scan.title.text;
+//        }
         model.put("title", node.text);
         model.put("fields",readFileds(wb,scan.field.row1,scan.field.cell1));
 
@@ -334,7 +334,7 @@ public class RptImport {
             Arrays.stream(IteratorUtils.toArray(row.cellIterator())).forEach(c -> {
                 Cell cell = (Cell)c;
                 String v = CSVD.value(cell);
-                if ("BLANK".equals(v)) return;
+                if ("BLANK".equals(v) || "$$".equals(v)) return;
                 if(scan.header == null && scan.title == null){
                     scan.title = new CSVD.Column();
                     scan.title.text = v;
