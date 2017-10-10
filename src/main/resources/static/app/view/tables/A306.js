@@ -1,7 +1,8 @@
 Ext.define('Kits.view.tables.A306', {
     extend: 'Kits.view.tables.Base',
     title: '茶叶、水果及食用坚果生产情况',
-
+    hzcolumn:'乙',
+    tableid: 'A306表',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

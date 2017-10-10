@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tables.END02', {
     extend: 'Kits.view.tables.Base',
     title: '全年主要农林牧渔产品产量及产值预计',
+    tableid: '鄂农定02表',
     headerItems:[
         {
             html: '综合机关名称：'

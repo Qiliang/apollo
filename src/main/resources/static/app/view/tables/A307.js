@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.A307', {
     extend: 'Kits.view.tables.Base',
     title: '林 业 生 产 情 况',
-
+    tableid: 'A307表',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

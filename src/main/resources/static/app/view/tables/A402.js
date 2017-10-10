@@ -1,7 +1,8 @@
 Ext.define('Kits.view.tables.A402', {
     extend: 'Kits.view.tables.Base',
     title: '粮 食 作 物 生 产 情 况',
-
+    hzcolumn:'乙',
+    tableid: 'A402表',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

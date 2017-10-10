@@ -1,7 +1,8 @@
 Ext.define('Kits.view.tables.A412', {
     extend: 'Kits.view.tables.Base',
     title: '蔬菜、瓜果生产情况',
-
+    hzcolumn:'乙',
+    tableid: 'A412表',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

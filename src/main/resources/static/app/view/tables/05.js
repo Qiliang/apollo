@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.05', {
     extend: 'Kits.view.tables.Base',
     title: '畜 禽 规 模 养 殖 情 况',
-
+    tableid: '鄂农年05表',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

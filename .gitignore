@@ -21,4 +21,5 @@ build/
 nbbuild/
 dist/
 nbdist/
+node_modules/
 .nb-gradle/

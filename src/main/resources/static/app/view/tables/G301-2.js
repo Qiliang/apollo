@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tables.G301-2', {
     extend: 'Kits.view.tables.Base',
     title: '县(市)社会经济基本情况',
+    tableid: 'G301-2表',
     headerItems:[
         {
             html: '综合机关名称：'

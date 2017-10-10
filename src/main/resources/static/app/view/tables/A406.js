@@ -1,7 +1,8 @@
 Ext.define('Kits.view.tables.A406', {
     extend: 'Kits.view.tables.Base',
     title: '畜 禽 水 产 季 节 报',
-
+    hzcolumn:'乙',
+    tableid: 'A406表',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

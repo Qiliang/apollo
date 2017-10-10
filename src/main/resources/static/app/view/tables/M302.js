@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.M302', {
     extend: 'Kits.view.tables.Base',
     title: '农 林 牧 渔 业 增 加 值 计 算 表',
-
+    tableid: 'M302',
     headerItems: [
         {
             html: '<br /><br /><br /><br />综合机关名称：'

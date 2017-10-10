@@ -31,9 +31,9 @@
               "parent" : "一季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年一季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "alias" : "Kits.view.liShiShuju.2016年一季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "itemid" : "4ddde40275a94eca",
+              "text" : "202-1从业人员和工资总额汇总表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员和工资总额汇总表",
+              "itemid" : "cad4da9e54d9cb8f",
               "leaf" : true,
               "parent" : "一季度"
             } ],
@@ -51,9 +51,9 @@
               "parent" : "三季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年三季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "alias" : "Kits.view.liShiShuju.2016年三季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "itemid" : "4c192d7cbcba11d5",
+              "text" : "202-1从业人员和工资情况汇总表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员和工资情况汇总表",
+              "itemid" : "bfe5efc375f17ded",
               "leaf" : true,
               "parent" : "三季度"
             } ],
@@ -71,9 +71,9 @@
               "parent" : "二季度"
             }, {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年二季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "alias" : "Kits.view.liShiShuju.2016年二季度(I41000)各行业分指标从业人员和工资情况（四上单位）",
-              "itemid" : "80f4ab6501936b21",
+              "text" : "202-1从业人员和工资情况汇总表",
+              "alias" : "Kits.view.liShiShuju.202-1从业人员和工资情况汇总表",
+              "itemid" : "bfe5efc375f17ded",
               "leaf" : true,
               "parent" : "二季度"
             } ],
@@ -93,37 +93,27 @@
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "从业人员和工资情况",
-            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
-            "itemid" : "4e161184077daa1a",
+            "text" : "【格式错误】i301-1从业人员和工资情况汇总表",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "从业人员和工资情况",
-            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
-            "itemid" : "4e161184077daa1a",
+            "text" : "【格式错误】i301-2从业人员和工资情况汇总表",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "从业人员和工资情况",
-            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
-            "itemid" : "4e161184077daa1a",
+            "text" : "【格式错误】i301-3从业人员和工资情况汇总表",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "从业人员和工资情况",
-            "alias" : "Kits.view.liShiShuju.从业人员和工资情况",
-            "itemid" : "4e161184077daa1a",
+            "text" : "【格式错误】i3014从业人员和工资情况汇总表汇总表",
             "leaf" : true,
             "parent" : "劳动工资年报"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "从业人员和劳动报酬情况",
-            "alias" : "Kits.view.liShiShuju.从业人员和劳动报酬情况",
-            "itemid" : "17558ea36642b721",
+            "text" : "【格式错误】i301从业人员和劳动报酬情况汇总表",
             "leaf" : true,
             "parent" : "劳动工资年报"
           } ],
@@ -144,23 +134,23 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : " 神农架2016年住户调查资料(一季度)",
-        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(一季度)",
-        "itemid" : "a130fd82a7fece4e",
+        "text" : "神农架2016年住户调查资料(一季度)",
+        "alias" : "Kits.view.liShiShuju.神农架2016年住户调查资料(一季度)",
+        "itemid" : "726f49491d0d5292",
         "leaf" : true,
         "parent" : "住户专业季度"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : " 神农架2016年住户调查资料(前三季度)",
-        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(前三季度)",
-        "itemid" : "7d79772331e7a1d9",
+        "text" : "神农架2016年住户调查资料(三季度)",
+        "alias" : "Kits.view.liShiShuju.神农架2016年住户调查资料(三季度)",
+        "itemid" : "53d81de12b57f4e6",
         "leaf" : true,
         "parent" : "住户专业季度"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : " 神农架2016年住户调查资料(二季度)",
-        "alias" : "Kits.view.liShiShuju. 神农架2016年住户调查资料(二季度)",
-        "itemid" : "cbae167976f4d1dc",
+        "text" : "神农架2016年住户调查资料(二季度)",
+        "alias" : "Kits.view.liShiShuju.神农架2016年住户调查资料(二季度)",
+        "itemid" : "4b55de0472ccd6a9",
         "leaf" : true,
         "parent" : "住户专业季度"
       } ],
@@ -171,7 +161,7 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "【格式不支持】2016年住户收支与生活状况调查年报表",
+        "text" : "【格式错误】2016年住户收支与生活状况调查年报表",
         "leaf" : true,
         "parent" : "住户专业年报"
       } ],
@@ -182,30 +172,30 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "附件1",
-        "alias" : "Kits.view.liShiShuju.附件1",
-        "itemid" : "016024dfe03b3913",
+        "text" : "2016年分市州居民可支配收入（1季度）",
+        "alias" : "Kits.view.liShiShuju.2016年分市州居民可支配收入（1季度）",
+        "itemid" : "d0a982abf2c103e4",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年前三季度分市州居民收入核定结果",
-        "alias" : "Kits.view.liShiShuju.2016年前三季度分市州居民收入核定结果",
-        "itemid" : "94f858497a8356d7",
+        "text" : "2016年分市州居民可支配收入（前3季度）",
+        "alias" : "Kits.view.liShiShuju.2016年分市州居民可支配收入（前3季度）",
+        "itemid" : "00ce3f1699fc30a7",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "附件",
-        "alias" : "Kits.view.liShiShuju.附件",
-        "itemid" : "7be64060ae157a42",
+        "text" : "2016年分市州居民可支配收入（半年报）",
+        "alias" : "Kits.view.liShiShuju.2016年分市州居民可支配收入（半年报）",
+        "itemid" : "bffcbb7b33a4413e",
         "leaf" : true,
         "parent" : "省队反馈数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "附件1",
-        "alias" : "Kits.view.liShiShuju.附件1",
-        "itemid" : "016024dfe03b3913",
+        "text" : "2016年分市州居民可支配收入（年报）",
+        "alias" : "Kits.view.liShiShuju.2016年分市州居民可支配收入（年报）",
+        "itemid" : "718cf34d6c362459",
         "leaf" : true,
         "parent" : "省队反馈数据"
       } ],
@@ -288,9 +278,9 @@
           "parent" : "居民消费价格月报"
         }, {
           "iconCls" : "x-fa fa-table",
-          "text" : "2016年规格品价格一览表",
-          "alias" : "Kits.view.liShiShuju.2016年规格品价格一览表",
-          "itemid" : "c11464f6d3c8dc85",
+          "text" : "2016年1月神农架林区规格品价格一览表",
+          "alias" : "Kits.view.liShiShuju.2016年1月神农架林区规格品价格一览表",
+          "itemid" : "d2a80eef8a88482a",
           "leaf" : true,
           "parent" : "居民消费价格月报"
         }, {
@@ -471,79 +461,79 @@
       "leaf" : false,
       "children" : [ {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年10月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年10月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "50fb91e328c2daf6",
+        "text" : "10月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160010_20170320",
+        "alias" : "Kits.view.liShiShuju.10月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160010_20170320",
+        "itemid" : "43a237e6c800a149",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年11月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年11月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "2651e1a887685329",
+        "text" : "11月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160011_20170320",
+        "alias" : "Kits.view.liShiShuju.11月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160011_20170320",
+        "itemid" : "a3cde6e0c9044623",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年12月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年12月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "9031eaee33227490",
+        "text" : "12月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160012_20170320",
+        "alias" : "Kits.view.liShiShuju.12月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160012_20170320",
+        "itemid" : "67ea6aebbd78cb87",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年2月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年2月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "062471d5c16f02dd",
+        "text" : "2月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160002_20170320",
+        "alias" : "Kits.view.liShiShuju.2月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160002_20170320",
+        "itemid" : "25932766eed94cc5",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年3月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年3月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "137937d60928a153",
+        "text" : "3月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160003_20170320",
+        "alias" : "Kits.view.liShiShuju.3月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160003_20170320",
+        "itemid" : "0713dac11f21d50b",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年4月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年4月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "922163998da18fed",
+        "text" : "4月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160004_20170320",
+        "alias" : "Kits.view.liShiShuju.4月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160004_20170320",
+        "itemid" : "8b400f4487075635",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年5月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年5月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "0621358fe06c4799",
+        "text" : "5月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160005_20170320",
+        "alias" : "Kits.view.liShiShuju.5月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160005_20170320",
+        "itemid" : "11b8a282227ddd50",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年6月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年6月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "f5d22e9f1bd95978",
+        "text" : "6月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160006_20170320",
+        "alias" : "Kits.view.liShiShuju.6月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160006_20170320",
+        "itemid" : "3f604668b48679ca",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年7月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年7月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "27021b09bfa90a0e",
+        "text" : "7月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160007_20170320",
+        "alias" : "Kits.view.liShiShuju.7月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160007_20170320",
+        "itemid" : "4fbc80b8387c7c5e",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年8月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年8月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "90a3540a56db8397",
+        "text" : "8月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160008_20170320",
+        "alias" : "Kits.view.liShiShuju.8月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160008_20170320",
+        "itemid" : "4169ef9d19af49fc",
         "leaf" : true,
         "parent" : "服务业上报数据"
       }, {
         "iconCls" : "x-fa fa-table",
-        "text" : "2016年9月(F20003)规模以上服务业企业分行业中类汇总表",
-        "alias" : "Kits.view.liShiShuju.2016年9月(F20003)规模以上服务业企业分行业中类汇总表",
-        "itemid" : "fce102c1cd2dead1",
+        "text" : "9月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160009_20170320",
+        "alias" : "Kits.view.liShiShuju.9月F20003_规模以上服务业企业分行业中类汇总表_429021000000_20160009_20170320",
+        "itemid" : "eeeb7b57f603c854",
         "leaf" : true,
         "parent" : "服务业上报数据"
       } ],
@@ -675,9 +665,9 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-              "alias" : "Kits.view.liShiShuju.2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-              "itemid" : "6958f9f723f80d56",
+              "text" : "E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+              "alias" : "Kits.view.liShiShuju.E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+              "itemid" : "d5057311f12673bc",
               "leaf" : true,
               "parent" : "上报数据"
             } ],
@@ -775,9 +765,9 @@
             "leaf" : false,
             "children" : [ {
               "iconCls" : "x-fa fa-table",
-              "text" : "2016年1至2月社会品消费品零售总额",
-              "alias" : "Kits.view.liShiShuju.2016年1至2月社会品消费品零售总额",
-              "itemid" : "ac8fe1d3a533bcc8",
+              "text" : "2016年1至2月社会品消费品零售总额.1-2",
+              "alias" : "Kits.view.liShiShuju.2016年1至2月社会品消费品零售总额.1-2",
+              "itemid" : "b34e1cfe39b996af",
               "leaf" : true,
               "parent" : "2月"
             } ],
@@ -1072,79 +1062,79 @@
           "leaf" : false,
           "children" : [ {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年3月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年3月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "c4ca813fb2c25d5c",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160003_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160003_20170523",
+            "itemid" : "77ed33a01a25c151",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年4月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年4月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "a9bacb386b2e0207",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160004_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160004_20170523",
+            "itemid" : "1e7c4d51cab8c91d",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年5月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年5月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "18e12705274cbdbb",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160005_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160005_20170523",
+            "itemid" : "7dac4b85546723cc",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年6月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年6月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "ae318795db190bde",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160006_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160006_20170523",
+            "itemid" : "d7c8a1bab1bcb4b5",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年7月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年7月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "5297d69b2cb8ac40",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160007_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160007_20170523",
+            "itemid" : "a24bf349460e17f4",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年8月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年8月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "8c4f53245580c458",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160008_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160008_20170523",
+            "itemid" : "1f7ba121ee8eb2a9",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年9月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年9月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "b4e7d31b75ca42bb",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160009_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160009_20170523",
+            "itemid" : "41baf436dd259b33",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年10月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年10月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "ed11e9a5d7fcfe6e",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160010_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160010_20170523",
+            "itemid" : "553b09eaef51661b",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年11月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年11月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "743e186576a7207e",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160011_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160011_20170523",
+            "itemid" : "41b11c7cd4043dec",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年12月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年12月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "26238dfbb0721c14",
+            "text" : "E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160012_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y0101+限上法人消费品零售额增速（可比口径）_429021000000_20160012_20170523",
+            "itemid" : "904b22cacc432cdc",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           }, {
             "iconCls" : "x-fa fa-table",
-            "text" : "2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "alias" : "Kits.view.liShiShuju.2016年2月(E41002)Y0101 限上法人消费品零售额增速（可比口径）",
-            "itemid" : "6958f9f723f80d56",
+            "text" : "E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+            "alias" : "Kits.view.liShiShuju.E41002_Y01012月限上法人消费品零售额增速（可比口径）_429021000000_20160002_20170523",
+            "itemid" : "d5057311f12673bc",
             "leaf" : true,
             "parent" : "2016年社会品消费品零售总额 汇总表"
           } ],

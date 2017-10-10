@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.06', {
     extend: 'Kits.view.tables.Base',
     title: '渔 业 生 产 情 况',
-
+    tableid: '鄂农年06表',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

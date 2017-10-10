@@ -1,7 +1,8 @@
 Ext.define('Kits.view.tables.Base', {
     extend: 'Ext.panel.Panel',
     layout: 'border',
-
+    hzcolumn:'丙',
+    tableid: '',
     initComponent: function () {
         var me = this;
         Ext.apply(this.columns[0].columns[0],{
@@ -22,11 +23,51 @@ Ext.define('Kits.view.tables.Base', {
         Ext.apply(items[1].columns.items, this.columns);
         Ext.apply(items[2].items, this.footerItems);
         me.items = items;
-
-
         me.callParent();
     },
-
+    fillData: function (data) {
+        var me = this;
+        var grid = this.down('grid');
+        var store = grid.getStore();
+        Ext.Array.map(data,function (item) {
+            var model = store.findRecord(me.hzcolumn,item.hzcode);
+            if(model){
+                model.setId(item.id);
+                model.set('1',item.num1);
+                model.set('2',item.num2);
+                model.set('3',item.num3);
+                model.set('4',item.num4);
+                model.set('5',item.num5);
+                model.set('6',item.num6);
+                model.set('7',item.num7);
+                model.set('8',item.num8);
+                model.set('9',item.num9);
+                model.set('10',item.num10);
+                model.commit();
+            }
+        })
+    },
+    loadData: function () {
+        var me = this;
+        var token = Ext.util.Cookies.get('token');
+        Ext.Ajax.request({
+            url: '/api/rpt/table/'+this.tableid,
+            method: 'GET',
+            headers: {'Authorization':'Bearer '+token},
+            success: function(response, opts) {
+                var data = Ext.decode(response.responseText);
+                me.fillData(data);
+            },
+            failure: function(response, opts) {
+                console.log('server-side failure with status code ' + response.status);
+            }
+        });
+    },
+    listeners: {
+        afterrender: function (me) {
+            me.loadData();
+        }
+    },
     defConfig: {
 
         items: [
@@ -75,7 +116,6 @@ Ext.define('Kits.view.tables.Base', {
                 },
                 listeners: {
                     afterrender: function (me) {
-
                     }
                 },
 
@@ -176,14 +216,14 @@ Ext.define('Kits.view.tables.Base', {
                 bbar: [
                     {
                         xtype: 'button',
-                        text: '导出',
+                        text: '导出2',
                         handler: function () {
 
                         }
                     },
                     {
                         xtype: 'button',
-                        text: '检查',
+                        text: '检查2',
                         handler: function () {
 
                         }
@@ -192,14 +232,45 @@ Ext.define('Kits.view.tables.Base', {
                         xtype: 'button',
                         text: '提交',
                         handler: function () {
-                            var grid = this.up('panel').up('panel').down('grid');
+                            var me = this.up('panel').up('panel');
+                            var grid = me.down('grid');
                             var store = grid.getStore();
-                            var data = Ext.Array.map(store.getData().items, function (item) {
-                                return item.data
+                            var data = [];
+                            store.each(function (model) {
+                                if(model.isDirty()){
+                                    data.push({
+                                        id:model.data['id'],
+                                        tabcode: me.tableid,
+                                        hzcode:model.data[me.hzcolumn],
+                                        num1:model.data['1'],
+                                        num2:model.data['2'],
+                                        num3:model.data['3'],
+                                        num4:model.data['4'],
+                                        num5:model.data['5'],
+                                        num6:model.data['6'],
+                                        num7:model.data['7'],
+                                        num8:model.data['8'],
+                                        num9:model.data['9'],
+                                        num10:model.data['10']
+                                    })
+                                }
                             });
-
-                            console.log(data)
-
+                            var token = Ext.util.Cookies.get('token');
+                            Ext.Ajax.request({
+                                url: '/api/rpt/table/put',
+                                method: 'POST',
+                                jsonData: JSON.stringify(data),
+                                headers: {'Authorization':'Bearer '+token},
+                                success: function(response, opts) {
+                                    var obj = Ext.decode(response.responseText);
+                                    if(obj.success){
+                                        me.loadData();
+                                    }
+                                },
+                                failure: function(response, opts) {
+                                    console.log('server-side failure with status code ' + response.status);
+                                }
+                            });
                         }
                     }
                 ]
