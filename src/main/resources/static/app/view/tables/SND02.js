@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tables.SND02', {
     extend: 'Kits.view.tables.Base',
     title: '畜特、水产、电讯季节报',
+    tableid: '神农定2表',
     headerItems:[
         {
             html: '<br />综合机关名称：'

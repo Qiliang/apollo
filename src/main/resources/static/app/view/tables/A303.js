@@ -2,6 +2,7 @@ Ext.define('Kits.view.tables.A303', {
     extend: 'Kits.view.tables.Base',
     title: '经 济 作 物 生 产 情 况',
     hzcolumn:'乙',
+    tableid: 'A303表',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

@@ -2,6 +2,7 @@ Ext.define('Kits.view.tables.M301', {
     extend: 'Kits.view.tables.Base',
     title: '农 林 牧 渔 业 总 产 值',
     hzcolumn:'乙',
+    tableid: 'M301',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

@@ -2,6 +2,7 @@ Ext.define('Kits.view.tables.Base', {
     extend: 'Ext.panel.Panel',
     layout: 'border',
     hzcolumn:'丙',
+    tableid: '',
     initComponent: function () {
         var me = this;
         Ext.apply(this.columns[0].columns[0],{
@@ -50,7 +51,7 @@ Ext.define('Kits.view.tables.Base', {
         var me = this;
         var token = Ext.util.Cookies.get('token');
         Ext.Ajax.request({
-            url: '/rpt/table/'+this.title,
+            url: '/api/rpt/table/'+this.tableid,
             method: 'GET',
             headers: {'Authorization':'Bearer '+token},
             success: function(response, opts) {
@@ -215,14 +216,14 @@ Ext.define('Kits.view.tables.Base', {
                 bbar: [
                     {
                         xtype: 'button',
-                        text: '导出',
+                        text: '导出2',
                         handler: function () {
 
                         }
                     },
                     {
                         xtype: 'button',
-                        text: '检查',
+                        text: '检查2',
                         handler: function () {
 
                         }
@@ -239,7 +240,7 @@ Ext.define('Kits.view.tables.Base', {
                                 if(model.isDirty()){
                                     data.push({
                                         id:model.data['id'],
-                                        tabcode: me.title,
+                                        tabcode: me.tableid,
                                         hzcode:model.data[me.hzcolumn],
                                         num1:model.data['1'],
                                         num2:model.data['2'],
@@ -256,18 +257,15 @@ Ext.define('Kits.view.tables.Base', {
                             });
                             var token = Ext.util.Cookies.get('token');
                             Ext.Ajax.request({
-                                url: '/rpt/table/put',
+                                url: '/api/rpt/table/put',
                                 method: 'POST',
                                 jsonData: JSON.stringify(data),
                                 headers: {'Authorization':'Bearer '+token},
                                 success: function(response, opts) {
                                     var obj = Ext.decode(response.responseText);
-                                    console.log(obj)
-                                    store.each(function (model) {
-                                        if (model.isDirty()) {
-                                            model.commit();
-                                        }
-                                    });
+                                    if(obj.success){
+                                        me.loadData();
+                                    }
                                 },
                                 failure: function(response, opts) {
                                     console.log('server-side failure with status code ' + response.status);

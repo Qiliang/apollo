@@ -1,7 +1,7 @@
 Ext.define('Kits.view.tables.M401', {
     extend: 'Kits.view.tables.Base',
     title: '农林牧渔业总产值年度计算表',
-
+    tableid: 'M401',
     headerItems: [
         {
             html: '<br /><br /><br />综合机关名称：'

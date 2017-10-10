@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tables.END01', {
     extend: 'Kits.view.tables.Base',
     title: '农 村 劳 动 力 转 移 季 报',
+    tableid: '鄂农定01表',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：'
