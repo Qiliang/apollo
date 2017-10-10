@@ -1,7 +1,7 @@
 Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
     extend: 'Ext.grid.Panel',
     title: '企业列表',
-    store: Ext.create('Kits.store.QiYe', {pageSize: 3}),
+    store: Ext.create('Kits.store.QiYe'),
     tools: [
         {
             type: 'refresh',
@@ -14,37 +14,51 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
     tbar: [
         {
             xtype: 'textfield',
-            fieldLabel: '企业名称',
-            width:220,
-            name: 'qymc',
+            fieldLabel: '详细名称',
+            width: 220,
+            name: 'xxmc',
+            id: 'xxmc'
         },
         {
             xtype: 'textfield',
             fieldLabel: '组织机构代码',
             name: 'zzjgdm',
+            id: 'zzjgdm'
         },
         {
             xtype: 'button',
             text: '查询',
-            handler:function () {
+            handler: function () {
                 var grid = this.up('grid');
-                grid.getStore().load();
+                grid.getStore().load({
+                    params: {
+                        xxmc: Ext.getCmp('xxmc').getValue(),
+                        zzjgdm: Ext.getCmp('zzjgdm').getValue()
+                    }
+                });
             }
-        },{
+        }, {
             xtype: 'button',
             text: '添加',
             handler: function () {
-                Ext.create('Ext.window.Window', {
-                    title: '添加直报',
+                var btn = this;
+                var win = Ext.create('Ext.window.Window', {
+                    title: '添加企业',
                     height: 400,
                     width: 600,
                     layout: 'fit',
                     modal: true,
-                    closeToolText:'关闭',
-                    items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView', {})
-                }).show();
+                    closeToolText: '关闭',
+                    items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView', {
+                        callBack: function () {
+                            btn.up('grid').getStore().load();
+                            win.close();
+                        }
+                    })
+                });
+                win.show();
             }
-        },{
+        }, {
             xtype: 'button',
             text: '导入',
             handler: function () {
@@ -54,22 +68,23 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
                     width: 400,
                     layout: 'fit',
                     modal: true,
-                    closeToolText:'关闭',
+                    closeToolText: '关闭',
                     items: Ext.create('Kits.view.diaoChaDuiXiang.importView', {})
                 }).show();
             }
         }],
     bbar: {
         xtype: 'pagingtoolbar',
-        displayInfo: true
+        displayInfo: true,
+        emptyMsg: "无数据...",
     },
     columns: [
         {
             xtype: 'rownumberer'
         },
         {
-            text: '企业名称',
-            dataIndex: 'qymc'
+            text: '详细名称',
+            dataIndex: 'xxmc'
         },
         {
             text: '组织机构代码',
@@ -77,41 +92,63 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
         },
         {
             text: '所在地址',
-            dataIndex: 'szdz'
+            dataIndex: 'xxdz'
         },
         {
             text: '行业类别代码',
-            dataIndex: 'hylbdm'
+            dataIndex: 'hydm11'
         },
         {
             text: '登记注册类别',
-            dataIndex: 'djzclb'
+            dataIndex: 'djzclx'
         },
         {
             text: '操作',
-            xtype:'actioncolumn',
-            width:70,
+            xtype: 'actioncolumn',
+            width: 70,
             items: [{
                 iconCls: 'x-fa fa-pencil-square-o',
                 tooltip: '修改',
-                handler: function(grid, rowIndex, colIndex) {
-                    Ext.create('Ext.window.Window', {
+                handler: function (view, recIndex, cellIndex, item, e, record) {
+                    var btn = this;
+                    var win = Ext.create('Ext.window.Window', {
                         title: '修改',
                         height: 400,
                         width: 600,
                         layout: 'fit',
-                        closeToolText:'关闭',
+                        closeToolText: '关闭',
                         // closeAction:'hide',
-                        modal:true,
-                        items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView',{a:new Date()})
-                    }).show();
+                        modal: true,
+                        items: Ext.create('Kits.view.diaoChaDuiXiang.AddQiYeView',{
+                            paraId:record.data.id,
+                            callBack:function(){
+                                btn.up('grid').getStore().reload();
+                                win.close();
+                            }})
+                    })
+                    win.show();
                     // alert("查看 " + rec.get('id'));
                 }
-            },'-',{
+            }, '-', {
                 iconCls: 'x-fa fa-trash-o',
                 tooltip: '删除',
-                handler: function (grid, rowIndex, colIndex) {
+                handler: function (view, recIndex, cellIndex, item, e, record) {
+                    var btn = this;
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
+                        Ext.Ajax.request({
+                            url: '/company/deleteById',
+                            params: { id: record.data.id},
+                            heardes:{a:'1111'},
+                            method: 'POST',
+
+                            success: function (response, options) {
+                                btn.up('grid').getStore().reload();
+                            },
+                            failure: function (response, options) {
+                                var res = JSON.parse(response.responseText);
+                                Ext.MessageBox.alert('失败', '错误信息：' + res.message);
+                            }
+                        });
                     }, this);
                 }
             }]

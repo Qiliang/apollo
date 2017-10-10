@@ -65,10 +65,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
-                        "/theme-triton/**"
+                        "/theme-triton/**",
+                        "/company/downloadModel"
                 ).permitAll()
                 .antMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated().and()
+                .headers().frameOptions().disable();
         // Custom JWT based security filter
         httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
         // disable page caching

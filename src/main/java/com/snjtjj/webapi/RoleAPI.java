@@ -23,24 +23,24 @@ public class RoleAPI {
 
 
     @GetMapping("/getRoleList")
-    public Object getRoleList(Integer page,Integer limit){
-        return roleService.getRoleList(page,limit);
+    public Object getRoleList(Integer page, Integer limit) {
+        return roleService.getRoleList(page, limit);
     }
 
     @GetMapping("/getAllRoleList")
-    public Object getAllRoleList(){
+    public Object getAllRoleList() {
         return roleService.getRoleList();
     }
 
     @GetMapping("/getRoleById")
-    public FormResponse<Role> getRoleById(@RequestParam(value = "id",required = false) String id){
+    public FormResponse<Role> getRoleById(@RequestParam(value = "id", required = false) String id) {
         Role role = roleService.getRoleById(id);
         FormResponse formResponse = new FormResponse(role);
         return formResponse;
     }
 
     @PostMapping("/deleteById")
-    public FormResponse<String> deleteById(@RequestParam(value = "id",required = false) String id){
+    public FormResponse<String> deleteById(@RequestParam(value = "id", required = false) String id) {
         roleService.deleteById(id);
         FormResponse formResponse = new FormResponse("删除成功！");
         return formResponse;
@@ -48,12 +48,12 @@ public class RoleAPI {
 
 
     @PostMapping("/saveOrUpdate")
-    public FormResponse<String> saveOrUpdate(Role role,String menuListJson) throws IOException {
+    public FormResponse<String> saveOrUpdate(Role role, String menuListJson) throws IOException {
         JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, Menu.class);
-        role.setMenuList(objectMapper.readValue(menuListJson,javaType));
-        if(StringUtils.isNotBlank(role.getId())){
+        role.setMenuList(objectMapper.readValue(menuListJson, javaType));
+        if (StringUtils.isNotBlank(role.getId())) {
             roleService.edit(role);
-        }else{
+        } else {
             roleService.save(role);
         }
         FormResponse formResponse = new FormResponse("保存成功！");

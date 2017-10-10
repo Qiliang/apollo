@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snjtjj.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.snjtjj.entity.Company" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="shxydm" property="shxydm" jdbcType="VARCHAR" />
+    <result column="zzjgdm" property="zzjgdm" jdbcType="VARCHAR" />
+    <result column="xxmc" property="xxmc" jdbcType="VARCHAR" />
+    <result column="fddbr" property="fddbr" jdbcType="VARCHAR" />
+    <result column="xzqhdm" property="xzqhdm" jdbcType="VARCHAR" />
+    <result column="xxdz" property="xxdz" jdbcType="VARCHAR" />
+    <result column="ctqh" property="ctqh" jdbcType="VARCHAR" />
+    <result column="gddh" property="gddh" jdbcType="VARCHAR" />
+    <result column="hydm_11" property="hydm11" jdbcType="VARCHAR" />
+    <result column="zyywhd_11" property="zyywhd11" jdbcType="VARCHAR" />
+    <result column="djzclx" property="djzclx" jdbcType="VARCHAR" />
+    <result column="kynf" property="kynf" jdbcType="VARCHAR" />
+    <result column="kyyf" property="kyyf" jdbcType="VARCHAR" />
+    <result column="zt" property="zt" jdbcType="VARCHAR" />
+    <result column="tjjdm" property="tjjdm" jdbcType="VARCHAR" />
+    <result column="dwlb" property="dwlb" jdbcType="VARCHAR" />
+    <result column="jglx" property="jglx" jdbcType="VARCHAR" />
+    <result column="gsfrxzqhdm" property="gsfrxzqhdm" jdbcType="VARCHAR" />
+    <result column="gsfrxxmc" property="gsfrxxmc" jdbcType="VARCHAR" />
+    <result column="gsfrxxdz" property="gsfrxxdz" jdbcType="VARCHAR" />
+    <result column="from_type" property="fromType" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="fzr_mobile" property="fzrMobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="tbr_name" property="tbrName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, shxydm, zzjgdm, xxmc, fddbr, xzqhdm, xxdz, ctqh, gddh, hydm_11, zyywhd_11, djzclx, 
+    kynf, kyyf, zt, tjjdm, dwlb, jglx, gsfrxzqhdm, gsfrxxmc, gsfrxxdz, from_type, create_by, 
+    create_date, update_by, update_date, del_flag, mobile, fzr_mobile, email, tbr_name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.CompanyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from company
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.snjtjj.entity.CompanyExample" >
+    delete from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.snjtjj.entity.Company" >
+    insert into company (id, shxydm, zzjgdm, 
+      xxmc, fddbr, xzqhdm, 
+      xxdz, ctqh, gddh, hydm_11, 
+      zyywhd_11, djzclx, kynf, 
+      kyyf, zt, tjjdm, dwlb, 
+      jglx, gsfrxzqhdm, gsfrxxmc, 
+      gsfrxxdz, from_type, create_by, 
+      create_date, update_by, update_date, 
+      del_flag, mobile, fzr_mobile, 
+      email, tbr_name)
+    values (#{id,jdbcType=VARCHAR}, #{shxydm,jdbcType=VARCHAR}, #{zzjgdm,jdbcType=VARCHAR}, 
+      #{xxmc,jdbcType=VARCHAR}, #{fddbr,jdbcType=VARCHAR}, #{xzqhdm,jdbcType=VARCHAR}, 
+      #{xxdz,jdbcType=VARCHAR}, #{ctqh,jdbcType=VARCHAR}, #{gddh,jdbcType=VARCHAR}, #{hydm11,jdbcType=VARCHAR}, 
+      #{zyywhd11,jdbcType=VARCHAR}, #{djzclx,jdbcType=VARCHAR}, #{kynf,jdbcType=VARCHAR}, 
+      #{kyyf,jdbcType=VARCHAR}, #{zt,jdbcType=VARCHAR}, #{tjjdm,jdbcType=VARCHAR}, #{dwlb,jdbcType=VARCHAR}, 
+      #{jglx,jdbcType=VARCHAR}, #{gsfrxzqhdm,jdbcType=VARCHAR}, #{gsfrxxmc,jdbcType=VARCHAR}, 
+      #{gsfrxxdz,jdbcType=VARCHAR}, #{fromType,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=CHAR}, #{mobile,jdbcType=VARCHAR}, #{fzrMobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{tbrName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.snjtjj.entity.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="shxydm != null" >
+        shxydm,
+      </if>
+      <if test="zzjgdm != null" >
+        zzjgdm,
+      </if>
+      <if test="xxmc != null" >
+        xxmc,
+      </if>
+      <if test="fddbr != null" >
+        fddbr,
+      </if>
+      <if test="xzqhdm != null" >
+        xzqhdm,
+      </if>
+      <if test="xxdz != null" >
+        xxdz,
+      </if>
+      <if test="ctqh != null" >
+        ctqh,
+      </if>
+      <if test="gddh != null" >
+        gddh,
+      </if>
+      <if test="hydm11 != null" >
+        hydm_11,
+      </if>
+      <if test="zyywhd11 != null" >
+        zyywhd_11,
+      </if>
+      <if test="djzclx != null" >
+        djzclx,
+      </if>
+      <if test="kynf != null" >
+        kynf,
+      </if>
+      <if test="kyyf != null" >
+        kyyf,
+      </if>
+      <if test="zt != null" >
+        zt,
+      </if>
+      <if test="tjjdm != null" >
+        tjjdm,
+      </if>
+      <if test="dwlb != null" >
+        dwlb,
+      </if>
+      <if test="jglx != null" >
+        jglx,
+      </if>
+      <if test="gsfrxzqhdm != null" >
+        gsfrxzqhdm,
+      </if>
+      <if test="gsfrxxmc != null" >
+        gsfrxxmc,
+      </if>
+      <if test="gsfrxxdz != null" >
+        gsfrxxdz,
+      </if>
+      <if test="fromType != null" >
+        from_type,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="fzrMobile != null" >
+        fzr_mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="tbrName != null" >
+        tbr_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="shxydm != null" >
+        #{shxydm,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxmc != null" >
+        #{xxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fddbr != null" >
+        #{fddbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhdm != null" >
+        #{xzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdz != null" >
+        #{xxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="ctqh != null" >
+        #{ctqh,jdbcType=VARCHAR},
+      </if>
+      <if test="gddh != null" >
+        #{gddh,jdbcType=VARCHAR},
+      </if>
+      <if test="hydm11 != null" >
+        #{hydm11,jdbcType=VARCHAR},
+      </if>
+      <if test="zyywhd11 != null" >
+        #{zyywhd11,jdbcType=VARCHAR},
+      </if>
+      <if test="djzclx != null" >
+        #{djzclx,jdbcType=VARCHAR},
+      </if>
+      <if test="kynf != null" >
+        #{kynf,jdbcType=VARCHAR},
+      </if>
+      <if test="kyyf != null" >
+        #{kyyf,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="tjjdm != null" >
+        #{tjjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="dwlb != null" >
+        #{dwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="jglx != null" >
+        #{jglx,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxzqhdm != null" >
+        #{gsfrxzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxxmc != null" >
+        #{gsfrxxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxxdz != null" >
+        #{gsfrxxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="fromType != null" >
+        #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrMobile != null" >
+        #{fzrMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tbrName != null" >
+        #{tbrName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.snjtjj.entity.CompanyExample" resultType="java.lang.Integer" >
+    select count(*) from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update company
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shxydm != null" >
+        shxydm = #{record.shxydm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzjgdm != null" >
+        zzjgdm = #{record.zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xxmc != null" >
+        xxmc = #{record.xxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fddbr != null" >
+        fddbr = #{record.fddbr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xzqhdm != null" >
+        xzqhdm = #{record.xzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xxdz != null" >
+        xxdz = #{record.xxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ctqh != null" >
+        ctqh = #{record.ctqh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gddh != null" >
+        gddh = #{record.gddh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hydm11 != null" >
+        hydm_11 = #{record.hydm11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zyywhd11 != null" >
+        zyywhd_11 = #{record.zyywhd11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.djzclx != null" >
+        djzclx = #{record.djzclx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kynf != null" >
+        kynf = #{record.kynf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kyyf != null" >
+        kyyf = #{record.kyyf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zt != null" >
+        zt = #{record.zt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tjjdm != null" >
+        tjjdm = #{record.tjjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dwlb != null" >
+        dwlb = #{record.dwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jglx != null" >
+        jglx = #{record.jglx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gsfrxzqhdm != null" >
+        gsfrxzqhdm = #{record.gsfrxzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gsfrxxmc != null" >
+        gsfrxxmc = #{record.gsfrxxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gsfrxxdz != null" >
+        gsfrxxdz = #{record.gsfrxxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromType != null" >
+        from_type = #{record.fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delFlag != null" >
+        del_flag = #{record.delFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fzrMobile != null" >
+        fzr_mobile = #{record.fzrMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tbrName != null" >
+        tbr_name = #{record.tbrName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update company
+    set id = #{record.id,jdbcType=VARCHAR},
+      shxydm = #{record.shxydm,jdbcType=VARCHAR},
+      zzjgdm = #{record.zzjgdm,jdbcType=VARCHAR},
+      xxmc = #{record.xxmc,jdbcType=VARCHAR},
+      fddbr = #{record.fddbr,jdbcType=VARCHAR},
+      xzqhdm = #{record.xzqhdm,jdbcType=VARCHAR},
+      xxdz = #{record.xxdz,jdbcType=VARCHAR},
+      ctqh = #{record.ctqh,jdbcType=VARCHAR},
+      gddh = #{record.gddh,jdbcType=VARCHAR},
+      hydm_11 = #{record.hydm11,jdbcType=VARCHAR},
+      zyywhd_11 = #{record.zyywhd11,jdbcType=VARCHAR},
+      djzclx = #{record.djzclx,jdbcType=VARCHAR},
+      kynf = #{record.kynf,jdbcType=VARCHAR},
+      kyyf = #{record.kyyf,jdbcType=VARCHAR},
+      zt = #{record.zt,jdbcType=VARCHAR},
+      tjjdm = #{record.tjjdm,jdbcType=VARCHAR},
+      dwlb = #{record.dwlb,jdbcType=VARCHAR},
+      jglx = #{record.jglx,jdbcType=VARCHAR},
+      gsfrxzqhdm = #{record.gsfrxzqhdm,jdbcType=VARCHAR},
+      gsfrxxmc = #{record.gsfrxxmc,jdbcType=VARCHAR},
+      gsfrxxdz = #{record.gsfrxxdz,jdbcType=VARCHAR},
+      from_type = #{record.fromType,jdbcType=VARCHAR},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{record.delFlag,jdbcType=CHAR},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      fzr_mobile = #{record.fzrMobile,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      tbr_name = #{record.tbrName,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.Company" >
+    update company
+    <set >
+      <if test="shxydm != null" >
+        shxydm = #{shxydm,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgdm != null" >
+        zzjgdm = #{zzjgdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxmc != null" >
+        xxmc = #{xxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="fddbr != null" >
+        fddbr = #{fddbr,jdbcType=VARCHAR},
+      </if>
+      <if test="xzqhdm != null" >
+        xzqhdm = #{xzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="xxdz != null" >
+        xxdz = #{xxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="ctqh != null" >
+        ctqh = #{ctqh,jdbcType=VARCHAR},
+      </if>
+      <if test="gddh != null" >
+        gddh = #{gddh,jdbcType=VARCHAR},
+      </if>
+      <if test="hydm11 != null" >
+        hydm_11 = #{hydm11,jdbcType=VARCHAR},
+      </if>
+      <if test="zyywhd11 != null" >
+        zyywhd_11 = #{zyywhd11,jdbcType=VARCHAR},
+      </if>
+      <if test="djzclx != null" >
+        djzclx = #{djzclx,jdbcType=VARCHAR},
+      </if>
+      <if test="kynf != null" >
+        kynf = #{kynf,jdbcType=VARCHAR},
+      </if>
+      <if test="kyyf != null" >
+        kyyf = #{kyyf,jdbcType=VARCHAR},
+      </if>
+      <if test="zt != null" >
+        zt = #{zt,jdbcType=VARCHAR},
+      </if>
+      <if test="tjjdm != null" >
+        tjjdm = #{tjjdm,jdbcType=VARCHAR},
+      </if>
+      <if test="dwlb != null" >
+        dwlb = #{dwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="jglx != null" >
+        jglx = #{jglx,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxzqhdm != null" >
+        gsfrxzqhdm = #{gsfrxzqhdm,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxxmc != null" >
+        gsfrxxmc = #{gsfrxxmc,jdbcType=VARCHAR},
+      </if>
+      <if test="gsfrxxdz != null" >
+        gsfrxxdz = #{gsfrxxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="fromType != null" >
+        from_type = #{fromType,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="fzrMobile != null" >
+        fzr_mobile = #{fzrMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="tbrName != null" >
+        tbr_name = #{tbrName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.Company" >
+    update company
+    set shxydm = #{shxydm,jdbcType=VARCHAR},
+      zzjgdm = #{zzjgdm,jdbcType=VARCHAR},
+      xxmc = #{xxmc,jdbcType=VARCHAR},
+      fddbr = #{fddbr,jdbcType=VARCHAR},
+      xzqhdm = #{xzqhdm,jdbcType=VARCHAR},
+      xxdz = #{xxdz,jdbcType=VARCHAR},
+      ctqh = #{ctqh,jdbcType=VARCHAR},
+      gddh = #{gddh,jdbcType=VARCHAR},
+      hydm_11 = #{hydm11,jdbcType=VARCHAR},
+      zyywhd_11 = #{zyywhd11,jdbcType=VARCHAR},
+      djzclx = #{djzclx,jdbcType=VARCHAR},
+      kynf = #{kynf,jdbcType=VARCHAR},
+      kyyf = #{kyyf,jdbcType=VARCHAR},
+      zt = #{zt,jdbcType=VARCHAR},
+      tjjdm = #{tjjdm,jdbcType=VARCHAR},
+      dwlb = #{dwlb,jdbcType=VARCHAR},
+      jglx = #{jglx,jdbcType=VARCHAR},
+      gsfrxzqhdm = #{gsfrxzqhdm,jdbcType=VARCHAR},
+      gsfrxxmc = #{gsfrxxmc,jdbcType=VARCHAR},
+      gsfrxxdz = #{gsfrxxdz,jdbcType=VARCHAR},
+      from_type = #{fromType,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      fzr_mobile = #{fzrMobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      tbr_name = #{tbrName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

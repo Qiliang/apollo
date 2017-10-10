@@ -1,5 +1,7 @@
 package com.snjtjj.common.security;
 
+import com.snjtjj.utils.CookieUtils;
+import com.snjtjj.utils.StringUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,12 +32,19 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        final String requestHeader = request.getHeader("Authorization");
 
+        final String requestHeader = request.getHeader("Authorization");
         String username = null;
         String authToken = null;
         if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
             authToken = requestHeader.substring(7);
+        } else {
+            authToken =  CookieUtils.getCookie(request,"token");
+        }
+
+        if(StringUtils.isBlank(authToken)){
+            logger.warn("couldn't find bearer string, will ignore the header");
+        }else{
             try {
                 username = jwtTokenUtil.getUsernameFromToken(authToken);
             } catch (IllegalArgumentException e) {
@@ -43,8 +52,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             } catch (ExpiredJwtException e) {
                 logger.warn("the token is expired and not valid anymore", e);
             }
-        } else {
-            logger.warn("couldn't find bearer string, will ignore the header");
         }
 
         logger.info("checking authentication for user " + username);

@@ -33,39 +33,41 @@ public class RoleService {
     @Autowired
     private UserRoleMapper userRoleMapper;
 
-    public PageInfo getRoleList(Integer page,Integer limit){
+    public PageInfo getRoleList(Integer page, Integer limit) {
         RoleExample roleExample = new RoleExample();
         roleExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
-        PageHelper.startPage(page,limit);
+        PageHelper.startPage(page, limit);
         List<Role> list = roleMapper.selectByExample(roleExample);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
 
-    public List<Role> getRoleList(){
+    public List<Role> getRoleList() {
         RoleExample roleExample = new RoleExample();
         roleExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         List<Role> list = roleMapper.selectByExample(roleExample);
         return list;
     }
 
-    public Role getRoleById(String roleId){
+    public Role getRoleById(String roleId) {
         return roleMapper.selectByPrimaryKey(roleId);
     }
 
     @Transactional
-    public void save(Role role){
+    public void save(Role role) {
         role.preInsert();
-        saveRoleMenu(role.getMenuList(),role.getId());
+        saveRoleMenu(role.getMenuList(), role.getId());
         roleMapper.insert(role);
 
     }
 
     @Transactional
-    public void saveRoleMenu(List<Menu> list,String roleId){
+    public void saveRoleMenu(List<Menu> list, String roleId) {
         Set<String> set = new LinkedHashSet<>();
-        for(Menu menu:list) {
-            set.add(menu.getParentId());
+        for (Menu menu : list) {
+            if (StringUtils.isNotBlank(menu.getParentId())) {
+                set.add(menu.getParentId());
+            }
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setId(IdGen.nextS());
             roleMenu.setMenuId(menu.getId());
@@ -73,7 +75,7 @@ public class RoleService {
             roleMenuMapper.insert(roleMenu);
         }
         //插入所有的上级菜单
-        for(String menuId:set){
+        for (String menuId : set) {
             Menu menu = menuMapper.selectByPrimaryKey(menuId);
             RoleMenu roleMenu = new RoleMenu();
             roleMenu.setId(IdGen.nextS());
@@ -84,23 +86,23 @@ public class RoleService {
     }
 
     @Transactional
-    public void edit(Role role){
-       //删除所有的角色菜单关联表
+    public void edit(Role role) {
+        //删除所有的角色菜单关联表
         RoleMenuExample roleMenuExample = new RoleMenuExample();
         roleMenuExample.createCriteria().andRoleIdEqualTo(role.getId());
         roleMenuMapper.deleteByExample(roleMenuExample);
         //修改角色
-        saveRoleMenu(role.getMenuList(),role.getId());
+        saveRoleMenu(role.getMenuList(), role.getId());
         roleMapper.updateByPrimaryKeySelective(role);
     }
 
     @Transactional
-    public void deleteById(String id){
+    public void deleteById(String id) {
         //判断角色下是否有用户
         UserRoleExample userRoleExample = new UserRoleExample();
         userRoleExample.createCriteria().andRoleIdEqualTo(id);
-        PageHelper.startPage(1,1);
-        if(userRoleMapper.selectByExample(userRoleExample).size()>0){
+        PageHelper.startPage(1, 1);
+        if (userRoleMapper.selectByExample(userRoleExample).size() > 0) {
             throw new ResponseException("无法删除有用户的角色！", HttpStatus.INTERNAL_SERVER_ERROR);
         }
         //删除所有的角色菜单关联表

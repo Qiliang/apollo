@@ -25,7 +25,7 @@ public class MenuService {
         MenuExample menuExample = new MenuExample();
         MenuExample.Criteria criteria = menuExample.createCriteria();
         criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
-        criteria.andLevelEqualTo(2);
+        criteria.andCmpIsNotNull();
         return menuMapper.selectByExample(menuExample);
     }
 

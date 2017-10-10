@@ -24,33 +24,33 @@ public class OrganizationAPI {
      * @return
      */
     @GetMapping
-    public List<TreeVo> org(String userId,@RequestParam(value = "excludeId",required = false) String excludeId) {
-        List<Organization> list =  new ArrayList<>();
+    public List<TreeVo> org(String userId, @RequestParam(value = "excludeId", required = false) String excludeId) {
+        List<Organization> list = new ArrayList<>();
         TreeVo treeVo = new TreeVo();
         treeVo.setId("-1");
-        if(StringUtils.isBlank(excludeId)){
-            list =  organizationService.allOrg();
-        }else{
-            list =  organizationService.allOrg(excludeId);
+        if (StringUtils.isBlank(excludeId)) {
+            list = organizationService.allOrg();
+        } else {
+            list = organizationService.allOrg(excludeId);
         }
         organizationService.getOrgTreeList(treeVo, list);
         return treeVo.getChildren();
     }
 
     @GetMapping("/getOrgListByPId")
-    public Object getOrgListByPId(@RequestParam(value = "pid",required = false) String pid,Integer page,Integer limit){
-        return organizationService.getOrgListByPId(pid,page,limit);
+    public Object getOrgListByPId(@RequestParam(value = "pid", required = false) String pid, Integer page, Integer limit) {
+        return organizationService.getOrgListByPId(pid, page, limit);
     }
 
     @GetMapping("/getOrgById")
-    public FormResponse<Organization> getOrgById(@RequestParam(value = "id",required = false) String id){
+    public FormResponse<Organization> getOrgById(@RequestParam(value = "id", required = false) String id) {
         Organization organization = organizationService.getOrgById(id);
         FormResponse formResponse = new FormResponse(organization);
         return formResponse;
     }
 
     @PostMapping("/deleteById")
-    public FormResponse<String> deleteById(@RequestParam(value = "id",required = false) String id){
+    public FormResponse<String> deleteById(@RequestParam(value = "id", required = false) String id) {
         organizationService.delete(id);
         FormResponse formResponse = new FormResponse("删除成功！");
         return formResponse;
@@ -58,10 +58,10 @@ public class OrganizationAPI {
 
 
     @PostMapping("/saveOrUpdate")
-    public FormResponse<String> save(Organization organization){
-        if(StringUtils.isNotBlank(organization.getId())){
+    public FormResponse<String> save(Organization organization) {
+        if (StringUtils.isNotBlank(organization.getId())) {
             organizationService.edit(organization);
-        }else{
+        } else {
             organizationService.save(organization);
         }
         FormResponse formResponse = new FormResponse("保存成功！");

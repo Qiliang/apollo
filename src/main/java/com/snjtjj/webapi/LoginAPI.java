@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginAPI {
-@PostMapping("/failure")
-    public String failure(){
+    @PostMapping("/failure")
+    public String failure() {
         return "{'message':'error'}";
     }
 }

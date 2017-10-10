@@ -4,6 +4,7 @@ import com.snjtjj.entity.Menu;
 import com.snjtjj.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -11,23 +12,24 @@ import java.util.List;
 public class MenuAPI {
     @Autowired
     private MenuService menuService;
+
     @GetMapping
-    public List<Menu> menu(){
+    public List<Menu> menu() {
         return menuService.getMenuList();
     }
 
     @GetMapping("/menuByUserID")
-    public List<Menu> menuByUserID(String userId){
+    public List<Menu> menuByUserID(String userId) {
         return menuService.getMenuListByUserId(userId);
     }
 
     @GetMapping("/menuTreeByUserID")
-    public List<Menu> menuTreeByUserID(String userId){
+    public List<Menu> menuTreeByUserID(String userId) {
         return menuService.getMenuTreeByUserId(userId);
     }
 
     @GetMapping("/menuByRoleId")
-    public List<Menu> menuByRoleId(String roleId){
+    public List<Menu> menuByRoleId(String roleId) {
         return menuService.getMenuListByRoleId(roleId);
     }
 

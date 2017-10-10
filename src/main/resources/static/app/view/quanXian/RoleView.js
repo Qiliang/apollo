@@ -92,6 +92,8 @@ Ext.define('Kits.view.quanXian.RoleView', {
                 form.submit({
                     url: '/role/saveOrUpdate',
                     method: 'POST',
+                    waitMsg:'提交中，请稍后...',
+                    waitTitle:'提示',
                     params: {
                         menuListJson: Ext.JSON.encode(menuList)
                     },

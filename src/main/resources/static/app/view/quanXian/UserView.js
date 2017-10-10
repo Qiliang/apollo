@@ -157,6 +157,8 @@ Ext.define('Kits.view.quanXian.UserView', {
                 form.submit({
                     url: '/users/saveOrUpdate',
                     method: 'POST',
+                    waitMsg:'提交中，请稍后...',
+                    waitTitle:'提示',
                     success: function (form, action) {
                         Ext.Msg.alert('成功！', action.result.data);
                         callBack();
