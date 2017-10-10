@@ -471,6 +471,18 @@ Ext.define('Kits.view.Menu', {
                     ]
                 },
                 {
+                    iconCls: 'x-fa fa-folder-o',
+                    text: '手机app内容管理',
+                    children: [
+                        {
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '内容管理',
+                            cmp: 'Kits.view.shouJIDuan.WenZhangList'
+                        }
+                    ]
+                },
+                {
                     iconCls: 'x-fa fa-send-o',
                     text: '消息通知',
                     cmp: 'Kits.view.xiTong.Message',

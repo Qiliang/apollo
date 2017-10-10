@@ -12,7 +12,8 @@ Ext.define('Kits.Application', {
         'Kits.override.Connection',
         'Kits.view.Main',
         'Kits.view.Login',
-        'Kits.ux.ComboBoxTree'
+        'Kits.ux.ComboBoxTree',
+        'Kits.ux.BaseTextArea'
     ],
 
     // controllers: [

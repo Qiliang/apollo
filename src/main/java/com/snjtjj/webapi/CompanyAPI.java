@@ -74,7 +74,7 @@ public class CompanyAPI {
         res.setContentType("application/octet-stream");
         res.setHeader("Content-Disposition", "attachment;filename=" + fileName);
         try {
-            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();;
+            String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
             path = path+"//export_model//qyxx.zip";
             res.getOutputStream().write(FileUtils.readFileToByteArray(new File(path)));
         } catch (IOException e) {
