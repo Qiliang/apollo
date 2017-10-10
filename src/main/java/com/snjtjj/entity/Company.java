@@ -5,7 +5,6 @@ import com.snjtjj.entity.base.DataEntity;
 import java.util.Date;
 
 public class Company extends DataEntity<Company> {
-
     private String shxydm;
 
     private String zzjgdm;
@@ -55,6 +54,8 @@ public class Company extends DataEntity<Company> {
     private String email;
 
     private String tbrName;
+
+    private String qyyyzt;
 
     public String getShxydm() {
         return shxydm;
@@ -224,6 +225,7 @@ public class Company extends DataEntity<Company> {
         this.fromType = fromType == null ? null : fromType.trim();
     }
 
+
     public String getMobile() {
         return mobile;
     }
@@ -254,5 +256,13 @@ public class Company extends DataEntity<Company> {
 
     public void setTbrName(String tbrName) {
         this.tbrName = tbrName == null ? null : tbrName.trim();
+    }
+
+    public String getQyyyzt() {
+        return qyyyzt;
+    }
+
+    public void setQyyyzt(String qyyyzt) {
+        this.qyyyzt = qyyyzt == null ? null : qyyyzt.trim();
     }
 }

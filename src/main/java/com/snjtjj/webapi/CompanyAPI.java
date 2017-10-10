@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/api/company")
 public class CompanyAPI {
     @Autowired
     private CompanyService companyService;

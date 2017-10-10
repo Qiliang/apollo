@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/org")
+@RequestMapping("/api/org")
 public class OrganizationAPI {
     @Autowired
     private OrganizationService organizationService;

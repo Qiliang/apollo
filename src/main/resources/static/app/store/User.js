@@ -3,7 +3,7 @@ Ext.define('Kits.store.User', {
     model: 'Kits.model.User',
     proxy: {
         type: 'ajax',
-        url: '/users',
+        url: '/api/users',
         method:'GET',
         reader: {
             type: 'json',

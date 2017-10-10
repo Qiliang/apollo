@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/area")
+@RequestMapping("/api/area")
 public class AreaAPI {
     @Autowired
     private AreaService areaService;

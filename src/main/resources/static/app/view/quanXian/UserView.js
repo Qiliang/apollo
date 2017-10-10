@@ -13,11 +13,12 @@ Ext.define('Kits.view.quanXian.UserView', {
         afterrender: function (me) {
             var btn = this;
             if (this.paraId) {
+                this.getComponent("loginName").setReadOnly(true);
                 me.remove(this.getComponent("confirmPass"));
                 me.remove(this.getComponent("password"));
                 this.getComponent('orgId').store.addAfterListener("load", function () {
                     btn.load({
-                        url: '/users/getUserById',
+                        url: '/api/users/getUserById',
                         method: 'get',
                         params: {id: btn.paraId},
                         success: function (form, action) {
@@ -39,6 +40,7 @@ Ext.define('Kits.view.quanXian.UserView', {
                     });
                 });
             } else {
+                this.getComponent("loginName").setReadOnly(false);
                 btn.getComponent('role').getStore().load();
                 if (this.paraOrgId) {
                     this.getComponent('orgId').setDefaultValue(this.paraOrgId);
@@ -54,6 +56,7 @@ Ext.define('Kits.view.quanXian.UserView', {
             allowBlank: false,
             fieldLabel: '帐号',
             name: 'loginName',
+            itemId:'loginName',
             blankText: '帐号为必填项',
             validator: function () {
                 return this.textValid;
@@ -65,7 +68,7 @@ Ext.define('Kits.view.quanXian.UserView', {
                     if (!isFirstLoad) {
                         debugger
                         Ext.Ajax.request({
-                            url: '/users/validate',
+                            url: '/api/users/validate',
                             method: 'GET',
                             params: {loginName: newValue},
                             scope: textfield,
@@ -124,7 +127,7 @@ Ext.define('Kits.view.quanXian.UserView', {
             fieldLabel: '所属组织',
             editable: false,
             emptyText: '请选择所属组织',
-            url: '/org'
+            url: '/api/org'
         }, {
             xtype: 'combobox',
             itemId: 'role',
@@ -138,7 +141,7 @@ Ext.define('Kits.view.quanXian.UserView', {
                 xtype: 'Ext.data.Store',
                 proxy: {
                     type: 'ajax',
-                    url: '/role/getAllRoleList',
+                    url: '/api/role/getAllRoleList',
                     reader: {
                         type: 'json'
                     }
@@ -155,7 +158,7 @@ Ext.define('Kits.view.quanXian.UserView', {
             var callBack = this.up('form').callBack;
             if (form.isValid()) {
                 form.submit({
-                    url: '/users/saveOrUpdate',
+                    url: '/api/users/saveOrUpdate',
                     method: 'POST',
                     waitMsg:'提交中，请稍后...',
                     waitTitle:'提示',

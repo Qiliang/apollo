@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserAPI {
     @Autowired
     private OrganizationService organizationService;

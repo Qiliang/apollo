@@ -31,7 +31,7 @@ Ext.define('Kits.view.Login', {
                     panel.mask();
                     Ext.Ajax.request({
                         method: 'POST',
-                        url: '/auth',
+                        url: '/api/auth',
                         params:{
                             // '${_csrf.parameterName}':'${_csrf.token}',
                             username:panel.down('textfield[name=user]').getValue(),

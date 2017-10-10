@@ -20,10 +20,10 @@ Ext.define('Kits.view.quanXian.BranchView', {
         afterrender: function (me) {
             var btn = this;
             if (this.paraId) {
-                this.getComponent('pid').setUrl('/org?excludeId='+this.paraId);
+                this.getComponent('pid').setUrl('/api/org?excludeId='+this.paraId);
                 this.getComponent('pid').store.addAfterListener("load",function(){
                     btn.load({
-                        url: '/org/getOrgById',
+                        url: '/api/org/getOrgById',
                         method: 'get',
                         params: {id: btn.paraId},
                         success: function(form, action) {
@@ -51,7 +51,7 @@ Ext.define('Kits.view.quanXian.BranchView', {
     },
     initComponent: function() {
         var me = this;
-        me.items[1].url='/org?excludeId='+this.paraId;
+        me.items[1].url='/api/org?excludeId='+this.paraId;
         me.callParent();
     },
 
@@ -65,7 +65,7 @@ Ext.define('Kits.view.quanXian.BranchView', {
             fieldLabel: '所属组织',
             editable: false,
             emptyText: '请选择所属组织',
-            url:'/org'
+            url:'/api/org'
         },
         {
             xtype: 'textfield',
@@ -94,7 +94,7 @@ Ext.define('Kits.view.quanXian.BranchView', {
             var callBack = this.up('form').callBack;
             if (form.isValid()) {
                 form.submit({
-                    url: '/org/saveOrUpdate',
+                    url: '/api/org/saveOrUpdate',
                     method: 'POST',
                     waitMsg:'提交中，请稍后...',
                     waitTitle:'提示',

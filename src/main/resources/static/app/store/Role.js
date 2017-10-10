@@ -2,7 +2,7 @@ Ext.define('Kits.store.Role', {
     extend: 'Ext.data.Store',
     proxy: {
         type: 'ajax',
-        url: '/role/getRoleList',
+        url: '/api/role/getRoleList',
         reader: {
             type: 'json',
             rootProperty: 'list',

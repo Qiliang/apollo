@@ -13,8 +13,8 @@ jwt:
   expiration: 604800
   route:
     authentication:
-      path: auth
-      refresh: refresh
+      path: api/auth
+      refresh: api/refresh
 
 #logging:
 #  level:

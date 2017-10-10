@@ -41,7 +41,7 @@ public class UserService {
             criteria.andOrgIdEqualTo(orgId);
         }
         if (StringUtils.isNotBlank(displayName)) {
-            criteria.andDisplayNameLike(displayName);
+            criteria.andDisplayNameLike("%"+displayName+"%");
         }
         PageHelper.startPage(page, limit);
         List<User> list = userMapper.selectByExample(userExample);

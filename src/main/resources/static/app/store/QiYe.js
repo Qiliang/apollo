@@ -3,7 +3,7 @@ Ext.define('Kits.store.QiYe', {
     model: 'Kits.model.QiYe',
     proxy: {
         type: 'ajax',
-        url: '/company',
+        url: '/api/company',
         method: 'GET',
         reader: {
             type: 'json',

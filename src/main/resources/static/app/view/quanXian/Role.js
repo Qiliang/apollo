@@ -97,7 +97,7 @@ Ext.define('Kits.view.quanXian.Role', {
                     Ext.Msg.confirm('确认', '确认删除?', function (r) {
                         if (r == 'yes') {
                             Ext.Ajax.request({
-                                url: '/role/deleteById',
+                                url: '/api/role/deleteById',
                                 params: { id: record.data.id},
                                 method: 'POST',
                                 success: function (response, options) {

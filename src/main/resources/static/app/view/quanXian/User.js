@@ -159,7 +159,7 @@ Ext.define('Kits.view.quanXian.User', {
                             Ext.Msg.confirm('确认', '确认删除?', function (r) {
                                 if (r == 'yes') {
                                     Ext.Ajax.request({
-                                        url: '/users/deleteById',
+                                        url: '/api/users/deleteById',
                                         params: { id: record.data.id},
                                         method: 'POST',
                                         success: function (response, options) {

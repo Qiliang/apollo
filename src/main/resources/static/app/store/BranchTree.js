@@ -2,7 +2,7 @@ Ext.define('Kits.store.BranchTree', {
     extend: 'Ext.data.TreeStore',
     proxy: {
         type: 'ajax',
-        url: '/org',
+        url: '/api/org',
         method:'get'
     },
     root: {

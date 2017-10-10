@@ -2,7 +2,7 @@ Ext.define('Kits.store.RoleMenu', {
     extend: 'Ext.data.Store',
     proxy: {
         type: 'ajax',
-        url: '/menu/menuByRoleId',
+        url: '/api/menu/menuByRoleId',
         method:'GET'
 
     },

@@ -68,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/theme-triton/**",
                         "/company/downloadModel"
                 ).permitAll()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated().and()
                 .headers().frameOptions().disable();
         // Custom JWT based security filter

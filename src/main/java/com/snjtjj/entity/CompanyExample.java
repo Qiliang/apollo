@@ -2254,6 +2254,76 @@ public class CompanyExample {
             addCriterion("tbr_name not between", value1, value2, "tbrName");
             return (Criteria) this;
         }
+
+        public Criteria andQyyyztIsNull() {
+            addCriterion("qyyyzt is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztIsNotNull() {
+            addCriterion("qyyyzt is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztEqualTo(String value) {
+            addCriterion("qyyyzt =", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztNotEqualTo(String value) {
+            addCriterion("qyyyzt <>", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztGreaterThan(String value) {
+            addCriterion("qyyyzt >", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztGreaterThanOrEqualTo(String value) {
+            addCriterion("qyyyzt >=", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztLessThan(String value) {
+            addCriterion("qyyyzt <", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztLessThanOrEqualTo(String value) {
+            addCriterion("qyyyzt <=", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztLike(String value) {
+            addCriterion("qyyyzt like", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztNotLike(String value) {
+            addCriterion("qyyyzt not like", value, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztIn(List<String> values) {
+            addCriterion("qyyyzt in", values, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztNotIn(List<String> values) {
+            addCriterion("qyyyzt not in", values, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztBetween(String value1, String value2) {
+            addCriterion("qyyyzt between", value1, value2, "qyyyzt");
+            return (Criteria) this;
+        }
+
+        public Criteria andQyyyztNotBetween(String value1, String value2) {
+            addCriterion("qyyyzt not between", value1, value2, "qyyyzt");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

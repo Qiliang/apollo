@@ -36,17 +36,19 @@ Ext.define('Kits.view.diaoChaDuiXiang.importView', {
             text: '导入',
             handler: function (e) {
                 var form = this.up('form').getForm();
+                var callBack = this.up('form').callBack;
                 if (form.isValid()) {
                     form.submit({
-                        url:'/company/uploadFile',
+                        url:'/api/company/uploadFile',
                         method:'POST',
                         waitMsg:'提交中，请稍后...',
                         waitTitle:'提示',
                         success: function (form, action) {
-                            Ext.Msg.alert('Success', action.result.msg);
+                            Ext.Msg.alert('成功！', action.result.data);
+                            callBack();
                         },
                         failure: function (form, action) {
-                            Ext.Msg.alert('Failed', action.result.msg);
+                            Ext.Msg.alert('失败！', action.result.data);
                         }
                     });
                 }
@@ -54,7 +56,7 @@ Ext.define('Kits.view.diaoChaDuiXiang.importView', {
         }, {
             text:'下载模板',
             handler:function(e){
-                window.open("/company/downloadModel");
+                window.open("/api/company/downloadModel");
             }
         }
     ]

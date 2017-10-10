@@ -62,15 +62,21 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
             xtype: 'button',
             text: '导入',
             handler: function () {
-                Ext.create('Ext.window.Window', {
+                var btn = this;
+                var win = Ext.create('Ext.window.Window', {
                     title: '添加直报',
                     height: 200,
                     width: 400,
                     layout: 'fit',
                     modal: true,
                     closeToolText: '关闭',
-                    items: Ext.create('Kits.view.diaoChaDuiXiang.importView', {})
-                }).show();
+                    items: Ext.create('Kits.view.diaoChaDuiXiang.importView', {
+                        callBack: function () {
+                            btn.up('grid').getStore().load();
+                            win.close();
+                    }})
+                });
+                win.show();
             }
         }],
     bbar: {
@@ -84,7 +90,8 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
         },
         {
             text: '详细名称',
-            dataIndex: 'xxmc'
+            dataIndex: 'xxmc',
+            width:350
         },
         {
             text: '组织机构代码',
@@ -92,7 +99,8 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
         },
         {
             text: '所在地址',
-            dataIndex: 'xxdz'
+            dataIndex: 'xxdz',
+            width:250
         },
         {
             text: '行业类别代码',
@@ -136,7 +144,7 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
                     var btn = this;
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
                         Ext.Ajax.request({
-                            url: '/company/deleteById',
+                            url: '/api/company/deleteById',
                             params: { id: record.data.id},
                             heardes:{a:'1111'},
                             method: 'POST',

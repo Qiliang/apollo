@@ -33,6 +33,7 @@
     <result column="fzr_mobile" property="fzrMobile" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="tbr_name" property="tbrName" jdbcType="VARCHAR" />
+    <result column="qyyyzt" property="qyyyzt" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -95,7 +96,8 @@
   <sql id="Base_Column_List" >
     id, shxydm, zzjgdm, xxmc, fddbr, xzqhdm, xxdz, ctqh, gddh, hydm_11, zyywhd_11, djzclx, 
     kynf, kyyf, zt, tjjdm, dwlb, jglx, gsfrxzqhdm, gsfrxxmc, gsfrxxdz, from_type, create_by, 
-    create_date, update_by, update_date, del_flag, mobile, fzr_mobile, email, tbr_name
+    create_date, update_by, update_date, del_flag, mobile, fzr_mobile, email, tbr_name, 
+    qyyyzt
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.CompanyExample" >
     select
@@ -137,7 +139,8 @@
       gsfrxxdz, from_type, create_by, 
       create_date, update_by, update_date, 
       del_flag, mobile, fzr_mobile, 
-      email, tbr_name)
+      email, tbr_name, qyyyzt
+      )
     values (#{id,jdbcType=VARCHAR}, #{shxydm,jdbcType=VARCHAR}, #{zzjgdm,jdbcType=VARCHAR}, 
       #{xxmc,jdbcType=VARCHAR}, #{fddbr,jdbcType=VARCHAR}, #{xzqhdm,jdbcType=VARCHAR}, 
       #{xxdz,jdbcType=VARCHAR}, #{ctqh,jdbcType=VARCHAR}, #{gddh,jdbcType=VARCHAR}, #{hydm11,jdbcType=VARCHAR}, 
@@ -147,7 +150,8 @@
       #{gsfrxxdz,jdbcType=VARCHAR}, #{fromType,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
       #{delFlag,jdbcType=CHAR}, #{mobile,jdbcType=VARCHAR}, #{fzrMobile,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{tbrName,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{tbrName,jdbcType=VARCHAR}, #{qyyyzt,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.Company" >
     insert into company
@@ -245,6 +249,9 @@
       <if test="tbrName != null" >
         tbr_name,
       </if>
+      <if test="qyyyzt != null" >
+        qyyyzt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -339,6 +346,9 @@
       </if>
       <if test="tbrName != null" >
         #{tbrName,jdbcType=VARCHAR},
+      </if>
+      <if test="qyyyzt != null" >
+        #{qyyyzt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -444,6 +454,9 @@
       <if test="record.tbrName != null" >
         tbr_name = #{record.tbrName,jdbcType=VARCHAR},
       </if>
+      <if test="record.qyyyzt != null" >
+        qyyyzt = #{record.qyyyzt,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -481,7 +494,8 @@
       mobile = #{record.mobile,jdbcType=VARCHAR},
       fzr_mobile = #{record.fzrMobile,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      tbr_name = #{record.tbrName,jdbcType=VARCHAR}
+      tbr_name = #{record.tbrName,jdbcType=VARCHAR},
+      qyyyzt = #{record.qyyyzt,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -579,6 +593,9 @@
       <if test="tbrName != null" >
         tbr_name = #{tbrName,jdbcType=VARCHAR},
       </if>
+      <if test="qyyyzt != null" >
+        qyyyzt = #{qyyyzt,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -613,7 +630,8 @@
       mobile = #{mobile,jdbcType=VARCHAR},
       fzr_mobile = #{fzrMobile,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      tbr_name = #{tbrName,jdbcType=VARCHAR}
+      tbr_name = #{tbrName,jdbcType=VARCHAR},
+      qyyyzt = #{qyyyzt,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

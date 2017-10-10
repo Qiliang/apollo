@@ -2,7 +2,7 @@ Ext.define('Kits.store.Menu', {
     extend: 'Ext.data.Store',
     proxy: {
         type: 'ajax',
-        url: '/menu',
+        url: '/api/menu',
         method:'GET'
 
     },

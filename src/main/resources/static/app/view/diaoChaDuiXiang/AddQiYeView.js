@@ -21,7 +21,7 @@ Ext.define('Kits.view.diaoChaDuiXiang.AddQiYeView', {
             var btn = this;
             if (this.paraId) {
                 btn.load({
-                    url: '/company/getCompanyById',
+                    url: '/api/company/getCompanyById',
                     method: 'get',
                     params: {id: btn.paraId},
                     failure: function (form, action) {
@@ -69,41 +69,32 @@ Ext.define('Kits.view.diaoChaDuiXiang.AddQiYeView', {
             xtype: 'textfield',
             name: 'hydm11',
             fieldLabel: '行业类别代码',
-            allowBlank: false,
-            blankText: '行业类别代码为必填项',
             maxLength: 100
         },
         {
             xtype: 'textfield',
             name: 'djzclx',
             fieldLabel: '登记注册类别',
-            allowBlank: false,
-            blankText: '登记注册类别为必填项',
             maxLength: 100
         },
         {
             xtype: 'textfield',
             name: 'mobile',
             fieldLabel: '移动电话',
-            allowBlank: false,
-            blankText: '移动电话为必填项',
             vtype: 'mobile'
         },
         {
             xtype: 'textfield',
             name: 'fzrMobile',
             fieldLabel: '法定代表人（单位负责人）移动电话',
-            allowBlank: false,
-            vtype: 'mobile',
-            blankText: '法定代表人（单位负责人）移动电话为必填项'
+            vtype: 'mobile'
         },
         {
             xtype: 'textfield',
             name: 'email',
             fieldLabel: '电子信箱',
-            allowBlank: false,
             vtype: 'email',
-            blankText: '电子信箱为必填项', maxLength: 100
+            maxLength: 100
         },
         {xtype: 'textfield', name: 'tbrName', fieldLabel: '填报人姓名', allowBlank: false, blankText: '填报人姓名为必填项'}
     ],
@@ -114,7 +105,7 @@ Ext.define('Kits.view.diaoChaDuiXiang.AddQiYeView', {
             var callBack = this.up('form').callBack;
             if (form.isValid()) {
                 form.submit({
-                    url: '/company/saveOrUpdate',
+                    url: '/api/company/saveOrUpdate',
                     method: 'POST',
                     waitMsg: '提交中，请稍后...',
                     waitTitle: '提示',

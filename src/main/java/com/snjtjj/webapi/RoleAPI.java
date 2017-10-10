@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/api/role")
 public class RoleAPI {
     private ObjectMapper objectMapper = new ObjectMapper();
     @Autowired

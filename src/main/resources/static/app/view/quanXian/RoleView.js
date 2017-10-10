@@ -6,7 +6,7 @@ Ext.define('Kits.view.quanXian.RoleView', {
         afterrender: function (me) {
             if (this.paraId) {
                 this.load({
-                    url: '/role/getRoleById',
+                    url: '/api/role/getRoleById',
                     method: 'get',
                     params: {id: this.paraId},
                     failure: function (form, action) {
@@ -90,7 +90,7 @@ Ext.define('Kits.view.quanXian.RoleView', {
             var callBack = this.up('form').callBack;
             if (form.isValid()) {
                 form.submit({
-                    url: '/role/saveOrUpdate',
+                    url: '/api/role/saveOrUpdate',
                     method: 'POST',
                     waitMsg:'提交中，请稍后...',
                     waitTitle:'提示',
