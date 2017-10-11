@@ -27,24 +27,24 @@ Ext.define('Kits.view.Login', {
             {
                 text: '进入',
                 handler: function () {
-                    var panel = this.up('panel');
-                    panel.mask();
+                    var viewport = this.up('viewport');
+
                     Ext.Ajax.request({
                         method: 'POST',
                         url: '/api/auth',
                         params:{
-                            // '${_csrf.parameterName}':'${_csrf.token}',
-                            username:panel.down('textfield[name=user]').getValue(),
-                            password:panel.down('textfield[name=pass]').getValue(),
+                            username:viewport.down('textfield[name=user]').getValue(),
+                            password:viewport.down('textfield[name=pass]').getValue(),
                         },
                         callback: function (options, success, response) {
-                            panel.unmask();
                             if (!success) {
+
                                 Ext.toast({
-                                    html: response.responseText,
+                                    html: '用户名或密码错误',
                                     align: 't'
                                 });
                             } else {
+                                viewport.mask();
                                 var res = JSON.parse(response.responseText);
                                 Ext.util.Cookies.set('token', res.token);
                                 window.location.reload();
