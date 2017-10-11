@@ -93,6 +93,8 @@ public class UserService {
         if (StringUtils.isNotBlank(user.getLoginPassword())) {
             user.setLoginPassword(new BCryptPasswordEncoder().encode(user.getLoginPassword()));
             user.setLastPasswordResetDate(new Date());
+        }else{
+            user.setLoginPassword(null);
         }
         userMapper.updateByPrimaryKeySelective(user);
         //删除所有的用户角色，并且重新插入

@@ -14,8 +14,10 @@ Ext.define('Kits.view.quanXian.UserView', {
             var btn = this;
             if (this.paraId) {
                 this.getComponent("loginName").setReadOnly(true);
-                me.remove(this.getComponent("confirmPass"));
-                me.remove(this.getComponent("password"));
+                this.getComponent("confirmPass").allowBlank=true;
+                this.getComponent("password").allowBlank=true;
+                // me.remove(this.getComponent("confirmPass"));
+                // me.remove(this.getComponent("password"));
                 this.getComponent('orgId').store.addAfterListener("load", function () {
                     btn.load({
                         url: '/api/users/getUserById',
@@ -66,7 +68,6 @@ Ext.define('Kits.view.quanXian.UserView', {
                     var isFirstLoad = textfield.up('panel').isFirstLoad;
                     var oldLoginName = textfield.up('panel').getComponent("oldLoginName").getValue();
                     if (!isFirstLoad) {
-                        debugger
                         Ext.Ajax.request({
                             url: '/api/users/validate',
                             method: 'GET',

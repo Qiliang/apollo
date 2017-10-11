@@ -1,23 +1,15 @@
 package com.snjtjj.webapi;
 
-import com.snjtjj.entity.Organization;
 import com.snjtjj.entity.User;
-import com.snjtjj.service.OrganizationService;
 import com.snjtjj.service.UserService;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.FormResponse;
-import com.snjtjj.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserAPI {
-    @Autowired
-    private OrganizationService organizationService;
 
     @Autowired
     private UserService userService;
