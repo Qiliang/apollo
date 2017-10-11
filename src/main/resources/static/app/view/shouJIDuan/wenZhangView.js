@@ -16,7 +16,27 @@ Ext.define('Kits.view.shouJIDuan.wenZhangView', {
     defaults: {
         bodyPadding: 10
     },
+    listeners: {
+        afterrender: function (me) {
+            var btn = this;
+            if (this.paraId) {
+                btn.load({
+                    url: '/api/content/getContentById',
+                    method: 'get',
+                    params: {id: btn.paraId},
+                    success: function (form, action) {
+                        var res = JSON.parse(action.response.responseText);
+                        btn.getComponent('content').editor.setData(res.data.content);
+                    },
+                    failure: function (form, action) {
+                        Ext.Msg.alert('提示', "加载失败");
+                    }
+                });
+            }
+        }
+    },
     items: [
+        {xtype: 'hiddenfield', name: 'id'},
         {
             xtype: 'textfield',
             fieldLabel: '标题',
@@ -32,10 +52,13 @@ Ext.define('Kits.view.shouJIDuan.wenZhangView', {
             allowBlank: false,
             blankText: '简介不能为空'
         }, {
+            itemId:'content',
             xtype: 'BaseTextArea',
             fieldLabel: '内容',
             width: '95%',
-            name:'content'
+            name:'content',
+            allowBlank: false,
+            blankText: '内容不能为空'
         }
 
     ],

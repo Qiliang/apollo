@@ -146,7 +146,6 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
                         Ext.Ajax.request({
                             url: '/api/company/deleteById',
                             params: { id: record.data.id},
-                            heardes:{a:'1111'},
                             method: 'POST',
 
                             success: function (response, options) {

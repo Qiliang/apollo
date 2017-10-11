@@ -1,7 +1,7 @@
 Ext.define('Kits.view.shouJIDuan.WenZhangList', {
     extend: 'Ext.grid.Panel',
     title: '文章列表',
-    store: Ext.create('Kits.store.QiYe'),
+    store: Ext.create('Kits.store.WenZhang'),
     tools: [
         {
             type: 'refresh',
@@ -26,8 +26,7 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
                 var grid = this.up('grid');
                 grid.getStore().load({
                     params: {
-                        xxmc: Ext.getCmp('xxmc').getValue(),
-                        zzjgdm: Ext.getCmp('zzjgdm').getValue()
+                        title: Ext.getCmp('title').getValue()
                     }
                 });
             }
@@ -37,23 +36,14 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
             handler: function () {
                 var center = Ext.getCmp('center');
                 center.removeAll(true);
-                center.add(Ext.create('Kits.view.shouJIDuan.wenZhangView'));
-                // var btn = this;
-                // var win = Ext.create('Ext.window.Window', {
-                //     title: '添加文章',
-                //     height: 400,
-                //     width: 600,
-                //     layout: 'fit',
-                //     modal: true,
-                //     closeToolText: '关闭',
-                //     items: Ext.create('Kits.view.shouJIDuan.wenZhangView', {
-                //         callBack: function () {
-                //             btn.up('grid').getStore().load();
-                //             win.close();
-                //         }
-                //     })
-                // });
-                // win.show();
+                center.add(Ext.create('Kits.view.shouJIDuan.wenZhangView', {
+                    callBack: function () {
+                        center.removeAll(true);
+                        var WenZhangList = Ext.create('Kits.view.shouJIDuan.WenZhangList');
+                        center.add(WenZhangList);
+                        WenZhangList.getStore().load();
+                    }
+                }));
             }
         }],
     bbar: {
@@ -67,17 +57,18 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
         },
         {
             text: '标题',
-            dataIndex: 'xxmc',
-            width:150
+            dataIndex: 'title',
+            width: 150
         },
         {
             text: '简介',
             dataIndex: 'introduction',
-            width:350
+            width: 350
         },
         {
             text: '发布时间',
-            dataIndex: 'createDate'
+            dataIndex: 'createDate',
+            width: 150
         },
         {
             text: '操作',
@@ -87,24 +78,17 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
                 iconCls: 'x-fa fa-pencil-square-o',
                 tooltip: '修改',
                 handler: function (view, recIndex, cellIndex, item, e, record) {
-                    var btn = this;
-                    var win = Ext.create('Ext.window.Window', {
-                        title: '修改',
-                        height: 400,
-                        width: 600,
-                        layout: 'fit',
-                        closeToolText: '关闭',
-                        // closeAction:'hide',
-                        modal: true,
-                        items: Ext.create('Kits.view.shouJIDuan.wenZhangView',{
-                            paraId:record.data.id,
-                            callBack:function(){
-                                btn.up('grid').getStore().reload();
-                                win.close();
-                            }})
-                    })
-                    win.show();
-                    // alert("查看 " + rec.get('id'));
+                    var center = Ext.getCmp('center');
+                    center.removeAll(true);
+                    center.add(Ext.create('Kits.view.shouJIDuan.wenZhangView', {
+                        paraId: record.data.id,
+                        callBack: function () {
+                            center.removeAll(true);
+                            var WenZhangList = Ext.create('Kits.view.shouJIDuan.WenZhangList');
+                            center.add(WenZhangList);
+                            WenZhangList.getStore().reload();
+                        }
+                    }));
                 }
             }, '-', {
                 iconCls: 'x-fa fa-trash-o',
@@ -114,8 +98,7 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
                         Ext.Ajax.request({
                             url: '/api/company/deleteById',
-                            params: { id: record.data.id},
-                            heardes:{a:'1111'},
+                            params: {id: record.data.id},
                             method: 'POST',
 
                             success: function (response, options) {

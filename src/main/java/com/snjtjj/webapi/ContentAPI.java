@@ -1,14 +1,13 @@
 package com.snjtjj.webapi;
 
 import com.github.pagehelper.PageInfo;
-import com.snjtjj.entity.Company;
-import com.snjtjj.service.CompanyService;
+import com.snjtjj.entity.Content;
+import com.snjtjj.service.ContentService;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.FormResponse;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,17 +20,36 @@ import java.io.PrintWriter;
 @RestController
 @RequestMapping("/api/content")
 public class ContentAPI {
-@Value("upload.img.path")
-private String uploadPath;
+    @Value("upload.img.path")
+    private String uploadPath;
+    @Autowired
+    private ContentService contentService;
+
+    @GetMapping
+    public PageInfo company(String title,Integer page, Integer limit) {
+        return contentService.allContent(title, page, limit);
+    }
 
     @PostMapping("/saveOrUpdate")
-    public FormResponse<String> save(HttpServletRequest request) {
+    public FormResponse<String> save(Content content) {
+        if (StringUtils.isNotBlank(content.getId())) {
+            contentService.edit(content);
+        } else {
+            contentService.save(content);
+        }
         FormResponse formResponse = new FormResponse("保存成功！");
         return formResponse;
     }
 
+    @GetMapping("/getContentById")
+    public FormResponse<Content> getCompanyById(@RequestParam(value = "id", required = false) String id) {
+        Content company = contentService.getContentById(id);
+        FormResponse<Content> formResponse = new FormResponse(company);
+        return formResponse;
+    }
+
     @PostMapping("/uploadFile")
-    public void uploadFile(@RequestParam("upload") MultipartFile upload,HttpServletRequest request,HttpServletResponse response) throws IOException {
+    public void uploadFile(@RequestParam("upload") MultipartFile upload, HttpServletRequest request, HttpServletResponse response) throws IOException {
         boolean b = true;
         response.setCharacterEncoding("utf-8");
         String fullContentType = "text/html;charset=UTF-8";
@@ -68,7 +86,7 @@ private String uploadPath;
             b = false;
         }
 
-        if(b) {
+        if (b) {
             InputStream is = upload.getInputStream();
             //图片上传路径
             String fileName = java.util.UUID.randomUUID().toString(); // 采用时间+UUID的方式随即命名
@@ -96,10 +114,10 @@ private String uploadPath;
     }
 
     @RequestMapping(value = "/showImg", method = RequestMethod.GET)
-    public void showImg(HttpServletRequest req,HttpServletResponse res) {
+    public void showImg(HttpServletRequest req, HttpServletResponse res) {
         res.setHeader("content-type", "image");
         try {
-            String path = uploadPath+"/"+req.getParameter("fileName");
+            String path = uploadPath + "/" + req.getParameter("fileName");
             res.getOutputStream().write(FileUtils.readFileToByteArray(new File(path)));
         } catch (IOException e) {
             e.printStackTrace();
