@@ -26,7 +26,7 @@ public class ContentAPI {
     private ContentService contentService;
 
     @GetMapping
-    public PageInfo company(String title,Integer page, Integer limit) {
+    public PageInfo content(String title,Integer page, Integer limit) {
         return contentService.allContent(title, page, limit);
     }
 

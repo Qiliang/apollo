@@ -2,6 +2,7 @@ Ext.define('Kits.view.tables.01', {
     extend: 'Kits.view.tables.Base',
     title: '农 业 生 产 条 件（一）',
     tableid: '鄂农年01表',
+    xtype:'tables01',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
