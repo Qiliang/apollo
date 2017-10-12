@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="/Users/bozhou/IdeaProjects/apollo/mysql-connector-java-5.1.44-bin.jar" />
+    <classPathEntry location="/Users/hadoop/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar" />
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -47,7 +47,7 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="company"></table>
+        <table schema="" tableName="rpt_setting"></table>
         <!--<table schema="" tableName="success_killed"></table>-->
     </context>
 </generatorConfiguration>
