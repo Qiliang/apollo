@@ -24,6 +24,10 @@ public class RptSettingAPI {
         return rptSettingService.findSingleTable(tabcode,typeid,true);
     }
 
+    @GetMapping("/build/{tabcode}")
+    public FormResponse<String> buildTemplate(@PathVariable("tabcode") String tabcode){
+        return new FormResponse("保存成功！");
+    }
     @PostMapping("/table/put")
     public FormResponse<String>  putList(@RequestBody List<RptSetting> list){
         rptSettingService.putSingleTable(list);

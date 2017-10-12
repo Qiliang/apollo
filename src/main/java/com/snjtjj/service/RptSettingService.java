@@ -1,28 +1,30 @@
 package com.snjtjj.service;
 
+import com.csvreader.CsvReader;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.snjtjj.entity.RptCollect;
-import com.snjtjj.entity.RptCollectExample;
 import com.snjtjj.entity.RptSetting;
 import com.snjtjj.entity.RptSettingExample;
-import com.snjtjj.mapper.RptCollectMapper;
+import com.snjtjj.entity.RptTab;
+import com.snjtjj.entity.RptTabExample;
 import com.snjtjj.mapper.RptSettingMapper;
+import com.snjtjj.mapper.RptTabMapper;
 import com.snjtjj.utils.IdGen;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.collections4.map.HashedMap;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.util.CellRangeAddress;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class RptSettingService {
@@ -30,7 +32,19 @@ public class RptSettingService {
     @Autowired
     private RptSettingMapper rptSettingMapper;
 
+    @Autowired
+    private RptTabMapper rptTabMapper;
+
     private List<Column> columnsList = new ArrayList<>();
+
+    private static String buildPath(String path){
+        File directory = new File("");
+        String fullPath = null;
+        try{
+            fullPath = directory.getAbsolutePath()+"/"+path;
+        }catch (Exception e){}
+        return fullPath;
+    }
 
     private Column findColumn(List<Column> columns,String id){
         for(Column column : columns){
@@ -205,6 +219,74 @@ public class RptSettingService {
                 }
             }
         }
+    }
+
+    /**
+     * 生成汇总表单
+     * @param tab
+     */
+    private void buildTotalTemplate(RptTab tab){
+        RptSettingExample settingExample = new RptSettingExample();
+        settingExample.createCriteria()
+                .andTabcodeEqualTo(tab.getId())
+                .andTypeidEqualTo(0);
+        settingExample.setOrderByClause("orderno asc");
+        List<RptSetting> list = rptSettingMapper.selectByExample(settingExample);
+        columnsList.clear();
+        List<Map<String,String>> fields = new ArrayList<>();
+        for(RptSetting setting : list){
+            String text = setting.getItemcode();
+            String unit = setting.getUnitcode();
+            String code = setting.getHzcode();
+            buildColumn(text,unit,code,0,tab.getTabdeep(),setting);
+            Map<String,String> field = new HashMap<>();
+            field.put("name",code);
+            field.put("type","string");
+            fields.add(field);
+        }
+        String tabcode = tab.getTabcode();
+        String tabname = tab.getTabname();
+
+        String tplPath = buildPath("src/main/resources/static/ftl");
+        String appPath = buildPath(String.format("src/main/resources/static/app/view/tablehz/%s.js",tabcode));
+        Map<String,Object> model = new HashMap<>();
+        model.put("tabcode",tabcode);
+        model.put("tabname",tabname);
+        model.put("fields",fields);
+        model.put("columns",columnsList);
+        try {
+            Configuration cfg = new Configuration();
+            cfg.setEncoding(Locale.getDefault(), "utf-8");
+            cfg.setDirectoryForTemplateLoading(new File(tplPath));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(appPath),"UTF-8"));
+            try {
+                Template template = cfg.getTemplate("total_table.ftl");
+                template.process(model,writer);
+            } catch (TemplateException e) {
+                e.printStackTrace();
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * 生成填报表单
+     * @param tab
+     */
+    private void buildFormTemplate(RptTab tab){
+
+    }
+
+    public void buildTemplate(String tabcode){
+        RptTabExample tabExample = new RptTabExample();
+        tabExample.createCriteria()
+                .andTabcodeEqualTo(tabcode);
+        List<RptTab> tabs = rptTabMapper.selectByExample(tabExample);
+        RptTab tab = tabs.get(0);
+
+        buildTotalTemplate(tab);
     }
 
     public List<RptSetting> findSingleTable(String tabcode,Integer typeid,Boolean isTemplate){
