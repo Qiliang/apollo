@@ -51,7 +51,7 @@ Ext.define('Kits.view.tables.Base', {
         var me = this;
         var token = Ext.util.Cookies.get('token');
         Ext.Ajax.request({
-            url: '/api/rpt/table/'+this.tableid,
+            url: '/api/rpt/collect/table/'+this.tableid,
             method: 'GET',
             headers: {'Authorization':'Bearer '+token},
             success: function(response, opts) {
@@ -216,14 +216,14 @@ Ext.define('Kits.view.tables.Base', {
                 bbar: [
                     {
                         xtype: 'button',
-                        text: '导出2',
+                        text: '导出',
                         handler: function () {
 
                         }
                     },
                     {
                         xtype: 'button',
-                        text: '检查2',
+                        text: '检查',
                         handler: function () {
 
                         }
@@ -257,7 +257,7 @@ Ext.define('Kits.view.tables.Base', {
                             });
                             var token = Ext.util.Cookies.get('token');
                             Ext.Ajax.request({
-                                url: '/api/rpt/table/put',
+                                url: '/api/rpt/collect/table/put',
                                 method: 'POST',
                                 jsonData: JSON.stringify(data),
                                 headers: {'Authorization':'Bearer '+token},

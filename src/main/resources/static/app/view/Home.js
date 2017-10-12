@@ -14,6 +14,4 @@ Ext.define('Kits.view.Home', {
             }
         }
     ]
-
-
 });

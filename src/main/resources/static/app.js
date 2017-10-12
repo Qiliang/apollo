@@ -6,12 +6,15 @@
 
 // KitchenSink is not fully WAI-ARIA compliant at this point
 // Ext.enableAriaButtons = false;
-
+Ext.Loader.setConfig( {
+    enabled : true,
+    paths : {
+        "Ext.ux": "app/ux/src"
+    }
+});
 Ext.application({
     extend: 'Kits.Application',
-
     name: 'Kits'
-
     //autoCreateViewport: 'KitchenSink.view.main.Main'
 
     //-------------------------------------------------------------------------

@@ -22,49 +22,61 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
     }),
 
     columns: [ {
-        "text" : "<div style='white-space:pre-line;height:162px;'>指标名称</div>",
+        "text" : "<div style='white-space:pre-line;height:162px'>指标名称</div>",
         "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>计算单位</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>"
+                "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+                "dataIndex" : "汇总代码",
+                "width" : 100
             } ]
         } ]
     }, {
-        "text" : "<div style='white-space:pre-line;height:162px'>编  号</div>",
+        "text" : "<div style='white-space:pre-line;height:162px'>编号</div>",
         "columns" : [ {
-            "text" : "<div style='white-space:pre-line;height:22px'>－</div>",
+            "text" : "<div style='white-space:pre-line;height:22px'>—</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>－</div>",
-                "width" : 60
+                "text" : "<div style='white-space:pre-line;height:22px'>—</div>",
+                "dataIndex" : "—",
+                "width" : 100
             } ]
         } ]
     }, {
         "text" : "<div style='white-space:pre-line;height:22px'>一、农村基层组织情况</div>",
         "columns" : [ {
-            "text" : "<div style='white-space:pre-line;height:127px'>（一）乡镇政府个数</div>",
+            "text" : "<div style='white-space:pre-line;height:22px'>（一）乡镇政府个数</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                "text" : "<div style='white-space:pre-line;height:92px'></div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>01</div>",
-                    "width" : 60
+                    "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>01</div>",
+                        "dataIndex" : "01",
+                        "width" : 80
+                    } ]
                 } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>  1、乡政府</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+            }, {
+                "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>02</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>  2、镇政府</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>03</div>",
-                    "width" : 60
+                    "text" : "<div style='white-space:pre-line;height:57px'>1、乡政府</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>02</div>",
+                            "dataIndex" : "02",
+                            "width" : 80
+                        } ]
+                    } ]
+                }, {
+                    "text" : "<div style='white-space:pre-line;height:57px'>2、镇政府</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>03</div>",
+                            "dataIndex" : "03",
+                            "width" : 80
+                        } ]
+                    } ]
                 } ]
             } ]
         }, {
@@ -73,7 +85,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>04</div>",
-                    "width" : 60
+                    "dataIndex" : "04",
+                    "width" : 80
                 } ]
             } ]
         }, {
@@ -82,7 +95,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>05</div>",
-                    "width" : 60
+                    "dataIndex" : "05",
+                    "width" : 80
                 } ]
             } ]
         }, {
@@ -91,7 +105,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>06</div>",
-                    "width" : 60
+                    "dataIndex" : "06",
+                    "width" : 80
                 } ]
             } ]
         } ]
@@ -103,7 +118,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>07</div>",
-                    "width" : 60
+                    "dataIndex" : "07",
+                    "width" : 80
                 } ]
             } ]
         }, {
@@ -112,7 +128,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>08</div>",
-                    "width" : 60
+                    "dataIndex" : "08",
+                    "width" : 80
                 } ]
             } ]
         }, {
@@ -121,7 +138,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>09</div>",
-                    "width" : 60
+                    "dataIndex" : "09",
+                    "width" : 80
                 } ]
             } ]
         }, {
@@ -130,7 +148,8 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
-                    "width" : 60
+                    "dataIndex" : "10",
+                    "width" : 80
                 } ]
             } ]
         } ]
@@ -139,65 +158,107 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
         "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:127px'>（一）乡村 户 数</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>户</div>",
+                "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:22px'>11</div>",
-                    "width" : 60
+                    "dataIndex" : "11",
+                    "width" : 80
                 } ]
             } ]
         }, {
-            "text" : "<div style='white-space:pre-line;height:92px'>（二）乡村人口数</div>",
+            "text" : "<div style='white-space:pre-line;height:22px'>（二）乡村人口数</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>男</div>",
+                "text" : "<div style='white-space:pre-line;height:92px'></div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                    "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>13</div>",
-                        "width" : 60
+                        "text" : "<div style='white-space:pre-line;height:22px'>12</div>",
+                        "dataIndex" : "12",
+                        "width" : 80
                     } ]
                 } ]
             }, {
-                "text" : "<div style='white-space:pre-line;height:22px'>女</div>",
+                "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                    "text" : "<div style='white-space:pre-line;height:57px'>男</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>14</div>",
-                        "width" : 60
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>13</div>",
+                            "dataIndex" : "13",
+                            "width" : 80
+                        } ]
+                    } ]
+                }, {
+                    "text" : "<div style='white-space:pre-line;height:57px'>女</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>14</div>",
+                            "dataIndex" : "14",
+                            "width" : 80
+                        } ]
                     } ]
                 } ]
             } ]
         }, {
-            "text" : "<div style='white-space:pre-line;height:92px'>（三）乡村劳动力资  源</div>",
+            "text" : "<div style='white-space:pre-line;height:22px'>（三）乡村劳动力资  源</div>",
             "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>男</div>",
+                "text" : "<div style='white-space:pre-line;height:92px'></div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                    "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>16</div>",
-                        "width" : 60
+                        "text" : "<div style='white-space:pre-line;height:22px'>15</div>",
+                        "dataIndex" : "15",
+                        "width" : 80
                     } ]
                 } ]
             }, {
-                "text" : "<div style='white-space:pre-line;height:22px'>女</div>",
+                "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
                 "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                    "text" : "<div style='white-space:pre-line;height:57px'>男</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>17</div>",
-                        "width" : 60
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>16</div>",
+                            "dataIndex" : "16",
+                            "width" : 80
+                        } ]
+                    } ]
+                }, {
+                    "text" : "<div style='white-space:pre-line;height:57px'>女</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                        "columns" : [ {
+                            "text" : "<div style='white-space:pre-line;height:22px'>17</div>",
+                            "dataIndex" : "17",
+                            "width" : 80
+                        } ]
                     } ]
                 } ]
             } ]
         }, {
             "text" : "<div style='white-space:pre-line;height:22px'>（四）乡村从业人员数</div>",
             "columns" : [ {
+                "text" : "<div style='white-space:pre-line;height:92px'></div>",
+                "columns" : [ {
+                    "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+                    "columns" : [ {
+                        "text" : "<div style='white-space:pre-line;height:22px'>18</div>",
+                        "dataIndex" : "18",
+                        "width" : 80
+                    } ]
+                } ]
+            }, {
                 "text" : "<div style='white-space:pre-line;height:22px'>男</div>",
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:57px'>其中：从事农业人员数</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                         "columns" : [ {
-                            "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
-                            "width" : 60
+                            "text" : "<div style='white-space:pre-line;height:22px'>19</div>",
+                            "dataIndex" : "19",
+                            "width" : 80
                         } ]
                     } ]
                 } ]
@@ -206,93 +267,13 @@ Ext.define('Kits.view.tablehz.SNN01-1', {
                 "columns" : [ {
                     "text" : "<div style='white-space:pre-line;height:57px'>其中：从事农业人员数</div>",
                     "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+                        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
                         "columns" : [ {
-                            "text" : "<div style='white-space:pre-line;height:22px'>22</div>",
-                            "width" : 60
+                            "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
+                            "dataIndex" : "20",
+                            "width" : 80
                         } ]
                     } ]
-                } ]
-            } ]
-        } ]
-    }, {
-        "text" : "<div style='white-space:pre-line;height:22px'>四、国有农林牧渔场情况</div>",
-        "columns" : [ {
-            "text" : "<div style='white-space:pre-line;height:127px'>（一）国有农林牧渔场总人口</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>23</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:57px'>（二）国有农林牧渔场从业人员</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:57px'>1、农业从业人员</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
-                    "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>25</div>",
-                        "width" : 60
-                    } ]
-                } ]
-            }, {
-                "text" : "<div style='white-space:pre-line;height:57px'>2、非农业从业人员</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
-                    "columns" : [ {
-                        "text" : "<div style='white-space:pre-line;height:22px'>26</div>",
-                        "width" : 60
-                    } ]
-                } ]
-            } ]
-        } ]
-    }, {
-        "text" : "<div style='white-space:pre-line;height:22px'>五、农业用地情况</div>",
-        "columns" : [ {
-            "text" : "<div style='white-space:pre-line;height:127px'>1、耕地</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>27</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>2、园地</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>28</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>3、林地</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>29.0</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>4、草地</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>30.0</div>",
-                    "width" : 60
-                } ]
-            } ]
-        }, {
-            "text" : "<div style='white-space:pre-line;height:127px'>5、农业设施用地</div>",
-            "columns" : [ {
-                "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
-                "columns" : [ {
-                    "text" : "<div style='white-space:pre-line;height:22px'>31.0</div>",
-                    "width" : 60
                 } ]
             } ]
         } ]

@@ -1,3 +1,33 @@
 .actionColumnRed {
     color: firebrick!important;
 }
+.thumb-wrap.odd{
+    background-color: #f5f5f5;
+}
+.thumb-wrap.x-item-selected{
+    background-color: #F2E3B2;
+}
+.thumb-inner {
+    position: relative;
+    text-overflow: ellipsis;
+    padding: 7px 10px 6px;
+}
+.thumb-inner {
+    overflow: hidden;
+    white-space: nowrap;
+}
+.thumb-dirty-cell > .thumb-inner:after {
+    content: "\e602";
+    font: 14px/1 ExtJS;
+    color: #cf4c35;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.thumb-wrap-td{
+    padding:5px;
+    height: 40px;
+}
+.thumb-wrap-td.center{
+    text-align: center;
+}
