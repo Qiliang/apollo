@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snjtjj.mapper.DirectRptRemindTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.snjtjj.entity.DirectRptRemindTask" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="system_id" property="systemId" jdbcType="VARCHAR" />
+    <result column="table_id" property="tableId" jdbcType="VARCHAR" />
+    <result column="remind_start_date" property="remindStartDate" jdbcType="TIMESTAMP" />
+    <result column="remind_end_date" property="remindEndDate" jdbcType="TIMESTAMP" />
+    <result column="remind_type" property="remindType" jdbcType="VARCHAR" />
+    <result column="remind_month" property="remindMonth" jdbcType="INTEGER" />
+    <result column="remind_day" property="remindDay" jdbcType="INTEGER" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, system_id, table_id, remind_start_date, remind_end_date, remind_type, remind_month, 
+    remind_day, create_by, create_date, update_by, update_date, del_flag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.DirectRptRemindTaskExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from direct_rpt_remind_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from direct_rpt_remind_task
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from direct_rpt_remind_task
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.snjtjj.entity.DirectRptRemindTaskExample" >
+    delete from direct_rpt_remind_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.snjtjj.entity.DirectRptRemindTask" >
+    insert into direct_rpt_remind_task (id, system_id, table_id, 
+      remind_start_date, remind_end_date, remind_type, 
+      remind_month, remind_day, create_by, 
+      create_date, update_by, update_date, 
+      del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR}, #{tableId,jdbcType=VARCHAR}, 
+      #{remindStartDate,jdbcType=TIMESTAMP}, #{remindEndDate,jdbcType=TIMESTAMP}, #{remindType,jdbcType=VARCHAR}, 
+      #{remindMonth,jdbcType=INTEGER}, #{remindDay,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{delFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.snjtjj.entity.DirectRptRemindTask" >
+    insert into direct_rpt_remind_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="systemId != null" >
+        system_id,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+      <if test="remindStartDate != null" >
+        remind_start_date,
+      </if>
+      <if test="remindEndDate != null" >
+        remind_end_date,
+      </if>
+      <if test="remindType != null" >
+        remind_type,
+      </if>
+      <if test="remindMonth != null" >
+        remind_month,
+      </if>
+      <if test="remindDay != null" >
+        remind_day,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="systemId != null" >
+        #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="remindStartDate != null" >
+        #{remindStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindEndDate != null" >
+        #{remindEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindType != null" >
+        #{remindType,jdbcType=VARCHAR},
+      </if>
+      <if test="remindMonth != null" >
+        #{remindMonth,jdbcType=INTEGER},
+      </if>
+      <if test="remindDay != null" >
+        #{remindDay,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.snjtjj.entity.DirectRptRemindTaskExample" resultType="java.lang.Integer" >
+    select count(*) from direct_rpt_remind_task
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update direct_rpt_remind_task
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.systemId != null" >
+        system_id = #{record.systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tableId != null" >
+        table_id = #{record.tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remindStartDate != null" >
+        remind_start_date = #{record.remindStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remindEndDate != null" >
+        remind_end_date = #{record.remindEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remindType != null" >
+        remind_type = #{record.remindType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remindMonth != null" >
+        remind_month = #{record.remindMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.remindDay != null" >
+        remind_day = #{record.remindDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delFlag != null" >
+        del_flag = #{record.delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update direct_rpt_remind_task
+    set id = #{record.id,jdbcType=VARCHAR},
+      system_id = #{record.systemId,jdbcType=VARCHAR},
+      table_id = #{record.tableId,jdbcType=VARCHAR},
+      remind_start_date = #{record.remindStartDate,jdbcType=TIMESTAMP},
+      remind_end_date = #{record.remindEndDate,jdbcType=TIMESTAMP},
+      remind_type = #{record.remindType,jdbcType=VARCHAR},
+      remind_month = #{record.remindMonth,jdbcType=INTEGER},
+      remind_day = #{record.remindDay,jdbcType=INTEGER},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{record.delFlag,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.DirectRptRemindTask" >
+    update direct_rpt_remind_task
+    <set >
+      <if test="systemId != null" >
+        system_id = #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=VARCHAR},
+      </if>
+      <if test="remindStartDate != null" >
+        remind_start_date = #{remindStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindEndDate != null" >
+        remind_end_date = #{remindEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindType != null" >
+        remind_type = #{remindType,jdbcType=VARCHAR},
+      </if>
+      <if test="remindMonth != null" >
+        remind_month = #{remindMonth,jdbcType=INTEGER},
+      </if>
+      <if test="remindDay != null" >
+        remind_day = #{remindDay,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.DirectRptRemindTask" >
+    update direct_rpt_remind_task
+    set system_id = #{systemId,jdbcType=VARCHAR},
+      table_id = #{tableId,jdbcType=VARCHAR},
+      remind_start_date = #{remindStartDate,jdbcType=TIMESTAMP},
+      remind_end_date = #{remindEndDate,jdbcType=TIMESTAMP},
+      remind_type = #{remindType,jdbcType=VARCHAR},
+      remind_month = #{remindMonth,jdbcType=INTEGER},
+      remind_day = #{remindDay,jdbcType=INTEGER},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

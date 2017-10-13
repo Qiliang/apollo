@@ -1,8 +1,5 @@
 Ext.define('Kits.view.zhiDu.YanShouView', {
     extend: 'Ext.panel.Panel',
-    requires: [
-        'Kits.view.tables.01'
-    ],
     scrollable:true,
     layout: {
         type: 'table',
@@ -22,10 +19,13 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
     listeners:{
         afterrender:function (me) {
             //动态删除验收意见
-            // me.remove(Ext.getCmp('qysyj'));
+            Ext.require(['Kits.view.tables.01'],function(){ me.insert( 0,{
+                title:'填报内容（表1）',
+                xtype:'tables01',
+                height:1900
+            })},me);
         }
-
-    },
+},
     buttons:[{
         xtype: 'button',
         text: '验收',
@@ -35,10 +35,6 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
     }],
     items: [
         {
-            title:'填报内容（表1）',
-            xtype:'tables01',
-            height:1900
-        },{
             id:'zysyj',
             title:'镇验收意见',
             items: [{
