@@ -39,7 +39,7 @@ Ext.define('Kits.view.Menu', {
                 {
                     iconCls: 'x-fa fa-home',
                     text: '首页',
-                    cmp: 'Kits.view.Home',
+                    cmp: 'Kits.view.XBase',
                     leaf: true
                 },
                 {

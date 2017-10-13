@@ -15,6 +15,10 @@ public class RptSetting {
 
     private String hzcode;
 
+    private Integer colwidth;
+
+    private String colalign;
+
     private Integer orderno;
 
     private String num1;
@@ -91,6 +95,22 @@ public class RptSetting {
 
     public void setHzcode(String hzcode) {
         this.hzcode = hzcode == null ? null : hzcode.trim();
+    }
+
+    public Integer getColwidth() {
+        return colwidth;
+    }
+
+    public void setColwidth(Integer colwidth) {
+        this.colwidth = colwidth;
+    }
+
+    public String getColalign() {
+        return colalign;
+    }
+
+    public void setColalign(String colalign) {
+        this.colalign = colalign == null ? null : colalign.trim();
     }
 
     public Integer getOrderno() {

@@ -47,7 +47,7 @@ Ext.define('Kits.view.tables.SNN01', {
   "hzcode" : "01",
   "unitcode" : "个",
   "itemcode" : "",
-  "num1" : "2",
+  "num1" : "",
   "i" : 2
 }, {
   "hzcode" : "—",
@@ -59,25 +59,25 @@ Ext.define('Kits.view.tables.SNN01', {
   "hzcode" : "02",
   "unitcode" : "个",
   "itemcode" : "1、乡政府",
-  "num1" : "3",
+  "num1" : "",
   "i" : 3
 }, {
   "hzcode" : "03",
   "unitcode" : "个",
   "itemcode" : "2、镇政府",
-  "num1" : "4",
+  "num1" : "",
   "i" : 3
 }, {
   "hzcode" : "04",
   "unitcode" : "个",
   "itemcode" : "（二）办事处",
-  "num1" : "5",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "05",
   "unitcode" : "个",
   "itemcode" : "（三）村 民委员会",
-  "num1" : "—",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "06",
@@ -226,32 +226,42 @@ Ext.define('Kits.view.tables.SNN01', {
 } ]
     }),
     columns: [ {
-  "text" : "<div style='white-space:pre-line;height:127px'>指标名称</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>指标名称</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>甲</div>",
     "dataIndex" : "itemcode",
-    "width" : 100
+    "width" : 300
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:127px'>计量单位</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>计量单位</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>乙</div>",
     "dataIndex" : "unitcode",
+    "align" : "center",
     "width" : 100
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:127px'>代码</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>代码</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>丙</div>",
     "dataIndex" : "hzcode",
+    "align" : "center",
     "width" : 100
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:127px'>数量</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>数量</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
     "dataIndex" : "num1",
-    "width" : 100
+    "align" : "center",
+    "width" : 100,
+    "editor" : {
+      "field" : {
+        "allowBlank" : true,
+        "minValue" : 0,
+        "xtype" : "numberfield"
+      }
+    }
   } ]
 } ],
     footerItems: [

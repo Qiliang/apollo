@@ -174,6 +174,76 @@ public class RptTabExample {
             return (Criteria) this;
         }
 
+        public Criteria andZdbidIsNull() {
+            addCriterion("zdbid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidIsNotNull() {
+            addCriterion("zdbid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidEqualTo(String value) {
+            addCriterion("zdbid =", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidNotEqualTo(String value) {
+            addCriterion("zdbid <>", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidGreaterThan(String value) {
+            addCriterion("zdbid >", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidGreaterThanOrEqualTo(String value) {
+            addCriterion("zdbid >=", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidLessThan(String value) {
+            addCriterion("zdbid <", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidLessThanOrEqualTo(String value) {
+            addCriterion("zdbid <=", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidLike(String value) {
+            addCriterion("zdbid like", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidNotLike(String value) {
+            addCriterion("zdbid not like", value, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidIn(List<String> values) {
+            addCriterion("zdbid in", values, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidNotIn(List<String> values) {
+            addCriterion("zdbid not in", values, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidBetween(String value1, String value2) {
+            addCriterion("zdbid between", value1, value2, "zdbid");
+            return (Criteria) this;
+        }
+
+        public Criteria andZdbidNotBetween(String value1, String value2) {
+            addCriterion("zdbid not between", value1, value2, "zdbid");
+            return (Criteria) this;
+        }
+
         public Criteria andTabcodeIsNull() {
             addCriterion("tabcode is null");
             return (Criteria) this;
@@ -371,6 +441,66 @@ public class RptTabExample {
 
         public Criteria andTabdeepNotBetween(Integer value1, Integer value2) {
             addCriterion("tabdeep not between", value1, value2, "tabdeep");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1IsNull() {
+            addCriterion("tabdeep1 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1IsNotNull() {
+            addCriterion("tabdeep1 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1EqualTo(Integer value) {
+            addCriterion("tabdeep1 =", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1NotEqualTo(Integer value) {
+            addCriterion("tabdeep1 <>", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1GreaterThan(Integer value) {
+            addCriterion("tabdeep1 >", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1GreaterThanOrEqualTo(Integer value) {
+            addCriterion("tabdeep1 >=", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1LessThan(Integer value) {
+            addCriterion("tabdeep1 <", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1LessThanOrEqualTo(Integer value) {
+            addCriterion("tabdeep1 <=", value, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1In(List<Integer> values) {
+            addCriterion("tabdeep1 in", values, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1NotIn(List<Integer> values) {
+            addCriterion("tabdeep1 not in", values, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1Between(Integer value1, Integer value2) {
+            addCriterion("tabdeep1 between", value1, value2, "tabdeep1");
+            return (Criteria) this;
+        }
+
+        public Criteria andTabdeep1NotBetween(Integer value1, Integer value2) {
+            addCriterion("tabdeep1 not between", value1, value2, "tabdeep1");
             return (Criteria) this;
         }
     }
