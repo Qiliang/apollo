@@ -10,7 +10,19 @@ Ext.define('Kits.view.Home', {
             type: 'refresh',
             tooltip: '刷新',
             callback: function (panel, tool, event) {
-
+                var token = Ext.util.Cookies.get('token');
+                Ext.Ajax.request({
+                    url: '/api/rpt/setting/build/SNN01',
+                    method: 'GET',
+                    headers: {'Authorization':'Bearer '+token},
+                    success: function(response, opts) {
+                        var data = Ext.decode(response.responseText);
+                        console.log(data);
+                    },
+                    failure: function(response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
+                    }
+                });
             }
         }
     ]

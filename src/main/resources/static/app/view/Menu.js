@@ -51,7 +51,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '农 业 生 产 条 件（一）',
-                            cmp: 'Kits.view.tables.01',
+                            cmp: 'Kits.view.tables.SNN01',
                         },{
                             iconCls: 'x-fa fa-table',
                             leaf: true,
@@ -216,7 +216,7 @@ Ext.define('Kits.view.Menu', {
                             iconCls: 'x-fa fa-table',
                             leaf: true,
                             text: '农村基层组织及户数、人口、从业人员情况(一)',
-                            cmp: 'Kits.view.tablehz.SNN01-1'
+                            cmp: 'Kits.view.tablehz.SNN01'
                         },
                         {
                             iconCls: 'x-fa fa-table',

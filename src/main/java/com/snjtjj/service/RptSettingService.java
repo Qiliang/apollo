@@ -110,12 +110,14 @@ public class RptSettingService {
         public String hzcode;
         @JsonIgnore
         public Boolean leaf;
+        @JsonIgnore
+        public RptSetting setting;
 
         public String text;
         public String dataIndex;
         public Integer width;
         public List<Column> columns;
-        public RptSetting setting;
+
         public Column(){}
         public Column(String id){
             this.id = id;
@@ -234,6 +236,7 @@ public class RptSettingService {
         List<RptSetting> list = rptSettingMapper.selectByExample(settingExample);
         columnsList.clear();
         List<Map<String,String>> fields = new ArrayList<>();
+        //noinspection Duplicates
         for(RptSetting setting : list){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
@@ -246,14 +249,20 @@ public class RptSettingService {
         }
         String tabcode = tab.getTabcode();
         String tabname = tab.getTabname();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
         String tplPath = buildPath("src/main/resources/static/ftl");
         String appPath = buildPath(String.format("src/main/resources/static/app/view/tablehz/%s.js",tabcode));
         Map<String,Object> model = new HashMap<>();
         model.put("tabcode",tabcode);
         model.put("tabname",tabname);
-        model.put("fields",fields);
-        model.put("columns",columnsList);
+        try {
+            model.put("fields",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(fields));
+            model.put("columns",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(columnsList));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         try {
             Configuration cfg = new Configuration();
             cfg.setEncoding(Locale.getDefault(), "utf-8");
@@ -262,7 +271,8 @@ public class RptSettingService {
             try {
                 Template template = cfg.getTemplate("total_table.ftl");
                 template.process(model,writer);
-            } catch (TemplateException e) {
+            }
+            catch (TemplateException e) {
                 e.printStackTrace();
             }
             writer.flush();
@@ -276,7 +286,87 @@ public class RptSettingService {
      * @param tab
      */
     private void buildFormTemplate(RptTab tab){
+        Map<String,Object> model = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
+        RptSettingExample settingExample1 = new RptSettingExample();
+        settingExample1.createCriteria()
+                .andTabcodeEqualTo(tab.getId())
+                .andTypeidEqualTo(1);
+        settingExample1.setOrderByClause("orderno asc");
+        List<RptSetting> list1 = rptSettingMapper.selectByExample(settingExample1);
+        columnsList.clear();
+        List<Map<String,String>> fields = new ArrayList<>();
+        List<String> colList = new ArrayList<>();
+        //noinspection Duplicates
+        for(RptSetting setting : list1){
+            String text = setting.getItemcode();
+            String unit = setting.getUnitcode();
+            String code = setting.getHzcode();
+            buildColumn(text,unit,code,0,tab.getTabdeep()-1,setting);
+            Map<String,String> field = new HashMap<>();
+            field.put("name",code);
+            field.put("type","string");
+            fields.add(field);
+            colList.add(code);
+        }
+        try {
+            model.put("columns",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(columnsList));
+            model.put("fields",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(fields));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        RptSettingExample settingExample2 = new RptSettingExample();
+        settingExample2.createCriteria()
+                .andTabcodeEqualTo(tab.getId())
+                .andTypeidEqualTo(0)
+                .andFixcolumnIsNull();
+        settingExample2.setOrderByClause("orderno asc");
+        List<RptSetting> list2 = rptSettingMapper.selectByExample(settingExample2);
+        columnsList.clear();
+        //noinspection Duplicates
+        for(RptSetting setting : list2){
+            String text = setting.getItemcode();
+            String unit = setting.getUnitcode();
+            String code = setting.getHzcode();
+            buildColumn(text,unit,code,0,tab.getTabdeep(),setting);
+        }
+        List<Map<String,Object>> datas = new ArrayList<>();
+        buildData(datas,colList);
+        Collections.reverse(datas);
+        try {
+            model.put("datas",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(datas));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        String tabcode = tab.getTabcode();
+        String tabname = tab.getTabname();
+        model.put("tabcode",tabcode);
+        model.put("tabname",tabname);
+        model.put("tabid",tab.getId());
+
+        String tplPath = buildPath("src/main/resources/static/ftl");
+        String appPath = buildPath(String.format("src/main/resources/static/app/view/tables/%s.js",tabcode));
+        //noinspection Duplicates
+        try {
+            Configuration cfg = new Configuration();
+            cfg.setEncoding(Locale.getDefault(), "utf-8");
+            cfg.setDirectoryForTemplateLoading(new File(tplPath));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(appPath),"UTF-8"));
+            try {
+                Template template = cfg.getTemplate("form_table.ftl");
+                template.process(model,writer);
+            }
+            catch (TemplateException e) {
+                e.printStackTrace();
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void buildTemplate(String tabcode){
@@ -286,7 +376,11 @@ public class RptSettingService {
         List<RptTab> tabs = rptTabMapper.selectByExample(tabExample);
         RptTab tab = tabs.get(0);
 
+        //生成汇总表单
         buildTotalTemplate(tab);
+
+        //生成填报表单
+        buildFormTemplate(tab);
     }
 
     public List<RptSetting> findSingleTable(String tabcode,Integer typeid,Boolean isTemplate){
@@ -304,24 +398,6 @@ public class RptSettingService {
         }
         example.setOrderByClause("orderno asc");
         List<RptSetting> list = rptSettingMapper.selectByExample(example);
-        columnsList.clear();
-        for(RptSetting setting : list){
-            String text = setting.getItemcode();
-            String unit = setting.getUnitcode();
-            String code = setting.getHzcode();
-            buildColumn(text,unit,code,0,3,setting);
-        }
-        List<Map<String,Object>> results = new ArrayList<>();
-        List colList = new ArrayList<String>(){{add("itemcode");add("unitcode");add("hzcode");add("num1");}};
-        buildData(results,colList);
-        Collections.reverse(results);
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        try {
-            System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(results));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
         return list;
     }
 

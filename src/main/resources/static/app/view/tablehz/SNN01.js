@@ -1,4 +1,4 @@
-Ext.define('Kits.view.tablehz.A304', {
+Ext.define('Kits.view.tablehz.SNN01', {
     extend: 'Kits.view.tablehz.Base',
     title: '测试表单',
     headerItems: [
@@ -92,17 +92,7 @@ Ext.define('Kits.view.tablehz.A304', {
       "dataIndex" : "汇总代码",
       "width" : 100
     } ]
-  } ],
-  "setting" : {
-    "id" : "01",
-    "typeid" : 0,
-    "tabcode" : "917553004334900864",
-    "fixcolumn" : 1,
-    "itemcode" : "指标名称",
-    "unitcode" : "计算单位",
-    "hzcode" : "汇总代码",
-    "orderno" : 1
-  }
+  } ]
 }, {
   "text" : "<div style='white-space:pre-line;height:162px'>编号</div>",
   "columns" : [ {
@@ -112,18 +102,7 @@ Ext.define('Kits.view.tablehz.A304', {
       "dataIndex" : "—",
       "width" : 100
     } ]
-  } ],
-  "setting" : {
-    "id" : "02",
-    "typeid" : 0,
-    "tabcode" : "917553004334900864",
-    "fixcolumn" : 1,
-    "itemcode" : "编号",
-    "unitcode" : "—",
-    "hzcode" : "—",
-    "orderno" : 2,
-    "num1" : "1"
-  }
+  } ]
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>一、农村基层组织情况</div>",
   "columns" : [ {
@@ -137,17 +116,7 @@ Ext.define('Kits.view.tablehz.A304', {
           "dataIndex" : "01",
           "width" : 100
         } ]
-      } ],
-      "setting" : {
-        "id" : "03",
-        "typeid" : 0,
-        "tabcode" : "917553004334900864",
-        "itemcode" : "一、农村基层组织情况▪（一）乡镇政府个数▪",
-        "unitcode" : "个",
-        "hzcode" : "01",
-        "orderno" : 3,
-        "num1" : "2"
-      }
+      } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
       "columns" : [ {
@@ -159,17 +128,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "02",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "04",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "一、农村基层组织情况▪（一）乡镇政府个数▪其中▪1、乡政府",
-          "unitcode" : "个",
-          "hzcode" : "02",
-          "orderno" : 4,
-          "num1" : "3"
-        }
+        } ]
       }, {
         "text" : "<div style='white-space:pre-line;height:57px'>2、镇政府</div>",
         "columns" : [ {
@@ -179,17 +138,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "03",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "05",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "一、农村基层组织情况▪（一）乡镇政府个数▪其中▪2、镇政府",
-          "unitcode" : "个",
-          "hzcode" : "03",
-          "orderno" : 5,
-          "num1" : "4"
-        }
+        } ]
       } ]
     } ]
   }, {
@@ -201,17 +150,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "04",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "06",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "一、农村基层组织情况▪（二）办事处",
-      "unitcode" : "个",
-      "hzcode" : "04",
-      "orderno" : 6,
-      "num1" : "5"
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:127px'>（三）村 民委员会</div>",
     "columns" : [ {
@@ -221,17 +160,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "05",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "07",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "一、农村基层组织情况▪（三）村 民委员会",
-      "unitcode" : "个",
-      "hzcode" : "05",
-      "orderno" : 7,
-      "num1" : "—"
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:127px'>（四）村  民  小 组</div>",
     "columns" : [ {
@@ -241,16 +170,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "06",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "08",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "一、农村基层组织情况▪（四）村  民  小 组",
-      "unitcode" : "个",
-      "hzcode" : "06",
-      "orderno" : 8
-    }
+    } ]
   } ]
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>二、农村社会基础设施</div>",
@@ -263,16 +183,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "07",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "09",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "二、农村社会基础设施▪自来水受益村数",
-      "unitcode" : "个",
-      "hzcode" : "07",
-      "orderno" : 9
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:127px'>通汽车村数</div>",
     "columns" : [ {
@@ -282,16 +193,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "08",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "10",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "二、农村社会基础设施▪通汽车村数",
-      "unitcode" : "个",
-      "hzcode" : "08",
-      "orderno" : 10
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:127px'>通有线电视村</div>",
     "columns" : [ {
@@ -301,16 +203,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "09",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "11",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "二、农村社会基础设施▪通有线电视村",
-      "unitcode" : "个",
-      "hzcode" : "09",
-      "orderno" : 11
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:127px'>通宽带村数</div>",
     "columns" : [ {
@@ -320,16 +213,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "10",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "12",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "二、农村社会基础设施▪通宽带村数",
-      "unitcode" : "个",
-      "hzcode" : "10",
-      "orderno" : 12
-    }
+    } ]
   } ]
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>三、乡村、人口、户数及农村从业人员情况</div>",
@@ -342,16 +226,7 @@ Ext.define('Kits.view.tablehz.A304', {
         "dataIndex" : "11",
         "width" : 100
       } ]
-    } ],
-    "setting" : {
-      "id" : "13",
-      "typeid" : 0,
-      "tabcode" : "917553004334900864",
-      "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（一）乡村 户 数",
-      "unitcode" : "个",
-      "hzcode" : "11",
-      "orderno" : 13
-    }
+    } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>（二）乡村人口数</div>",
     "columns" : [ {
@@ -363,16 +238,7 @@ Ext.define('Kits.view.tablehz.A304', {
           "dataIndex" : "12",
           "width" : 100
         } ]
-      } ],
-      "setting" : {
-        "id" : "14",
-        "typeid" : 0,
-        "tabcode" : "917553004334900864",
-        "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（二）乡村人口数▪",
-        "unitcode" : "个",
-        "hzcode" : "12",
-        "orderno" : 14
-      }
+      } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
       "columns" : [ {
@@ -384,16 +250,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "13",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "15",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（二）乡村人口数▪其中▪男",
-          "unitcode" : "个",
-          "hzcode" : "13",
-          "orderno" : 15
-        }
+        } ]
       }, {
         "text" : "<div style='white-space:pre-line;height:57px'>女</div>",
         "columns" : [ {
@@ -403,16 +260,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "14",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "16",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（二）乡村人口数▪其中▪女",
-          "unitcode" : "个",
-          "hzcode" : "14",
-          "orderno" : 16
-        }
+        } ]
       } ]
     } ]
   }, {
@@ -426,16 +274,7 @@ Ext.define('Kits.view.tablehz.A304', {
           "dataIndex" : "15",
           "width" : 100
         } ]
-      } ],
-      "setting" : {
-        "id" : "17",
-        "typeid" : 0,
-        "tabcode" : "917553004334900864",
-        "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（三）乡村劳动力资  源▪",
-        "unitcode" : "个",
-        "hzcode" : "15",
-        "orderno" : 17
-      }
+      } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
       "columns" : [ {
@@ -447,16 +286,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "16",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "18",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（三）乡村劳动力资  源▪其中▪男",
-          "unitcode" : "个",
-          "hzcode" : "16",
-          "orderno" : 18
-        }
+        } ]
       }, {
         "text" : "<div style='white-space:pre-line;height:57px'>女</div>",
         "columns" : [ {
@@ -466,16 +296,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "17",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "19",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（三）乡村劳动力资  源▪其中▪女",
-          "unitcode" : "个",
-          "hzcode" : "17",
-          "orderno" : 19
-        }
+        } ]
       } ]
     } ]
   }, {
@@ -489,16 +310,7 @@ Ext.define('Kits.view.tablehz.A304', {
           "dataIndex" : "18",
           "width" : 100
         } ]
-      } ],
-      "setting" : {
-        "id" : "20",
-        "typeid" : 0,
-        "tabcode" : "917553004334900864",
-        "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（四）乡村从业人员数▪",
-        "unitcode" : "个",
-        "hzcode" : "18",
-        "orderno" : 20
-      }
+      } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:22px'>男</div>",
       "columns" : [ {
@@ -510,16 +322,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "19",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "21",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（四）乡村从业人员数▪男▪其中：从事农业人员数",
-          "unitcode" : "个",
-          "hzcode" : "19",
-          "orderno" : 21
-        }
+        } ]
       } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:22px'>女</div>",
@@ -532,16 +335,7 @@ Ext.define('Kits.view.tablehz.A304', {
             "dataIndex" : "20",
             "width" : 100
           } ]
-        } ],
-        "setting" : {
-          "id" : "22",
-          "typeid" : 0,
-          "tabcode" : "917553004334900864",
-          "itemcode" : "三、乡村、人口、户数及农村从业人员情况▪（四）乡村从业人员数▪女▪其中：从事农业人员数",
-          "unitcode" : "个",
-          "hzcode" : "20",
-          "orderno" : 22
-        }
+        } ]
       } ]
     } ]
   } ]
