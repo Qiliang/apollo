@@ -90,7 +90,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
       "dataIndex" : "汇总代码",
-      "width" : 100
+      "width" : 120
     } ]
   } ]
 }, {
@@ -100,6 +100,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>—</div>",
       "dataIndex" : "—",
+      "align" : "center",
       "width" : 100
     } ]
   } ]
@@ -114,6 +115,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>01</div>",
           "dataIndex" : "01",
+          "align" : "center",
           "width" : 100
         } ]
       } ]
@@ -126,6 +128,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>02</div>",
             "dataIndex" : "02",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -136,6 +139,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>03</div>",
             "dataIndex" : "03",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -148,6 +152,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>04</div>",
         "dataIndex" : "04",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -158,6 +163,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>05</div>",
         "dataIndex" : "05",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -168,6 +174,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>06</div>",
         "dataIndex" : "06",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -181,6 +188,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>07</div>",
         "dataIndex" : "07",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -191,6 +199,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>08</div>",
         "dataIndex" : "08",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -201,6 +210,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>09</div>",
         "dataIndex" : "09",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -211,6 +221,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
         "dataIndex" : "10",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -224,6 +235,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>11</div>",
         "dataIndex" : "11",
+        "align" : "center",
         "width" : 100
       } ]
     } ]
@@ -236,6 +248,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>12</div>",
           "dataIndex" : "12",
+          "align" : "center",
           "width" : 100
         } ]
       } ]
@@ -248,6 +261,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>13</div>",
             "dataIndex" : "13",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -258,6 +272,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>14</div>",
             "dataIndex" : "14",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -272,6 +287,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>15</div>",
           "dataIndex" : "15",
+          "align" : "center",
           "width" : 100
         } ]
       } ]
@@ -284,6 +300,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>16</div>",
             "dataIndex" : "16",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -294,6 +311,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>17</div>",
             "dataIndex" : "17",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -308,6 +326,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>18</div>",
           "dataIndex" : "18",
+          "align" : "center",
           "width" : 100
         } ]
       } ]
@@ -320,6 +339,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>19</div>",
             "dataIndex" : "19",
+            "align" : "center",
             "width" : 100
           } ]
         } ]
@@ -333,6 +353,7 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "columns" : [ {
             "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
             "dataIndex" : "20",
+            "align" : "center",
             "width" : 100
           } ]
         } ]

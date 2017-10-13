@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tablehz.${tabcode}', {
     extend: 'Kits.view.tablehz.Base',
     title: '${tabname}',
+    xtype: 'tablehz${tabcode}',
     headerItems: [
         {
             html: '<br />填报单位：'

@@ -61,7 +61,7 @@ public class RptSettingService {
             column.buildData(putList,colList,0);
         }
     }
-    private Column buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting){
+    private Column buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting,Object editor){
         int end = text.indexOf("▪");
         String id = end == -1 ? text : text.substring(0,end);
         Column column = findColumn(columnsList,id);
@@ -71,7 +71,7 @@ public class RptSettingService {
         }
         if(end > 0){
             column.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),id);
-            column.buildColumn(text.substring(end+1),unit,code,colspan+1,icol,setting);
+            column.buildColumn(text.substring(end+1),unit,code,colspan+1,icol,setting,editor);
         }
         else{
             column.leaf = true;
@@ -79,15 +79,14 @@ public class RptSettingService {
             column.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(icol * 22 + 22 + icol*13),id);
             //noinspection Duplicates
             if(code.indexOf("code") >= 0 || code.indexOf("num") >= 0){
-                Column codeColumn = new Column(unit,code,unit,100);
+                Column codeColumn = new Column(unit,code,unit,setting.getColwidth(),setting.getColalign(),editor);
                 codeColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),unit);
                 column.columns = new ArrayList<Column>() {{
                     add(codeColumn);
                 }};
             }
-            //noinspection Duplicates
             else{
-                Column codeColumn = new Column(code,code,unit,100);
+                Column codeColumn = new Column(code,code,unit,setting.getColwidth(),setting.getColalign(),editor);
                 codeColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),code);
                 Column unitColumn = new Column(unit);
                 unitColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22), unit);
@@ -115,7 +114,9 @@ public class RptSettingService {
 
         public String text;
         public String dataIndex;
+        public String align;
         public Integer width;
+        public Object editor;
         public List<Column> columns;
 
         public Column(){}
@@ -125,13 +126,24 @@ public class RptSettingService {
             this.hzcode = "—";
             this.unitcode = "—";
         }
-        public Column(String id,String dataIndex,String unit,Integer width){
+        public Column(String id,String dataIndex,String unit,Integer width,String align,Object editor){
             this.id = id;
             this.leaf = false;
             this.dataIndex = dataIndex;
             this.hzcode = dataIndex;
             this.unitcode = unit;
-            this.width = width;
+            if(dataIndex.indexOf("num") >= 0) {
+                this.editor = editor;
+            }
+            this.width = width == null ? 100 : width;
+            if(align == null){
+                this.align = "center";
+            }
+            else{
+                if(!"left".equals(align)){
+                    this.align = align;
+                }
+            }
         }
         public boolean equals(String value){ return this.id.equals(value); }
 
@@ -179,7 +191,7 @@ public class RptSettingService {
                 putList.add(item);
             }
         }
-        public void buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting){
+        public void buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting,Object editor){
             int end = text.indexOf("▪");
             String id = end == -1 ? text : text.substring(0,end);
             if(columns == null){
@@ -192,7 +204,7 @@ public class RptSettingService {
             }
             if(end > 0){
                 column.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),id);
-                column.buildColumn(text.substring(end+1),unit,code,colspan+1,icol,setting);
+                column.buildColumn(text.substring(end+1),unit,code,colspan+1,icol,setting,editor);
             }
             else {
                 column.leaf = true;
@@ -200,15 +212,14 @@ public class RptSettingService {
                 column.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf((icol-colspan) * 22 + 22 + (icol-colspan)*13),id);
                 //noinspection Duplicates
                 if(code.indexOf("code") >= 0 || code.indexOf("num") >= 0){
-                    Column codeColumn = new Column(unit,code,unit,100);
+                    Column codeColumn = new Column(unit,code,unit,setting.getColwidth(),setting.getColalign(),editor);
                     codeColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),unit);
                     column.columns = new ArrayList<Column>() {{
                         add(codeColumn);
                     }};
                 }
-                //noinspection Duplicates
                 else{
-                    Column codeColumn = new Column(code,code,unit,100);
+                    Column codeColumn = new Column(code,code,unit,setting.getColwidth(),setting.getColalign(),editor);
                     codeColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22),code);
                     Column unitColumn = new Column(unit);
                     unitColumn.text = String.format("<div style='white-space:pre-line;height:%spx'>%s</div>", String.valueOf(22), unit);
@@ -241,7 +252,7 @@ public class RptSettingService {
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
-            buildColumn(text,unit,code,0,tab.getTabdeep(),setting);
+            buildColumn(text,unit,code,0,tab.getTabdeep(),setting,null);
             Map<String,String> field = new HashMap<>();
             field.put("name",code);
             field.put("type","string");
@@ -300,11 +311,18 @@ public class RptSettingService {
         List<Map<String,String>> fields = new ArrayList<>();
         List<String> colList = new ArrayList<>();
         //noinspection Duplicates
+        Integer deep = tab.getTabdeep1();
+        Map<String,Object> editor = new HashMap<>();
+        Map<String,Object> child = new HashMap<>();
+        child.put("xtype","numberfield");
+        child.put("minValue",0);
+        child.put("allowBlank",true);
+        editor.put("field",child);
         for(RptSetting setting : list1){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
-            buildColumn(text,unit,code,0,tab.getTabdeep()-1,setting);
+            buildColumn(text,unit,code,0,deep > 2 ? deep-2 : 0,setting,editor);
             Map<String,String> field = new HashMap<>();
             field.put("name",code);
             field.put("type","string");
@@ -331,7 +349,7 @@ public class RptSettingService {
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
-            buildColumn(text,unit,code,0,tab.getTabdeep(),setting);
+            buildColumn(text,unit,code,0,tab.getTabdeep(),setting,null);
         }
         List<Map<String,Object>> datas = new ArrayList<>();
         buildData(datas,colList);

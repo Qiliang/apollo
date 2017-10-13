@@ -574,6 +574,136 @@ public class RptSettingExample {
             return (Criteria) this;
         }
 
+        public Criteria andColwidthIsNull() {
+            addCriterion("colwidth is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthIsNotNull() {
+            addCriterion("colwidth is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthEqualTo(Integer value) {
+            addCriterion("colwidth =", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthNotEqualTo(Integer value) {
+            addCriterion("colwidth <>", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthGreaterThan(Integer value) {
+            addCriterion("colwidth >", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthGreaterThanOrEqualTo(Integer value) {
+            addCriterion("colwidth >=", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthLessThan(Integer value) {
+            addCriterion("colwidth <", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthLessThanOrEqualTo(Integer value) {
+            addCriterion("colwidth <=", value, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthIn(List<Integer> values) {
+            addCriterion("colwidth in", values, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthNotIn(List<Integer> values) {
+            addCriterion("colwidth not in", values, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthBetween(Integer value1, Integer value2) {
+            addCriterion("colwidth between", value1, value2, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColwidthNotBetween(Integer value1, Integer value2) {
+            addCriterion("colwidth not between", value1, value2, "colwidth");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignIsNull() {
+            addCriterion("colalign is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignIsNotNull() {
+            addCriterion("colalign is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignEqualTo(String value) {
+            addCriterion("colalign =", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignNotEqualTo(String value) {
+            addCriterion("colalign <>", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignGreaterThan(String value) {
+            addCriterion("colalign >", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignGreaterThanOrEqualTo(String value) {
+            addCriterion("colalign >=", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignLessThan(String value) {
+            addCriterion("colalign <", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignLessThanOrEqualTo(String value) {
+            addCriterion("colalign <=", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignLike(String value) {
+            addCriterion("colalign like", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignNotLike(String value) {
+            addCriterion("colalign not like", value, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignIn(List<String> values) {
+            addCriterion("colalign in", values, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignNotIn(List<String> values) {
+            addCriterion("colalign not in", values, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignBetween(String value1, String value2) {
+            addCriterion("colalign between", value1, value2, "colalign");
+            return (Criteria) this;
+        }
+
+        public Criteria andColalignNotBetween(String value1, String value2) {
+            addCriterion("colalign not between", value1, value2, "colalign");
+            return (Criteria) this;
+        }
+
         public Criteria andOrdernoIsNull() {
             addCriterion("orderno is null");
             return (Criteria) this;

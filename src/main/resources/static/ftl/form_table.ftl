@@ -1,6 +1,7 @@
 Ext.define('Kits.view.tables.${tabcode}', {
     extend: 'Kits.view.tables.Base',
     title: '${tabname}',
+    xtype: 'tables${tabcode}',
     hzcolumn:'hzcode',
     tableid: '${tabid}',
     headerItems:[

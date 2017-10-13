@@ -1,219 +1,256 @@
 Ext.define('Kits.view.XBase', {
     extend: 'Ext.panel.Panel',
-    title: '首页',
     layout: 'border',
-    tools: [
-        {
-            type: 'refresh',
-            tooltip: '刷新',
-            callback: function (panel, tool, event) {
-                var token = Ext.util.Cookies.get('token');
-                Ext.Ajax.request({
-                    url: '/api/rpt/setting/table/0/A304',
-                    method: 'GET',
-                    headers: {'Authorization':'Bearer '+token},
-                    success: function(response, opts) {
-                        var data = Ext.decode(response.responseText);
-                    },
-                    failure: function(response, opts) {
-                        console.log('server-side failure with status code ' + response.status);
-                    }
-                });
-            }
-        }
-    ],
+    initComponent: function () {
+        var me = this;
+        // var grid = me.items[0];
+        // grid.bbar.store = grid.store;
+        me.callParent();
+    },
     items:[
         {
-            region: 'north',
-            layout: {
-                type: 'table',
-                columns: 3,
-                tableAttrs: {
-                    style: {
-                        width: '100%'
-                    }
-                }
+            xtype:'grid',
+            title:'农业制度',
+            region:'west',
+            minWidth : 0,
+            width: 350,
+            margin : '-1 0 2 -1',
+            collapseMode: 'mini',
+            collapsible : true,
+            collapsed : false,
+            hideCollapseTool : true,
+            maintainFlex : true,
+            split : true,
+            deferRowRender:true,
+            autoScroll : false,
+            frame: true,
+            tools :[
+                {itemId: 'toolbar_refresh',type: 'refresh',tooltip:'刷新'}
+            ],
+            bbar:{
+                xtype: 'pagingtoolbar',
+                displayInfo: true,
+                dock: 'bottom',
+                layout: 'hbox',
+                displayMsg: '显示 {0} - {1} 条 共 {2} 条',
+                emptyMsg: "没有记录"
             },
-            defaults: {
-                bodyPadding: '10',
-                border: false
-            },
-            items: [
-                {
-                    html: '综合机关名称：'
-                },
-                {
-                    html: '2016年',
-                },
-                {
-                    html: '表    号：鄂农年01表<br /> ' +
-                    '制表机关：湖北省统计局 <br />' +
-                    '批准文号：国统制［2016］122号<br />' +
-                    '有效期至：2017年6月'
-                }
+            store: Ext.create('Ext.data.ArrayStore', {
+                fields: ['id','name'],
+                data:[
+                    [0,'报表名称1'],
+                    [1,'报表名称2'],
+                    [2,'报表名称3'],
+                    [3,'报表名称4'],
+                    [4,'报表名称5'],
+                    [5,'报表名称6'],
+                    [6,'报表名称7'],
+                    [7,'报表名称8']
+                ]
+            }),
+            columns:[
+                {text:'No.',xtype: 'rownumberer',width:32},
+                {text:'报表名称',dataIndex:'name',flex:1}
             ]
         },{
-            region: 'center',
             layout: 'border',
+            region: 'center',
+            frame: true,
             items:[
                 {
-                    xtype: 'grid',
+                    xtype:'form',
                     region: 'north',
-                    border: false,
-                    columns:[
+                    height: 2*80+80,
+                    tbar:{
+                        xtype: 'toolbar',
+                        itemId: 'cmdToolBar',
+                        items: [
+                            {text:'新增',itemId:'toolbar_add',iconCls:'add',iconAlign: 'top', mainEdit:'editing'},
+                            {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'top', mainEdit:'editing'},
+                            {text:'取消',itemId:'toolbar_cancel',iconCls:'cancel',iconAlign: 'top', mainEdit:'editing'},
+                            {text:'删除',itemId:'toolbar_remove',iconCls:'remove',iconAlign: 'top',disabled:true, mainRemove:'canRemove',mainAdd:'!editing'},
+                        ]
+                    },
+                    items:[
+                        {layout:'column',items:[
+                            {
+                                columnWidth:1/4,layout:'form',
+                                margin:'2 10 2 10',
+                                items:[
+                                    {fieldLabel:'表号',name:'tabcode',itemId:'tabcode',dataIndex:'tabcode',xtype:'textfield'}
+                                ]
+                            },{
+                                columnWidth:1/4,layout:'form',
+                                margin:'2 10 2 10',
+                                items:[
+                                    {fieldLabel:'制表机关',name:'zbjg',itemId:'zbjg',dataIndex:'zbjg',xtype:'textfield'}
+                                ]
+                            },{
+                                columnWidth:1/4,layout:'form',
+                                margin:'2 10 2 10',
+                                items:[
+                                    {fieldLabel:'批准文号',name:'pjwh',itemId:'pjwh',dataIndex:'pjwh',xtype:'textfield'}
+                                ]
+                            },
+                            {
+                                columnWidth:1/4,layout:'form',
+                                margin:'2 10 2 10',
+                                items:[
+                                    {fieldLabel:'有效期至',name:'yxq',itemId:'yxq',dataIndex:'yxq',xtype:'textfield'}
+                                ]
+                            }
+                        ]},
+                        {layout:'column',items:[
+                            {
+                                columnWidth:1,layout:'form',
+                                margin:'2 10 2 10',
+                                items:[
+                                    {fieldLabel:'规则描述',name:'remark',itemId:'remark',dataIndex:'remark',xtype:'textarea'}
+                                ]
+                            }
+                        ]}
+                    ]
+                },{
+                    xtype: 'tabpanel',
+                    region: 'center',
+                    deferredRender: false,
+                    plain: true,
+                    items:[
                         {
-                            text: '指 标 名 称',
-                            columns: [{
-                                text: '甲',
-                                width:240,
-                                dataIndex: 'itemcode',
-                            }]
-                        }, {
-                            text: '计量单位',
-                            columns: [{
-                                text: '乙',
-                                width:200,
-                                align: 'center',
-                                dataIndex: 'unitcode',
-                            }]
-                        }, {
-                            text: '代  码',
-                            columns: [{
-                                text: '丙',
-                                width:200,
-                                align: 'center',
-                                dataIndex: 'hzcode',
-                            }]
-                        }, {
-                            text: '数量',
-                            columns: [{
-                                text: '1',
-                                width:200,
-                                align: 'center',
-                                dataIndex: '1',
-                                editor: {
-
-                                    field: {
-                                        xtype: 'numberfield',
-                                        minValue: 0,
-                                        allowBlank: true
-                                    }
+                            title: '汇总表单',
+                            xtype:'grid',
+                            store: Ext.create('Ext.data.ArrayStore', {
+                                fields: ['id','itemcode'],
+                                data:[
+                                    [0,''],
+                                    [1,''],
+                                    [2,''],
+                                    [3,''],
+                                    [4,''],
+                                    [5,''],
+                                    [6,''],
+                                    [7,'']
+                                ]
+                            }),
+                            selModel: 'cellmodel',
+                            plugins: {
+                                cellediting: {
+                                    clicksToEdit: 1
                                 }
-                            }]
-                        }, {
-                            text: '面积',
-                            columns: [{
-                                text: '2',
-                                width:200,
-                                align: 'center',
-                                dataIndex: '2',
-                                editor: {
-
-                                    field: {
-                                        xtype: 'numberfield',
-                                        minValue: 0,
-                                        allowBlank: true
+                            },
+                            columns:[
+                                {text:'No.',xtype: 'rownumberer',width:32},
+                                {text:'指标名称',dataIndex:'itemcode',width:640,
+                                    editor: {
+                                        field: {
+                                            xtype: 'textfield',
+                                            allowBlank: true
+                                        }
                                     }
-                                }
-                            }]
+                                },
+                                {text:'计算单位',dataIndex:'unitcode',width:100,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'unitcode',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['个'],['只'],['人']]})
+                                    }
+                                },
+                                {text:'汇总代码',dataIndex:'hzcode',width:100,align:'center',
+                                    editor: {
+                                        field: {
+                                            xtype: 'textfield',
+                                            allowBlank: true
+                                        }
+                                    }
+                                },
+                                {text:'1',dataIndex:'num1',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num1',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'2',dataIndex:'num2',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num2',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'3',dataIndex:'num3',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num3',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'4',dataIndex:'num4',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num4',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'5',dataIndex:'num5',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num5',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'6',dataIndex:'num6',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num6',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'7',dataIndex:'num7',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num7',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'8',dataIndex:'num8',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num8',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'9',dataIndex:'num9',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num9',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                                {text:'10',dataIndex:'num10',width:60,align:'center',
+                                    editor:{
+                                        xtype:'combobox',
+                                        dataIndex:'num10',
+                                        displayField:'id',
+                                        store:Ext.create('Ext.data.ArrayStore',{fields:['id'],data:[['—']]})
+                                    }
+                                },
+                            ]
+                        },{
+                            title: '提报表单',
+                        },{
+                            title: '表单规则'
                         }
                     ]
-                },
-                {
-                    xtype: 'dataview',
-                    region: 'center',
-                    store: Ext.create('Ext.data.Store', {
-                        fields: [
-                            { name: 'itemcode', type: 'string' },
-                            { name: 'unitcode', type: 'string' },
-                            { name: 'hzcode', type: 'string' },
-                            { name: 'num1', type: 'string' },
-                            { name: 'num2', type: 'string' }
-                        ],
-                        data: [
-                            {"itemcode":"一、农村基层组织情况","unitcode":"—", "hzcode":"—", "num1":"—","num2":"—", "pnum1":"—","pnum2":"—"},
-                            {"itemcode":"(一)乡镇个数","unitcode":"个", "hzcode":"01", "num1":"22","num2":"—", "pnum1":"22","pnum2":"—"},
-                            {"itemcode":"其中：镇个数","unitcode":"个", "hzcode":"02", "num1":"","num2":"", "pnum1":"","pnum2":""}
-                        ]
-                    }),
-                    tpl:new Ext.XTemplate(
-                        '<table cellpadding=0 cellspacing=0 border=0 width=1040 style="background-color: #fff">',
-                        '<tpl for=".">',
-                        "<tr class='thumb-wrap {[xindex % 2 == 0 ? 'odd' : '']}'>",
-                        '<td class="thumb-wrap-td" width="240">{[values.itemcode]}</td>',
-                        '<td class="thumb-wrap-td center" width="200">{[values.unitcode]}</td>',
-                        '<td class="thumb-wrap-td center" width="200">{[values.hzcode]}</td>',
-                        "<td colIndex='num1' class='thumb-wrap-td center {[values.num1!=values.pnum1 ? 'thumb-dirty-cell':'']}' width='200'><div class='thumb-inner'>{[values.num1]}</div></td>",
-                        "<td colIndex='num2' class='thumb-wrap-td center {[values.num2!=values.pnum2 ? 'thumb-dirty-cell':'']}' width='200'><div class='thumb-inner'>{[values.num2]}</div></td>",
-                        '</tr>',
-                        '</tpl>',
-                        '</table>'
-                    ),
-                    plugins: [
-                        Ext.create('Ext.ux.DataView.LabelEditor', {
-                            beforeedit:function (value) {
-                                return value !== '—';
-                            },
-                            field:Ext.create('Ext.form.field.Number',{minValue: 0,allowBlank: true})})
-                    ],
-                    scrollable:true,
-                    overItemCls: 'x-grid-item-over',
-                    itemSelector: 'tr.thumb-wrap'
-                }
-            ]
-        },{
-            region: 'south',
-            layout: {
-                type: 'table',
-                columns: 3,
-                tableAttrs: {
-                    style: {
-                        width: '100%'
-                    }
-                }
-            },
-            defaults: {
-                bodyPadding: '10',
-                border: false
-            },
-            items: [
-                {
-                    html: '单位负责人：'
-                },
-                {
-                    html: '填报人',
-                },
-                {
-                    html: '填报日期：      年    月    日'
-                },
-                {
-                    colspan: 3,
-                    html: '说明：1.本表由各市、州、直管市、林区统计局报送。<br />' +
-                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.此表中乡镇个数、镇个数、办事处、村委会(居委会)个数必须与当地民政部门的数据一致。<br />' +
-                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.平衡关系：06、 07、08≤04，10=11+12，13=14+15，16=17+19，18≤17，20≤19，21﹥22，22=23+24<br />' +
-                    '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.报送时间为2016年12月25日。'
-                }
-            ],
-            bbar: [
-                {
-                    xtype: 'button',
-                    text: '导出',
-                    handler: function () {
-                        var text = "一、农村基层组织情况▪（一）乡镇政府个数▪".split("▪");
-                        console.log(text);
-                    }
-                },
-                {
-                    xtype: 'button',
-                    text: '检查',
-                    handler: function () {
-
-                    }
-                },
-                {
-                    xtype: 'button',
-                    text: '提交',
-                    handler: function () {}
                 }
             ]
         }
