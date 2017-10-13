@@ -54,15 +54,10 @@ Ext.define('Kits.view.quanXian.RoleView', {
         xtype: 'multiselector',
         region: 'center',
         title: '选择菜单',
-        fieldName: 'id',
+        fieldName: 'text',
         store: Ext.create('Kits.store.RoleMenu'),
         itemId: 'multiselector',
         addToolText: '选择菜单',
-        columns: {
-            items: [
-                {text: '菜单名称', dataIndex: 'text', flex: 1}
-            ]
-        },
         viewConfig: {
             deferEmptyText: false,
             emptyText: '请选择角色拥有的菜单'
