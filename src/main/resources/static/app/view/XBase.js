@@ -119,6 +119,16 @@ Ext.define('Kits.view.XBase', {
                         {
                             title: '汇总表单',
                             xtype:'grid',
+                            rbar:{
+                                xtype: 'toolbar',
+                                itemId: 'hzToolBar',
+                                items: [
+                                    {tooltip:'新增',itemId:'hz_toolbar_add',iconCls:'add',iconAlign: 'top'},
+                                    {tooltip:'删除',itemId:'hz_toolbar_remove',iconCls:'remove',iconAlign: 'top'},
+                                    {tooltip:'上移',itemId:'hz_toolbar_up',iconCls:'arrow_green_up',iconAlign: 'top'},
+                                    {tooltip:'下移',itemId:'hz_toolbar_down',iconCls:'arrow_green_down',iconAlign: 'top'}
+                                ]
+                            },
                             store: Ext.create('Ext.data.ArrayStore', {
                                 fields: ['id','itemcode'],
                                 data:[

@@ -1,7 +1,10 @@
 .x-grid-editable { color:#FF0000}
 .required .x-form-item-label {color:red;}
-.innv_logo {
-	background-image: url(icons/innv_logo.png) !important;
+.arrow_green_up {
+	background-image: url(icons/arrow_green_up.png) !important;
+}
+.arrow_green_down {
+	background-image: url(icons/arrow_green_down.png) !important;
 }
 .index_news {
 	background-image: url(icons/index_news.png) !important;
