@@ -29,4 +29,8 @@ public interface SystemInfoMapper {
     int updateByPrimaryKeySelective(SystemInfo record);
 
     int updateByPrimaryKey(SystemInfo record);
+
+    List<SystemInfo> getSystemInfoListByRoleId(String roleId);
+
+    List<SystemInfo> selectByExampleAndRoles(SystemInfoExample example);
 }

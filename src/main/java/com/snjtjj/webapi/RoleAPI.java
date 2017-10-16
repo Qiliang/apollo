@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.snjtjj.entity.Menu;
 import com.snjtjj.entity.Role;
+import com.snjtjj.entity.SystemInfo;
 import com.snjtjj.service.RoleService;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.FormResponse;
@@ -48,9 +49,15 @@ public class RoleAPI {
 
 
     @PostMapping("/saveOrUpdate")
-    public FormResponse<String> saveOrUpdate(Role role, String menuListJson) throws IOException {
-        JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, Menu.class);
-        role.setMenuList(objectMapper.readValue(menuListJson, javaType));
+    public FormResponse<String> saveOrUpdate(Role role, String menuListJson,String sysListJson) throws IOException {
+        if(StringUtils.isNotBlank(menuListJson)) {
+            JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, Menu.class);
+            role.setMenuList(objectMapper.readValue(menuListJson, javaType));
+        }
+        if(StringUtils.isNotBlank(sysListJson)) {
+            JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class, SystemInfo.class);
+            role.setSystemInfoList(objectMapper.readValue(sysListJson, javaType));
+        }
         if (StringUtils.isNotBlank(role.getId())) {
             roleService.edit(role);
         } else {

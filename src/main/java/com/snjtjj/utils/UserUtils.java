@@ -6,7 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 import com.snjtjj.common.security.JwtUser;
+import com.snjtjj.entity.Role;
+import com.snjtjj.entity.SystemInfo;
 import com.snjtjj.entity.User;
+import com.snjtjj.mapper.RoleMapper;
+import com.snjtjj.mapper.SystemInfoMapper;
 import com.snjtjj.mapper.UserMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -16,6 +20,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class UserUtils {
 
 	public static UserMapper userMapper = SpringUtil.getBean(UserMapper.class);
+
+	public static RoleMapper roleMapper = SpringUtil.getBean(RoleMapper.class);
+
+	public static SystemInfoMapper systemInfoMapper = SpringUtil.getBean(SystemInfoMapper.class);
 
 	public static final String USER_CACHE = "userCache";
 	public static final String USER_CACHE_ID_ = "id_";
@@ -113,21 +121,21 @@ public class UserUtils {
 	 * 获取当前用户角色列表
 	 * @return
 	 */
-//	public static List<Role> getRoleList(){
-//		List<Role> roleList = (List<Role>)getCache(CACHE_ROLE_LIST);
-//		if (roleList == null){
-//			User user = getUser();
-//			if (user.isAdmin()){
-//				roleList = roleDao.findAllList(new Role());
-//			}else{
-//				Role role = new Role();
-//				role.getSqlMap().put("dsf", BaseService.dataScopeFilter(user.getCurrentUser(), "o", "u"));
-//				roleList = roleDao.findList(role);
-//			}
-//			putCache(CACHE_ROLE_LIST, roleList);
-//		}
-//		return roleList;
-//	}
+	public static List<Role> getRoleList(){
+		return roleMapper.selectByUserId(getUser().getId());
+	}
+
+	/**
+	 * 获取当前用户授权的制度
+	 * @return
+	 */
+	public static List<SystemInfo> getSystemInfoList(){
+		List<Role> roleList = getRoleList();
+		if(roleList!=null&&roleList.size()>0){
+			return systemInfoMapper.getSystemInfoListByRoleId(roleList.get(0).getId());
+		}
+		return null;
+	}
 	
 	/**
 	 * 获取当前用户授权菜单

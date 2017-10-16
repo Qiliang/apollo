@@ -32,6 +32,8 @@ public class RoleService {
     private MenuMapper menuMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
+    @Autowired
+    private RoleSystemMapper roleSystemMapper;
 
     public PageInfo getRoleList(Integer page, Integer limit) {
         RoleExample roleExample = new RoleExample();
@@ -57,8 +59,20 @@ public class RoleService {
     public void save(Role role) {
         role.preInsert();
         saveRoleMenu(role.getMenuList(), role.getId());
+        saveRoleSystem(role.getSystemInfoList(),role.getId());
         roleMapper.insert(role);
 
+    }
+
+    @Transactional
+    public void saveRoleSystem(List<SystemInfo> list, String roleId) {
+        for (SystemInfo systemInfo : list) {
+            RoleSystem roleSystem = new RoleSystem();
+            roleSystem.setId(IdGen.nextS());
+            roleSystem.setSystemId(systemInfo.getId());
+            roleSystem.setRoleId(roleId);
+            roleSystemMapper.insert(roleSystem);
+        }
     }
 
     @Transactional
@@ -91,8 +105,13 @@ public class RoleService {
         RoleMenuExample roleMenuExample = new RoleMenuExample();
         roleMenuExample.createCriteria().andRoleIdEqualTo(role.getId());
         roleMenuMapper.deleteByExample(roleMenuExample);
+        //删除所有角色制度关联表
+        RoleSystemExample roleSystemExample = new RoleSystemExample();
+        roleSystemExample.createCriteria().andRoleIdEqualTo(role.getId());
+        roleSystemMapper.deleteByExample(roleSystemExample);
         //修改角色
         saveRoleMenu(role.getMenuList(), role.getId());
+        saveRoleSystem(role.getSystemInfoList(),role.getId());
         roleMapper.updateByPrimaryKeySelective(role);
     }
 
@@ -109,6 +128,10 @@ public class RoleService {
         RoleMenuExample roleMenuExample = new RoleMenuExample();
         roleMenuExample.createCriteria().andRoleIdEqualTo(id);
         roleMenuMapper.deleteByExample(roleMenuExample);
+        //删除所有角色制度关联表
+        RoleSystemExample roleSystemExample = new RoleSystemExample();
+        roleSystemExample.createCriteria().andRoleIdEqualTo(id);
+        roleSystemMapper.deleteByExample(roleSystemExample);
         Role role = new Role();
         role.setId(id);
         role.setDelFlag(BaseEntity.DEL_FLAG_DELETE);

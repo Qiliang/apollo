@@ -1,9 +1,10 @@
-Ext.define('Kits.store.ZhiDu', {
+Ext.define('Kits.store.ZhiDuQiYe', {
     extend: 'Ext.data.Store',
     model: 'Kits.model.ZhiDu',
     proxy: {
         type: 'ajax',
-        url: '/api/systemInfo/all',
+        url: '/api/systemInfo/fillPersonType',
+        extraParams:{fillPersonType:'qy'},
         reader: {
             type: 'json'
         }

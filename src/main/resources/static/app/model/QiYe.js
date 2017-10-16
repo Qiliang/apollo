@@ -1,6 +1,5 @@
 Ext.define('Kits.model.QiYe', {
     extend: 'Ext.data.Model',
-    identifier: 'uuid',
     fields: [
         {name: 'id',  type: 'string'},
         {name: 'shxydm',  type: 'string'},
@@ -23,12 +22,12 @@ Ext.define('Kits.model.QiYe', {
         {name: 'gsfrxzqhdm', type: 'string'},
         {name: 'gsfrxxmc', type: 'string'},
         {name: 'gsfrxxdz', type: 'string'},
-        {name: 'from_type', type: 'string'},
-        {name: 'create_by', type: 'string'},
-        {name: 'create_date', type: 'string'},
-        {name: 'update_by', type: 'string'},
-        {name: 'update_date', type: 'string'},
-        {name: 'del_flag', type: 'string'}
+        {name: 'fromType', type: 'string'},
+        {name: 'createBy', type: 'string'},
+        {name: 'createDate', type: 'string'},
+        {name: 'updateBy', type: 'string'},
+        {name: 'updateDate', type: 'string'},
+        {name: 'delFlag', type: 'string'}
     ]
 
 })

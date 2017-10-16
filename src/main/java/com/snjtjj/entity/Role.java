@@ -14,6 +14,8 @@ public class Role extends DataEntity<Role> {
 
     private List<Menu> menuList;
 
+    private List<SystemInfo> systemInfoList;
+
     private String remark;
 
     public String getName() {
@@ -55,5 +57,13 @@ public class Role extends DataEntity<Role> {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public List<SystemInfo> getSystemInfoList() {
+        return systemInfoList;
+    }
+
+    public void setSystemInfoList(List<SystemInfo> systemInfoList) {
+        this.systemInfoList = systemInfoList;
     }
 }

@@ -113,6 +113,31 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectCompanyBySystemId" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.CompanyExample" >
+    select
+    <include refid="Base_Column_List" />
+    from company where id in(select company_id from system_company where system_id=#{systemId,jdbcType=VARCHAR}) and del_flag='0'
+    <if test="xxmc!= null and xxmc !=''" >
+      and xxmc LIKE #{xxmc,jdbcType=VARCHAR}
+    </if>
+    <if test="zzjgdm!= null and zzjgdm !=''" >
+      and zzjgdm = #{zzjgdm,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectCompanyByNotInSystemId" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.CompanyExample" >
+    select
+    <include refid="Base_Column_List" />
+    from company where id not in(select company_id from system_company where system_id=#{systemId,jdbcType=VARCHAR}) and del_flag='0'
+    <if test="xxmc!= null and xxmc !=''" >
+      and xxmc LIKE #{xxmc,jdbcType=VARCHAR}
+    </if>
+    <if test="zzjgdm!= null and zzjgdm !=''" >
+      and zzjgdm = #{zzjgdm,jdbcType=VARCHAR}
+    </if>
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

@@ -3,10 +3,10 @@ Ext.define('Kits.model.ZhiDu', {
     identifier: 'uuid',
     fields: [
         {name: 'id',  type: 'string'},
-        {name: 'zdmc',  type: 'string'},
-        {name: 'fbnf', type: 'string'},
-        {name: 'cjsj', type: 'string'},
-        {name: 'cjr', type: 'string'}
+        {name: 'name',  type: 'string'},
+        {name: 'releaseYear', type: 'string'},
+        {name: 'createDate', type: 'string'},
+        {name: 'updateBy', type: 'string'},
+        {name: 'fillPersonType', type: 'string'}
     ]
-
 })

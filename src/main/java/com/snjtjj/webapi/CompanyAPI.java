@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/company")
@@ -34,6 +35,33 @@ public class CompanyAPI {
     public PageInfo company(String xxmc, String zzjgdm, Integer page, Integer limit) {
         return companyService.allCompany(xxmc, zzjgdm, page, limit);
     }
+
+    /**
+     * 获取所有的企业信息
+     *
+     * @return
+     */
+    @GetMapping("/getCompanyBySystemId")
+    public PageInfo getCompanyBySystemId(String xxmc, String zzjgdm, String systemId, Integer page, Integer limit) {
+        return companyService.getCompanyBySystemId(xxmc, zzjgdm, systemId, page, limit);
+    }
+
+    /**
+     * 获取所有的企业信息不分页
+     *
+     * @return
+     */
+    @GetMapping("/getAllCompanyBySystemId")
+    public List<Company> getAllCompanyBySystemId(String systemId) {
+        return companyService.getAllCompanyBySystemId(null, null, systemId);
+    }
+
+
+    @GetMapping("/getAllCompanyByNotInSystemId")
+    public List<Company> getAllCompanyByNotInSystemId(String xxmc, String zzjgdm, String systemId) {
+        return companyService.getAllCompanyByNotInSystemId(null, null, systemId);
+    }
+
 
     @PostMapping("/saveOrUpdate")
     public FormResponse<String> save(Company company) {
@@ -60,6 +88,14 @@ public class CompanyAPI {
         return formResponse;
     }
 
+    @PostMapping("/saveSystemCompany")
+    public FormResponse<String> saveSystemCompany(@RequestParam(value = "systemId", required = false) String systemId, @RequestParam(value = "ids", required = false) String ids) {
+        companyService.saveSystemCompany(systemId, ids);
+        FormResponse formResponse = new FormResponse("保存成功！");
+        return formResponse;
+    }
+
+
     @PostMapping("/uploadFile")
     public FormResponse<String> uploadFile(@RequestParam("file") MultipartFile file) {
         companyService.uploadFile(file);
@@ -68,14 +104,14 @@ public class CompanyAPI {
     }
 
     @RequestMapping(value = "/downloadModel", method = RequestMethod.GET)
-    public void downloadModel(HttpServletRequest req,HttpServletResponse res) {
+    public void downloadModel(HttpServletRequest req, HttpServletResponse res) {
         String fileName = "model.zip";
         res.setHeader("content-type", "application/octet-stream");
         res.setContentType("application/octet-stream");
         res.setHeader("Content-Disposition", "attachment;filename=" + fileName);
         try {
             String path = ClassUtils.getDefaultClassLoader().getResource("").getPath();
-            path = path+"//export_model//qyxx.zip";
+            path = path + "//export_model//qyxx.zip";
             res.getOutputStream().write(FileUtils.readFileToByteArray(new File(path)));
         } catch (IOException e) {
             e.printStackTrace();

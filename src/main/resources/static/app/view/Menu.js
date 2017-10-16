@@ -400,6 +400,11 @@ Ext.define('Kits.view.Menu', {
                             leaf: true,
                             text: '企业101表信息列表',
                             cmp: 'Kits.view.diaoChaDuiXiang.QiYeList'
+                        },{
+                            iconCls: 'x-fa fa-table',
+                            leaf: true,
+                            text: '制度对应企业列表',
+                            cmp: 'Kits.view.diaoChaDuiXiang.ZhiDuQiYeList'
                         }
                         ]
                 },

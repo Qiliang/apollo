@@ -111,7 +111,7 @@
     <include refid="Base_Column_List" />
     from menu where
     id in(select menu_id from role_menu where
-    role_id =#{roleId,jdbcType=VARCHAR}) AND cmp is not NULL 
+    role_id =#{roleId,jdbcType=VARCHAR}) AND cmp is not NULL  AND del_flag='0'
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >

@@ -29,4 +29,8 @@ public interface CompanyMapper {
     int updateByPrimaryKeySelective(Company record);
 
     int updateByPrimaryKey(Company record);
+
+    List<Company> selectCompanyBySystemId(@Param("systemId") String systemId,@Param("xxmc") String xxmc,@Param("zzjgdm") String zzjgdm);
+
+    List<Company> selectCompanyByNotInSystemId(@Param("systemId") String systemId,@Param("xxmc") String xxmc,@Param("zzjgdm") String zzjgdm);
 }

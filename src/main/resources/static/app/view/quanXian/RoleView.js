@@ -1,7 +1,16 @@
 Ext.define('Kits.view.quanXian.RoleView', {
     extend: 'Ext.form.Panel',
-    layout: 'border',
+    layout: {
+        type: 'table',
+        columns: 1,
+        tableAttrs: {
+            style: {
+                width: '100%'
+            }
+        }
+    },
     bodyBorder: false,
+    scrollable:true,
     listeners: {
         afterrender: function (me) {
             if (this.paraId) {
@@ -14,14 +23,16 @@ Ext.define('Kits.view.quanXian.RoleView', {
                     }
                 });
                 this.getComponent('multiselector').getStore().load({params:{roleId:this.paraId}});
+                this.getComponent('sysMultiselector').getStore().load({params:{roleId:this.paraId}});
+            }else{
+                this.getComponent('multiselector').getSearch().store.load();
+                this.getComponent('sysMultiselector').getSearch().store.load();
             }
-            this.getComponent('multiselector').getSearch().store.load();
         }
     },
 
     items: [{
         xtype: 'panel',
-        region: 'north',
         defaultType: 'textfield',
         bodyPadding: 10,
         items: [{xtype: 'hiddenfield', name: 'id'}, {
@@ -52,7 +63,6 @@ Ext.define('Kits.view.quanXian.RoleView', {
     }, {
         allowBlank: false,
         xtype: 'multiselector',
-        region: 'center',
         title: '选择菜单',
         fieldName: 'text',
         store: Ext.create('Kits.store.RoleMenu'),
@@ -60,11 +70,28 @@ Ext.define('Kits.view.quanXian.RoleView', {
         addToolText: '选择菜单',
         viewConfig: {
             deferEmptyText: false,
-            emptyText: '请选择角色拥有的菜单'
+            emptyText: '请选择角色拥有的菜单权限'
         },
         search: {
             field: 'text',
             store: Ext.create('Kits.store.Menu')
+        }
+    }, {
+        allowBlank: false,
+        xtype: 'multiselector',
+        region: 'south',
+        title: '选择制度',
+        fieldName: 'name',
+        store: Ext.create('Kits.store.RoleZhiDu'),
+        itemId: 'sysMultiselector',
+        addToolText: '选择制度',
+        viewConfig: {
+            deferEmptyText: false,
+            emptyText: '请选择角色拥有的制度权限'
+        },
+        search: {
+            field: 'name',
+            store: Ext.create('Kits.store.ZhiDu')
         }
     }
     ],
@@ -82,6 +109,17 @@ Ext.define('Kits.view.quanXian.RoleView', {
                     menuList.push(menuData[i].data)
                 }
             }
+
+            var sysData = this.up("form").getComponent('sysMultiselector').getStore().data.items;
+            var sysList = [];
+            if (!sysData || sysData.length == 0) {
+                Ext.Msg.alert("提示", "请选择制度");
+                return;
+            } else {
+                for (var i = 0; i < sysData.length; i++) {
+                    sysList.push(sysData[i].data)
+                }
+            }
             var callBack = this.up('form').callBack;
             if (form.isValid()) {
                 form.submit({
@@ -90,7 +128,8 @@ Ext.define('Kits.view.quanXian.RoleView', {
                     waitMsg:'提交中，请稍后...',
                     waitTitle:'提示',
                     params: {
-                        menuListJson: Ext.JSON.encode(menuList)
+                        menuListJson: Ext.JSON.encode(menuList),
+                        sysListJson:Ext.JSON.encode(sysList),
                     },
                     success: function (form, action) {
                         Ext.Msg.alert('成功！', action.result.data);
