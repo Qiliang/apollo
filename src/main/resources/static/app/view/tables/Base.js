@@ -162,7 +162,7 @@ Ext.define('Kits.view.tables.Base', {
                                 if(model.isDirty()){
                                     data.push({
                                         id:model.data['id'],
-                                        tabcode: me.tableid,
+                                        tabid: me.tableid,
                                         hzcode:model.data[me.hzcolumn],
                                         num1:model.data['num1'],
                                         num2:model.data['num2'],

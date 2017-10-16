@@ -3,14 +3,14 @@ package com.snjtjj.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RptSettingExample {
+public class RptTabSettingExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public RptSettingExample() {
+    public RptTabSettingExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -234,73 +234,73 @@ public class RptSettingExample {
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeIsNull() {
-            addCriterion("tabcode is null");
+        public Criteria andTabidIsNull() {
+            addCriterion("tabid is null");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeIsNotNull() {
-            addCriterion("tabcode is not null");
+        public Criteria andTabidIsNotNull() {
+            addCriterion("tabid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeEqualTo(String value) {
-            addCriterion("tabcode =", value, "tabcode");
+        public Criteria andTabidEqualTo(String value) {
+            addCriterion("tabid =", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeNotEqualTo(String value) {
-            addCriterion("tabcode <>", value, "tabcode");
+        public Criteria andTabidNotEqualTo(String value) {
+            addCriterion("tabid <>", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeGreaterThan(String value) {
-            addCriterion("tabcode >", value, "tabcode");
+        public Criteria andTabidGreaterThan(String value) {
+            addCriterion("tabid >", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeGreaterThanOrEqualTo(String value) {
-            addCriterion("tabcode >=", value, "tabcode");
+        public Criteria andTabidGreaterThanOrEqualTo(String value) {
+            addCriterion("tabid >=", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeLessThan(String value) {
-            addCriterion("tabcode <", value, "tabcode");
+        public Criteria andTabidLessThan(String value) {
+            addCriterion("tabid <", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeLessThanOrEqualTo(String value) {
-            addCriterion("tabcode <=", value, "tabcode");
+        public Criteria andTabidLessThanOrEqualTo(String value) {
+            addCriterion("tabid <=", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeLike(String value) {
-            addCriterion("tabcode like", value, "tabcode");
+        public Criteria andTabidLike(String value) {
+            addCriterion("tabid like", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeNotLike(String value) {
-            addCriterion("tabcode not like", value, "tabcode");
+        public Criteria andTabidNotLike(String value) {
+            addCriterion("tabid not like", value, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeIn(List<String> values) {
-            addCriterion("tabcode in", values, "tabcode");
+        public Criteria andTabidIn(List<String> values) {
+            addCriterion("tabid in", values, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeNotIn(List<String> values) {
-            addCriterion("tabcode not in", values, "tabcode");
+        public Criteria andTabidNotIn(List<String> values) {
+            addCriterion("tabid not in", values, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeBetween(String value1, String value2) {
-            addCriterion("tabcode between", value1, value2, "tabcode");
+        public Criteria andTabidBetween(String value1, String value2) {
+            addCriterion("tabid between", value1, value2, "tabid");
             return (Criteria) this;
         }
 
-        public Criteria andTabcodeNotBetween(String value1, String value2) {
-            addCriterion("tabcode not between", value1, value2, "tabcode");
+        public Criteria andTabidNotBetween(String value1, String value2) {
+            addCriterion("tabid not between", value1, value2, "tabid");
             return (Criteria) this;
         }
 

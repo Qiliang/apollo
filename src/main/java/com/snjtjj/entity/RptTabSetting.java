@@ -1,11 +1,11 @@
 package com.snjtjj.entity;
 
-public class RptSetting {
+public class RptTabSetting {
     private String id;
 
     private Integer typeid;
 
-    private String tabcode;
+    private String tabid;
 
     private Integer fixcolumn;
 
@@ -57,12 +57,12 @@ public class RptSetting {
         this.typeid = typeid;
     }
 
-    public String getTabcode() {
-        return tabcode;
+    public String getTabid() {
+        return tabid;
     }
 
-    public void setTabcode(String tabcode) {
-        this.tabcode = tabcode == null ? null : tabcode.trim();
+    public void setTabid(String tabid) {
+        this.tabid = tabid == null ? null : tabid.trim();
     }
 
     public Integer getFixcolumn() {

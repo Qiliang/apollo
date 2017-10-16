@@ -1,13 +1,21 @@
 package com.snjtjj.entity;
 
-public class RptTab {
+import com.snjtjj.entity.base.DataEntity;
+
+public class RptTab extends DataEntity<RptTab> {
     private String id;
 
-    private String zdbid;
+    private String systeminfoid;
 
     private String tabcode;
 
     private String tabname;
+
+    private String makedept;
+
+    private String approvalno;
+
+    private String validitydate;
 
     private Integer tabdeep;
 
@@ -21,12 +29,12 @@ public class RptTab {
         this.id = id == null ? null : id.trim();
     }
 
-    public String getZdbid() {
-        return zdbid;
+    public String getSysteminfoid() {
+        return systeminfoid;
     }
 
-    public void setZdbid(String zdbid) {
-        this.zdbid = zdbid == null ? null : zdbid.trim();
+    public void setSysteminfoid(String systeminfoid) {
+        this.systeminfoid = systeminfoid == null ? null : systeminfoid.trim();
     }
 
     public String getTabcode() {
@@ -45,6 +53,30 @@ public class RptTab {
         this.tabname = tabname == null ? null : tabname.trim();
     }
 
+    public String getMakedept() {
+        return makedept;
+    }
+
+    public void setMakedept(String makedept) {
+        this.makedept = makedept == null ? null : makedept.trim();
+    }
+
+    public String getApprovalno() {
+        return approvalno;
+    }
+
+    public void setApprovalno(String approvalno) {
+        this.approvalno = approvalno == null ? null : approvalno.trim();
+    }
+
+    public String getValiditydate() {
+        return validitydate;
+    }
+
+    public void setValiditydate(String validitydate) {
+        this.validitydate = validitydate == null ? null : validitydate.trim();
+    }
+
     public Integer getTabdeep() {
         return tabdeep;
     }
@@ -60,4 +92,5 @@ public class RptTab {
     public void setTabdeep1(Integer tabdeep1) {
         this.tabdeep1 = tabdeep1;
     }
+
 }

@@ -1,16 +1,15 @@
 package com.snjtjj.service;
 
-import com.csvreader.CsvReader;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.snjtjj.entity.RptSetting;
-import com.snjtjj.entity.RptSettingExample;
 import com.snjtjj.entity.RptTab;
 import com.snjtjj.entity.RptTabExample;
-import com.snjtjj.mapper.RptSettingMapper;
+import com.snjtjj.entity.RptTabSetting;
+import com.snjtjj.entity.RptTabSettingExample;
 import com.snjtjj.mapper.RptTabMapper;
+import com.snjtjj.mapper.RptTabSettingMapper;
 import com.snjtjj.utils.IdGen;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -23,14 +22,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.Charset;
 import java.util.*;
 
 @Service
-public class RptSettingService {
+public class RptTabSettingService {
 
     @Autowired
-    private RptSettingMapper rptSettingMapper;
+    private RptTabSettingMapper rptTabSettingMapper;
 
     @Autowired
     private RptTabMapper rptTabMapper;
@@ -61,7 +59,7 @@ public class RptSettingService {
             column.buildData(putList,colList,0);
         }
     }
-    private Column buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting,Object editor){
+    private Column buildColumn(String text, String unit, String code, int colspan, int icol, RptTabSetting setting, Object editor){
         int end = text.indexOf("▪");
         String id = end == -1 ? text : text.substring(0,end);
         Column column = findColumn(columnsList,id);
@@ -110,7 +108,7 @@ public class RptSettingService {
         @JsonIgnore
         public Boolean leaf;
         @JsonIgnore
-        public RptSetting setting;
+        public RptTabSetting setting;
 
         public String text;
         public String dataIndex;
@@ -191,7 +189,7 @@ public class RptSettingService {
                 putList.add(item);
             }
         }
-        public void buildColumn(String text,String unit,String code,int colspan,int icol,RptSetting setting,Object editor){
+        public void buildColumn(String text,String unit,String code,int colspan,int icol,RptTabSetting setting,Object editor){
             int end = text.indexOf("▪");
             String id = end == -1 ? text : text.substring(0,end);
             if(columns == null){
@@ -239,16 +237,16 @@ public class RptSettingService {
      * @param tab
      */
     private void buildTotalTemplate(RptTab tab){
-        RptSettingExample settingExample = new RptSettingExample();
+        RptTabSettingExample settingExample = new RptTabSettingExample();
         settingExample.createCriteria()
-                .andTabcodeEqualTo(tab.getId())
+                .andTabidEqualTo(tab.getId())
                 .andTypeidEqualTo(0);
         settingExample.setOrderByClause("orderno asc");
-        List<RptSetting> list = rptSettingMapper.selectByExample(settingExample);
+        List<RptTabSetting> list = rptTabSettingMapper.selectByExample(settingExample);
         columnsList.clear();
         List<Map<String,String>> fields = new ArrayList<>();
         //noinspection Duplicates
-        for(RptSetting setting : list){
+        for(RptTabSetting setting : list){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
@@ -301,12 +299,12 @@ public class RptSettingService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        RptSettingExample settingExample1 = new RptSettingExample();
+        RptTabSettingExample settingExample1 = new RptTabSettingExample();
         settingExample1.createCriteria()
-                .andTabcodeEqualTo(tab.getId())
+                .andTabidEqualTo(tab.getId())
                 .andTypeidEqualTo(1);
         settingExample1.setOrderByClause("orderno asc");
-        List<RptSetting> list1 = rptSettingMapper.selectByExample(settingExample1);
+        List<RptTabSetting> list1 = rptTabSettingMapper.selectByExample(settingExample1);
         columnsList.clear();
         List<Map<String,String>> fields = new ArrayList<>();
         List<String> colList = new ArrayList<>();
@@ -318,7 +316,7 @@ public class RptSettingService {
         child.put("minValue",0);
         child.put("allowBlank",true);
         editor.put("field",child);
-        for(RptSetting setting : list1){
+        for(RptTabSetting setting : list1){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
@@ -336,16 +334,16 @@ public class RptSettingService {
             e.printStackTrace();
         }
 
-        RptSettingExample settingExample2 = new RptSettingExample();
+        RptTabSettingExample settingExample2 = new RptTabSettingExample();
         settingExample2.createCriteria()
-                .andTabcodeEqualTo(tab.getId())
+                .andTabidEqualTo(tab.getId())
                 .andTypeidEqualTo(0)
                 .andFixcolumnIsNull();
         settingExample2.setOrderByClause("orderno asc");
-        List<RptSetting> list2 = rptSettingMapper.selectByExample(settingExample2);
+        List<RptTabSetting> list2 = rptTabSettingMapper.selectByExample(settingExample2);
         columnsList.clear();
         //noinspection Duplicates
-        for(RptSetting setting : list2){
+        for(RptTabSetting setting : list2){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
@@ -401,34 +399,34 @@ public class RptSettingService {
         buildFormTemplate(tab);
     }
 
-    public List<RptSetting> findSingleTable(String tabcode,Integer typeid,Boolean isTemplate){
-        RptSettingExample example = new RptSettingExample();
+    public List<RptTabSetting> findSingleTable(String tabcode,Integer typeid,Boolean isTemplate){
+        RptTabSettingExample example = new RptTabSettingExample();
         if(isTemplate){
             example.createCriteria()
-                    .andTabcodeEqualTo(tabcode)
+                    .andTabidEqualTo(tabcode)
                     .andTypeidEqualTo(typeid)
                     .andFixcolumnIsNull();
         }
         else {
             example.createCriteria()
-                    .andTabcodeEqualTo(tabcode)
+                    .andTabidEqualTo(tabcode)
                     .andTypeidEqualTo(typeid);
         }
         example.setOrderByClause("orderno asc");
-        List<RptSetting> list = rptSettingMapper.selectByExample(example);
+        List<RptTabSetting> list = rptTabSettingMapper.selectByExample(example);
         return list;
     }
 
     @Transactional
-    public void putSingleTable(List<RptSetting> settingList){
-        for(RptSetting setting : settingList){
+    public void putSingleTable(List<RptTabSetting> settingList){
+        for(RptTabSetting setting : settingList){
             String id = setting.getId();
             if(id == null || id.toUpperCase().startsWith("EXT")){
                 setting.setId(IdGen.nextS());
-                rptSettingMapper.insertSelective(setting);
+                rptTabSettingMapper.insertSelective(setting);
             }
             else{
-                rptSettingMapper.updateByPrimaryKeySelective(setting);
+                rptTabSettingMapper.updateByPrimaryKeySelective(setting);
             }
         }
     }
