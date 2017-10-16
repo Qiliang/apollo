@@ -1,9 +1,8 @@
 package com.snjtjj.webapi;
 
-import com.snjtjj.entity.RptCollect;
+import com.snjtjj.entity.RptTabCollect;
 import com.snjtjj.entity.User;
-import com.snjtjj.mapper.RptCollectMapper;
-import com.snjtjj.service.RptCollectService;
+import com.snjtjj.service.RptTabCollectService;
 import com.snjtjj.utils.UserUtils;
 import com.snjtjj.vo.FormResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +12,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/rpt/collect")
-public class RptCollectAPI {
+public class RptTabCollectAPI {
 
     @Autowired
-    private RptCollectService rptCollectService;
+    private RptTabCollectService rptTabCollectService;
 
     @GetMapping("/table/{tabcode}")
     public Object findListByTable(@PathVariable("tabcode") String tabcode){
         User user = UserUtils.getUser();
-        return rptCollectService.findSingleTable(tabcode,user.getId());
+        return rptTabCollectService.findSingleTable(tabcode,user.getId());
     }
 
     @PostMapping("/table/put")
-    public FormResponse<String>  putList(@RequestBody List<RptCollect> list){
+    public FormResponse<String>  putList(@RequestBody List<RptTabCollect> list){
         User user = UserUtils.getUser();
         String id = user.getId();
         list.forEach(li ->{
             li.setUsercode(id);
         });
-        rptCollectService.putSingleTable(list);
+        rptTabCollectService.putSingleTable(list);
         return new FormResponse("保存成功！");
     }
 }

@@ -3,11 +3,19 @@
 <mapper namespace="com.snjtjj.mapper.RptTabMapper" >
   <resultMap id="BaseResultMap" type="com.snjtjj.entity.RptTab" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="zdbid" property="zdbid" jdbcType="VARCHAR" />
+    <result column="systeminfoid" property="systeminfoid" jdbcType="VARCHAR" />
     <result column="tabcode" property="tabcode" jdbcType="VARCHAR" />
     <result column="tabname" property="tabname" jdbcType="VARCHAR" />
+    <result column="makedept" property="makedept" jdbcType="VARCHAR" />
+    <result column="approvalno" property="approvalno" jdbcType="VARCHAR" />
+    <result column="validitydate" property="validitydate" jdbcType="VARCHAR" />
     <result column="tabdeep" property="tabdeep" jdbcType="INTEGER" />
     <result column="tabdeep1" property="tabdeep1" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="del_flag" property="delFlag" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, zdbid, tabcode, tabname, tabdeep, tabdeep1
+    id, systeminfoid, tabcode, tabname, makedept, approvalno, validitydate, tabdeep, 
+    tabdeep1, create_date, create_by, update_by, update_date, del_flag
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTabExample" >
     select
@@ -101,12 +110,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.snjtjj.entity.RptTab" >
-    insert into rpt_tab (id, zdbid, tabcode, 
-      tabname, tabdeep, tabdeep1
-      )
-    values (#{id,jdbcType=VARCHAR}, #{zdbid,jdbcType=VARCHAR}, #{tabcode,jdbcType=VARCHAR}, 
-      #{tabname,jdbcType=VARCHAR}, #{tabdeep,jdbcType=INTEGER}, #{tabdeep1,jdbcType=INTEGER}
-      )
+    insert into rpt_tab (id, systeminfoid, tabcode, 
+      tabname, makedept, approvalno, 
+      validitydate, tabdeep, tabdeep1, 
+      create_date, create_by, update_by, 
+      update_date, del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{systeminfoid,jdbcType=VARCHAR}, #{tabcode,jdbcType=VARCHAR}, 
+      #{tabname,jdbcType=VARCHAR}, #{makedept,jdbcType=VARCHAR}, #{approvalno,jdbcType=VARCHAR}, 
+      #{validitydate,jdbcType=VARCHAR}, #{tabdeep,jdbcType=INTEGER}, #{tabdeep1,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTab" >
     insert into rpt_tab
@@ -114,8 +127,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="zdbid != null" >
-        zdbid,
+      <if test="systeminfoid != null" >
+        systeminfoid,
       </if>
       <if test="tabcode != null" >
         tabcode,
@@ -123,19 +136,43 @@
       <if test="tabname != null" >
         tabname,
       </if>
+      <if test="makedept != null" >
+        makedept,
+      </if>
+      <if test="approvalno != null" >
+        approvalno,
+      </if>
+      <if test="validitydate != null" >
+        validitydate,
+      </if>
       <if test="tabdeep != null" >
         tabdeep,
       </if>
       <if test="tabdeep1 != null" >
         tabdeep1,
       </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="zdbid != null" >
-        #{zdbid,jdbcType=VARCHAR},
+      <if test="systeminfoid != null" >
+        #{systeminfoid,jdbcType=VARCHAR},
       </if>
       <if test="tabcode != null" >
         #{tabcode,jdbcType=VARCHAR},
@@ -143,11 +180,35 @@
       <if test="tabname != null" >
         #{tabname,jdbcType=VARCHAR},
       </if>
+      <if test="makedept != null" >
+        #{makedept,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalno != null" >
+        #{approvalno,jdbcType=VARCHAR},
+      </if>
+      <if test="validitydate != null" >
+        #{validitydate,jdbcType=VARCHAR},
+      </if>
       <if test="tabdeep != null" >
         #{tabdeep,jdbcType=INTEGER},
       </if>
       <if test="tabdeep1 != null" >
         #{tabdeep1,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -163,8 +224,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.zdbid != null" >
-        zdbid = #{record.zdbid,jdbcType=VARCHAR},
+      <if test="record.systeminfoid != null" >
+        systeminfoid = #{record.systeminfoid,jdbcType=VARCHAR},
       </if>
       <if test="record.tabcode != null" >
         tabcode = #{record.tabcode,jdbcType=VARCHAR},
@@ -172,11 +233,35 @@
       <if test="record.tabname != null" >
         tabname = #{record.tabname,jdbcType=VARCHAR},
       </if>
+      <if test="record.makedept != null" >
+        makedept = #{record.makedept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.approvalno != null" >
+        approvalno = #{record.approvalno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.validitydate != null" >
+        validitydate = #{record.validitydate,jdbcType=VARCHAR},
+      </if>
       <if test="record.tabdeep != null" >
         tabdeep = #{record.tabdeep,jdbcType=INTEGER},
       </if>
       <if test="record.tabdeep1 != null" >
         tabdeep1 = #{record.tabdeep1,jdbcType=INTEGER},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delFlag != null" >
+        del_flag = #{record.delFlag,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -186,11 +271,19 @@
   <update id="updateByExample" parameterType="map" >
     update rpt_tab
     set id = #{record.id,jdbcType=VARCHAR},
-      zdbid = #{record.zdbid,jdbcType=VARCHAR},
+      systeminfoid = #{record.systeminfoid,jdbcType=VARCHAR},
       tabcode = #{record.tabcode,jdbcType=VARCHAR},
       tabname = #{record.tabname,jdbcType=VARCHAR},
+      makedept = #{record.makedept,jdbcType=VARCHAR},
+      approvalno = #{record.approvalno,jdbcType=VARCHAR},
+      validitydate = #{record.validitydate,jdbcType=VARCHAR},
       tabdeep = #{record.tabdeep,jdbcType=INTEGER},
-      tabdeep1 = #{record.tabdeep1,jdbcType=INTEGER}
+      tabdeep1 = #{record.tabdeep1,jdbcType=INTEGER},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{record.delFlag,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,8 +291,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.RptTab" >
     update rpt_tab
     <set >
-      <if test="zdbid != null" >
-        zdbid = #{zdbid,jdbcType=VARCHAR},
+      <if test="systeminfoid != null" >
+        systeminfoid = #{systeminfoid,jdbcType=VARCHAR},
       </if>
       <if test="tabcode != null" >
         tabcode = #{tabcode,jdbcType=VARCHAR},
@@ -207,22 +300,54 @@
       <if test="tabname != null" >
         tabname = #{tabname,jdbcType=VARCHAR},
       </if>
+      <if test="makedept != null" >
+        makedept = #{makedept,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalno != null" >
+        approvalno = #{approvalno,jdbcType=VARCHAR},
+      </if>
+      <if test="validitydate != null" >
+        validitydate = #{validitydate,jdbcType=VARCHAR},
+      </if>
       <if test="tabdeep != null" >
         tabdeep = #{tabdeep,jdbcType=INTEGER},
       </if>
       <if test="tabdeep1 != null" >
         tabdeep1 = #{tabdeep1,jdbcType=INTEGER},
       </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.RptTab" >
     update rpt_tab
-    set zdbid = #{zdbid,jdbcType=VARCHAR},
+    set systeminfoid = #{systeminfoid,jdbcType=VARCHAR},
       tabcode = #{tabcode,jdbcType=VARCHAR},
       tabname = #{tabname,jdbcType=VARCHAR},
+      makedept = #{makedept,jdbcType=VARCHAR},
+      approvalno = #{approvalno,jdbcType=VARCHAR},
+      validitydate = #{validitydate,jdbcType=VARCHAR},
       tabdeep = #{tabdeep,jdbcType=INTEGER},
-      tabdeep1 = #{tabdeep1,jdbcType=INTEGER}
+      tabdeep1 = #{tabdeep1,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

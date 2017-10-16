@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.snjtjj.mapper.RptSettingMapper" >
-  <resultMap id="BaseResultMap" type="com.snjtjj.entity.RptSetting" >
+<mapper namespace="com.snjtjj.mapper.RptTabSettingMapper" >
+  <resultMap id="BaseResultMap" type="com.snjtjj.entity.RptTabSetting" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="typeid" property="typeid" jdbcType="INTEGER" />
-    <result column="tabcode" property="tabcode" jdbcType="VARCHAR" />
+    <result column="tabid" property="tabid" jdbcType="VARCHAR" />
     <result column="fixcolumn" property="fixcolumn" jdbcType="INTEGER" />
     <result column="itemcode" property="itemcode" jdbcType="VARCHAR" />
     <result column="unitcode" property="unitcode" jdbcType="VARCHAR" />
@@ -82,16 +82,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, typeid, tabcode, fixcolumn, itemcode, unitcode, hzcode, colwidth, colalign, orderno, 
+    id, typeid, tabid, fixcolumn, itemcode, unitcode, hzcode, colwidth, colalign, orderno, 
     num1, num2, num3, num4, num5, num6, num7, num8, num9, num10
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptSettingExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTabSettingExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from rpt_setting
+    from rpt_tab_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -102,28 +102,28 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from rpt_setting
+    from rpt_tab_setting
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from rpt_setting
+    delete from rpt_tab_setting
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.snjtjj.entity.RptSettingExample" >
-    delete from rpt_setting
+  <delete id="deleteByExample" parameterType="com.snjtjj.entity.RptTabSettingExample" >
+    delete from rpt_tab_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.snjtjj.entity.RptSetting" >
-    insert into rpt_setting (id, typeid, tabcode, 
+  <insert id="insert" parameterType="com.snjtjj.entity.RptTabSetting" >
+    insert into rpt_tab_setting (id, typeid, tabid, 
       fixcolumn, itemcode, unitcode, 
       hzcode, colwidth, colalign, 
       orderno, num1, num2, 
       num3, num4, num5, num6, 
       num7, num8, num9, num10
       )
-    values (#{id,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{tabcode,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, #{tabid,jdbcType=VARCHAR}, 
       #{fixcolumn,jdbcType=INTEGER}, #{itemcode,jdbcType=VARCHAR}, #{unitcode,jdbcType=VARCHAR}, 
       #{hzcode,jdbcType=VARCHAR}, #{colwidth,jdbcType=INTEGER}, #{colalign,jdbcType=VARCHAR}, 
       #{orderno,jdbcType=INTEGER}, #{num1,jdbcType=VARCHAR}, #{num2,jdbcType=VARCHAR}, 
@@ -131,8 +131,8 @@
       #{num7,jdbcType=VARCHAR}, #{num8,jdbcType=VARCHAR}, #{num9,jdbcType=VARCHAR}, #{num10,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.snjtjj.entity.RptSetting" >
-    insert into rpt_setting
+  <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTabSetting" >
+    insert into rpt_tab_setting
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -140,8 +140,8 @@
       <if test="typeid != null" >
         typeid,
       </if>
-      <if test="tabcode != null" >
-        tabcode,
+      <if test="tabid != null" >
+        tabid,
       </if>
       <if test="fixcolumn != null" >
         fixcolumn,
@@ -202,8 +202,8 @@
       <if test="typeid != null" >
         #{typeid,jdbcType=INTEGER},
       </if>
-      <if test="tabcode != null" >
-        #{tabcode,jdbcType=VARCHAR},
+      <if test="tabid != null" >
+        #{tabid,jdbcType=VARCHAR},
       </if>
       <if test="fixcolumn != null" >
         #{fixcolumn,jdbcType=INTEGER},
@@ -258,14 +258,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.snjtjj.entity.RptSettingExample" resultType="java.lang.Integer" >
-    select count(*) from rpt_setting
+  <select id="countByExample" parameterType="com.snjtjj.entity.RptTabSettingExample" resultType="java.lang.Integer" >
+    select count(*) from rpt_tab_setting
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update rpt_setting
+    update rpt_tab_setting
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
@@ -273,8 +273,8 @@
       <if test="record.typeid != null" >
         typeid = #{record.typeid,jdbcType=INTEGER},
       </if>
-      <if test="record.tabcode != null" >
-        tabcode = #{record.tabcode,jdbcType=VARCHAR},
+      <if test="record.tabid != null" >
+        tabid = #{record.tabid,jdbcType=VARCHAR},
       </if>
       <if test="record.fixcolumn != null" >
         fixcolumn = #{record.fixcolumn,jdbcType=INTEGER},
@@ -333,10 +333,10 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update rpt_setting
+    update rpt_tab_setting
     set id = #{record.id,jdbcType=VARCHAR},
       typeid = #{record.typeid,jdbcType=INTEGER},
-      tabcode = #{record.tabcode,jdbcType=VARCHAR},
+      tabid = #{record.tabid,jdbcType=VARCHAR},
       fixcolumn = #{record.fixcolumn,jdbcType=INTEGER},
       itemcode = #{record.itemcode,jdbcType=VARCHAR},
       unitcode = #{record.unitcode,jdbcType=VARCHAR},
@@ -358,14 +358,14 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.RptSetting" >
-    update rpt_setting
+  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.RptTabSetting" >
+    update rpt_tab_setting
     <set >
       <if test="typeid != null" >
         typeid = #{typeid,jdbcType=INTEGER},
       </if>
-      <if test="tabcode != null" >
-        tabcode = #{tabcode,jdbcType=VARCHAR},
+      <if test="tabid != null" >
+        tabid = #{tabid,jdbcType=VARCHAR},
       </if>
       <if test="fixcolumn != null" >
         fixcolumn = #{fixcolumn,jdbcType=INTEGER},
@@ -421,10 +421,10 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.RptSetting" >
-    update rpt_setting
+  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.RptTabSetting" >
+    update rpt_tab_setting
     set typeid = #{typeid,jdbcType=INTEGER},
-      tabcode = #{tabcode,jdbcType=VARCHAR},
+      tabid = #{tabid,jdbcType=VARCHAR},
       fixcolumn = #{fixcolumn,jdbcType=INTEGER},
       itemcode = #{itemcode,jdbcType=VARCHAR},
       unitcode = #{unitcode,jdbcType=VARCHAR},
