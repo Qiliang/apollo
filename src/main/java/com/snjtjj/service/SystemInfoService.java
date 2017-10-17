@@ -3,6 +3,7 @@ package com.snjtjj.service;
 import com.snjtjj.entity.Menu;
 import com.snjtjj.entity.SystemInfo;
 import com.snjtjj.entity.SystemInfoExample;
+import com.snjtjj.entity.base.BaseEntity;
 import com.snjtjj.mapper.SystemInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,14 @@ public class SystemInfoService {
     public List<SystemInfo> getAllSystemInfo(){
         SystemInfoExample systemInfoExample = new SystemInfoExample();
         SystemInfoExample.Criteria criteria = systemInfoExample.createCriteria();
-        criteria.andDelFlagEqualTo("0");
+        criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         return systemInfoMapper.selectByExample(systemInfoExample);
     }
 
     public List<SystemInfo> getFillPersonType(String fillPersonType){
         SystemInfoExample systemInfoExample = new SystemInfoExample();
         SystemInfoExample.Criteria criteria = systemInfoExample.createCriteria();
-        criteria.andDelFlagEqualTo("0");
+        criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         criteria.andFillPersonTypeEqualTo(fillPersonType);
         return systemInfoMapper.selectByExampleAndRoles(systemInfoExample);
     }

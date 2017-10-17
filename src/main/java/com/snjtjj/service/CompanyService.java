@@ -43,18 +43,19 @@ public class CompanyService {
 
     public PageInfo getCompanyBySystemId(String xxmc, String zzjgdm, String systemId, Integer page, Integer limit) {
         PageHelper.startPage(page, limit);
-        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, xxmc, zzjgdm);
+
+        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
 
     public List<Company> getAllCompanyBySystemId(String xxmc, String zzjgdm, String systemId) {
-        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, xxmc, zzjgdm);
+        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
         return list;
     }
 
     public List<Company> getAllCompanyByNotInSystemId(String xxmc, String zzjgdm, String systemId) {
-        List<Company> list = companyMapper.selectCompanyByNotInSystemId(systemId, xxmc, zzjgdm);
+        List<Company> list = companyMapper.selectCompanyByNotInSystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
         return list;
     }
 

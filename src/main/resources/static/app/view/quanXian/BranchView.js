@@ -77,10 +77,10 @@ Ext.define('Kits.view.quanXian.BranchView', {
         },
         {
             xtype: 'textfield',
-            fieldLabel: '组织机构代码',
+            fieldLabel: '所属行政区划代码',
             name: 'code',
             allowBlank: false,
-            blankText: '组织机构代码为必填项',
+            blankText: '所属行政区划代码为必填项',
             maxLength: 50
         },
         {xtype: 'textfield', fieldLabel: '电话号码', name: 'phone', maxLength: 20, vtype: 'mobile'},

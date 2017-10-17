@@ -96,6 +96,7 @@ public class UserService {
         }else{
             user.setLoginPassword(null);
         }
+        user.preUpdate();
         userMapper.updateByPrimaryKeySelective(user);
         //删除所有的用户角色，并且重新插入
         UserRoleExample userRoleExample = new UserRoleExample();

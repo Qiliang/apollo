@@ -48,6 +48,7 @@ public class ContentService {
 
     @Transactional
     public void edit(Content content){
+        content.preUpdate();
         contentMapper.updateByPrimaryKeySelective(content);
     }
 }

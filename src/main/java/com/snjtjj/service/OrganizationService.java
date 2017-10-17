@@ -77,18 +77,34 @@ public class OrganizationService {
     }
 
     public void save(Organization organization){
-        if(StringUtils.isBlank(organization.getParentId())){
-            organization.setParentId("-1");
-        }
+        setParentIds(organization);
         organization.preInsert();
         organizationMapper.insert(organization);
     }
 
-    public void edit(Organization organization){
+    private Organization setParentIds(Organization organization){
         if(StringUtils.isBlank(organization.getParentId())){
             organization.setParentId("-1");
+            organization.setParentIds("-1");
+        }else if("-1".equals(organization.getParentId())){
+            organization.setParentIds("-1");
         }
+        else{
+            //获取上级组织
+            Organization p = organizationMapper.selectByPrimaryKey(organization.getParentId());
+            if(p!=null&&StringUtils.isNotBlank(p.getParentIds())){
+                String parentIds = p.getParentIds()+","+p.getId();
+                organization.setParentIds(parentIds);
+            }
+        }
+        return organization;
+    }
+
+    public void edit(Organization organization){
+        setParentIds(organization);
         organization.preUpdate();
+        //获取上级组织
+
         organizationMapper.updateByPrimaryKeySelective(organization);
     }
 

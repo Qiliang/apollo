@@ -112,6 +112,7 @@ public class RoleService {
         //修改角色
         saveRoleMenu(role.getMenuList(), role.getId());
         saveRoleSystem(role.getSystemInfoList(),role.getId());
+        role.preUpdate();
         roleMapper.updateByPrimaryKeySelective(role);
     }
 
