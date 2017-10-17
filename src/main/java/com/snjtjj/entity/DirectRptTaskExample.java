@@ -834,6 +834,76 @@ public class DirectRptTaskExample {
             addCriterion("del_flag not between", value1, value2, "delFlag");
             return (Criteria) this;
         }
+
+        public Criteria andXzqhIdsIsNull() {
+            addCriterion("xzqh_ids is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsIsNotNull() {
+            addCriterion("xzqh_ids is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsEqualTo(String value) {
+            addCriterion("xzqh_ids =", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsNotEqualTo(String value) {
+            addCriterion("xzqh_ids <>", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsGreaterThan(String value) {
+            addCriterion("xzqh_ids >", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsGreaterThanOrEqualTo(String value) {
+            addCriterion("xzqh_ids >=", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsLessThan(String value) {
+            addCriterion("xzqh_ids <", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsLessThanOrEqualTo(String value) {
+            addCriterion("xzqh_ids <=", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsLike(String value) {
+            addCriterion("xzqh_ids like", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsNotLike(String value) {
+            addCriterion("xzqh_ids not like", value, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsIn(List<String> values) {
+            addCriterion("xzqh_ids in", values, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsNotIn(List<String> values) {
+            addCriterion("xzqh_ids not in", values, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsBetween(String value1, String value2) {
+            addCriterion("xzqh_ids between", value1, value2, "xzqhIds");
+            return (Criteria) this;
+        }
+
+        public Criteria andXzqhIdsNotBetween(String value1, String value2) {
+            addCriterion("xzqh_ids not between", value1, value2, "xzqhIds");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

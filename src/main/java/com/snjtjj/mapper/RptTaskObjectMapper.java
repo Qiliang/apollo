@@ -3,9 +3,8 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.RptTaskObject;
 import com.snjtjj.entity.RptTaskObjectExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 public interface RptTaskObjectMapper {
     int countByExample(RptTaskObjectExample example);
 

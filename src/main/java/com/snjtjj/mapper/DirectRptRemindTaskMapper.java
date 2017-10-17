@@ -3,9 +3,8 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.DirectRptRemindTask;
 import com.snjtjj.entity.DirectRptRemindTaskExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 public interface DirectRptRemindTaskMapper {
     int countByExample(DirectRptRemindTaskExample example);
 

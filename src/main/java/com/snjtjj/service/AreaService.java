@@ -58,4 +58,11 @@ public class AreaService {
         return treeVo;
     }
 
+    public List<Area> getAllList(){
+        AreaExample areaExample = new AreaExample();
+        areaExample.createCriteria().andParentIdIsNotNull();
+        areaExample.setOrderByClause("code");
+        return areaMapper.selectByExample(areaExample);
+    }
+
 }

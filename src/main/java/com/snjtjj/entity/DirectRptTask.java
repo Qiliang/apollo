@@ -1,10 +1,11 @@
 package com.snjtjj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.snjtjj.entity.base.DataEntity;
 
 import java.util.Date;
 
-public class DirectRptTask extends DataEntity<DirectRptTask>{
+public class DirectRptTask  extends DataEntity<DirectRptTask> {
 
     private String name;
 
@@ -16,6 +17,17 @@ public class DirectRptTask extends DataEntity<DirectRptTask>{
 
     private String tableId;
 
+    private String xzqhIds;
+
+    private String ytb;
+
+    private String wtb;
+
+    private String tbl;
+
+    private String systemName;
+
+    private String tableName;
 
     public String getName() {
         return name;
@@ -25,6 +37,7 @@ public class DirectRptTask extends DataEntity<DirectRptTask>{
         this.name = name == null ? null : name.trim();
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public Date getStartDate() {
         return startDate;
     }
@@ -33,6 +46,7 @@ public class DirectRptTask extends DataEntity<DirectRptTask>{
         this.startDate = startDate;
     }
 
+    @JsonFormat(pattern="yyyy-MM-dd")
     public Date getEndDate() {
         return endDate;
     }
@@ -57,4 +71,51 @@ public class DirectRptTask extends DataEntity<DirectRptTask>{
         this.tableId = tableId == null ? null : tableId.trim();
     }
 
+    public String getXzqhIds() {
+        return xzqhIds;
+    }
+
+    public void setXzqhIds(String xzqhIds) {
+        this.xzqhIds = xzqhIds == null ? null : xzqhIds.trim();
+    }
+
+    public String getYtb() {
+        return ytb;
+    }
+
+    public void setYtb(String ytb) {
+        this.ytb = ytb;
+    }
+
+    public String getWtb() {
+        return wtb;
+    }
+
+    public void setWtb(String wtb) {
+        this.wtb = wtb;
+    }
+
+    public String getTbl() {
+        return tbl;
+    }
+
+    public void setTbl(String tbl) {
+        this.tbl = tbl;
+    }
+
+    public String getSystemName() {
+        return systemName;
+    }
+
+    public void setSystemName(String systemName) {
+        this.systemName = systemName;
+    }
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
 }

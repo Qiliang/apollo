@@ -27,4 +27,13 @@ public class AreaAPI {
     public TreeVo<Area> area() {
         return areaService.getTree();
     }
+
+    /**
+     * 获取所有的行政区划
+     * @return
+     */
+    @GetMapping("/all")
+    public List<Area> all() {
+        return areaService.getAllList();
+    }
 }

@@ -4,8 +4,7 @@ import com.snjtjj.entity.base.DataEntity;
 
 import java.util.Date;
 
-public class DirectRptRemindTask extends DataEntity<DirectRptRemindTask> {
-
+public class DirectRptRemindTask extends DataEntity<DirectRptRemindTask>{
     private String systemId;
 
     private String tableId;
@@ -19,7 +18,6 @@ public class DirectRptRemindTask extends DataEntity<DirectRptRemindTask> {
     private Integer remindMonth;
 
     private Integer remindDay;
-
 
     public String getSystemId() {
         return systemId;
@@ -76,5 +74,4 @@ public class DirectRptRemindTask extends DataEntity<DirectRptRemindTask> {
     public void setRemindDay(Integer remindDay) {
         this.remindDay = remindDay;
     }
-
 }

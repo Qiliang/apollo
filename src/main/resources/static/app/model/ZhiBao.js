@@ -3,15 +3,14 @@ Ext.define('Kits.model.ZhiBao', {
     identifier: 'uuid',
     fields: [
         {name: 'id',  type: 'string'},
-        {name: 'zdmc',  type: 'string'},
-        {name: 'fbnf', type: 'string'},
-        {name: 'cjsj', type: 'string'},
-        {name: 'ssb', type: 'string'},
+        {name: 'name',  type: 'string'},
+        {name: 'startDate', type: 'string'},
+        {name: 'endDate', type: 'string'},
+        {name: 'systemName', type: 'string'},
+        {name: 'tableName', type: 'string'},
         {name: 'ytb', type: 'string'},
         {name: 'wtb', type: 'string'},
-        {name: 'tbl', type: 'string'},
-        {name: 'yszt', type: 'string'}
-
+        {name: 'tbl', type: 'string'}
     ]
 
 })

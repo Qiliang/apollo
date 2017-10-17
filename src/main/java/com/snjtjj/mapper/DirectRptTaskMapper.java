@@ -3,9 +3,8 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.DirectRptTask;
 import com.snjtjj.entity.DirectRptTaskExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 public interface DirectRptTaskMapper {
     int countByExample(DirectRptTaskExample example);
 
@@ -28,4 +27,6 @@ public interface DirectRptTaskMapper {
     int updateByPrimaryKeySelective(DirectRptTask record);
 
     int updateByPrimaryKey(DirectRptTask record);
+
+    List<DirectRptTask> selectListByUserID(@Param("name") String name,@Param("xzqhIds") String xzqh_ids);
 }

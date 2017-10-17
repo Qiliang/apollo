@@ -6,6 +6,10 @@
     <result column="task_id" property="taskId" jdbcType="VARCHAR" />
     <result column="obj_id" property="objId" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="CHAR" />
+    <result column="xzqh_id" property="xzqhId" jdbcType="VARCHAR" />
+    <result column="report_state" property="reportState" jdbcType="VARCHAR" />
+    <result column="town_suggestions" property="townSuggestions" jdbcType="VARCHAR" />
+    <result column="area_suggestions" property="areaSuggestions" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, task_id, obj_id, type
+    id, task_id, obj_id, type, xzqh_id, report_state, town_suggestions, area_suggestions
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTaskObjectExample" >
     select
@@ -100,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.snjtjj.entity.RptTaskObject" >
     insert into rpt_task_object (id, task_id, obj_id, 
-      type)
+      type, xzqh_id, report_state, 
+      town_suggestions, area_suggestions)
     values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, 
-      #{type,jdbcType=CHAR})
+      #{type,jdbcType=CHAR}, #{xzqhId,jdbcType=VARCHAR}, #{reportState,jdbcType=VARCHAR}, 
+      #{townSuggestions,jdbcType=VARCHAR}, #{areaSuggestions,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTaskObject" >
     insert into rpt_task_object
@@ -119,6 +125,18 @@
       <if test="type != null" >
         type,
       </if>
+      <if test="xzqhId != null" >
+        xzqh_id,
+      </if>
+      <if test="reportState != null" >
+        report_state,
+      </if>
+      <if test="townSuggestions != null" >
+        town_suggestions,
+      </if>
+      <if test="areaSuggestions != null" >
+        area_suggestions,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -132,6 +150,18 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=CHAR},
+      </if>
+      <if test="xzqhId != null" >
+        #{xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="reportState != null" >
+        #{reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestions != null" >
+        #{townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSuggestions != null" >
+        #{areaSuggestions,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +186,18 @@
       <if test="record.type != null" >
         type = #{record.type,jdbcType=CHAR},
       </if>
+      <if test="record.xzqhId != null" >
+        xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportState != null" >
+        report_state = #{record.reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.townSuggestions != null" >
+        town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaSuggestions != null" >
+        area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +208,11 @@
     set id = #{record.id,jdbcType=VARCHAR},
       task_id = #{record.taskId,jdbcType=VARCHAR},
       obj_id = #{record.objId,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=CHAR}
+      type = #{record.type,jdbcType=CHAR},
+      xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
+      report_state = #{record.reportState,jdbcType=VARCHAR},
+      town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
+      area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +229,18 @@
       <if test="type != null" >
         type = #{type,jdbcType=CHAR},
       </if>
+      <if test="xzqhId != null" >
+        xzqh_id = #{xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="reportState != null" >
+        report_state = #{reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestions != null" >
+        town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSuggestions != null" >
+        area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -190,7 +248,11 @@
     update rpt_task_object
     set task_id = #{taskId,jdbcType=VARCHAR},
       obj_id = #{objId,jdbcType=VARCHAR},
-      type = #{type,jdbcType=CHAR}
+      type = #{type,jdbcType=CHAR},
+      xzqh_id = #{xzqhId,jdbcType=VARCHAR},
+      report_state = #{reportState,jdbcType=VARCHAR},
+      town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
+      area_suggestions = #{areaSuggestions,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

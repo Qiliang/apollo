@@ -7,6 +7,10 @@ public class RptTab extends DataEntity<RptTab> {
 
     private String systeminfoid;
 
+    private String systeminfoName;
+
+    private String systemInfoFillPersonType;
+
     private String tabcode;
 
     private String tabname;
@@ -93,4 +97,19 @@ public class RptTab extends DataEntity<RptTab> {
         this.tabdeep1 = tabdeep1;
     }
 
+    public String getSysteminfoName() {
+        return systeminfoName;
+    }
+
+    public void setSysteminfoName(String systeminfoName) {
+        this.systeminfoName = systeminfoName;
+    }
+
+    public String getSystemInfoFillPersonType() {
+        return systemInfoFillPersonType;
+    }
+
+    public void setSystemInfoFillPersonType(String systemInfoFillPersonType) {
+        this.systemInfoFillPersonType = systemInfoFillPersonType;
+    }
 }

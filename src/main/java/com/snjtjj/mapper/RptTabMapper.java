@@ -29,4 +29,6 @@ public interface RptTabMapper {
     int updateByPrimaryKeySelective(RptTab record);
 
     int updateByPrimaryKey(RptTab record);
+
+    List<RptTab> selectByUserRole();
 }

@@ -12,34 +12,45 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
         }
     ],
     tbar: [
-            {
-                xtype: 'textfield',
-                fieldLabel: '报送任务名称',
-                name: 'bsrwmc',
-            },
-            {
-                xtype: 'button',
-                text: '查询',
-                handler: function () {
-                    var grid = this.up('grid');
-                    grid.getStore().load();
-                }
-            },
-            {
-                xtype: 'button',
-                text: '添加',
-                handler: function () {
-                    Ext.create('Ext.window.Window', {
-                        title: '添加直报',
-                        height: 400,
-                        width: 600,
-                        layout: 'fit',
-                        modal: true,
-                        closeToolText:'关闭',
-                        items: Ext.create('Kits.view.zhiDu.AddZhiBaoView', {})
-                    }).show();
-                }
+        {
+            xtype: 'textfield',
+            fieldLabel: '报送任务名称',
+            name: 'name',
+            id: 'viewName'
+        },
+        {
+            xtype: 'button',
+            text: '查询',
+            handler: function () {
+                var grid = this.up('grid');
+                grid.getStore().getProxy().setExtraParams({
+                    name: Ext.getCmp('viewName').getValue()
+                })
+                grid.getStore().load();
             }
+        },
+        {
+            xtype: 'button',
+            text: '添加',
+            handler: function () {
+                var btn = this;
+                var win = Ext.create('Ext.window.Window', {
+                    title: '添加直报',
+                    height: 400,
+                    width: 600,
+                    layout: 'fit',
+                    modal: true,
+                    closeToolText: '关闭',
+                    items: Ext.create('Kits.view.zhiDu.AddZhiBaoView', {
+                        callBack: function () {
+                            btn.up('grid').getStore().load();
+                            win.close();
+                        }
+                    })
+                });
+                win.show();
+            }
+        }
     ],
     bbar: {
         xtype: 'pagingtoolbar',
@@ -54,7 +65,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             width: 600,
             layout: 'fit',
             modal: true,
-            closeToolText:'关闭',
+            closeToolText: '关闭',
             items: Ext.create('Kits.view.zhiDu.YiTianBaoView', {})
         }).show();
     },
@@ -66,7 +77,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             width: 400,
             layout: 'fit',
             modal: true,
-            closeToolText:'关闭',
+            closeToolText: '关闭',
             items: Ext.create('Kits.view.zhiDu.WeiTianBaoView', {})
         }).show();
     },
@@ -76,9 +87,9 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             //record.get('已填报')
             var grid = view.up('grid');
             var fieldName = grid.getColumns()[cellIndex].dataIndex;
-            if(fieldName==='ytb'){
+            if (fieldName === 'ytb') {
                 grid.gotoYTb();
-            }else if(fieldName==='wtb'){
+            } else if (fieldName === 'wtb') {
                 grid.gotoWTb();
             }
         }
@@ -89,38 +100,42 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
         },
         {
             text: '报送任务名称',
-            dataIndex: 'bsrwmc'
+            dataIndex: 'name'
         },
         {
             text: '开始时间',
-            dataIndex: 'kssj'
+            dataIndex: 'startDate'
         },
         {
             text: '结束时间',
-            dataIndex: 'jssj'
+            dataIndex: 'endDate'
         },
         {
             text: '所属制度',
-            dataIndex: 'sszd'
+            dataIndex: 'systemName'
         },
         {
             text: '所属表',
-            dataIndex: 'ssb'
+            dataIndex: 'tableName'
         },
         {
             text: '已填报',
             dataIndex: 'ytb',
             renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
-                if (value&&value>0)
+                if (value && value > 0)
                     return "<a href='javascript:void(0)'>" + value + "</a>";
+                else
+                    return value;
             }
         },
         {
             text: '未填报',
             dataIndex: 'wtb',
             renderer: function (value, metaData, record, rowIndex, colIndex, store, view) {
-                if (value&&value>0)
+                if (value && value > 0)
                     return "<a href='javascript:void(0)'>" + value + "</a>";
+                else
+                    return value;
             }
         },
         {
@@ -141,7 +156,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
                         width: 900,
                         layout: 'fit',
                         modal: true,
-                        closeToolText:'关闭',
+                        closeToolText: '关闭',
                         items: Ext.create('Kits.view.zhiDu.YanShouListView', {})
                     }).show();
                     // alert("查看 " + rec.get('id'));
