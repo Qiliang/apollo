@@ -1,4 +1,4 @@
-Ext.define('Kits.view.Login', {
+Ext.define('Kits.view.UserLogin', {
     extend: 'Ext.container.Viewport',
     layout: 'center',
     items: {
@@ -11,7 +11,7 @@ Ext.define('Kits.view.Login', {
 
         items: [{
             allowBlank: false,
-            fieldLabel: '登录名',
+            fieldLabel: '组织机构代码或行政区划代码',
             name: 'user',
             emptyText: 'user id',
             msgTarget: 'under'
@@ -33,7 +33,7 @@ Ext.define('Kits.view.Login', {
                         method: 'POST',
                         url: '/api/auth',
                         params:{
-                            username:viewport.down('textfield[name=user]').getValue(),
+                            username:"users@"+viewport.down('textfield[name=user]').getValue(),
                             password:viewport.down('textfield[name=pass]').getValue(),
                         },
                         callback: function (options, success, response) {
@@ -46,7 +46,7 @@ Ext.define('Kits.view.Login', {
                             } else {
                                 viewport.mask();
                                 var res = JSON.parse(response.responseText);
-                                Ext.util.Cookies.set('token', "Bearer "+res.token);
+                                Ext.util.Cookies.set('token', "Users "+res.token);
                                 window.location.reload();
                             }
                         }

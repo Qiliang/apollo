@@ -4,15 +4,21 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.snjtjj.common.utils.ResponseException;
 import com.snjtjj.entity.*;
+import com.snjtjj.entity.base.BaseEntity;
 import com.snjtjj.mapper.*;
 import com.snjtjj.utils.Collections3;
+import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,89 +38,247 @@ public class DirectRptTaskService {
     private SystemInfoMapper systemInfoMapper;
     @Autowired
     private RptTabMapper rptTabMapper;
+    @Autowired
+    private InnerAsync innerAsync;
+    @Autowired
+    private CompanyMapper companyMapper;
 
-    public PageInfo<DirectRptTask> getListByUserID(String name,Integer page, Integer limit){
-        //根据用户id获取用户所属组织，得到用户所在组织对应的行政区划代码
-        User user = UserUtils.getUser();
-        String orgId = user.getOrgId();
-        String simpleCode = "";
-        if(StringUtils.isNotBlank(orgId)){
-            Organization organization = organizationMapper.selectByPrimaryKey(orgId);
-            String code = organization.getCode();
-            //根据code查询用户对应的行政区划信息
-            if(StringUtils.isNotBlank(code)){
-                AreaExample areaExample = new AreaExample();
-                AreaExample.Criteria criteria = areaExample.createCriteria();
-                criteria.andCodeEqualTo(code);
-                List<Area> areaList = areaMapper.selectByExample(areaExample);
-                if(areaList!=null&&areaList.size()>0){
-                    simpleCode = areaList.get(0).getSimpleCode();
-                }
-            }
+    public PageInfo<DirectRptTask> getListByUserID(String name, Integer page, Integer limit) {
+        //查询该行政区划代码下面的所有行政区划
+        try {
+            List<String> codeList = UserUtils.getUserAreaCodeList();
+            List<String> cloneCodeList = new ArrayList<>(codeList);
+            codeList.forEach(item -> {
+                item = "'" + item + "'";
+            });
+            String xzqhIds = Collections3.convertToString(codeList, ",");
+            PageHelper.startPage(page, limit);
+            List<DirectRptTask> list = directRptTaskMapper.selectListByUserID(name, xzqhIds);
+            list.forEach(item -> {
+                RptTaskObjectExample ytbRptTaskObjectExample = new RptTaskObjectExample();
+                RptTaskObjectExample.Criteria ytbCriteria = ytbRptTaskObjectExample.createCriteria();
+                ytbCriteria.andTaskIdEqualTo(item.getId());
+                ytbCriteria.andReportStateNotEqualTo("wtb");
+                ytbCriteria.andXzqhIdIn(cloneCodeList);
+                Integer ytb = rptTaskObjectMapper.countByExample(ytbRptTaskObjectExample);
+
+                RptTaskObjectExample wtbRptTaskObjectExample = new RptTaskObjectExample();
+                RptTaskObjectExample.Criteria wtbCriteria = wtbRptTaskObjectExample.createCriteria();
+                wtbCriteria.andTaskIdEqualTo(item.getId());
+                wtbCriteria.andXzqhIdIn(cloneCodeList);
+                wtbCriteria.andReportStateEqualTo("wtb");
+                Integer wtb = rptTaskObjectMapper.countByExample(wtbRptTaskObjectExample);
+
+                NumberFormat nf = NumberFormat.getPercentInstance();
+                String tbl = nf.format(Double.valueOf(ytb) / (Double.valueOf(ytb) + Double.valueOf(wtb)));
+
+                item.setYtb(String.valueOf(ytb));
+                item.setWtb(String.valueOf(wtb));
+                item.setTbl(tbl);
+                fillSystemAndTableInfo(item);
+            });
+            //统计信息，计算已填报，未填报
+            PageInfo pageInfo = new PageInfo(list);
+            return pageInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new ResponseException("服务器异常！", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        if(StringUtils.isNotBlank(simpleCode)){
-            //查询该行政区划代码下面的所有行政区划
-            AreaExample areaExample = new AreaExample();
-            AreaExample.Criteria criteria = areaExample.createCriteria();
-            criteria.andCodeLike(simpleCode+"%");
-            List<Area> areaList = areaMapper.selectByExample(areaExample);
-            try {
-                List<String> codeList = Collections3.extractToList(areaList,"code");
-                codeList.forEach(item->{
-                    item = "'"+item + "'";
-                });
-                String xzqhIds = Collections3.convertToString(codeList,",");
-                PageHelper.startPage(page, limit);
-                List<DirectRptTask> list = directRptTaskMapper.selectListByUserID(name,xzqhIds);
-                list.forEach(item->{
-                    RptTaskObjectExample ytbRptTaskObjectExample = new RptTaskObjectExample();
-                    RptTaskObjectExample.Criteria ytbCriteria = ytbRptTaskObjectExample.createCriteria();
-                    ytbCriteria.andTaskIdEqualTo(item.getId());
-                    ytbCriteria.andTaskIdNotEqualTo("wtb");
-                    Integer ytb = rptTaskObjectMapper.countByExample(ytbRptTaskObjectExample);
-
-                    RptTaskObjectExample wtbRptTaskObjectExample = new RptTaskObjectExample();
-                    RptTaskObjectExample.Criteria wtbCriteria = wtbRptTaskObjectExample.createCriteria();
-                    wtbCriteria.andTaskIdEqualTo(item.getId());
-                    wtbCriteria.andTaskIdEqualTo("wtb");
-                    Integer wtb = rptTaskObjectMapper.countByExample(wtbRptTaskObjectExample);
-
-                    NumberFormat nf = NumberFormat.getPercentInstance();
-                    String tbl = nf.format(Double.valueOf(ytb)/(Double.valueOf(ytb)+Double.valueOf(wtb)));
-
-                    item.setYtb(String.valueOf(ytb));
-                    item.setWtb(String.valueOf(wtb));
-                    item.setTbl(tbl);
-
-                    //根据制度id查询制度名称
-                    SystemInfo systemInfo = systemInfoMapper.selectByPrimaryKey(item.getSystemId());
-                    item.setSystemName(systemInfo.getName());
-
-                    //根据表id查询表名称
-                    RptTab rptTab = rptTabMapper.selectByPrimaryKey(item.getTableId());
-                    item.setTableName(rptTab.getTabname());
-
-                });
-                //统计信息，计算已填报，未填报
-                PageInfo pageInfo = new PageInfo(list);
-                return pageInfo;
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new ResponseException("服务器异常！", HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-        return null;
     }
 
-    public List<RptTab> getTabListByUser(){
+    public void fillSystemAndTableInfo(DirectRptTask item) {
+        //根据制度id查询制度名称
+        SystemInfo systemInfo = systemInfoMapper.selectByPrimaryKey(item.getSystemId());
+        item.setSystemName(systemInfo.getName());
+
+        //根据表id查询表名称
+        RptTab rptTab = rptTabMapper.selectByPrimaryKey(item.getTableId());
+        item.setTableName(rptTab.getTabname());
+    }
+
+    public List<RptTab> getTabListByUser() {
         List<RptTab> list = rptTabMapper.selectByUserRole();
-        list.forEach(item->{
+        list.forEach(item -> {
             SystemInfo systemInfo = systemInfoMapper.selectByPrimaryKey(item.getSysteminfoid());
-            if(systemInfo!=null) {
+            if (systemInfo != null) {
                 item.setSysteminfoName(systemInfo.getName());
                 item.setSystemInfoFillPersonType(systemInfo.getFillPersonType());
             }
         });
         return list;
     }
+
+    @Transactional
+    public void save(DirectRptTask directRptTask, String dcdxIds, String systemInfoFillPersonType) {
+        directRptTask.preInsert();
+        directRptTaskMapper.insert(directRptTask);
+        innerAsync.saveRptTaskObject(directRptTask.getId(), dcdxIds, systemInfoFillPersonType);
+    }
+
+    @Transactional
+    public void delete(String id) {
+        //判断是否有用户填报
+        RptTaskObjectExample ytbRptTaskObjectExample = new RptTaskObjectExample();
+        RptTaskObjectExample.Criteria ytbCriteria = ytbRptTaskObjectExample.createCriteria();
+        ytbCriteria.andTaskIdEqualTo(id);
+        ytbCriteria.andReportStateNotEqualTo("wtb");
+        Integer ytb = rptTaskObjectMapper.countByExample(ytbRptTaskObjectExample);
+        if (ytb > 0) {
+            throw new ResponseException("已有用户填报，无法删除！", HttpStatus.INTERNAL_SERVER_ERROR);
+        } else {
+            RptTaskObjectExample rptTaskObjectExample = new RptTaskObjectExample();
+            RptTaskObjectExample.Criteria criteria = rptTaskObjectExample.createCriteria();
+            criteria.andTaskIdEqualTo(id);
+            rptTaskObjectMapper.deleteByExample(rptTaskObjectExample);
+            DirectRptTask directRptTask = new DirectRptTask();
+            directRptTask.setId(id);
+            directRptTask.setDelFlag(BaseEntity.DEL_FLAG_DELETE);
+            directRptTaskMapper.updateByPrimaryKeySelective(directRptTask);
+        }
+    }
+
+    public PageInfo<RptTaskObject> getListByFillState(String id, String state, Integer page, Integer limit) {
+        RptTaskObjectExample rptTaskObjectExample = new RptTaskObjectExample();
+        RptTaskObjectExample.Criteria criteria = rptTaskObjectExample.createCriteria().andTaskIdEqualTo(id);
+        List<String> codeList = UserUtils.getUserAreaCodeList();
+        criteria.andXzqhIdIn(codeList);
+        if ("wtb".equals(state)) {
+            criteria.andReportStateEqualTo("wtb");
+            rptTaskObjectExample.setOrderByClause("xzqh_id");
+        } else {
+            criteria.andReportStateNotEqualTo("wtb");
+            rptTaskObjectExample.setOrderByClause("fill_date");
+        }
+
+        PageHelper.startPage(page, limit);
+        List<RptTaskObject> list = rptTaskObjectMapper.selectByExample(rptTaskObjectExample);
+        fillObjName(list);
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+
+    public void fillObjName(List<RptTaskObject> list) {
+        //根据id查询名称
+        list.forEach(item -> {
+            //企业填报
+            if ("0".equals(item.getType())) {
+                Company company = companyMapper.selectByPrimaryKey(item.getObjId());
+                if (company != null) {
+                    item.setObjName(company.getXxmc());
+                } else {
+                    item.setObjName("未知");
+                }
+            } else {
+                Area area = areaMapper.selectByPrimaryKey(item.getObjId());
+                if (area != null) {
+                    item.setObjName(area.getName());
+                } else {
+                    item.setObjName("未知");
+                }
+            }
+        });
+    }
+
+    public PageInfo<RptTaskObject> getCheckList(String id, Integer page, Integer limit) {
+        RptTaskObjectExample rptTaskObjectExample = new RptTaskObjectExample();
+        RptTaskObjectExample.Criteria criteria = rptTaskObjectExample.createCriteria().andTaskIdEqualTo(id);
+        List<String> codeList = UserUtils.getUserAreaCodeList();
+        criteria.andXzqhIdIn(codeList);
+        //获取用户组织所在行政区划层级，0：区，1：镇，乡，2：村
+        String userLevel = UserUtils.getUserOrgAreaLevel();
+        if ("0".equals(userLevel)) {
+            criteria.andReportStateEqualTo("zystg");
+        } else if ("1".equals(userLevel)) {
+            criteria.andReportStateEqualTo("ytb");
+        } else {
+            criteria.andReportStateEqualTo("999");
+        }
+        rptTaskObjectExample.setOrderByClause("fill_date");
+        PageHelper.startPage(page, limit);
+        List<RptTaskObject> list = rptTaskObjectMapper.selectByExample(rptTaskObjectExample);
+        fillObjName(list);
+        list.forEach(item -> {
+            DirectRptTask directRptTask = directRptTaskMapper.selectByPrimaryKey(item.getTaskId());
+            fillSystemAndTableInfo(directRptTask);
+            item.setName(directRptTask.getName());
+            item.setSystemName(directRptTask.getSystemName());
+            item.setTableName(directRptTask.getTableName());
+            fillSuggestionsState(item);
+        });
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+
+    private void fillSuggestionsState(RptTaskObject rptTaskObject) {
+        String townSuggestionsState = "";
+        String areaSuggestionsState = "";
+        switch (rptTaskObject.getReportState()) {
+            case "wtb": //未填报
+            case "ytb": //已填报，未镇验收
+                townSuggestionsState = "未验收";
+                areaSuggestionsState = "未验收";
+                break;
+            case "zyswtg"://镇验收未通过
+                townSuggestionsState = "验收不通过";
+                areaSuggestionsState = "未验收";
+                break;
+            case "zystg"://已填报，镇验收通过
+                townSuggestionsState = "验收通过";
+                areaSuggestionsState = "未验收";
+                break;
+            case "qyswtg"://区验收未通过
+                townSuggestionsState = "验收通过";
+                areaSuggestionsState = "验收不通过";
+                break;
+            case "qystg"://区验收未通过
+                townSuggestionsState = "验收通过";
+                areaSuggestionsState = "验收通过";
+                break;
+            default:
+                break;
+
+        }
+        rptTaskObject.setAreaSuggestionsState(areaSuggestionsState);
+        rptTaskObject.setTownSuggestionsState(townSuggestionsState);
+    }
+
+    @Component
+    class InnerAsync {
+        @Autowired
+        private AreaMapper areaMapper;
+        @Autowired
+        private RptTaskObjectMapper rptTaskObjectMapper;
+        @Autowired
+        private CompanyMapper companyMapper;
+
+        @Transactional
+        @Async
+        public void saveRptTaskObject(String id, String dcdxIds, String systemInfoFillPersonType) {
+            String[] dcdxArray = dcdxIds.split(",");
+            for (String dcdxid : dcdxArray) {
+                if (StringUtils.isNotBlank(dcdxid)) {
+                    RptTaskObject rptTaskObject = new RptTaskObject();
+                    rptTaskObject.setReportState("wtb");
+                    rptTaskObject.setId(IdGen.nextS());
+                    rptTaskObject.setObjId(dcdxid);
+                    rptTaskObject.setTaskId(id);
+                    if ("qy".equals(systemInfoFillPersonType)) {
+                        Company company = companyMapper.selectByPrimaryKey(dcdxid);
+                        rptTaskObject.setType("0");
+                        if (company != null) {
+                            rptTaskObject.setXzqhId(company.getXzqhdm());
+                        }
+                    } else if ("xzqh".equals(systemInfoFillPersonType)) {
+                        Area area = areaMapper.selectByPrimaryKey(dcdxid);
+                        rptTaskObject.setType("1");
+                        if (area != null) {
+                            rptTaskObject.setXzqhId(area.getCode());
+                        }
+                    }
+                    rptTaskObjectMapper.insert(rptTaskObject);
+                }
+            }
+        }
+    }
+
 }

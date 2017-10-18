@@ -2,16 +2,13 @@
 package com.snjtjj.utils;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Date;
 import java.util.List;
 
 import com.snjtjj.common.security.JwtUser;
-import com.snjtjj.entity.Role;
-import com.snjtjj.entity.SystemInfo;
-import com.snjtjj.entity.User;
-import com.snjtjj.mapper.RoleMapper;
-import com.snjtjj.mapper.SystemInfoMapper;
-import com.snjtjj.mapper.UserMapper;
+import com.snjtjj.entity.*;
+import com.snjtjj.mapper.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
@@ -24,6 +21,10 @@ public class UserUtils {
 	public static RoleMapper roleMapper = SpringUtil.getBean(RoleMapper.class);
 
 	public static SystemInfoMapper systemInfoMapper = SpringUtil.getBean(SystemInfoMapper.class);
+
+	public static OrganizationMapper organizationMapper = SpringUtil.getBean(OrganizationMapper.class);
+
+	public static AreaMapper areaMapper = SpringUtil.getBean(AreaMapper.class);
 
 	public static final String USER_CACHE = "userCache";
 	public static final String USER_CACHE_ID_ = "id_";
@@ -115,6 +116,71 @@ public class UserUtils {
 		}
 		// 如果没有登录，则返回实例化空的User对象。
 		return new User();
+	}
+
+	/**
+	 * 获取用户所在组织机构层级
+	 * 0:区
+	 * 1:镇，乡
+	 * 2:村，社区
+	 */
+	public static String getUserOrgAreaLevel(){
+		String level = "";
+		String simpleCode = getUserAreaSimpleCode();
+		if(StringUtils.isNotBlank(simpleCode)){
+			switch (simpleCode.length()){
+				case 6: level = "0";break;
+				case 9: level = "1";break;
+				case 12: level = "2";break;
+			}
+		}
+		return level;
+	}
+
+	/**
+	 * 获取用户的行政区划代码
+	 */
+	public static String getUserAreaSimpleCode(){
+		//根据用户id获取用户所属组织，得到用户所在组织对应的行政区划代码
+		User user = getUser();
+		String orgId = user.getOrgId();
+		String simpleCode = "";
+		if (StringUtils.isNotBlank(orgId)) {
+			Organization organization = organizationMapper.selectByPrimaryKey(orgId);
+			String code = organization.getCode();
+			//根据code查询用户对应的行政区划信息
+			if (StringUtils.isNotBlank(code)) {
+				AreaExample areaExample = new AreaExample();
+				AreaExample.Criteria criteria = areaExample.createCriteria();
+				criteria.andCodeEqualTo(code);
+				List<Area> areaList = areaMapper.selectByExample(areaExample);
+				if (areaList != null && areaList.size() > 0) {
+					simpleCode = areaList.get(0).getSimpleCode();
+				}
+			}
+		}
+		return simpleCode;
+	}
+
+	/**
+	 * 获取用户所在单位下属所有的行政区划代码
+	 */
+	public static List<String> getUserAreaCodeList() {
+		String simpleCode = getUserAreaSimpleCode();
+		if (StringUtils.isNotBlank(simpleCode)) {
+			//查询该行政区划代码下面的所有行政区划
+			AreaExample areaExample = new AreaExample();
+			AreaExample.Criteria criteria = areaExample.createCriteria();
+			criteria.andCodeLike(simpleCode + "%");
+			List<Area> areaList = areaMapper.selectByExample(areaExample);
+			try {
+				List<String> codeList = Collections3.extractToList(areaList, "code");
+				return codeList;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 	}
 
 	/**

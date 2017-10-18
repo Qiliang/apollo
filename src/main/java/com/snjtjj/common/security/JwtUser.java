@@ -14,10 +14,22 @@ import java.util.Collection;
  */
 public class JwtUser implements UserDetails {
     private User user;
+    private FillUser fillUser;
+    private String password;
+    private String username;
     private Collection<? extends GrantedAuthority> roles;
 
     public JwtUser(User user,Collection<? extends GrantedAuthority> roles){
         this.user = user;
+        this.setPassword(user.getLoginPassword());
+        this.setUsername(user.getLoginName());
+        this.roles = new ArrayList<>();
+    }
+
+    public JwtUser(FillUser fillUser,Collection<? extends GrantedAuthority> roles){
+        this.fillUser = fillUser;
+        this.setPassword(fillUser.getLoginPassword());
+        this.setUsername(fillUser.getLoginUserName());
         this.roles = new ArrayList<>();
     }
 
@@ -26,15 +38,6 @@ public class JwtUser implements UserDetails {
         return roles;
     }
 
-    @Override
-    public String getPassword() {
-        return this.user.getLoginPassword();
-    }
-
-    @Override
-    public String getUsername() {
-        return this.user.getLoginName();
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -62,6 +65,31 @@ public class JwtUser implements UserDetails {
 
     public void setUser(User user) {
         this.user = user;
+    }
+    public FillUser getFillUser() {
+        return fillUser;
+    }
+
+    public void setFillUser(FillUser fillUser) {
+        this.fillUser = fillUser;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
 

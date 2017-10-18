@@ -11,11 +11,31 @@ Ext.define('Kits.view.zhiDu.YiTianBaoView', {
         afterrender:function (me) {
         }
     },
+    initComponent: function() {
+        var me = this;
+        me.items[0].store.proxy.extraParams={id:me.recordId,state:me.state};
+        me.callParent();
+    },
     items: [
         {
             width: 200,
             xtype:'grid',
-            store: Ext.create('Kits.store.YiTianBao', {}),
+            store: {
+                xtype: 'store.store',
+                proxy: {
+                    type: 'ajax',
+                    url: '/api/directRptTask/getListByFillState',
+                    method: 'GET',
+                    reader: {
+                        type: 'json',
+                        rootProperty: 'list',
+                        totalProperty: 'total'
+                    },
+                    limitParam: 'limit',
+                    pageParam: 'page'
+                },
+                autoLoad: true
+            },
             bbar: {
                 xtype: 'pagingtoolbar',
                 displayInfo: true,
@@ -24,12 +44,12 @@ Ext.define('Kits.view.zhiDu.YiTianBaoView', {
             columns: [
                 {
                     text: '行政区划/单位名称',
-                    dataIndex: 'dwmc',
+                    dataIndex: 'objName',
                     width:'50%'
                 },
                 {
                     text: '填报时间',
-                    dataIndex: 'tbsj',
+                    dataIndex: 'fillDate',
                     width:220
                 },
                 {

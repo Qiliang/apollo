@@ -17,7 +17,7 @@ Ext.define("Kits.ux.BaseTextArea", {
     },
 
     getErrors: function(value) {
-        value = value&&this.editor.getData();
+        value = value?value:this.editor.getData();
         value = arguments.length ? (value == null ? '' : value) : this.processRawValue(this.getRawValue());
         var me = this,
             errors = me.callParent([value]),

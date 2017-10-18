@@ -1,5 +1,6 @@
 package com.snjtjj.common.security;
 
+import com.snjtjj.entity.FillUser;
 import com.snjtjj.entity.Role;
 import com.snjtjj.entity.User;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,6 +13,13 @@ import java.util.stream.Collectors;
 public final class JwtUserFactory {
 
     private JwtUserFactory() {
+    }
+
+    public static JwtUser create(FillUser user) {
+        return new JwtUser(
+                user,
+                mapToGrantedAuthorities(new ArrayList<>())
+        );
     }
 
     public static JwtUser create(User user) {

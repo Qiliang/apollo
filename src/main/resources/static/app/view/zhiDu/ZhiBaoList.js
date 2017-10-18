@@ -43,8 +43,8 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
                     closeToolText: '关闭',
                     items: Ext.create('Kits.view.zhiDu.AddZhiBaoView', {
                         callBack: function () {
-                            btn.up('grid').getStore().load();
                             win.close();
+                            btn.up('grid').getStore().load();
                         }
                     })
                 });
@@ -66,7 +66,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             layout: 'fit',
             modal: true,
             closeToolText: '关闭',
-            items: Ext.create('Kits.view.zhiDu.YiTianBaoView', {})
+            items: Ext.create('Kits.view.zhiDu.YiTianBaoView', {recordId:record.data.id,state:'ytb'})
         }).show();
     },
 
@@ -78,7 +78,7 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             layout: 'fit',
             modal: true,
             closeToolText: '关闭',
-            items: Ext.create('Kits.view.zhiDu.WeiTianBaoView', {})
+            items: Ext.create('Kits.view.zhiDu.WeiTianBaoView', {recordId:record.data.id,state:'wtb'})
         }).show();
     },
 
@@ -88,9 +88,9 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             var grid = view.up('grid');
             var fieldName = grid.getColumns()[cellIndex].dataIndex;
             if (fieldName === 'ytb') {
-                grid.gotoYTb();
+                grid.gotoYTb(record);
             } else if (fieldName === 'wtb') {
-                grid.gotoWTb();
+                grid.gotoWTb(record);
             }
         }
     },
@@ -149,23 +149,38 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             items: [{
                 iconCls: 'x-fa fa-check',
                 tooltip: '数据验收',
-                handler: function (grid, rowIndex, colIndex) {
+                handler: function (view, recIndex, cellIndex, item, e, record) {
                     Ext.create('Ext.window.Window', {
                         title: '数据验收',
                         height: 600,
-                        width: 900,
+                        width: 1000,
                         layout: 'fit',
                         modal: true,
                         closeToolText: '关闭',
-                        items: Ext.create('Kits.view.zhiDu.YanShouListView', {})
+                        items: Ext.create('Kits.view.zhiDu.YanShouListView', {recordId:record.data.id})
                     }).show();
                     // alert("查看 " + rec.get('id'));
                 }
             }, '-', {
                 iconCls: 'x-fa fa-trash-o',
                 tooltip: '删除',
-                handler: function (grid, rowIndex, colIndex) {
-                    Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
+                handler: function (view, recIndex, cellIndex, item, e, record) {
+                    var btn=this;
+                    Ext.Msg.confirm('确认', '确认删除?', function (r) {
+                        if (r == 'yes') {
+                            Ext.Ajax.request({
+                                url: '/api/directRptTask/deleteById',
+                                params: { id: record.data.id},
+                                method: 'POST',
+                                success: function (response, options) {
+                                    btn.up('grid').getStore().reload();
+                                },
+                                failure: function (response, options) {
+                                    var res = JSON.parse(response.responseText);
+                                    Ext.MessageBox.alert('失败', '错误信息：' + res.message);
+                                }
+                            });
+                        }
                     }, this);
                 }
             }]

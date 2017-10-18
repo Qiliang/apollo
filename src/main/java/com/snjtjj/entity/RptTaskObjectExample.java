@@ -1,6 +1,7 @@
 package com.snjtjj.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RptTaskObjectExample {
@@ -661,6 +662,186 @@ public class RptTaskObjectExample {
 
         public Criteria andAreaSuggestionsNotBetween(String value1, String value2) {
             addCriterion("area_suggestions not between", value1, value2, "areaSuggestions");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateIsNull() {
+            addCriterion("fill_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateIsNotNull() {
+            addCriterion("fill_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateEqualTo(Date value) {
+            addCriterion("fill_date =", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateNotEqualTo(Date value) {
+            addCriterion("fill_date <>", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateGreaterThan(Date value) {
+            addCriterion("fill_date >", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("fill_date >=", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateLessThan(Date value) {
+            addCriterion("fill_date <", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateLessThanOrEqualTo(Date value) {
+            addCriterion("fill_date <=", value, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateIn(List<Date> values) {
+            addCriterion("fill_date in", values, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateNotIn(List<Date> values) {
+            addCriterion("fill_date not in", values, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateBetween(Date value1, Date value2) {
+            addCriterion("fill_date between", value1, value2, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFillDateNotBetween(Date value1, Date value2) {
+            addCriterion("fill_date not between", value1, value2, "fillDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateIsNull() {
+            addCriterion("town_suggestions_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateIsNotNull() {
+            addCriterion("town_suggestions_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateEqualTo(Date value) {
+            addCriterion("town_suggestions_date =", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateNotEqualTo(Date value) {
+            addCriterion("town_suggestions_date <>", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateGreaterThan(Date value) {
+            addCriterion("town_suggestions_date >", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("town_suggestions_date >=", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateLessThan(Date value) {
+            addCriterion("town_suggestions_date <", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateLessThanOrEqualTo(Date value) {
+            addCriterion("town_suggestions_date <=", value, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateIn(List<Date> values) {
+            addCriterion("town_suggestions_date in", values, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateNotIn(List<Date> values) {
+            addCriterion("town_suggestions_date not in", values, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateBetween(Date value1, Date value2) {
+            addCriterion("town_suggestions_date between", value1, value2, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsDateNotBetween(Date value1, Date value2) {
+            addCriterion("town_suggestions_date not between", value1, value2, "townSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateIsNull() {
+            addCriterion("area_suggestions_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateIsNotNull() {
+            addCriterion("area_suggestions_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateEqualTo(Date value) {
+            addCriterion("area_suggestions_date =", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateNotEqualTo(Date value) {
+            addCriterion("area_suggestions_date <>", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateGreaterThan(Date value) {
+            addCriterion("area_suggestions_date >", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("area_suggestions_date >=", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateLessThan(Date value) {
+            addCriterion("area_suggestions_date <", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateLessThanOrEqualTo(Date value) {
+            addCriterion("area_suggestions_date <=", value, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateIn(List<Date> values) {
+            addCriterion("area_suggestions_date in", values, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateNotIn(List<Date> values) {
+            addCriterion("area_suggestions_date not in", values, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateBetween(Date value1, Date value2) {
+            addCriterion("area_suggestions_date between", value1, value2, "areaSuggestionsDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsDateNotBetween(Date value1, Date value2) {
+            addCriterion("area_suggestions_date not between", value1, value2, "areaSuggestionsDate");
             return (Criteria) this;
         }
     }

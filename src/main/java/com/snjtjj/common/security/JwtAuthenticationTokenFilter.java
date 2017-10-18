@@ -32,16 +32,16 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-
-        final String requestHeader = request.getHeader("Authorization");
         String username = null;
-        String authToken = null;
-        if (requestHeader != null && requestHeader.startsWith("Bearer ")) {
-            authToken = requestHeader.substring(7);
-        } else {
-            authToken =  CookieUtils.getCookie(request,"token");
+        String authToken = CookieUtils.getCookie(request, "token");
+        boolean isUser = false;
+        if (authToken != null && authToken.startsWith("Bearer ")){
+            authToken = authToken.substring(7);
         }
-
+        else if (authToken != null && authToken.startsWith("Users ")){
+            isUser = true;
+            authToken = authToken.substring(6);
+        }
         if(StringUtils.isBlank(authToken)){
             logger.warn("couldn't find bearer string, will ignore the header");
         }else{
@@ -59,6 +59,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
             // It is not compelling necessary to load the use details from the database. You could also store the information
             // in the token and read it from it. It's up to you ;)
+            if(isUser){
+                username = "users@"+username;
+            }
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
             // For simple validation it is completely sufficient to just check the token integrity. You don't have to call

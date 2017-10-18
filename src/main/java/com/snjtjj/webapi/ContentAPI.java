@@ -124,4 +124,12 @@ public class ContentAPI {
         }
     }
 
+    @PostMapping("/deleteById")
+    public FormResponse<String> deleteById(@RequestParam(value = "id", required = false) String id) {
+        contentService.delete(id);
+        FormResponse formResponse = new FormResponse("删除成功！");
+        return formResponse;
+    }
+
+
 }

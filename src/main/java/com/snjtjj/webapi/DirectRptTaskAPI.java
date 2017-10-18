@@ -6,10 +6,7 @@ import com.snjtjj.entity.RptTab;
 import com.snjtjj.service.DirectRptTaskService;
 import com.snjtjj.vo.FormResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,7 +32,33 @@ public class DirectRptTaskAPI {
 
     @PostMapping("/save")
     public FormResponse<String> save(DirectRptTask directRptTask,String dcdxIds,String systemInfoFillPersonType){
+        directRptTaskService.save(directRptTask, dcdxIds, systemInfoFillPersonType);
         FormResponse formResponse = new FormResponse("保存成功！");
         return formResponse;
+    }
+
+    @PostMapping("/deleteById")
+    public FormResponse<String> deleteById(@RequestParam(value = "id", required = false) String id) {
+        directRptTaskService.delete(id);
+        FormResponse formResponse = new FormResponse("删除成功！");
+        return formResponse;
+    }
+
+    @GetMapping("/getListByFillState")
+    public PageInfo getListByFillState(String id,String state,Integer page, Integer limit) {
+        return directRptTaskService.getListByFillState(id, state, page, limit);
+    }
+
+
+    /**
+     * 获得验收列表
+     * @param id 报送任务id
+     * @param page 页码
+     * @param limit 每页数量
+     * @return
+     */
+    @GetMapping("/getCheckList")
+    public PageInfo getCheckList(String id,Integer page, Integer limit) {
+        return directRptTaskService.getCheckList(id, page, limit);
     }
 }

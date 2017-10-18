@@ -11,59 +11,83 @@ Ext.define('Kits.view.zhiDu.YanShouListView', {
         afterrender:function (me) {
         }
     },
+    initComponent: function() {
+        var me = this;
+        me.items[0].store.proxy.extraParams={id:me.recordId,state:me.state};
+        me.callParent();
+    },
     items: [
         {
             xtype:'grid',
-            store: Ext.create('Kits.store.YanShou', {}),
+            store: {
+                xtype: 'store.store',
+                proxy: {
+                    type: 'ajax',
+                    url: '/api/directRptTask/getCheckList',
+                    method: 'GET',
+                    reader: {
+                        type: 'json',
+                        rootProperty: 'list',
+                        totalProperty: 'total'
+                    },
+                    limitParam: 'limit',
+                    pageParam: 'page'
+                },
+                autoLoad: true
+            },
             bbar: {
                 xtype: 'pagingtoolbar',
                 displayInfo: true,
                 emptyMsg: "无数据...",
             },
-            tbar: [
-                {
-                    xtype: 'textfield',
-                    fieldLabel: '行政区划/单位名称',
-                    labelWidth:150,
-                    name: 'ssdw',
-                },
-                {
-                    xtype: 'button',
-                    text: '查询',
-                    handler: function () {
-                        var grid = this.up('grid');
-                        grid.getStore().load();
-                    }
-                }],
+            // tbar: [
+            //     {
+            //         xtype: 'textfield',
+            //         fieldLabel: '行政区划/单位名称',
+            //         labelWidth:150,
+            //         name: 'objName',
+            //     },
+            //     {
+            //         xtype: 'button',
+            //         text: '查询',
+            //         handler: function () {
+            //             var grid = this.up('grid');
+            //             grid.getStore().getProxy().setExtraParams({
+            //                 objName: Ext.getCmp('viewName').getValue()
+            //             })
+            //             grid.getStore().load();
+            //         }
+            //     }],
             columns: [
                 {
                     text: '行政区划/单位名称',
-                    dataIndex: 'ssdw'
+                    dataIndex: 'objName',
+                    width:150
                 },{
                     text: '报送任务名称',
-                    dataIndex: 'bsrwmc'
+                    dataIndex: 'name'
                 },{
                     text: '所属制度',
-                    dataIndex: 'sszd'
+                    dataIndex: 'systemName'
                 },{
                     text: '所属表',
-                    dataIndex: 'ssb'
+                    dataIndex: 'tableName'
                 },{
                     text: '区验收状态',
-                    dataIndex: 'qyszt'
+                    dataIndex: 'areaSuggestionsState'
                 },{
                     text: '区验收意见',
-                    dataIndex: 'qysyj'
+                    dataIndex: 'townSuggestions'
+                },{
+                    text: '镇验收状态',
+                    dataIndex: 'townSuggestionsState'
                 },{
                     text: '镇验收意见',
-                    dataIndex: 'zysyj'
-                },{
-                    text: '镇验收意见',
-                    dataIndex: 'zysyj'
+                    dataIndex: 'areaSuggestions'
                 },{
                     text: '操作',
                     xtype: 'actioncolumn',
-                    width: 220,
+                    width: 70,
                     items: [{
                         iconCls: 'x-fa fa-check',
                         tooltip: '验收',

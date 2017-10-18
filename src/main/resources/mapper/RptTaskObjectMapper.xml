@@ -10,6 +10,9 @@
     <result column="report_state" property="reportState" jdbcType="VARCHAR" />
     <result column="town_suggestions" property="townSuggestions" jdbcType="VARCHAR" />
     <result column="area_suggestions" property="areaSuggestions" jdbcType="VARCHAR" />
+    <result column="fill_date" property="fillDate" jdbcType="TIMESTAMP" />
+    <result column="town_suggestions_date" property="townSuggestionsDate" jdbcType="TIMESTAMP" />
+    <result column="area_suggestions_date" property="areaSuggestionsDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, task_id, obj_id, type, xzqh_id, report_state, town_suggestions, area_suggestions
+    id, task_id, obj_id, type, xzqh_id, report_state, town_suggestions, area_suggestions, 
+    fill_date, town_suggestions_date, area_suggestions_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTaskObjectExample" >
     select
@@ -105,10 +109,14 @@
   <insert id="insert" parameterType="com.snjtjj.entity.RptTaskObject" >
     insert into rpt_task_object (id, task_id, obj_id, 
       type, xzqh_id, report_state, 
-      town_suggestions, area_suggestions)
+      town_suggestions, area_suggestions, fill_date, 
+      town_suggestions_date, area_suggestions_date
+      )
     values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, 
       #{type,jdbcType=CHAR}, #{xzqhId,jdbcType=VARCHAR}, #{reportState,jdbcType=VARCHAR}, 
-      #{townSuggestions,jdbcType=VARCHAR}, #{areaSuggestions,jdbcType=VARCHAR})
+      #{townSuggestions,jdbcType=VARCHAR}, #{areaSuggestions,jdbcType=VARCHAR}, #{fillDate,jdbcType=TIMESTAMP}, 
+      #{townSuggestionsDate,jdbcType=TIMESTAMP}, #{areaSuggestionsDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTaskObject" >
     insert into rpt_task_object
@@ -137,6 +145,15 @@
       <if test="areaSuggestions != null" >
         area_suggestions,
       </if>
+      <if test="fillDate != null" >
+        fill_date,
+      </if>
+      <if test="townSuggestionsDate != null" >
+        town_suggestions_date,
+      </if>
+      <if test="areaSuggestionsDate != null" >
+        area_suggestions_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -162,6 +179,15 @@
       </if>
       <if test="areaSuggestions != null" >
         #{areaSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="fillDate != null" >
+        #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="townSuggestionsDate != null" >
+        #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsDate != null" >
+        #{areaSuggestionsDate,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -198,6 +224,15 @@
       <if test="record.areaSuggestions != null" >
         area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
       </if>
+      <if test="record.fillDate != null" >
+        fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.townSuggestionsDate != null" >
+        town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.areaSuggestionsDate != null" >
+        area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +247,10 @@
       xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
       report_state = #{record.reportState,jdbcType=VARCHAR},
       town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
-      area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR}
+      area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
+      fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +279,15 @@
       <if test="areaSuggestions != null" >
         area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
       </if>
+      <if test="fillDate != null" >
+        fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="townSuggestionsDate != null" >
+        town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsDate != null" >
+        area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -252,7 +299,10 @@
       xzqh_id = #{xzqhId,jdbcType=VARCHAR},
       report_state = #{reportState,jdbcType=VARCHAR},
       town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
-      area_suggestions = #{areaSuggestions,jdbcType=VARCHAR}
+      area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
+      fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

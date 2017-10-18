@@ -3,15 +3,12 @@ Ext.define('Kits.Application', {
     namespace: 'Kits',
 
     requires: [
-        'Kits.override.ProxyServer',
         'Kits.override.AdvancedVType',
         'Kits.override.Sorter',
-        'Kits.override.ProxyAjax',
-        'Kits.override.ActionLoad',
-        'Kits.override.ActionSubmit',
-        'Kits.override.Connection',
         'Kits.view.Main',
         'Kits.view.Login',
+        'Kits.view.UserLogin',
+        'Kits.view.ChoiceLogin',
         'Kits.ux.ComboBoxTree',
         'Kits.ux.BaseTextArea'
     ],
@@ -30,17 +27,27 @@ Ext.define('Kits.Application', {
     },
 
     launch: function () {
-
         var token = Ext.util.Cookies.get('token');
         if(token){
             this.setMainView({
                 xclass: 'Kits.view.Main'
             });
         }else{
-            this.setMainView({
-                xclass: 'Kits.view.Login'
-            });
+            if(Ext.String.startsWith(token,"Bearer ")){
+                this.setMainView({
+                    xclass: 'Kits.view.Login'
+                });
+            }else if(Ext.String.startsWith(token,"Users ")){
+                this.setMainView({
+                    xclass: 'Kits.view.UserLogin'
+                });
+            }else{
+                this.setMainView({
+                    xclass: 'Kits.view.ChoiceLogin'
+                });
+            }
         }
+
 
 
     }

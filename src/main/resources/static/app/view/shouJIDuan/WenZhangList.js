@@ -94,15 +94,14 @@ Ext.define('Kits.view.shouJIDuan.WenZhangList', {
                 iconCls: 'x-fa fa-trash-o',
                 tooltip: '删除',
                 handler: function (view, recIndex, cellIndex, item, e, record) {
-                    var btn = this;
+                    var me = this;
                     Ext.MessageBox.confirm('提示', '是否确认删除该条记录?', function (btn, text) {
                         Ext.Ajax.request({
-                            url: '/api/company/deleteById',
+                            url: '/api/content/deleteById',
                             params: {id: record.data.id},
                             method: 'POST',
-
                             success: function (response, options) {
-                                btn.up('grid').getStore().reload();
+                                me.up('grid').getStore().reload();
                             },
                             failure: function (response, options) {
                                 var res = JSON.parse(response.responseText);
