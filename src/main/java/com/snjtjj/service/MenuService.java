@@ -1,5 +1,6 @@
 package com.snjtjj.service;
 
+import com.snjtjj.common.security.JwtUser;
 import com.snjtjj.entity.Menu;
 import com.snjtjj.entity.MenuExample;
 import com.snjtjj.entity.Organization;
@@ -8,6 +9,7 @@ import com.snjtjj.mapper.MenuMapper;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,19 +35,66 @@ public class MenuService {
         return menuMapper.getMenuListByUserId(userId);
     }
 
-    public List<Menu> getMenuTreeByUserId(String userId){
-        List<Menu> allMenuList = getMenuListByUserId(userId);
-        Menu menu = new Menu();
-        List<Menu> treeList =  getMenuTreeByUserId(menu,allMenuList).getChildren();
-        Menu indexMenu = new Menu();
-        indexMenu.setId("index");
-        indexMenu.setCmp("Kits.view.Home");
-        indexMenu.setIconCls("x-fa fa-home");
-        indexMenu.setLeaf(true);
-        indexMenu.setText("首页");
-        indexMenu.setSort(Long.valueOf(0));
-        treeList.add(0,indexMenu);
-        return treeList;
+    public List<Menu> getMenuTreeByUserId(){
+        //获取用户信息,判断用户类型
+        JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
+        List<Menu> allMenuList = new ArrayList<>();
+        if(jwtUser!=null){
+            if(jwtUser.getUser()!=null) {
+                allMenuList = getMenuListByUserId(jwtUser.getUser().getId());
+                Menu menu = new Menu();
+                List<Menu> treeList = getMenuTreeByUserId(menu, allMenuList).getChildren();
+                Menu indexMenu = new Menu();
+                indexMenu.setId("index");
+                indexMenu.setCmp("Kits.view.Home");
+                indexMenu.setIconCls("x-fa fa-home");
+                indexMenu.setLeaf(true);
+                indexMenu.setText("首页");
+                indexMenu.setSort(Long.valueOf(0));
+                treeList.add(0, indexMenu);
+                return treeList;
+            }else{
+                //填报端菜单
+                Menu tbMenu = new Menu();
+                tbMenu.setCmp("Kits.view.shuJuLuRu.TianBaoList");
+                tbMenu.setIconCls("x-fa fa-table");
+                tbMenu.setLeaf(true);
+                tbMenu.setId("1");
+                tbMenu.setSort(Long.valueOf(1));
+                tbMenu.setText("数据填报列表");
+                allMenuList.add(tbMenu);
+
+                Menu tblsMenu = new Menu();
+                tblsMenu.setCmp("Kits.view.shuJuLuRu.TianBaoLiShiList");
+                tblsMenu.setIconCls("x-fa fa-table");
+                tblsMenu.setLeaf(true);
+                tblsMenu.setId("2");
+                tblsMenu.setSort(Long.valueOf(2));
+                tblsMenu.setText("历史数据填报列表");
+                allMenuList.add(tblsMenu);
+
+                Menu grszMenu = new Menu();
+                grszMenu.setCmp("Kits.view.shuJuLuRu.AddGeRenZhongXin");
+                grszMenu.setIconCls("x-fa fa-table");
+                grszMenu.setLeaf(true);
+                grszMenu.setId("3");
+                grszMenu.setSort(Long.valueOf(3));
+                grszMenu.setText("个人中心");
+                allMenuList.add(grszMenu);
+
+                List<Menu> treeList = getMenuTreeByUserId(new Menu(), allMenuList).getChildren();
+                Menu indexMenu = new Menu();
+                indexMenu.setId("index");
+                indexMenu.setCmp("Kits.view.Home");
+                indexMenu.setIconCls("x-fa fa-home");
+                indexMenu.setLeaf(true);
+                indexMenu.setText("首页");
+                indexMenu.setSort(Long.valueOf(0));
+                treeList.add(0, indexMenu);
+                return treeList;
+            }
+        }
+        return null;
     }
 
     public Menu getMenuTreeByUserId(Menu menu,List<Menu> allMenuList){

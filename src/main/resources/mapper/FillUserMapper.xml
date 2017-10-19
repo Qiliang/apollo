@@ -16,6 +16,7 @@
     <result column="leader_mobile" property="leaderMobile" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="fill_name" property="fillName" jdbcType="VARCHAR" />
+    <result column="password_reset_date" property="passwordResetDate" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -77,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, obj_id, obj_type, login_password, create_by, create_date, update_by, update_date, 
-    del_flag, login_user_name, mobile, leader_mobile, email, fill_name
+    del_flag, login_user_name, mobile, leader_mobile, email, fill_name, password_reset_date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.FillUserExample" >
     select
@@ -99,14 +100,6 @@
     from fill_user
     where id = #{id,jdbcType=VARCHAR}
   </select>
-
-  <select id="selectByLoginUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from fill_user
-    where login_user_name = #{loginUserName,jdbcType=VARCHAR} and del_flag='0'
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from fill_user
     where id = #{id,jdbcType=VARCHAR}
@@ -122,12 +115,14 @@
       login_password, create_by, create_date, 
       update_by, update_date, del_flag, 
       login_user_name, mobile, leader_mobile, 
-      email, fill_name)
+      email, fill_name, password_reset_date
+      )
     values (#{id,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, #{objType,jdbcType=VARCHAR}, 
       #{loginPassword,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
       #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=CHAR}, 
       #{loginUserName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{leaderMobile,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{fillName,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{fillName,jdbcType=VARCHAR}, #{passwordResetDate,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.FillUser" >
     insert into fill_user
@@ -174,6 +169,9 @@
       <if test="fillName != null" >
         fill_name,
       </if>
+      <if test="passwordResetDate != null" >
+        password_reset_date,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -218,6 +216,9 @@
       <if test="fillName != null" >
         #{fillName,jdbcType=VARCHAR},
       </if>
+      <if test="passwordResetDate != null" >
+        #{passwordResetDate,jdbcType=TIMESTAMP},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.snjtjj.entity.FillUserExample" resultType="java.lang.Integer" >
@@ -226,6 +227,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+
+  <select id="selectByLoginUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from fill_user
+    where login_user_name = #{loginUserName,jdbcType=VARCHAR} and del_flag='0'
+  </select>
+
   <update id="updateByExampleSelective" parameterType="map" >
     update fill_user
     <set >
@@ -271,6 +280,9 @@
       <if test="record.fillName != null" >
         fill_name = #{record.fillName,jdbcType=VARCHAR},
       </if>
+      <if test="record.passwordResetDate != null" >
+        password_reset_date = #{record.passwordResetDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -291,7 +303,8 @@
       mobile = #{record.mobile,jdbcType=VARCHAR},
       leader_mobile = #{record.leaderMobile,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      fill_name = #{record.fillName,jdbcType=VARCHAR}
+      fill_name = #{record.fillName,jdbcType=VARCHAR},
+      password_reset_date = #{record.passwordResetDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -338,6 +351,9 @@
       <if test="fillName != null" >
         fill_name = #{fillName,jdbcType=VARCHAR},
       </if>
+      <if test="passwordResetDate != null" >
+        password_reset_date = #{passwordResetDate,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -355,7 +371,8 @@
       mobile = #{mobile,jdbcType=VARCHAR},
       leader_mobile = #{leaderMobile,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      fill_name = #{fillName,jdbcType=VARCHAR}
+      fill_name = #{fillName,jdbcType=VARCHAR},
+      password_reset_date = #{passwordResetDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

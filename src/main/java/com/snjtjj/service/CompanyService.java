@@ -5,18 +5,23 @@ import com.github.pagehelper.PageInfo;
 import com.snjtjj.common.utils.ResponseException;
 import com.snjtjj.entity.*;
 import com.snjtjj.entity.base.BaseEntity;
+import com.snjtjj.entity.base.DataEntity;
+import com.snjtjj.mapper.AreaMapper;
 import com.snjtjj.mapper.CompanyMapper;
+import com.snjtjj.mapper.FillUserMapper;
 import com.snjtjj.mapper.SystemCompanyMapper;
 import com.snjtjj.utils.ExcelUtil;
 import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -25,6 +30,10 @@ public class CompanyService {
     private CompanyMapper companyMapper;
     @Autowired
     private SystemCompanyMapper systemCompanyMapper;
+    @Autowired
+    private AreaMapper areaMapper;
+    @Autowired
+    private FillUserMapper fillUserMapper;
 
     public PageInfo allCompany(String xxmc, String zzjgdm, Integer page, Integer limit) {
         CompanyExample companyExample = new CompanyExample();
@@ -44,18 +53,18 @@ public class CompanyService {
     public PageInfo getCompanyBySystemId(String xxmc, String zzjgdm, String systemId, Integer page, Integer limit) {
         PageHelper.startPage(page, limit);
 
-        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
+        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc) ? "%" + xxmc + "%" : xxmc, zzjgdm);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
 
     public List<Company> getAllCompanyBySystemId(String xxmc, String zzjgdm, String systemId) {
-        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
+        List<Company> list = companyMapper.selectCompanyBySystemId(systemId, StringUtils.isNotBlank(xxmc) ? "%" + xxmc + "%" : xxmc, zzjgdm);
         return list;
     }
 
     public List<Company> getAllCompanyByNotInSystemId(String xxmc, String zzjgdm, String systemId) {
-        List<Company> list = companyMapper.selectCompanyByNotInSystemId(systemId, StringUtils.isNotBlank(xxmc)?"%"+xxmc+"%":xxmc, zzjgdm);
+        List<Company> list = companyMapper.selectCompanyByNotInSystemId(systemId, StringUtils.isNotBlank(xxmc) ? "%" + xxmc + "%" : xxmc, zzjgdm);
         return list;
     }
 
@@ -70,7 +79,7 @@ public class CompanyService {
     }
 
     @Transactional
-    public void saveSystemCompany(String systemId,String ids){
+    public void saveSystemCompany(String systemId, String ids) {
         //删除从前的关联关系
         SystemCompanyExample systemCompanyExample = new SystemCompanyExample();
         SystemCompanyExample.Criteria criterion = systemCompanyExample.createCriteria();
@@ -78,8 +87,8 @@ public class CompanyService {
         systemCompanyMapper.deleteByExample(systemCompanyExample);
         //添加关联关系
         String[] idArray = ids.split(",");
-        for(String companyId:idArray){
-            if(StringUtils.isNotBlank(companyId)){
+        for (String companyId : idArray) {
+            if (StringUtils.isNotBlank(companyId)) {
                 SystemCompany systemCompany = new SystemCompany();
                 systemCompany.setSystemId(systemId);
                 systemCompany.setCompanyId(companyId);
@@ -203,5 +212,28 @@ public class CompanyService {
     @Transactional
     public void edit(Company company) {
         companyMapper.updateByPrimaryKeySelective(company);
+    }
+
+    public void saveFillUser() {
+        List<Company> companyList = companyMapper.selectCompanyNotInFillUserList();
+        //插入fill_user表
+        for (Company company : companyList) {
+            FillUser fillUser = new FillUser();
+            fillUser.setId(IdGen.nextS());
+            fillUser.setCreateBy("1");
+            fillUser.setCreateDate(new Date());
+            fillUser.setDelFlag(DataEntity.DEL_FLAG_NORMAL);
+            fillUser.setUpdateBy("1");
+            fillUser.setUpdateDate(new Date());
+            fillUser.setEmail(company.getEmail());
+            fillUser.setFillName(company.getTbrName());
+            fillUser.setLeaderMobile(company.getFzrMobile());
+            fillUser.setLoginUserName(company.getZzjgdm());
+            fillUser.setLoginPassword(new BCryptPasswordEncoder().encode("123456"));
+            fillUser.setMobile(company.getMobile());
+            fillUser.setObjId(company.getId());
+            fillUser.setObjType("0");
+            fillUserMapper.insert(fillUser);
+        }
     }
 }

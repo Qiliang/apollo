@@ -1,7 +1,7 @@
 Ext.define('Kits.view.shuJuLuRu.TianBaoLiShiList', {
     extend: 'Ext.grid.Panel',
     title: '填报历史列表',
-    store: Ext.create('Kits.store.ZhiBao', {pageSize: 3}),
+    store: Ext.create('Kits.store.TianBaoList'),
     tools: [
         {
             type: 'refresh',
@@ -15,29 +15,17 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoLiShiList', {
         {
             xtype: 'textfield',
             fieldLabel: '报送任务名称',
-            name: 'bsrwmc',
-        },
-        {
-            xtype: 'combobox',
-            fieldLabel: '发布年份',
-            queryMode: 'local',
-            name:'fbnf',
-            displayField: 'value',
-            valueField: 'key',
-            editable: false,
-            emptyText: "--请选择年份--",
-            store: [
-                { key: '', value: '全部' },
-                { key: '2017', value: '2017年' },
-                { key: '2016', value: '2016年' },
-                { key: '2015', value: '2015年' }
-            ]
+            name: 'name',
+            id:'viewName'
         },
         {
             xtype: 'button',
             text: '查询',
             handler:function () {
                 var grid = this.up('grid');
+                grid.getStore().getProxy().setExtraParams({
+                    name: Ext.getCmp('viewName').getValue()
+                })
                 grid.getStore().load();
             }
         }],
@@ -51,30 +39,30 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoLiShiList', {
         },
         {
             text: '任务名称',
-            dataIndex: 'bsrwmc',
+            dataIndex: 'name',
             width:220,
         },
         {
             text: '报送开始时间',
-            dataIndex: 'kssj',
+            dataIndex: 'startDate',
             width:150
         },
         {
             text: '报送截止时间',
-            dataIndex: 'jssj',
+            dataIndex: 'endDate',
             width:150
         },
         {
             text: '所属制度名称',
-            dataIndex: 'sszd'
+            dataIndex: 'systemName'
         },
         {
             text: '所属表名',
-            dataIndex: 'ssb'
+            dataIndex: 'tableName'
         },
         {
             text: '填报时间',
-            dataIndex: 'kssj',
+            dataIndex: 'fillDate',
             width:150
         },
         {

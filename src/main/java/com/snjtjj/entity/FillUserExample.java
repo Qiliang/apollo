@@ -1064,6 +1064,66 @@ public class FillUserExample {
             addCriterion("fill_name not between", value1, value2, "fillName");
             return (Criteria) this;
         }
+
+        public Criteria andPasswordResetDateIsNull() {
+            addCriterion("password_reset_date is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateIsNotNull() {
+            addCriterion("password_reset_date is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateEqualTo(Date value) {
+            addCriterion("password_reset_date =", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateNotEqualTo(Date value) {
+            addCriterion("password_reset_date <>", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateGreaterThan(Date value) {
+            addCriterion("password_reset_date >", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateGreaterThanOrEqualTo(Date value) {
+            addCriterion("password_reset_date >=", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateLessThan(Date value) {
+            addCriterion("password_reset_date <", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateLessThanOrEqualTo(Date value) {
+            addCriterion("password_reset_date <=", value, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateIn(List<Date> values) {
+            addCriterion("password_reset_date in", values, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateNotIn(List<Date> values) {
+            addCriterion("password_reset_date not in", values, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateBetween(Date value1, Date value2) {
+            addCriterion("password_reset_date between", value1, value2, "passwordResetDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andPasswordResetDateNotBetween(Date value1, Date value2) {
+            addCriterion("password_reset_date not between", value1, value2, "passwordResetDate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

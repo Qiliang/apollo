@@ -1,13 +1,19 @@
 package com.snjtjj.service;
 import com.snjtjj.entity.Area;
 import com.snjtjj.entity.AreaExample;
+import com.snjtjj.entity.FillUser;
+import com.snjtjj.entity.base.DataEntity;
 import com.snjtjj.mapper.AreaMapper;
+import com.snjtjj.mapper.FillUserMapper;
+import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.TreeVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +23,8 @@ import java.util.List;
 public class AreaService {
     @Autowired
     private AreaMapper areaMapper;
+    @Autowired
+    private FillUserMapper fillUserMapper;
 
     private TreeVo<Area> getAreaList(TreeVo treeVo,List<Area> allAreaList){
         List<Area> removeList = new ArrayList<>();
@@ -63,6 +71,24 @@ public class AreaService {
         areaExample.createCriteria().andParentIdIsNotNull();
         areaExample.setOrderByClause("code");
         return areaMapper.selectByExample(areaExample);
+    }
+
+    public void saveFillUser(){
+        List<Area> areaList = areaMapper.selectAreaNotInFillUserList();
+        for(Area area : areaList){
+            FillUser fillUser = new FillUser();
+            fillUser.setId(IdGen.nextS());
+            fillUser.setCreateBy("1");
+            fillUser.setCreateDate(new Date());
+            fillUser.setDelFlag(DataEntity.DEL_FLAG_NORMAL);
+            fillUser.setUpdateBy("1");
+            fillUser.setUpdateDate(new Date());
+            fillUser.setObjType("1");
+            fillUser.setObjId(area.getId());
+            fillUser.setLoginPassword(new BCryptPasswordEncoder().encode("123456"));
+            fillUser.setLoginUserName(area.getCode());
+            fillUserMapper.insert(fillUser);
+        }
     }
 
 }

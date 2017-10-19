@@ -27,4 +27,6 @@ public interface RptTaskObjectMapper {
     int updateByPrimaryKeySelective(RptTaskObject record);
 
     int updateByPrimaryKey(RptTaskObject record);
+
+    List<RptTaskObject> selectFillList(@Param("name") String name,@Param("type") String type,@Param("objId") String objId,@Param("state") String state);
 }

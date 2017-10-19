@@ -24,8 +24,8 @@ public class MenuAPI {
     }
 
     @GetMapping("/menuTreeByUserID")
-    public List<Menu> menuTreeByUserID(String userId) {
-        return menuService.getMenuTreeByUserId(userId);
+    public List<Menu> menuTreeByUserID() {
+        return menuService.getMenuTreeByUserId();
     }
 
     @GetMapping("/menuByRoleId")

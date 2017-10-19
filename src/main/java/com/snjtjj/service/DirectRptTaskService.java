@@ -2,6 +2,7 @@ package com.snjtjj.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.snjtjj.common.security.JwtUser;
 import com.snjtjj.common.utils.ResponseException;
 import com.snjtjj.entity.*;
 import com.snjtjj.entity.base.BaseEntity;
@@ -13,6 +14,7 @@ import com.snjtjj.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -240,6 +242,53 @@ public class DirectRptTaskService {
         }
         rptTaskObject.setAreaSuggestionsState(areaSuggestionsState);
         rptTaskObject.setTownSuggestionsState(townSuggestionsState);
+    }
+
+    public void fillReportState(RptTaskObject rptTaskObject) {
+        switch (rptTaskObject.getReportState()) {
+            case "wtb":
+                rptTaskObject.setReportStateStr("未填报");
+                break;//未填报
+            case "ytb": //已填报，未镇验收
+                rptTaskObject.setReportStateStr("已填报，未验收");
+                break;
+            case "zyswtg"://镇验收未通过
+                rptTaskObject.setReportStateStr("镇验收未通过");
+                break;
+            case "zystg"://已填报，镇验收通过
+                rptTaskObject.setReportStateStr("镇验收通过");
+                break;
+            case "qyswtg"://区验收未通过
+                rptTaskObject.setReportStateStr("区验收未通过");
+                break;
+            case "qystg"://区验收通过
+                rptTaskObject.setReportStateStr("区验收通过");
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    public PageInfo<RptTaskObject> getFillList(String name, Integer page, Integer limit,String state) {
+        //获得当前登录用户
+        JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        FillUser fillUser = jwtUser.getFillUser();
+        PageHelper.startPage(page, limit);
+        if (StringUtils.isNotBlank(name)) {
+            name = "%" + name + "%";
+        }
+        List<RptTaskObject> list = rptTaskObjectMapper.selectFillList(name, fillUser.getObjType(), fillUser.getObjId(),state);
+        list.forEach(item -> {
+            DirectRptTask directRptTask = directRptTaskMapper.selectByPrimaryKey(item.getTaskId());
+            fillSystemAndTableInfo(directRptTask);
+            item.setName(directRptTask.getName());
+            item.setSystemName(directRptTask.getSystemName());
+            item.setTableName(directRptTask.getTableName());
+            fillReportState(item);
+        });
+        PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
     }
 
     @Component

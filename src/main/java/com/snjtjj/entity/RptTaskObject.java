@@ -19,6 +19,10 @@ public class RptTaskObject {
 
     private String tableName;
 
+    private Date startDate;
+
+    private Date endDate;
+
     private String townSuggestionsState;
 
     private String areaSuggestionsState;
@@ -28,6 +32,8 @@ public class RptTaskObject {
     private String xzqhId;
 
     private String reportState;
+
+    private String reportStateStr;
 
     private String townSuggestions;
 
@@ -176,5 +182,31 @@ public class RptTaskObject {
 
     public void setAreaSuggestionsState(String areaSuggestionsState) {
         this.areaSuggestionsState = areaSuggestionsState;
+    }
+
+    public String getReportStateStr() {
+        return reportStateStr;
+    }
+
+    public void setReportStateStr(String reportStateStr) {
+        this.reportStateStr = reportStateStr;
+    }
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    @JsonFormat(pattern="yyyy-MM-dd")
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

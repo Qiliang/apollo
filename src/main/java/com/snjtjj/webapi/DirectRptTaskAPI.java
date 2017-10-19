@@ -61,4 +61,22 @@ public class DirectRptTaskAPI {
     public PageInfo getCheckList(String id,Integer page, Integer limit) {
         return directRptTaskService.getCheckList(id, page, limit);
     }
+
+    /**
+     * 获得单位未验收完成填报任务列表
+     * @return
+     */
+    @GetMapping("/getFillList")
+    public PageInfo getFillList(String name,Integer page, Integer limit){
+        return directRptTaskService.getFillList(name, page, limit,"0");
+    }
+
+    /**
+     * 获得单位未验收完成填报任务列表
+     * @return
+     */
+    @GetMapping("/getFillHistoryList")
+    public PageInfo getFillHistoryList(String name,Integer page, Integer limit){
+        return directRptTaskService.getFillList(name, page, limit,"1");
+    }
 }

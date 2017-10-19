@@ -28,5 +28,5 @@ public interface FillUserMapper {
 
     int updateByPrimaryKey(FillUser record);
 
-    FillUser selectByLoginUserName(@Param("loginUserName") String loginUserName);
+    FillUser selectByLoginUserName(String loginUserName);
 }

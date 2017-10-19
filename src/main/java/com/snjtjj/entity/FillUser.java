@@ -1,6 +1,9 @@
 package com.snjtjj.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.snjtjj.entity.base.DataEntity;
+
+import java.util.Date;
 
 public class FillUser extends DataEntity<FillUser>{
     private String objId;
@@ -19,6 +22,9 @@ public class FillUser extends DataEntity<FillUser>{
 
     private String fillName;
 
+    private Date passwordResetDate;
+
+
     public String getObjId() {
         return objId;
     }
@@ -35,6 +41,7 @@ public class FillUser extends DataEntity<FillUser>{
         this.objType = objType == null ? null : objType.trim();
     }
 
+    @JsonIgnore
     public String getLoginPassword() {
         return loginPassword;
     }
@@ -81,5 +88,13 @@ public class FillUser extends DataEntity<FillUser>{
 
     public void setFillName(String fillName) {
         this.fillName = fillName == null ? null : fillName.trim();
+    }
+
+    public Date getPasswordResetDate() {
+        return passwordResetDate;
+    }
+
+    public void setPasswordResetDate(Date passwordResetDate) {
+        this.passwordResetDate = passwordResetDate;
     }
 }

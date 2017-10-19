@@ -1,7 +1,7 @@
 Ext.define('Kits.view.shuJuLuRu.TianBaoList', {
     extend: 'Ext.grid.Panel',
     title: '填报列表',
-    store: Ext.create('Kits.store.ZhiBao', {pageSize: 3}),
+    store: Ext.create('Kits.store.TianBao'),
     tools: [
         {
             type: 'refresh',
@@ -15,29 +15,17 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoList', {
         {
             xtype: 'textfield',
             fieldLabel: '报送任务名称',
-            name: 'bsrwmc',
-        },
-        {
-            xtype: 'combobox',
-            fieldLabel: '发布年份',
-            queryMode: 'local',
-            name:'fbnf',
-            displayField: 'value',
-            valueField: 'key',
-            editable: false,
-            emptyText: "--请选择年份--",
-            store: [
-                { key: '', value: '全部' },
-                { key: '2017', value: '2017年' },
-                { key: '2016', value: '2016年' },
-                { key: '2015', value: '2015年' }
-            ]
+            name: 'name',
+            id: 'viewName'
         },
         {
             xtype: 'button',
             text: '查询',
-            handler:function () {
+            handler: function () {
                 var grid = this.up('grid');
+                grid.getStore().getProxy().setExtraParams({
+                    name: Ext.getCmp('viewName').getValue()
+                })
                 grid.getStore().load();
             }
         }],
@@ -51,66 +39,72 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoList', {
         },
         {
             text: '任务名称',
-            dataIndex: 'bsrwmc',
-            width:220,
+            dataIndex: 'name',
+            width: 220,
         },
         {
             text: '报送开始时间',
-            dataIndex: 'kssj',
-            width:150
+            dataIndex: 'startDate',
+            width: 150
         },
         {
             text: '报送截止时间',
-            dataIndex: 'jssj',
-            width:150
+            dataIndex: 'endDate',
+            width: 150
         },
         {
             text: '所属制度名称',
-            dataIndex: 'sszd'
+            dataIndex: 'systemName'
         },
         {
             text: '所属表名',
-            dataIndex: 'ssb'
+            dataIndex: 'tableName'
         },
         {
             text: '验收状态',
-            dataIndex: 'yszt'
+            dataIndex: 'reportStateStr'
         },
         {
             text: '操作',
-            xtype:'actioncolumn',
-            width:70,
+            xtype: 'actioncolumn',
+            width: 70,
             items: [{
                 iconCls: 'x-fa fa-pencil-square-o',
                 tooltip: '填报',
-                handler: function(grid, rowIndex, colIndex) {
-                    //TODO 判断验收状态是否为未验收，未验收前可以修改
-                    Ext.create('Ext.window.Window', {
-                        title: '填报',
-                        height: 700,
-                        width: 1100,
-                        layout: 'fit',
-                        closeToolText:'关闭',
-                        // closeAction:'hide',
-                        modal:true,
-                        items: Ext.create('Kits.view.shuJuLuRu.TianBaoView',{a:new Date()})
-                    }).show();
-                    // alert("查看 " + rec.get('id'));
+                handler: function (view, recIndex, cellIndex, item, e, record) {
+                    if (record.data.reportState == 'wtb' || record.data.reportState == 'ytb') {
+                        var win = Ext.create('Ext.window.Window', {
+                            title: '填报',
+                            height: 700,
+                            width: 1100,
+                            layout: 'fit',
+                            closeToolText: '关闭',
+                            modal: true,
+                            items: Ext.create('Kits.view.shuJuLuRu.TianBaoView', {a: new Date()})
+                        });
+                        win.show();
+                    } else {
+                        Ext.MessageBox.alert('提示', '该报告已验收，无法再次填报！');
+                    }
                 }
-            },'-',{
+            }, '-', {
                 iconCls: 'x-fa fa-eye',
                 tooltip: '查看',
                 handler: function (grid, rowIndex, colIndex) {
-                    Ext.create('Ext.window.Window', {
-                        title: '查看',
-                        height: 700,
-                        width: 1100,
-                        layout: 'fit',
-                        closeToolText:'关闭',
-                        // closeAction:'hide',
-                        modal:true,
-                        items: Ext.create('Kits.view.shuJuLuRu.TianBaoView',{a:new Date()})
-                    }).show();
+                    if (record.data.reportState == 'wtb') {
+                        Ext.MessageBox.alert('提示', '该报告尚未填报，无法查看！');
+                    } else {
+                        Ext.create('Ext.window.Window', {
+                            title: '查看',
+                            height: 700,
+                            width: 1100,
+                            layout: 'fit',
+                            closeToolText: '关闭',
+                            // closeAction:'hide',
+                            modal: true,
+                            items: Ext.create('Kits.view.shuJuLuRu.TianBaoView', {a: new Date()})
+                        }).show();
+                    }
                 }
             }]
         }

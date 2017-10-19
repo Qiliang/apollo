@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import java.util.Date;
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {FreeMarkerAutoConfiguration.class})
 @EnableAsync
+@EnableScheduling
 @MapperScan("com.snjtjj.mapper")
 public class ApolloApplication {
 

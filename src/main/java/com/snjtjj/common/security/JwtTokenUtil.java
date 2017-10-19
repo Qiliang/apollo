@@ -142,7 +142,7 @@ public class JwtTokenUtil implements Serializable {
         return (
               username.equals(user.getUsername())
                     && !isTokenExpired(token)
-                    && !isCreatedBeforeLastPasswordReset(created, user.getUser().getLastPasswordResetDate())
+                    && !isCreatedBeforeLastPasswordReset(created, user.getUser()==null?user.getFillUser().getPasswordResetDate():user.getUser().getLastPasswordResetDate())
         );
     }
 
