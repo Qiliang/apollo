@@ -15,6 +15,7 @@
     <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
     <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
     <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, system_id, table_id, remind_start_date, remind_end_date, remind_type, remind_month, 
-    remind_day, create_by, create_date, update_by, update_date, del_flag
+    remind_day, create_by, create_date, update_by, update_date, del_flag, title
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.DirectRptRemindTaskExample" >
     select
@@ -113,12 +114,12 @@
       remind_start_date, remind_end_date, remind_type, 
       remind_month, remind_day, create_by, 
       create_date, update_by, update_date, 
-      del_flag)
+      del_flag, title)
     values (#{id,jdbcType=VARCHAR}, #{systemId,jdbcType=VARCHAR}, #{tableId,jdbcType=VARCHAR}, 
       #{remindStartDate,jdbcType=TIMESTAMP}, #{remindEndDate,jdbcType=TIMESTAMP}, #{remindType,jdbcType=VARCHAR}, 
       #{remindMonth,jdbcType=INTEGER}, #{remindDay,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{delFlag,jdbcType=CHAR})
+      #{delFlag,jdbcType=CHAR}, #{title,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.DirectRptRemindTask" >
     insert into direct_rpt_remind_task
@@ -162,6 +163,9 @@
       <if test="delFlag != null" >
         del_flag,
       </if>
+      <if test="title != null" >
+        title,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -202,6 +206,9 @@
       </if>
       <if test="delFlag != null" >
         #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -253,6 +260,9 @@
       <if test="record.delFlag != null" >
         del_flag = #{record.delFlag,jdbcType=CHAR},
       </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,7 +282,8 @@
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       update_by = #{record.updateBy,jdbcType=VARCHAR},
       update_date = #{record.updateDate,jdbcType=TIMESTAMP},
-      del_flag = #{record.delFlag,jdbcType=CHAR}
+      del_flag = #{record.delFlag,jdbcType=CHAR},
+      title = #{record.title,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -316,6 +327,9 @@
       <if test="delFlag != null" >
         del_flag = #{delFlag,jdbcType=CHAR},
       </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -332,7 +346,8 @@
       create_date = #{createDate,jdbcType=TIMESTAMP},
       update_by = #{updateBy,jdbcType=VARCHAR},
       update_date = #{updateDate,jdbcType=TIMESTAMP},
-      del_flag = #{delFlag,jdbcType=CHAR}
+      del_flag = #{delFlag,jdbcType=CHAR},
+      title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

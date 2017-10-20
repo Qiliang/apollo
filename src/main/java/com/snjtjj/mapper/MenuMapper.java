@@ -3,9 +3,8 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.Menu;
 import com.snjtjj.entity.MenuExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 public interface MenuMapper {
     int countByExample(MenuExample example);
 

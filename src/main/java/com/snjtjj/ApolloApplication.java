@@ -1,5 +1,6 @@
 package com.snjtjj;
 
+import com.snjtjj.utils.StringUtils;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -32,7 +33,9 @@ public class ApolloApplication {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				Date date = null;
 				try {
-					date = sdf.parse((String) source);
+					if(StringUtils.isNotBlank(source)) {
+						date = sdf.parse((String) source);
+					}
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}

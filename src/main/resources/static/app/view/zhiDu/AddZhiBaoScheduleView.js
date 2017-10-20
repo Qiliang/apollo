@@ -16,8 +16,24 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
     defaults: {
         bodyPadding: 10
     },
+    listeners: {
+        afterrender: function (me) {
+            var btn = this;
+            if (this.paraId) {
+                btn.load({
+                    url: '/api/directRptRemindTask/getDirectRptRemindTaskById',
+                    method: 'get',
+                    params: {id: btn.paraId},
+                    failure: function (form, action) {
+                        Ext.Msg.alert('提示', "加载失败");
+                    }
+                });
+            }
+        }
+    },
     items: [
-        {xtype: 'textfield', fieldLabel: '任务名称', colspan: 2, width: '96%', allowBlank: false, blankText: '任务名称为必填项'},
+        {xtype: 'hiddenfield', name: 'id'},
+        {xtype: 'textfield', fieldLabel: '任务名称',name:'title',maxLenght:50, colspan: 2, width: '96%', allowBlank: false, blankText: '任务名称为必填项'},
         {
             colspan: 2,
             xtype: 'fieldcontainer',
@@ -34,6 +50,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
                 allowBlank: false,
                 blankText: '调查表样为必填项',
                 readOnly: true,
+                name:'tableName',
                 width: 416
             }, {
                 xtype: 'button',
@@ -50,14 +67,16 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
                         items: Ext.create('Kits.view.zhiDu.DiaoChaBiaoXiangView', {
                             callback: function (selection) {
                                 Ext.getCmp('dcby').setValue(selection.name);
-                                Ext.getCmp('dcbyId').setValue(selection.dcbyId);
+                                Ext.getCmp('dcbyId').setValue(selection.id);
+                                Ext.getCmp('systemId').setValue(selection.systeminfoid);
                             }
                         })
                     }).show();
                 }
             }]
         },
-        {xtype: 'hiddenfield', id: 'dcbyId'},
+        {xtype: 'hiddenfield', id: 'dcbyId',name:'tableId'},
+        {xtype: 'hiddenfield', id: 'systemId',name:'systemId'},
         {
             xtype: 'datefield',
             format: 'Y-m-d',
@@ -66,6 +85,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
             blankText: '报送开始时间为必填项',
             itemId: 'startdt',
             vtype: 'daterange',
+            name:'remindStartDate',
             endDateField: 'enddt' // id of the end date field
         },
         {
@@ -73,6 +93,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
             format: 'Y-m-d',
             fieldLabel: '提醒结束时间',
             emptyText: '可不填，不填为无结束时间',
+            name:'remindEndDate',
             itemId: 'enddt',
             vtype: 'daterange',
             startDateField: 'startdt' // id of the start date field
@@ -82,7 +103,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
             xtype: 'combobox',
             fieldLabel: '提醒频率',
             queryMode: 'local',
-            name: 'txpl',
+            name: 'remindType',
             displayField: 'value',
             valueField: 'key',
             editable: false,
@@ -134,7 +155,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
 
             items: [{
                 fieldLabel: '月',
-                name: 'month',
+                name: 'remindMonth',
                 id: 'month',
                 allowBlank: false,
                 blankText: '提醒月份为必填项',
@@ -171,7 +192,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
                 ]
             }, {
                 fieldLabel: '日',
-                name: 'day',
+                name: 'remindDay',
                 id: 'day',
                 allowBlank: false,
                 blankText: '提醒日期为必填项',
@@ -192,16 +213,21 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoScheduleView', {
     buttons: [
         {
             text: '提交', handler: function (e) {
-            alert('提交1');
             var form = this.up('form').getForm();
+            var callBack = this.up('form').callBack;
             if (form.isValid()) {
-                alert('提交');
                 form.submit({
+                    submitEmptyText: false,
+                    url:'/api/directRptRemindTask/saveOrUpdate',
+                    method:'POST',
+                    waitMsg:'提交中，请稍后...',
+                    waitTitle:'提示',
                     success: function (form, action) {
-                        Ext.Msg.alert('Success', action.result.msg);
+                        Ext.Msg.alert('成功！', action.result.data);
+                        callBack();
                     },
                     failure: function (form, action) {
-                        Ext.Msg.alert('Failed', action.result.msg);
+                        Ext.Msg.alert('失败！', action.result.data);
                     }
                 });
             }

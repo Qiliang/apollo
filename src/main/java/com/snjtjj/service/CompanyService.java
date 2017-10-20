@@ -211,6 +211,17 @@ public class CompanyService {
 
     @Transactional
     public void edit(Company company) {
+        FillUserExample fillUserExample = new FillUserExample();
+        fillUserExample.createCriteria().andObjIdEqualTo(company.getId()).andObjTypeEqualTo("0");
+        List<FillUser> fillUserList = fillUserMapper.selectByExample(fillUserExample);
+        if(fillUserList!=null&&fillUserList.size()>0){
+            FillUser fillUser = fillUserList.get(0);
+            fillUser.setFillName(company.getTbrName());
+            fillUser.setMobile(company.getMobile());
+            fillUser.setLeaderMobile(company.getFzrMobile());
+            fillUser.setEmail(company.getEmail());
+            fillUser.preUpdate();
+        }
         companyMapper.updateByPrimaryKeySelective(company);
     }
 

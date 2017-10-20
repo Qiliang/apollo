@@ -18,7 +18,7 @@ Ext.define('Kits.view.zhiDu.DiaoChaBiaoXiangView', {
                 displayField: 'name',
                 editable: false,
                 emptyText: "--请选择所属制度--",
-                store: Ext.create('Kits.store.ZhiDuQiYe')
+                store: Ext.create('Kits.store.ZhiDu')
             }, {
                 xtype: 'textfield',
                 fieldLabel: '表名',

@@ -15,6 +15,7 @@
     <result column="del_flag" property="delFlag" jdbcType="CHAR" />
     <result column="sort" property="sort" jdbcType="DECIMAL" />
     <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, icon_cls, text, leaf, parent_id, cmp, create_by, create_date, update_by, update_date, 
-    del_flag, sort, level
+    del_flag, sort, level, type
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.MenuExample" >
     select
@@ -98,22 +99,6 @@
     from menu
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="getMenuListByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from menu where
-    id in(select menu_id from role_menu where
-    role_id in(select role_id from user_role where user_id= #{userId,jdbcType=VARCHAR})) and del_flag='0' order by sort
-  </select>
-
-  <select id="getMenuListByRoleId" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from menu where
-    id in(select menu_id from role_menu where
-    role_id =#{roleId,jdbcType=VARCHAR}) AND cmp is not NULL  AND del_flag='0'
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from menu
     where id = #{id,jdbcType=VARCHAR}
@@ -128,11 +113,13 @@
     insert into menu (id, icon_cls, text, 
       leaf, parent_id, cmp, create_by, 
       create_date, update_by, update_date, 
-      del_flag, sort, level)
+      del_flag, sort, level, 
+      type)
     values (#{id,jdbcType=VARCHAR}, #{iconCls,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, 
       #{leaf,jdbcType=BIT}, #{parentId,jdbcType=VARCHAR}, #{cmp,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
       #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
-      #{delFlag,jdbcType=CHAR}, #{sort,jdbcType=DECIMAL}, #{level,jdbcType=INTEGER})
+      #{delFlag,jdbcType=CHAR}, #{sort,jdbcType=DECIMAL}, #{level,jdbcType=INTEGER}, 
+      #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.Menu" >
     insert into menu
@@ -176,6 +163,9 @@
       <if test="level != null" >
         level,
       </if>
+      <if test="type != null" >
+        type,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -217,8 +207,28 @@
       <if test="level != null" >
         #{level,jdbcType=INTEGER},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
+
+  <select id="getMenuListByUserId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from menu where type='system' AND
+    id in(select menu_id from role_menu where
+    role_id in(select role_id from user_role where user_id= #{userId,jdbcType=VARCHAR})) and del_flag='0' order by sort
+  </select>
+
+  <select id="getMenuListByRoleId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from menu where type='system' AND
+    id in(select menu_id from role_menu where
+    role_id =#{roleId,jdbcType=VARCHAR}) AND cmp is not NULL  AND del_flag='0'
+  </select>
+
   <select id="countByExample" parameterType="com.snjtjj.entity.MenuExample" resultType="java.lang.Integer" >
     select count(*) from menu
     <if test="_parameter != null" >
@@ -267,6 +277,9 @@
       <if test="record.level != null" >
         level = #{record.level,jdbcType=INTEGER},
       </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -286,7 +299,8 @@
       update_date = #{record.updateDate,jdbcType=TIMESTAMP},
       del_flag = #{record.delFlag,jdbcType=CHAR},
       sort = #{record.sort,jdbcType=DECIMAL},
-      level = #{record.level,jdbcType=INTEGER}
+      level = #{record.level,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -330,6 +344,9 @@
       <if test="level != null" >
         level = #{level,jdbcType=INTEGER},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -346,7 +363,8 @@
       update_date = #{updateDate,jdbcType=TIMESTAMP},
       del_flag = #{delFlag,jdbcType=CHAR},
       sort = #{sort,jdbcType=DECIMAL},
-      level = #{level,jdbcType=INTEGER}
+      level = #{level,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

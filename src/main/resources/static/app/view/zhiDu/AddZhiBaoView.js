@@ -80,6 +80,9 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoView', {
                         closeToolText: '关闭',
                         items: Ext.create('Kits.view.zhiDu.DiaoChaBiaoXiangView', {
                             callback: function (selection) {
+                                //清空调查对象
+                                Ext.getCmp('dcdx').setValue('');
+                                Ext.getCmp('dcdxIds').setValue('');
                                 Ext.getCmp('dcby').setValue(selection.name);
                                 Ext.getCmp('tableId').setValue(selection.id);
                                 Ext.getCmp('systemId').setValue(selection.systeminfoid);

@@ -51,6 +51,7 @@ Ext.define('Kits.view.shuJuLuRu.AddGeRenZhongXin', {
             },
             items: [
                 {xtype: 'hiddenfield', name: 'id'},
+                {xtype: 'hiddenfield', name: 'objType'},
                 {
                     xtype: 'textfield',
                     fieldLabel: '移动电话',

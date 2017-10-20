@@ -31,8 +31,6 @@ public class DirectRptTaskService {
     @Autowired
     private DirectRptTaskMapper directRptTaskMapper;
     @Autowired
-    private OrganizationMapper organizationMapper;
-    @Autowired
     private AreaMapper areaMapper;
     @Autowired
     private RptTaskObjectMapper rptTaskObjectMapper;

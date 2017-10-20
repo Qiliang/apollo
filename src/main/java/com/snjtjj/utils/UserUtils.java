@@ -107,7 +107,7 @@ public class UserUtils {
 	 */
 	public static User getUser(){
 		JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication() .getPrincipal();
-		if (jwtUser!=null){
+		if (jwtUser!=null&&jwtUser.getUser()!=null){
 			User user = get(jwtUser.getUser().getId());
 			if (user != null){
 				return user;
