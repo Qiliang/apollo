@@ -16,7 +16,6 @@ Ext.define('Kits.view.tables.Base', {
                 return indent.join('')+ value;
             }
         });
-        debugger;
         var config = Ext.clone(me.commConfig);
         var items = Ext.clone(me.defConfig.items);
         Ext.apply(items[0].items, this.headerItems);
