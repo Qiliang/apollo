@@ -29,7 +29,7 @@ public class RptTabAPI {
         String id = tab.getId();
         FormResponse formResponse;
         //noinspection Duplicates
-        if(id != null && id.toUpperCase().indexOf("KITS") >= 0){
+        if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)){
             tab.preInsert();
             rptTabMapper.insert(tab);
             formResponse = new FormResponse("保存成功！");
@@ -58,6 +58,6 @@ public class RptTabAPI {
     @PostMapping("/delete")
     public FormResponse<String> delete(String id){
         rptTabMapper.deleteByPrimaryKey(id);
-        return new FormResponse("保存成功！");
+        return new FormResponse("删除成功！");
     }
 }

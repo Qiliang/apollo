@@ -1,6 +1,7 @@
 Ext.define('Kits.view.XBase', {
     extend: 'Ext.panel.Panel',
     layout: 'border',
+    xtype:'ViewXBase',
     title: '制度包管理',
     requires:[
         'Kits.view.zhiDuManage.TabContainer'
@@ -24,7 +25,7 @@ Ext.define('Kits.view.XBase', {
             }
         }
     ],
-    itemId:'zhiDuContainer',
+    itemId:'zhiDuBagContainer',
     doSwitchComponent: function (value,selector,groupid,trueFunc,falseFunc) {
         var components = this.query(Ext.String.format('[{0}]',selector));
         for(var i in components){
@@ -68,7 +69,7 @@ Ext.define('Kits.view.XBase', {
                                 var form = this.up('box').down('form');
                                 var grid = this;
                                 var record = grid.getStore().createModel(selected[0]);
-                                form.loadRecord(record);
+                                form.doLoadRecord(record);
                                 form.doSwitchComponent(false,'mainEdit','editing','enable','disable');
                                 form.doSwitchComponent(true,'mainRemove','canRemove','enable','disable');
                             }
@@ -76,14 +77,14 @@ Ext.define('Kits.view.XBase', {
                                 var form = this.up('box').down('form');
                                 var grid = this;
                                 var record = grid.getStore().createModel({});
-                                form.loadRecord(record);
+                                form.doLoadRecord(record);
                             }
                         }
                     },
                     store: Ext.create('Kits.store.SystemInfo',{
                         listeners:{
                             load:function (store, records) {
-                                var cmp = Ext.ComponentQuery.query('#zhiDuContainer')[0];
+                                var cmp = Ext.ComponentQuery.query('#zhiDuBagContainer')[0];
                                 var grid = cmp.down('grid[region=east]');
                                 var selModel = grid.getSelectionModel();
                                 if (records && records.length > 0){
@@ -102,8 +103,14 @@ Ext.define('Kits.view.XBase', {
                     url:'/api/info/save',
                     method:'POST',
                     height: 1*80+80,
+                    doLoadRecord: function (record) {
+                        this.loadRecord(record);
+                        var cmp = this.up('#zhiDuBagContainer');
+                        var tab = cmp.down('#zhiDuTabContainer');
+                        tab.doRefresh(record);
+                    },
                     doSwitchComponent: function (value,selector,groupid,trueFunc,falseFunc) {
-                        var cmp = this.up('#zhiDuContainer');
+                        var cmp = this.up('#zhiDuBagContainer');
                         cmp.doSwitchComponent(value,selector,groupid,trueFunc,falseFunc);
                     },
                     listeners: {
@@ -141,7 +148,10 @@ Ext.define('Kits.view.XBase', {
                             {text:'取消',itemId:'toolbar_cancel',iconCls:'cancel',iconAlign: 'top', mainEdit:'editing',handler:function () {
                                 var form = this.up('form');
                                 var grid = form.up('box').down('grid');
-                                grid.getStore().reload();
+                                var store = grid.getStore();
+                                store.removeAll();
+                                store.reload();
+                                form.doSwitchComponent(false,'mainEdit','editing','enable','disable');
                             }},
                             {text:'删除',itemId:'toolbar_remove',iconCls:'remove',iconAlign: 'top', disabled:true, mainRemove:'canRemove',mainAdd:'!adding',handler:function () {
                                 var form = this.up('form');
@@ -180,7 +190,18 @@ Ext.define('Kits.view.XBase', {
         {
             xtype:'zhiDuManage.TabContainer',
             region: 'center',
-            frame: true
+            itemId:'zhiDuTabContainer',
+            frame: true,
+            doRefresh:function(record){
+                var grid = this.down('grid[region=west]');
+                var store = grid.getStore();
+                this.parentid = record.getId();
+                store.load({
+                    params : {
+                        id : this.parentid
+                    }
+                });
+            }
         }
     ]
 });

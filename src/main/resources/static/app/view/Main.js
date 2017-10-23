@@ -2,6 +2,7 @@ Ext.define('Kits.view.Main', {
     extend: 'Ext.container.Viewport',
     xtype: 'layout-border',
     requires: [
+        'Kits.view.XBase',
         'Ext.layout.container.Border'
     ],
     layout: 'border',
@@ -86,10 +87,9 @@ Ext.define('Kits.view.Main', {
 
                 },
                 {
-                    margin: '5 0 0 0',
-                    id: 'center',
                     region: 'center',
-                    layout: 'fit'
+                    layout:'border',
+                    xtype:'ViewXBase',
                 }
             ]
             //items:Ext.create('Kits.view.Shop',{})

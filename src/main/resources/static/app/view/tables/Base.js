@@ -16,12 +16,48 @@ Ext.define('Kits.view.tables.Base', {
                 return indent.join('')+ value;
             }
         });
-
+        debugger;
+        var config = Ext.clone(me.commConfig);
         var items = Ext.clone(me.defConfig.items);
         Ext.apply(items[0].items, this.headerItems);
         Ext.apply(items[1].store, this.store);
         Ext.apply(items[1].columns.items, this.columns);
         Ext.apply(items[2].items, this.footerItems);
+        Ext.apply(items[2].bbar,[
+            {
+                xtype: 'button',
+                text: '导出',
+                hidden:config.hiddenExport,
+                handler: function () {
+                    var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+                    if(cmp.commFunc.export){
+                        cmp.commFunc.export.call(this);
+                    }
+                }
+            },
+            {
+                xtype: 'button',
+                text: '检查',
+                hidden:config.hiddenValidate,
+                handler: function () {
+                    var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+                    if(cmp.commFunc.validate){
+                        cmp.commFunc.validate.call(this);
+                    }
+                }
+            },
+            {
+                xtype: 'button',
+                text: '提交',
+                hidden:config.hiddenSubmit,
+                handler: function () {
+                    var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+                    if(cmp.commFunc.submit){
+                        cmp.commFunc.submit.call(this);
+                    }
+                }
+            }
+        ]);
         me.items = items;
         me.callParent();
     },
@@ -63,13 +99,70 @@ Ext.define('Kits.view.tables.Base', {
             }
         });
     },
+    commFunc:{
+        export:function (callFunc) {
+            alert('export');
+            callFunc && callFunc();
+        },
+        validate:function (callFunc) {
+            alert('validate');
+            callFunc && callFunc();
+        },
+        submit:function (callFunc) {
+            var me = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+            var grid = me.down('grid');
+            var store = grid.getStore();
+            var data = [];
+            store.each(function (model) {
+                if(model.isDirty()){
+                    data.push({
+                        id:model.data['id'],
+                        tabid: me.tableid,
+                        hzcode:model.data[me.hzcolumn],
+                        num1:model.data['num1'],
+                        num2:model.data['num2'],
+                        num3:model.data['num3'],
+                        num4:model.data['num4'],
+                        num5:model.data['num5'],
+                        num6:model.data['num6'],
+                        num7:model.data['num7'],
+                        num8:model.data['num8'],
+                        num9:model.data['num9'],
+                        num10:model.data['num10']
+                    })
+                }
+            });
+            var token = Ext.util.Cookies.get('token');
+            Ext.Ajax.request({
+                url: '/api/rpt/collect/table/put',
+                method: 'POST',
+                jsonData: JSON.stringify(data),
+                headers: {'Authorization':'Bearer '+token},
+                success: function(response, opts) {
+                    var obj = Ext.decode(response.responseText);
+                    if(obj.success){
+                        me.loadData();
+                        callFunc && callFunc();
+                    }
+                },
+                failure: function(response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                }
+            });
+        }
+    },
+    commConfig:{
+        hiddenExport:false,
+        hiddenValidate:false,
+        hiddenSubmit:false
+    },
+    itemId:'zhiDuSubmitForm',
     listeners: {
         afterrender: function (me) {
             me.loadData();
         }
     },
     defConfig: {
-
         items: [
             {
                 region: 'north',
@@ -135,67 +228,7 @@ Ext.define('Kits.view.tables.Base', {
                 },
 
                 items: [],
-                bbar: [
-                    {
-                        xtype: 'button',
-                        text: '导出',
-                        handler: function () {
-
-                        }
-                    },
-                    {
-                        xtype: 'button',
-                        text: '检查',
-                        handler: function () {
-
-                        }
-                    },
-                    {
-                        xtype: 'button',
-                        text: '提交',
-                        handler: function () {
-                            var me = this.up('panel').up('panel');
-                            var grid = me.down('grid');
-                            var store = grid.getStore();
-                            var data = [];
-                            store.each(function (model) {
-                                if(model.isDirty()){
-                                    data.push({
-                                        id:model.data['id'],
-                                        tabid: me.tableid,
-                                        hzcode:model.data[me.hzcolumn],
-                                        num1:model.data['num1'],
-                                        num2:model.data['num2'],
-                                        num3:model.data['num3'],
-                                        num4:model.data['num4'],
-                                        num5:model.data['num5'],
-                                        num6:model.data['num6'],
-                                        num7:model.data['num7'],
-                                        num8:model.data['num8'],
-                                        num9:model.data['num9'],
-                                        num10:model.data['num10']
-                                    })
-                                }
-                            });
-                            var token = Ext.util.Cookies.get('token');
-                            Ext.Ajax.request({
-                                url: '/api/rpt/collect/table/put',
-                                method: 'POST',
-                                jsonData: JSON.stringify(data),
-                                headers: {'Authorization':'Bearer '+token},
-                                success: function(response, opts) {
-                                    var obj = Ext.decode(response.responseText);
-                                    if(obj.success){
-                                        me.loadData();
-                                    }
-                                },
-                                failure: function(response, opts) {
-                                    console.log('server-side failure with status code ' + response.status);
-                                }
-                            });
-                        }
-                    }
-                ]
+                bbar: []
             }
         ]
 

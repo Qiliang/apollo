@@ -1,9 +1,9 @@
-Ext.define('Kits.store.RptTab', {
+Ext.define('Kits.store.RptTabSetting', {
     extend: 'Ext.data.Store',
-    model: 'Kits.model.RptTab',
+    model: 'Kits.model.RptTabSetting',
     proxy: {
         type: 'ajax',
-        url: '/api/tab/list',
+        url: '/api/rpt/setting/list',
         actionMethods: {
             read   : 'POST'
         },

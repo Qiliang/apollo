@@ -21,8 +21,8 @@ public class RptSystemInfoAPI {
     public FormResponse<String> post(SystemInfo info){
         String id = info.getId();
         FormResponse formResponse;
-        //noinspection Duplicates
-        if(id != null && id.toUpperCase().indexOf("KITS") >= 0){
+        //noinspection Duplicatesext
+        if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)){
             info.preInsert();
             systemInfoMapper.insert(info);
             formResponse = new FormResponse("保存成功！");

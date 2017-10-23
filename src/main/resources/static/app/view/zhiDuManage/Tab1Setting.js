@@ -1,29 +1,81 @@
-Ext.define('Kits.view.zhiDuManage.TabSetting',{
+Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
     extend:'Ext.grid.Panel',
-    xtype:'zhiDuManage.TabSetting',
+    doRefresh:function (record) {
+        var store = this.getStore();
+        this.parentid = record.getId();
+        // var pa = {
+        //     id:this.parentid,
+        //         typeid:this.typeId
+        // };
+        // console.log(pa);
+        store.load({
+            params:{
+                id:this.parentid,
+                typeid:0
+            }
+        });
+    },
+    currentData:null,
+    listeners:{
+        selectionchange: function (selmodel,selected) {
+            if (selected && selected.length > 0){
+                var model = selected[0];
+                this.currentData = model.data;
+            }
+            else{
+                this.currentData = null;
+            }
+        }
+    },
     rbar:{
         xtype: 'toolbar',
         itemId: 'hzToolBar',
         items: [
-            {text:'新增',itemId:'hz_toolbar_add',iconCls:'add',iconAlign: 'left'},
-            {text:'删除',itemId:'hz_toolbar_remove',iconCls:'remove',iconAlign: 'left'},
-            {text:'上移',itemId:'hz_toolbar_up',iconCls:'arrow_green_up',iconAlign: 'left'},
-            {text:'下移',itemId:'hz_toolbar_down',iconCls:'arrow_green_down',iconAlign: 'left'}
+            {text:'新增',iconCls:'add',iconAlign: 'left',handler:function () {
+                var grid = this.up('grid');
+                var store = grid.getStore();
+                var record = store.createModel({tabid:grid.parentid,typeid:grid.typeId});
+                store.add(record);
+            }},
+            {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'left', handler:function(){
+                var grid = this.up('grid');
+                Ext.Ajax.request({
+                    url: '/api/tab/save',
+                    params: grid.currentData,
+                    success: function (response) {
+                        grid.getStore().load({
+                            params: {
+                                id: grid.parentid
+                            }
+                        });
+                    }
+                });
+            }},
+            {text:'删除',iconCls:'remove',iconAlign: 'left',handler:function () {
+                var grid = this.up('grid');
+                if(grid.currentData){
+                    Ext.Ajax.request({
+                        url:'/api/tab/delete',
+                        params:{id:grid.currentData.id},
+                        success:function (response) {
+                            grid.getStore().load({
+                                params : {
+                                    id : grid.parentid
+                                }
+                            });
+                        }
+                    });
+                }
+            }},
+            {text:'上移',iconCls:'arrow_green_up',iconAlign: 'left',handler:function () {
+
+            }},
+            {text:'下移',iconCls:'arrow_green_down',iconAlign: 'left',handler:function () {
+
+            }}
         ]
     },
-    store: Ext.create('Ext.data.ArrayStore', {
-        fields: ['id','itemcode'],
-        data:[
-            [0,''],
-            [1,''],
-            [2,''],
-            [3,''],
-            [4,''],
-            [5,''],
-            [6,''],
-            [7,'']
-        ]
-    }),
+    store: Ext.create('Kits.store.RptTabSetting', {}),
     selModel: 'cellmodel',
     plugins: {
         cellediting: {
