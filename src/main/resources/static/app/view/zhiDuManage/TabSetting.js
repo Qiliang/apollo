@@ -1,29 +1,26 @@
-Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
+Ext.define('Kits.view.zhiDuManage.TabSetting',{
     extend:'Ext.grid.Panel',
+    xtype:'zhiDuTabSetting',
     doRefresh:function (record) {
         var store = this.getStore();
         this.parentid = record.getId();
-        // var pa = {
-        //     id:this.parentid,
-        //         typeid:this.typeId
-        // };
-        // console.log(pa);
         store.load({
             params:{
                 id:this.parentid,
-                typeid:0
+                typeid:this.typeId
             }
         });
     },
-    currentData:null,
+    currentId:null,
+    typeId:null,
     listeners:{
         selectionchange: function (selmodel,selected) {
             if (selected && selected.length > 0){
                 var model = selected[0];
-                this.currentData = model.data;
+                this.currentId = model.getId();
             }
             else{
-                this.currentData = null;
+                this.currentId = null;
             }
         }
     },
@@ -34,48 +31,41 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
             {text:'新增',iconCls:'add',iconAlign: 'left',handler:function () {
                 var grid = this.up('grid');
                 var store = grid.getStore();
-                var record = store.createModel({tabid:grid.parentid,typeid:grid.typeId});
+                var count = store.getCount();
+                var record = store.createModel({tabid:grid.parentid,typeid:grid.typeId,orderno:count+1});
                 store.add(record);
             }},
             {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'left', handler:function(){
                 var grid = this.up('grid');
-                Ext.Ajax.request({
-                    url: '/api/tab/save',
-                    params: grid.currentData,
-                    success: function (response) {
-                        grid.getStore().load({
-                            params: {
-                                id: grid.parentid
-                            }
-                        });
+                var store = grid.getStore();
+                store.sync({
+                    success:function (batch,options) {
+                        store.reload();
                     }
                 });
             }},
+            {text:'取消',itemId:'toolbar_cancel',iconCls:'cancel',iconAlign: 'left', childEdit:'editing',handler:function(){
+                var grid = this.up('grid');
+                var store = grid.getStore();
+                store.reload();
+            }},
             {text:'删除',iconCls:'remove',iconAlign: 'left',handler:function () {
                 var grid = this.up('grid');
-                if(grid.currentData){
-                    Ext.Ajax.request({
-                        url:'/api/tab/delete',
-                        params:{id:grid.currentData.id},
-                        success:function (response) {
-                            grid.getStore().load({
-                                params : {
-                                    id : grid.parentid
-                                }
-                            });
-                        }
-                    });
+                if(grid.currentId == null){
+                    alert('请选择一行再执行删除操作');
+                    return;
                 }
-            }},
-            {text:'上移',iconCls:'arrow_green_up',iconAlign: 'left',handler:function () {
-
-            }},
-            {text:'下移',iconCls:'arrow_green_down',iconAlign: 'left',handler:function () {
-
+                var store = grid.getStore();
+                var record = store.findRecord('id',grid.currentId);
+                store.remove(record);
+                store.sync({
+                    success:function (batch,options) {
+                        store.reload();
+                    }
+                });
             }}
         ]
     },
-    store: Ext.create('Kits.store.RptTabSetting', {}),
     selModel: 'cellmodel',
     plugins: {
         cellediting: {
@@ -84,7 +74,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
     },
     columns:[
         {text:'No.',xtype: 'rownumberer',width:32},
-        {text:'指标名称',dataIndex:'itemcode',width:640,
+        {text:'指标名称',sortable:false,dataIndex:'itemcode',width:640,
             editor: {
                 field: {
                     xtype: 'textfield',
@@ -92,7 +82,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 }
             }
         },
-        {text:'计算单位',dataIndex:'unitcode',width:100,align:'center',
+        {text:'计算单位',sortable:false,dataIndex:'unitcode',width:100,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'unitcode',
@@ -100,7 +90,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['个'],['只'],['人']]})
             }
         },
-        {text:'汇总代码',dataIndex:'hzcode',width:100,align:'center',
+        {text:'汇总代码',sortable:false,dataIndex:'hzcode',width:100,align:'center',
             editor: {
                 field: {
                     xtype: 'textfield',
@@ -108,7 +98,16 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 }
             }
         },
-        {text:'1',dataIndex:'num1',width:60,align:'center',
+        {text:'排序',sortable:false,dataIndex:'orderno',width:60,align:'center',
+            editor: {
+                field: {
+                    xtype: 'numberfield',
+                    minValue: 0,
+                    allowBlank: true
+                }
+            }
+        },
+        {text:'1',sortable:false,dataIndex:'num1',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num1',
@@ -124,7 +123,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'3',dataIndex:'num3',width:60,align:'center',
+        {text:'3',sortable:false,dataIndex:'num3',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num3',
@@ -132,7 +131,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'4',dataIndex:'num4',width:60,align:'center',
+        {text:'4',sortable:false,dataIndex:'num4',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num4',
@@ -140,7 +139,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'5',dataIndex:'num5',width:60,align:'center',
+        {text:'5',sortable:false,dataIndex:'num5',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num5',
@@ -148,7 +147,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'6',dataIndex:'num6',width:60,align:'center',
+        {text:'6',sortable:false,dataIndex:'num6',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num6',
@@ -156,7 +155,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'7',dataIndex:'num7',width:60,align:'center',
+        {text:'7',sortable:false,dataIndex:'num7',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num7',
@@ -164,7 +163,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'8',dataIndex:'num8',width:60,align:'center',
+        {text:'8',sortable:false,dataIndex:'num8',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num8',
@@ -172,7 +171,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'9',dataIndex:'num9',width:60,align:'center',
+        {text:'9',sortable:false,dataIndex:'num9',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num9',
@@ -180,7 +179,7 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'10',dataIndex:'num10',width:60,align:'center',
+        {text:'10',sortable:false,dataIndex:'num10',width:60,align:'center',
             editor:{
                 xtype:'combobox',
                 dataIndex:'num10',

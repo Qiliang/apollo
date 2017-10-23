@@ -11,6 +11,8 @@ public class RptTabRule {
 
     private String errortext;
 
+    private Integer orderno;
+
     public String getId() {
         return id;
     }
@@ -49,5 +51,13 @@ public class RptTabRule {
 
     public void setErrortext(String errortext) {
         this.errortext = errortext == null ? null : errortext.trim();
+    }
+
+    public Integer getOrderno() {
+        return orderno;
+    }
+
+    public void setOrderno(Integer orderno) {
+        this.orderno = orderno;
     }
 }

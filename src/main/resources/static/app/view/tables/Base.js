@@ -3,6 +3,7 @@ Ext.define('Kits.view.tables.Base', {
     layout: 'border',
     hzcolumn:'hzcode',
     tableid: '',
+    usercode:'',
     initComponent: function () {
         var me = this;
         Ext.apply(this.columns[0].columns[0],{
@@ -84,11 +85,9 @@ Ext.define('Kits.view.tables.Base', {
     },
     loadData: function () {
         var me = this;
-        var token = Ext.util.Cookies.get('token');
         Ext.Ajax.request({
-            url: '/api/rpt/collect/table/'+this.tableid,
+            url: '/api/rpt/collect/table/'+this.tableid+'/'+this.usercode,
             method: 'GET',
-            headers: {'Authorization':'Bearer '+token},
             success: function(response, opts) {
                 var data = Ext.decode(response.responseText);
                 me.fillData(data);
@@ -117,6 +116,7 @@ Ext.define('Kits.view.tables.Base', {
                     data.push({
                         id:model.data['id'],
                         tabid: me.tableid,
+                        usercode:me.usercode,
                         hzcode:model.data[me.hzcolumn],
                         num1:model.data['num1'],
                         num2:model.data['num2'],

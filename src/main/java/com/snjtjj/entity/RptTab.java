@@ -3,7 +3,6 @@ package com.snjtjj.entity;
 import com.snjtjj.entity.base.DataEntity;
 
 public class RptTab extends DataEntity<RptTab> {
-    private String id;
 
     private String systeminfoid;
 
@@ -25,13 +24,7 @@ public class RptTab extends DataEntity<RptTab> {
 
     private Integer tabdeep1;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
 
     public String getSysteminfoid() {
         return systeminfoid;

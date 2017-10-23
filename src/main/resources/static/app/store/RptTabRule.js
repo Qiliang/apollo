@@ -1,6 +1,6 @@
-Ext.define('Kits.store.RptTabSetting', {
+Ext.define('Kits.store.RptTabRule', {
     extend: 'Ext.data.Store',
-    model: 'Kits.model.RptTabSetting',
+    model: 'Kits.model.RptTabRule',
     proxy: {
         type: 'ajax',
         actionMethods: {
@@ -21,10 +21,10 @@ Ext.define('Kits.store.RptTabSetting', {
             writeAllFields: true
         },
         api: {
-            create : '/api/rpt/setting/add',
-            read   : '/api/rpt/setting/list',
-            update : '/api/rpt/setting/update',
-            destroy: '/api/rpt/setting/delete',
+            create : '/api/rpt/rule/add',
+            read   : '/api/rpt/rule/list',
+            update : '/api/rpt/rule/update',
+            destroy: '/api/rpt/rule/delete',
         }
     },
     autoLoad: false,
