@@ -1,9 +1,9 @@
-Ext.define('Kits.store.SystemInfo', {
+Ext.define('Kits.store.RptTab', {
     extend: 'Ext.data.Store',
-    model: 'Kits.model.SystemInfo',
+    model: 'Kits.model.RptTab',
     proxy: {
         type: 'ajax',
-        url: '/api/info/list',
+        url: '/api/tab/list',
         actionMethods: {
             read   : 'POST'
         },
@@ -13,6 +13,6 @@ Ext.define('Kits.store.SystemInfo', {
             totalProperty: 'total'
         },
     },
-    autoLoad: true,
+    autoLoad: false,
     autoSync: true
 });

@@ -21,6 +21,7 @@ public class RptSystemInfoAPI {
     public FormResponse<String> post(SystemInfo info){
         String id = info.getId();
         FormResponse formResponse;
+        //noinspection Duplicates
         if(id != null && id.toUpperCase().indexOf("KITS") >= 0){
             info.preInsert();
             systemInfoMapper.insert(info);
@@ -34,7 +35,7 @@ public class RptSystemInfoAPI {
         return formResponse;
     }
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     public FormResponse<List<SystemInfo>> get(){
         SystemInfoExample example = new SystemInfoExample();
         List<SystemInfo> list = systemInfoMapper.selectByExample(example);
