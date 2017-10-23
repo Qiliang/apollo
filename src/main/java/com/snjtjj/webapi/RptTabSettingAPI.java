@@ -6,6 +6,7 @@ import com.snjtjj.entity.RptTabSetting;
 import com.snjtjj.entity.RptTabSettingExample;
 import com.snjtjj.mapper.RptTabSettingMapper;
 import com.snjtjj.service.RptTabSettingService;
+import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.FormResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,26 @@ public class RptTabSettingAPI {
         return new FormResponse<List<RptTabSetting>>(list);
     }
 
+    @PostMapping("/add")
+    public FormResponse<String> add(@RequestBody List<RptTabSetting> list){
+        list.forEach(tab -> {
+            tab.setId(IdGen.nextS());
+            rptTabSettingMapper.insertSelective(tab);
+        });
+        return new FormResponse("创建成功！");
+    }
+    @PostMapping("/update")
+    public FormResponse<String> update(@RequestBody List<RptTabSetting> list){
+        list.forEach(tab -> {
+            rptTabSettingMapper.updateByPrimaryKey(tab);
+        });
+        return new FormResponse("更新成功！");
+    }
     @PostMapping("/delete")
-    public FormResponse<String> delete(String id){
-        rptTabSettingMapper.deleteByPrimaryKey(id);
+    public FormResponse<String> delete(@RequestBody List<RptTabSetting> list){
+        list.forEach(tab -> {
+            rptTabSettingMapper.deleteByPrimaryKey(tab.getId());
+        });
         return new FormResponse("删除成功！");
     }
 

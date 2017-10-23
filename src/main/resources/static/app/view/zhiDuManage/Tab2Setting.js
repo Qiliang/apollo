@@ -97,7 +97,7 @@ Ext.define('Kits.view.zhiDuManage.Tab2Setting',{
                 xtype:'combobox',
                 dataIndex:'unitcode',
                 displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['个'],['只'],['人']]})
+                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['甲'],['乙'],['丙'],['丁'],['1'],['2'],['3'],['4'],['5'],['6']]})
             }
         },
         {text:'汇总代码',dataIndex:'hzcode',width:100,align:'center',

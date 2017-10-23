@@ -2,7 +2,6 @@ Ext.define('Kits.view.Main', {
     extend: 'Ext.container.Viewport',
     xtype: 'layout-border',
     requires: [
-        'Kits.view.XBase',
         'Ext.layout.container.Border'
     ],
     layout: 'border',
