@@ -141,10 +141,11 @@ Ext.define('Kits.view.tables.Base', {
                     var obj = Ext.decode(response.responseText);
                     if(obj.success){
                         me.loadData();
-                        callFunc && callFunc();
+                        callFunc && callFunc(true,"提交成功");
                     }
                 },
                 failure: function(response, opts) {
+                    callFunc && callFunc(false,"提交失败");
                     console.log('server-side failure with status code ' + response.status);
                 }
             });
