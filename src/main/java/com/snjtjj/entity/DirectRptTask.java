@@ -29,6 +29,8 @@ public class DirectRptTask  extends DataEntity<DirectRptTask> {
 
     private String tableName;
 
+    private String tableCode;
+
     public String getName() {
         return name;
     }
@@ -117,5 +119,13 @@ public class DirectRptTask  extends DataEntity<DirectRptTask> {
 
     public void setTableName(String tableName) {
         this.tableName = tableName;
+    }
+
+    public String getTableCode() {
+        return tableCode;
+    }
+
+    public void setTableCode(String tableCode) {
+        this.tableCode = tableCode;
     }
 }

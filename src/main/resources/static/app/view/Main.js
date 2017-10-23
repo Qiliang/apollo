@@ -87,9 +87,10 @@ Ext.define('Kits.view.Main', {
 
                 },
                 {
+                    margin: '5 0 0 0',
+                    id:'center',
                     region: 'center',
-                    layout:'border',
-                    xtype:'ViewXBase',
+                    layout:'fit'
                 }
             ]
             //items:Ext.create('Kits.view.Shop',{})

@@ -1,97 +1,343 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.snjtjj.mapper.RptTaskObjectMapper">
-    <resultMap id="BaseResultMap" type="com.snjtjj.entity.RptTaskObject">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
-        <result column="task_id" property="taskId" jdbcType="VARCHAR"/>
-        <result column="obj_id" property="objId" jdbcType="VARCHAR"/>
-        <result column="type" property="type" jdbcType="CHAR"/>
-        <result column="xzqh_id" property="xzqhId" jdbcType="VARCHAR"/>
-        <result column="report_state" property="reportState" jdbcType="VARCHAR"/>
-        <result column="town_suggestions" property="townSuggestions" jdbcType="VARCHAR"/>
-        <result column="area_suggestions" property="areaSuggestions" jdbcType="VARCHAR"/>
-        <result column="fill_date" property="fillDate" jdbcType="TIMESTAMP"/>
-        <result column="town_suggestions_date" property="townSuggestionsDate" jdbcType="TIMESTAMP"/>
-        <result column="area_suggestions_date" property="areaSuggestionsDate" jdbcType="TIMESTAMP"/>
-    </resultMap>
-    <sql id="Example_Where_Clause">
-        <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
+  <resultMap id="BaseResultMap" type="com.snjtjj.entity.RptTaskObject">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="obj_id" jdbcType="VARCHAR" property="objId" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="xzqh_id" jdbcType="VARCHAR" property="xzqhId" />
+    <result column="report_state" jdbcType="VARCHAR" property="reportState" />
+    <result column="town_suggestions" jdbcType="VARCHAR" property="townSuggestions" />
+    <result column="area_suggestions" jdbcType="VARCHAR" property="areaSuggestions" />
+    <result column="fill_date" jdbcType="TIMESTAMP" property="fillDate" />
+    <result column="town_suggestions_date" jdbcType="TIMESTAMP" property="townSuggestionsDate" />
+    <result column="area_suggestions_date" jdbcType="TIMESTAMP" property="areaSuggestionsDate" />
+    <result column="area_suggestions_state" jdbcType="VARCHAR" property="areaSuggestionsState" />
+    <result column="town_suggestions_state" jdbcType="VARCHAR" property="townSuggestionsState" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
             </foreach>
-        </where>
-    </sql>
-    <sql id="Update_By_Example_Where_Clause">
-        <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
-                <if test="criteria.valid">
-                    <trim prefix="(" suffix=")" prefixOverrides="and">
-                        <foreach collection="criteria.criteria" item="criterion">
-                            <choose>
-                                <when test="criterion.noValue">
-                                    and ${criterion.condition}
-                                </when>
-                                <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
-                                </when>
-                                <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                                </when>
-                                <when test="criterion.listValue">
-                                    and ${criterion.condition}
-                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
-                                             separator=",">
-                                        #{listItem}
-                                    </foreach>
-                                </when>
-                            </choose>
-                        </foreach>
-                    </trim>
-                </if>
-            </foreach>
-        </where>
-    </sql>
-    <sql id="Base_Column_List">
-    id, task_id, obj_id, type, xzqh_id, report_state, town_suggestions, area_suggestions, 
-    fill_date, town_suggestions_date, area_suggestions_date
+          </trim>
+        </if>
+      </foreach>
+    </where>
   </sql>
-    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTaskObjectExample">
-        select
-        <if test="distinct">
-            distinct
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
         </if>
-        <include refid="Base_Column_List"/>
-        from rpt_task_object
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-        <if test="orderByClause != null">
-            order by ${orderByClause}
-        </if>
-    </select>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, task_id, obj_id, type, xzqh_id, report_state, town_suggestions, area_suggestions, 
+    fill_date, town_suggestions_date, area_suggestions_date, area_suggestions_state, 
+    town_suggestions_state
+  </sql>
+  <select id="selectByExample" parameterType="com.snjtjj.entity.RptTaskObjectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rpt_task_object
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from rpt_task_object
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from rpt_task_object
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.snjtjj.entity.RptTaskObjectExample">
+    delete from rpt_task_object
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.snjtjj.entity.RptTaskObject">
+    insert into rpt_task_object (id, task_id, obj_id, 
+      type, xzqh_id, report_state, 
+      town_suggestions, area_suggestions, fill_date, 
+      town_suggestions_date, area_suggestions_date, 
+      area_suggestions_state, town_suggestions_state
+      )
+    values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=CHAR}, #{xzqhId,jdbcType=VARCHAR}, #{reportState,jdbcType=VARCHAR}, 
+      #{townSuggestions,jdbcType=VARCHAR}, #{areaSuggestions,jdbcType=VARCHAR}, #{fillDate,jdbcType=TIMESTAMP}, 
+      #{townSuggestionsDate,jdbcType=TIMESTAMP}, #{areaSuggestionsDate,jdbcType=TIMESTAMP}, 
+      #{areaSuggestionsState,jdbcType=VARCHAR}, #{townSuggestionsState,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTaskObject">
+    insert into rpt_task_object
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="objId != null">
+        obj_id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="xzqhId != null">
+        xzqh_id,
+      </if>
+      <if test="reportState != null">
+        report_state,
+      </if>
+      <if test="townSuggestions != null">
+        town_suggestions,
+      </if>
+      <if test="areaSuggestions != null">
+        area_suggestions,
+      </if>
+      <if test="fillDate != null">
+        fill_date,
+      </if>
+      <if test="townSuggestionsDate != null">
+        town_suggestions_date,
+      </if>
+      <if test="areaSuggestionsDate != null">
+        area_suggestions_date,
+      </if>
+      <if test="areaSuggestionsState != null">
+        area_suggestions_state,
+      </if>
+      <if test="townSuggestionsState != null">
+        town_suggestions_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="objId != null">
+        #{objId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="xzqhId != null">
+        #{xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="reportState != null">
+        #{reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestions != null">
+        #{townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSuggestions != null">
+        #{areaSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="fillDate != null">
+        #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="townSuggestionsDate != null">
+        #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsDate != null">
+        #{areaSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsState != null">
+        #{areaSuggestionsState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestionsState != null">
+        #{townSuggestionsState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.snjtjj.entity.RptTaskObjectExample" resultType="java.lang.Integer">
+    select count(*) from rpt_task_object
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update rpt_task_object
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taskId != null">
+        task_id = #{record.taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.objId != null">
+        obj_id = #{record.objId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=CHAR},
+      </if>
+      <if test="record.xzqhId != null">
+        xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportState != null">
+        report_state = #{record.reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.townSuggestions != null">
+        town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.areaSuggestions != null">
+        area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fillDate != null">
+        fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.townSuggestionsDate != null">
+        town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.areaSuggestionsDate != null">
+        area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.areaSuggestionsState != null">
+        area_suggestions_state = #{record.areaSuggestionsState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.townSuggestionsState != null">
+        town_suggestions_state = #{record.townSuggestionsState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update rpt_task_object
+    set id = #{record.id,jdbcType=VARCHAR},
+      task_id = #{record.taskId,jdbcType=VARCHAR},
+      obj_id = #{record.objId,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=CHAR},
+      xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
+      report_state = #{record.reportState,jdbcType=VARCHAR},
+      town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
+      area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
+      fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
+      town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_state = #{record.areaSuggestionsState,jdbcType=VARCHAR},
+      town_suggestions_state = #{record.townSuggestionsState,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.RptTaskObject">
+    update rpt_task_object
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="objId != null">
+        obj_id = #{objId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="xzqhId != null">
+        xzqh_id = #{xzqhId,jdbcType=VARCHAR},
+      </if>
+      <if test="reportState != null">
+        report_state = #{reportState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestions != null">
+        town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSuggestions != null">
+        area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
+      </if>
+      <if test="fillDate != null">
+        fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="townSuggestionsDate != null">
+        town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsDate != null">
+        area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areaSuggestionsState != null">
+        area_suggestions_state = #{areaSuggestionsState,jdbcType=VARCHAR},
+      </if>
+      <if test="townSuggestionsState != null">
+        town_suggestions_state = #{townSuggestionsState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.RptTaskObject">
+    update rpt_task_object
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      obj_id = #{objId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      xzqh_id = #{xzqhId,jdbcType=VARCHAR},
+      report_state = #{reportState,jdbcType=VARCHAR},
+      town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
+      area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
+      fill_date = #{fillDate,jdbcType=TIMESTAMP},
+      town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP},
+      area_suggestions_state = #{areaSuggestionsState,jdbcType=VARCHAR},
+      town_suggestions_state = #{townSuggestionsState,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
 
     <select id="selectFillList" resultType="com.snjtjj.entity.RptTaskObject" parameterType="java.lang.String">
         select
@@ -104,228 +350,12 @@
         <if test="name!= null and name !=''">
             and b.name LIKE #{name,jdbcType=VARCHAR}
         </if>
-        <if test="state=='0'">
-            and a.report_state !='qystg'
+        <if test='state=="0"'>
+            <![CDATA[ and a.report_state !='qystg' and b.start_date<=now() ]]>
         </if>
-        <if test="state=='1'">
+        <if test='state=="1"'>
             and a.report_state ='qystg'
         </if>
         ORDER BY b.create_date DESC
     </select>
-
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select
-        <include refid="Base_Column_List"/>
-        from rpt_task_object
-        where id = #{id,jdbcType=VARCHAR}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from rpt_task_object
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-    <delete id="deleteByExample" parameterType="com.snjtjj.entity.RptTaskObjectExample">
-        delete from rpt_task_object
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </delete>
-    <insert id="insert" parameterType="com.snjtjj.entity.RptTaskObject">
-    insert into rpt_task_object (id, task_id, obj_id, 
-      type, xzqh_id, report_state, 
-      town_suggestions, area_suggestions, fill_date, 
-      town_suggestions_date, area_suggestions_date
-      )
-    values (#{id,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, 
-      #{type,jdbcType=CHAR}, #{xzqhId,jdbcType=VARCHAR}, #{reportState,jdbcType=VARCHAR}, 
-      #{townSuggestions,jdbcType=VARCHAR}, #{areaSuggestions,jdbcType=VARCHAR}, #{fillDate,jdbcType=TIMESTAMP}, 
-      #{townSuggestionsDate,jdbcType=TIMESTAMP}, #{areaSuggestionsDate,jdbcType=TIMESTAMP}
-      )
-  </insert>
-    <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTaskObject">
-        insert into rpt_task_object
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="taskId != null">
-                task_id,
-            </if>
-            <if test="objId != null">
-                obj_id,
-            </if>
-            <if test="type != null">
-                type,
-            </if>
-            <if test="xzqhId != null">
-                xzqh_id,
-            </if>
-            <if test="reportState != null">
-                report_state,
-            </if>
-            <if test="townSuggestions != null">
-                town_suggestions,
-            </if>
-            <if test="areaSuggestions != null">
-                area_suggestions,
-            </if>
-            <if test="fillDate != null">
-                fill_date,
-            </if>
-            <if test="townSuggestionsDate != null">
-                town_suggestions_date,
-            </if>
-            <if test="areaSuggestionsDate != null">
-                area_suggestions_date,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=VARCHAR},
-            </if>
-            <if test="taskId != null">
-                #{taskId,jdbcType=VARCHAR},
-            </if>
-            <if test="objId != null">
-                #{objId,jdbcType=VARCHAR},
-            </if>
-            <if test="type != null">
-                #{type,jdbcType=CHAR},
-            </if>
-            <if test="xzqhId != null">
-                #{xzqhId,jdbcType=VARCHAR},
-            </if>
-            <if test="reportState != null">
-                #{reportState,jdbcType=VARCHAR},
-            </if>
-            <if test="townSuggestions != null">
-                #{townSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="areaSuggestions != null">
-                #{areaSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="fillDate != null">
-                #{fillDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="townSuggestionsDate != null">
-                #{townSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="areaSuggestionsDate != null">
-                #{areaSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <select id="countByExample" parameterType="com.snjtjj.entity.RptTaskObjectExample" resultType="java.lang.Integer">
-        select count(*) from rpt_task_object
-        <if test="_parameter != null">
-            <include refid="Example_Where_Clause"/>
-        </if>
-    </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        update rpt_task_object
-        <set>
-            <if test="record.id != null">
-                id = #{record.id,jdbcType=VARCHAR},
-            </if>
-            <if test="record.taskId != null">
-                task_id = #{record.taskId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.objId != null">
-                obj_id = #{record.objId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.type != null">
-                type = #{record.type,jdbcType=CHAR},
-            </if>
-            <if test="record.xzqhId != null">
-                xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
-            </if>
-            <if test="record.reportState != null">
-                report_state = #{record.reportState,jdbcType=VARCHAR},
-            </if>
-            <if test="record.townSuggestions != null">
-                town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="record.areaSuggestions != null">
-                area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="record.fillDate != null">
-                fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="record.townSuggestionsDate != null">
-                town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="record.areaSuggestionsDate != null">
-                area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        update rpt_task_object
-        set id = #{record.id,jdbcType=VARCHAR},
-        task_id = #{record.taskId,jdbcType=VARCHAR},
-        obj_id = #{record.objId,jdbcType=VARCHAR},
-        type = #{record.type,jdbcType=CHAR},
-        xzqh_id = #{record.xzqhId,jdbcType=VARCHAR},
-        report_state = #{record.reportState,jdbcType=VARCHAR},
-        town_suggestions = #{record.townSuggestions,jdbcType=VARCHAR},
-        area_suggestions = #{record.areaSuggestions,jdbcType=VARCHAR},
-        fill_date = #{record.fillDate,jdbcType=TIMESTAMP},
-        town_suggestions_date = #{record.townSuggestionsDate,jdbcType=TIMESTAMP},
-        area_suggestions_date = #{record.areaSuggestionsDate,jdbcType=TIMESTAMP}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.RptTaskObject">
-        update rpt_task_object
-        <set>
-            <if test="taskId != null">
-                task_id = #{taskId,jdbcType=VARCHAR},
-            </if>
-            <if test="objId != null">
-                obj_id = #{objId,jdbcType=VARCHAR},
-            </if>
-            <if test="type != null">
-                type = #{type,jdbcType=CHAR},
-            </if>
-            <if test="xzqhId != null">
-                xzqh_id = #{xzqhId,jdbcType=VARCHAR},
-            </if>
-            <if test="reportState != null">
-                report_state = #{reportState,jdbcType=VARCHAR},
-            </if>
-            <if test="townSuggestions != null">
-                town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="areaSuggestions != null">
-                area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
-            </if>
-            <if test="fillDate != null">
-                fill_date = #{fillDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="townSuggestionsDate != null">
-                town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-            <if test="areaSuggestionsDate != null">
-                area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where id = #{id,jdbcType=VARCHAR}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.RptTaskObject">
-    update rpt_task_object
-    set task_id = #{taskId,jdbcType=VARCHAR},
-      obj_id = #{objId,jdbcType=VARCHAR},
-      type = #{type,jdbcType=CHAR},
-      xzqh_id = #{xzqhId,jdbcType=VARCHAR},
-      report_state = #{reportState,jdbcType=VARCHAR},
-      town_suggestions = #{townSuggestions,jdbcType=VARCHAR},
-      area_suggestions = #{areaSuggestions,jdbcType=VARCHAR},
-      fill_date = #{fillDate,jdbcType=TIMESTAMP},
-      town_suggestions_date = #{townSuggestionsDate,jdbcType=TIMESTAMP},
-      area_suggestions_date = #{areaSuggestionsDate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
 </mapper>

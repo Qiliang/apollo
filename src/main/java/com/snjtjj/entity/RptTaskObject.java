@@ -19,6 +19,8 @@ public class RptTaskObject {
 
     private String tableName;
 
+    private String tableCode;
+
     private Date startDate;
 
     private Date endDate;
@@ -26,6 +28,10 @@ public class RptTaskObject {
     private String townSuggestionsState;
 
     private String areaSuggestionsState;
+
+    private String townSuggestionsStateStr;
+
+    private String areaSuggestionsStateStr;
 
     private String type;
 
@@ -208,5 +214,29 @@ public class RptTaskObject {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getTownSuggestionsStateStr() {
+        return townSuggestionsStateStr;
+    }
+
+    public void setTownSuggestionsStateStr(String townSuggestionsStateStr) {
+        this.townSuggestionsStateStr = townSuggestionsStateStr;
+    }
+
+    public String getAreaSuggestionsStateStr() {
+        return areaSuggestionsStateStr;
+    }
+
+    public void setAreaSuggestionsStateStr(String areaSuggestionsStateStr) {
+        this.areaSuggestionsStateStr = areaSuggestionsStateStr;
+    }
+
+    public String getTableCode() {
+        return tableCode;
+    }
+
+    public void setTableCode(String tableCode) {
+        this.tableCode = tableCode;
     }
 }

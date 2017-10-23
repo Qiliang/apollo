@@ -72,17 +72,22 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoList', {
                 iconCls: 'x-fa fa-pencil-square-o',
                 tooltip: '填报',
                 handler: function (view, recIndex, cellIndex, item, e, record) {
-                    if (record.data.reportState == 'wtb' || record.data.reportState == 'ytb') {
-                        var win = Ext.create('Ext.window.Window', {
-                            title: '填报',
-                            height: 700,
-                            width: 1100,
-                            layout: 'fit',
-                            closeToolText: '关闭',
-                            modal: true,
-                            items: Ext.create('Kits.view.shuJuLuRu.TianBaoView', {a: new Date()})
-                        });
-                        win.show();
+                    if (record.data.reportState == 'wtb' || record.data.reportState == 'ytb'|| record.data.reportState == 'zyswtg'|| record.data.reportState == 'qyswtg') {
+                        //判断报送时间是否已经结束
+                        if (!compareDate(record.data.endDate, getNowFormatDate())) {
+                            var win = Ext.create('Ext.window.Window', {
+                                title: '填报',
+                                height: 700,
+                                width: 1100,
+                                layout: 'fit',
+                                closeToolText: '关闭',
+                                modal: true,
+                                items: Ext.create('Kits.view.shuJuLuRu.TianBaoView', {isView:false,recordData:record.data})
+                            });
+                            win.show();
+                        }else{
+                            Ext.MessageBox.alert('提示', '已超过报送时间无法再次填报！');
+                        }
                     } else {
                         Ext.MessageBox.alert('提示', '该报告已验收，无法再次填报！');
                     }

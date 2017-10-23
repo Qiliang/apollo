@@ -89,11 +89,14 @@ public class DirectRptTaskService {
     public void fillSystemAndTableInfo(DirectRptTask item) {
         //根据制度id查询制度名称
         SystemInfo systemInfo = systemInfoMapper.selectByPrimaryKey(item.getSystemId());
-        item.setSystemName(systemInfo.getName());
-
+        if (systemInfo != null)
+            item.setSystemName(systemInfo.getName());
         //根据表id查询表名称
         RptTab rptTab = rptTabMapper.selectByPrimaryKey(item.getTableId());
-        item.setTableName(rptTab.getTabname());
+        if (rptTab != null) {
+            item.setTableName(rptTab.getTabname());
+            item.setTableCode(rptTab.getTabcode());
+        }
     }
 
     public List<RptTab> getTabListByUser() {
@@ -203,43 +206,15 @@ public class DirectRptTaskService {
             item.setName(directRptTask.getName());
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
-            fillSuggestionsState(item);
+            fillSuggestionsStateStr(item);
         });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
 
-    private void fillSuggestionsState(RptTaskObject rptTaskObject) {
-        String townSuggestionsState = "";
-        String areaSuggestionsState = "";
-        switch (rptTaskObject.getReportState()) {
-            case "wtb": //未填报
-            case "ytb": //已填报，未镇验收
-                townSuggestionsState = "未验收";
-                areaSuggestionsState = "未验收";
-                break;
-            case "zyswtg"://镇验收未通过
-                townSuggestionsState = "验收不通过";
-                areaSuggestionsState = "未验收";
-                break;
-            case "zystg"://已填报，镇验收通过
-                townSuggestionsState = "验收通过";
-                areaSuggestionsState = "未验收";
-                break;
-            case "qyswtg"://区验收未通过
-                townSuggestionsState = "验收通过";
-                areaSuggestionsState = "验收不通过";
-                break;
-            case "qystg"://区验收未通过
-                townSuggestionsState = "验收通过";
-                areaSuggestionsState = "验收通过";
-                break;
-            default:
-                break;
-
-        }
-        rptTaskObject.setAreaSuggestionsState(areaSuggestionsState);
-        rptTaskObject.setTownSuggestionsState(townSuggestionsState);
+    private void fillSuggestionsStateStr(RptTaskObject rptTaskObject) {
+        rptTaskObject.setAreaSuggestionsStateStr("0".equals(rptTaskObject.getAreaSuggestionsState())?"未通过":"通过");
+        rptTaskObject.setTownSuggestionsStateStr("0".equals(rptTaskObject.getTownSuggestionsState())?"未通过":"通过");
     }
 
     public void fillReportState(RptTaskObject rptTaskObject) {
@@ -268,7 +243,7 @@ public class DirectRptTaskService {
         }
     }
 
-    public PageInfo<RptTaskObject> getFillList(String name, Integer page, Integer limit,String state) {
+    public PageInfo<RptTaskObject> getFillList(String name, Integer page, Integer limit, String state) {
         //获得当前登录用户
         JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         FillUser fillUser = jwtUser.getFillUser();
@@ -276,13 +251,14 @@ public class DirectRptTaskService {
         if (StringUtils.isNotBlank(name)) {
             name = "%" + name + "%";
         }
-        List<RptTaskObject> list = rptTaskObjectMapper.selectFillList(name, fillUser.getObjType(), fillUser.getObjId(),state);
+        List<RptTaskObject> list = rptTaskObjectMapper.selectFillList(name, fillUser.getObjType(), fillUser.getObjId(), state);
         list.forEach(item -> {
             DirectRptTask directRptTask = directRptTaskMapper.selectByPrimaryKey(item.getTaskId());
             fillSystemAndTableInfo(directRptTask);
             item.setName(directRptTask.getName());
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
+            item.setTableCode(item.getTableCode());
             fillReportState(item);
         });
         PageInfo pageInfo = new PageInfo(list);

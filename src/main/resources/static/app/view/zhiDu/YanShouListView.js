@@ -74,13 +74,13 @@ Ext.define('Kits.view.zhiDu.YanShouListView', {
                     dataIndex: 'tableName'
                 },{
                     text: '区验收状态',
-                    dataIndex: 'areaSuggestionsState'
+                    dataIndex: 'areaSuggestionsStateStr'
                 },{
                     text: '区验收意见',
                     dataIndex: 'townSuggestions'
                 },{
                     text: '镇验收状态',
-                    dataIndex: 'townSuggestionsState'
+                    dataIndex: 'townSuggestionsStateStr'
                 },{
                     text: '镇验收意见',
                     dataIndex: 'areaSuggestions'

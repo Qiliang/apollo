@@ -844,6 +844,146 @@ public class RptTaskObjectExample {
             addCriterion("area_suggestions_date not between", value1, value2, "areaSuggestionsDate");
             return (Criteria) this;
         }
+
+        public Criteria andAreaSuggestionsStateIsNull() {
+            addCriterion("area_suggestions_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateIsNotNull() {
+            addCriterion("area_suggestions_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateEqualTo(String value) {
+            addCriterion("area_suggestions_state =", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateNotEqualTo(String value) {
+            addCriterion("area_suggestions_state <>", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateGreaterThan(String value) {
+            addCriterion("area_suggestions_state >", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateGreaterThanOrEqualTo(String value) {
+            addCriterion("area_suggestions_state >=", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateLessThan(String value) {
+            addCriterion("area_suggestions_state <", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateLessThanOrEqualTo(String value) {
+            addCriterion("area_suggestions_state <=", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateLike(String value) {
+            addCriterion("area_suggestions_state like", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateNotLike(String value) {
+            addCriterion("area_suggestions_state not like", value, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateIn(List<String> values) {
+            addCriterion("area_suggestions_state in", values, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateNotIn(List<String> values) {
+            addCriterion("area_suggestions_state not in", values, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateBetween(String value1, String value2) {
+            addCriterion("area_suggestions_state between", value1, value2, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andAreaSuggestionsStateNotBetween(String value1, String value2) {
+            addCriterion("area_suggestions_state not between", value1, value2, "areaSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateIsNull() {
+            addCriterion("town_suggestions_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateIsNotNull() {
+            addCriterion("town_suggestions_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateEqualTo(String value) {
+            addCriterion("town_suggestions_state =", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateNotEqualTo(String value) {
+            addCriterion("town_suggestions_state <>", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateGreaterThan(String value) {
+            addCriterion("town_suggestions_state >", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateGreaterThanOrEqualTo(String value) {
+            addCriterion("town_suggestions_state >=", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateLessThan(String value) {
+            addCriterion("town_suggestions_state <", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateLessThanOrEqualTo(String value) {
+            addCriterion("town_suggestions_state <=", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateLike(String value) {
+            addCriterion("town_suggestions_state like", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateNotLike(String value) {
+            addCriterion("town_suggestions_state not like", value, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateIn(List<String> values) {
+            addCriterion("town_suggestions_state in", values, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateNotIn(List<String> values) {
+            addCriterion("town_suggestions_state not in", values, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateBetween(String value1, String value2) {
+            addCriterion("town_suggestions_state between", value1, value2, "townSuggestionsState");
+            return (Criteria) this;
+        }
+
+        public Criteria andTownSuggestionsStateNotBetween(String value1, String value2) {
+            addCriterion("town_suggestions_state not between", value1, value2, "townSuggestionsState");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {
