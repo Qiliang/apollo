@@ -210,11 +210,13 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                     items:[
                         Ext.create('Kits.view.zhiDuManage.Tab1Setting',{
                             itemId:'zhiDuTab1Container',
-                            title: '汇总表单'
+                            title: '汇总表单',
+                            typeId:0,
                         }),
                         Ext.create('Kits.view.zhiDuManage.Tab2Setting',{
                             itemId:'zhiDuTab2Container',
-                            title: '提报表单'
+                            title: '提报表单',
+                            typeId:1
                         }),{
                             xtype:'grid',
                             itemId:'zhiDuTab3Container',

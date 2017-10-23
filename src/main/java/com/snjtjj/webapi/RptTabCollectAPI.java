@@ -17,19 +17,13 @@ public class RptTabCollectAPI {
     @Autowired
     private RptTabCollectService rptTabCollectService;
 
-    @GetMapping("/table/{tabcode}")
-    public Object findListByTable(@PathVariable("tabcode") String tabcode){
-        User user = UserUtils.getUser();
-        return rptTabCollectService.findSingleTable(tabcode,user.getId());
+    @GetMapping("/table/{tabcode}/{usercode}")
+    public Object findListByTable(@PathVariable("tabcode") String tabcode,@PathVariable("usercode") String usercode){
+        return rptTabCollectService.findSingleTable(tabcode,usercode);
     }
 
     @PostMapping("/table/put")
     public FormResponse<String>  putList(@RequestBody List<RptTabCollect> list){
-        User user = UserUtils.getUser();
-        String id = user.getId();
-        list.forEach(li ->{
-            li.setUsercode(id);
-        });
         rptTabCollectService.putSingleTable(list);
         return new FormResponse("保存成功！");
     }

@@ -15,15 +15,16 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
             }
         });
     },
-    currentData:null,
+    currentId:null,
+    typeId:null,
     listeners:{
         selectionchange: function (selmodel,selected) {
             if (selected && selected.length > 0){
                 var model = selected[0];
-                this.currentData = model.data;
+                this.currentId = model.getId();
             }
             else{
-                this.currentData = null;
+                this.currentId = null;
             }
         }
     },
@@ -34,38 +35,34 @@ Ext.define('Kits.view.zhiDuManage.Tab1Setting',{
             {text:'新增',iconCls:'add',iconAlign: 'left',handler:function () {
                 var grid = this.up('grid');
                 var store = grid.getStore();
+                debugger;
                 var record = store.createModel({tabid:grid.parentid,typeid:grid.typeId});
                 store.add(record);
             }},
             {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'left', handler:function(){
                 var grid = this.up('grid');
-                Ext.Ajax.request({
-                    url: '/api/tab/save',
-                    params: grid.currentData,
-                    success: function (response) {
-                        grid.getStore().load({
-                            params: {
-                                id: grid.parentid
-                            }
-                        });
+                var store = grid.getStore();
+                store.sync({
+                    success:function (batch,options) {
+                        store.reload();
+                        console.log(options);
                     }
                 });
             }},
             {text:'删除',iconCls:'remove',iconAlign: 'left',handler:function () {
                 var grid = this.up('grid');
-                if(grid.currentData){
-                    Ext.Ajax.request({
-                        url:'/api/tab/delete',
-                        params:{id:grid.currentData.id},
-                        success:function (response) {
-                            grid.getStore().load({
-                                params : {
-                                    id : grid.parentid
-                                }
-                            });
-                        }
-                    });
+                if(grid.currentId == null){
+                    alert('请选择一行再执行删除操作');
+                    return;
                 }
+                var store = grid.getStore();
+                var record = store.findRecord('id',grid.currentId);
+                store.remove(record);
+                store.sync({
+                    success:function (response) {
+                        console.log(response);
+                    }
+                });
             }},
             {text:'上移',iconCls:'arrow_green_up',iconAlign: 'left',handler:function () {
 

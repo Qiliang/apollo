@@ -24,21 +24,6 @@ public class RptTabSettingAPI {
     @Autowired
     private RptTabSettingMapper rptTabSettingMapper;
 
-    @PostMapping("/save")
-    public FormResponse<String> save(RptTabSetting tab){
-        String id = tab.getId();
-        FormResponse formResponse;
-        if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)){
-            rptTabSettingMapper.insert(tab);
-            formResponse = new FormResponse("保存成功！");
-        }
-        else{
-            rptTabSettingMapper.updateByPrimaryKey(tab);
-            formResponse = new FormResponse("更新成功！");
-        }
-        return formResponse;
-    }
-
     @PostMapping("/list")
     public FormResponse<List<RptTabSetting>> list(String id,Integer typeid){
         RptTabSettingExample example = new RptTabSettingExample();
@@ -52,8 +37,14 @@ public class RptTabSettingAPI {
     @PostMapping("/add")
     public FormResponse<String> add(@RequestBody List<RptTabSetting> list){
         list.forEach(tab -> {
-            tab.setId(IdGen.nextS());
-            rptTabSettingMapper.insertSelective(tab);
+            String id = tab.getId();
+            if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)) {
+                tab.setId(IdGen.nextS());
+                rptTabSettingMapper.insertSelective(tab);
+            }
+            else{
+                rptTabSettingMapper.updateByPrimaryKey(tab);
+            }
         });
         return new FormResponse("创建成功！");
     }
