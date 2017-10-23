@@ -10,7 +10,9 @@ Ext.define('Kits.view.Main', {
     listeners: {
         afterRender: function (me, eOpts) {
             var menu = Ext.ComponentQuery.query('#mainMenu')[0];
-            menu.setSelection(menu.getStore().getAt(0))
+            menu.getStore().addAfterListener("load",function(){
+                menu.setSelection(menu.getStore().getAt(0))
+            })
             //menu.setSelection();
         }
     },
