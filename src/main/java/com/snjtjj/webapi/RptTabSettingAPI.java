@@ -30,12 +30,14 @@ public class RptTabSettingAPI {
         example.createCriteria()
                 .andTabidEqualTo(id)
                 .andTypeidEqualTo(typeid);
+        example.setOrderByClause("orderno asc");
         List<RptTabSetting> list = rptTabSettingMapper.selectByExample(example);
         return new FormResponse<List<RptTabSetting>>(list);
     }
 
     @PostMapping("/add")
     public FormResponse<String> add(@RequestBody List<RptTabSetting> list){
+        //noinspection Duplicates
         list.forEach(tab -> {
             String id = tab.getId();
             if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)) {

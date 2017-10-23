@@ -3,8 +3,6 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.RptTab;
 import com.snjtjj.entity.RptTabExample;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 public interface RptTabMapper {

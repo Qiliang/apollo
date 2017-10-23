@@ -188,7 +188,7 @@ Ext.define('Kits.view.Home', {
             ]
         },
         {
-            xtype:'zhiDuManage.TabContainer',
+            xtype:'zhiDuTabContainer',
             region: 'center',
             itemId:'zhiDuTabContainer',
             frame: true,

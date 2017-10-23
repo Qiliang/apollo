@@ -453,6 +453,66 @@ public class RptTabRuleExample {
             addCriterion("errortext not between", value1, value2, "errortext");
             return (Criteria) this;
         }
+
+        public Criteria andOrdernoIsNull() {
+            addCriterion("orderno is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoIsNotNull() {
+            addCriterion("orderno is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoEqualTo(Integer value) {
+            addCriterion("orderno =", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoNotEqualTo(Integer value) {
+            addCriterion("orderno <>", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoGreaterThan(Integer value) {
+            addCriterion("orderno >", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("orderno >=", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoLessThan(Integer value) {
+            addCriterion("orderno <", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoLessThanOrEqualTo(Integer value) {
+            addCriterion("orderno <=", value, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoIn(List<Integer> values) {
+            addCriterion("orderno in", values, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoNotIn(List<Integer> values) {
+            addCriterion("orderno not in", values, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoBetween(Integer value1, Integer value2) {
+            addCriterion("orderno between", value1, value2, "orderno");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrdernoNotBetween(Integer value1, Integer value2) {
+            addCriterion("orderno not between", value1, value2, "orderno");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

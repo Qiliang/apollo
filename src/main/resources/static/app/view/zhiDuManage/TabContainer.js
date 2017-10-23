@@ -1,10 +1,9 @@
 Ext.define('Kits.view.zhiDuManage.TabContainer',{
     extend: 'Ext.panel.Panel',
     layout: 'border',
-    xtype:'zhiDuManage.TabContainer',
+    xtype:'zhiDuTabContainer',
     requires:[
-        'Kits.view.zhiDuManage.Tab1Setting',
-        'Kits.view.zhiDuManage.Tab2Setting'
+        'Kits.view.zhiDuManage.TabSetting'
     ],
     initComponent: function () {
         var me = this;
@@ -75,7 +74,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                     url:'/api/tab/save',
                     method:'POST',
                     doLoadRecord:function (record) {
-                      this.loadRecord(record);
+                        this.loadRecord(record);
                         var cmp = this.up('#zhiDuTabContainer');
                         var tab1 = cmp.down('#zhiDuTab1Container');
                         var tab2 = cmp.down('#zhiDuTab2Container');
@@ -104,7 +103,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 var cmp = this.up('#zhiDuTabContainer');
                                 var record = grid.getStore().createModel({systeminfoid:cmp.parentid});
                                 form.reset();
-                                form.loadRecord(record);
+                                form.doLoadRecord(record);
                                 form.doSwitchComponent(true,'childEdit','editing','enable','disable');
                             }},
                             {text:'修改',itemId:'toolbar_modify',iconCls:'application_edit',iconAlign: 'left', childEdit:'!editing',handler:function(){
@@ -208,43 +207,83 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                     deferredRender: false,
                     plain: true,
                     items:[
-                        Ext.create('Kits.view.zhiDuManage.Tab1Setting',{
+                        {
+                            xtype:'zhiDuTabSetting',
                             itemId:'zhiDuTab1Container',
                             title: '汇总表单',
+                            store: Ext.create('Kits.store.RptTabSetting', {}),
                             typeId:0,
-                        }),
-                        Ext.create('Kits.view.zhiDuManage.Tab2Setting',{
+                        },
+                        {
+                            xtype:'zhiDuTabSetting',
                             itemId:'zhiDuTab2Container',
                             title: '提报表单',
+                            store: Ext.create('Kits.store.RptTabSetting', {}),
                             typeId:1
-                        }),{
+                        },{
                             xtype:'grid',
                             itemId:'zhiDuTab3Container',
                             title: '表单规则',
+                            parentid: null,
+                            currentId: null,
+                            listeners:{
+                                selectionchange: function (selmodel,selected) {
+                                    if (selected && selected.length > 0){
+                                        var model = selected[0];
+                                        this.currentId = model.getId();
+                                    }
+                                    else{
+                                        this.currentId = null;
+                                    }
+                                }
+                            },
                             doRefresh:function (record) {
-
+                                var store = this.getStore();
+                                this.parentid = record.getId();
+                                store.load({
+                                    params:{
+                                        id:this.parentid
+                                    }
+                                });
                             },
                             rbar:{
                                 xtype: 'toolbar',
                                 itemId: 'hzToolBar',
                                 items: [
-                                    {text:'新增',itemId:'hz_toolbar_add',iconCls:'add',iconAlign: 'left'},
-                                    {text:'删除',itemId:'hz_toolbar_remove',iconCls:'remove',iconAlign: 'left'}
+                                    {text:'新增',iconCls:'add',iconAlign: 'left',handler:function () {
+                                        var grid = this.up('grid');
+                                        var store = grid.getStore();
+                                        var count = store.getCount();
+                                        var record = store.createModel({tabid:grid.parentid,orderno:count+1});
+                                        store.add(record);
+                                    }},
+                                    {text:'保存',iconCls:'save',iconAlign: 'left', handler:function(){
+                                        var grid = this.up('grid');
+                                        var store = grid.getStore();
+                                        store.sync({
+                                            success:function (batch,options) {
+                                                store.reload();
+                                            }
+                                        });
+                                    }},
+                                    {text:'删除',iconCls:'remove',iconAlign: 'left',handler:function () {
+                                        var grid = this.up('grid');
+                                        if(grid.currentId == null){
+                                            alert('请选择一行再执行删除操作');
+                                            return;
+                                        }
+                                        var store = grid.getStore();
+                                        var record = store.findRecord('id',grid.currentId);
+                                        store.remove(record);
+                                        store.sync({
+                                            success:function (batch,options) {
+                                                store.reload();
+                                            }
+                                        });
+                                    }}
                                 ]
                             },
-                            store: Ext.create('Ext.data.ArrayStore', {
-                                fields: ['id','itemcode'],
-                                data:[
-                                    [0,''],
-                                    [1,''],
-                                    [2,''],
-                                    [3,''],
-                                    [4,''],
-                                    [5,''],
-                                    [6,''],
-                                    [7,'']
-                                ]
-                            }),
+                            store: Ext.create('Kits.store.RptTabRule', {}),
                             selModel: 'cellmodel',
                             plugins: {
                                 cellediting: {
@@ -269,7 +308,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                         }
                                     }
                                 },
-                                {text:'错误提示',dataIndex:'error',width:360,
+                                {text:'错误提示',dataIndex:'errortext',width:360,
                                     editor: {
                                         field: {
                                             xtype: 'textfield',
@@ -277,6 +316,15 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                         }
                                     }
                                 },
+                                {text:'排序',sortable:false,dataIndex:'orderno',width:60,align:'center',
+                                    editor: {
+                                        field: {
+                                            xtype: 'numberfield',
+                                            minValue: 0,
+                                            allowBlank: true
+                                        }
+                                    }
+                                }
                             ]
                         }
                     ]
