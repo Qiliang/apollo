@@ -1,10 +1,9 @@
 package com.snjtjj.webapi;
 
-import com.snjtjj.entity.RptTab;
-import com.snjtjj.entity.RptTabExample;
-import com.snjtjj.entity.SystemInfo;
-import com.snjtjj.entity.SystemInfoExample;
+import com.snjtjj.entity.*;
 import com.snjtjj.mapper.RptTabMapper;
+import com.snjtjj.mapper.RptTabRuleMapper;
+import com.snjtjj.mapper.RptTabSettingMapper;
 import com.snjtjj.mapper.SystemInfoMapper;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.FormResponse;
@@ -23,6 +22,10 @@ public class RptTabAPI {
 
     @Autowired
     private RptTabMapper rptTabMapper;
+    @Autowired
+    private RptTabSettingMapper rptTabSettingMapper;
+    @Autowired
+    private RptTabRuleMapper rptTabRuleMapper;
 
     @PostMapping("/save")
     public FormResponse<String> save(RptTab tab){
@@ -57,6 +60,22 @@ public class RptTabAPI {
 
     @PostMapping("/delete")
     public FormResponse<String> delete(String id){
+        RptTabSettingExample example = new RptTabSettingExample();
+        example.createCriteria().andTabidEqualTo(id);
+        List<RptTabSetting> list = rptTabSettingMapper.selectByExample(example);
+        if(list.size() > 0){
+            FormResponse response = new FormResponse("存在明细数据无法删除");
+            response.setSuccess(false);
+            return response;
+        }
+        RptTabRuleExample example1 = new RptTabRuleExample();
+        example1.createCriteria().andTabidEqualTo(id);
+        List<RptTabRule> list1 = rptTabRuleMapper.selectByExample(example1);
+        if(list1.size() > 0){
+            FormResponse response = new FormResponse("存在明细数据无法删除");
+            response.setSuccess(false);
+            return response;
+        }
         rptTabMapper.deleteByPrimaryKey(id);
         return new FormResponse("删除成功！");
     }

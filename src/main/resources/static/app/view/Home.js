@@ -157,11 +157,27 @@ Ext.define('Kits.view.Home', {
                                 var form = this.up('form');
                                 var grid = form.up('box').down('grid');
                                 var idValue = form.getForm().findField('id').getValue();
-                                Ext.Ajax.request({
-                                    url:'/api/info/delete',
-                                    params:{id:idValue},
-                                    success:function (response) {
-                                        grid.getStore().reload();
+                                Ext.Msg.show({
+                                    title:'提示',
+                                    message: '是否删除?',
+                                    buttons: Ext.Msg.YESNO,
+                                    icon: Ext.Msg.QUESTION,
+                                    fn: function(btn) {
+                                        if (btn === 'yes') {
+                                            Ext.Ajax.request({
+                                                url:'/api/info/delete',
+                                                params:{id:idValue},
+                                                success:function (response) {
+                                                    var obj = JSON.parse(response.responseText);
+                                                    if(obj.success){
+                                                        grid.getStore().reload();
+                                                    }
+                                                    else{
+                                                        Ext.Msg.alert('提示', obj.data);
+                                                    }
+                                                }
+                                            });
+                                        }
                                     }
                                 });
                             }}

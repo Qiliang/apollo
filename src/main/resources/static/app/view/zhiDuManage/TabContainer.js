@@ -11,6 +11,19 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
         // grid.bbar.store = grid.store;
         me.callParent();
     },
+    doSwitchComponent: function (value,selector,groupid,trueFunc,falseFunc) {
+        var components = this.query(Ext.String.format('[{0}]',selector));
+        for(var i in components){
+            var component = components[i];
+            var status = component[selector];
+            if (status == groupid){
+                component[value ? trueFunc : falseFunc]();
+            }
+            if (status == '!'+groupid){
+                component[!value ? trueFunc : falseFunc]();
+            }
+        }
+    },
     items:[
         {
             xtype:'grid',
@@ -33,15 +46,10 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         var form = this.up('box').down('form[region=north]');
                         var record = this.getStore().createModel(selected[0]);
                         form.doLoadRecord(record);
-                        var cmp = Ext.ComponentQuery.query('#zhiDuBagContainer')[0];
-                        cmp.doSwitchComponent(false,'childEdit','editing','enable','disable');
-                        cmp.doSwitchComponent(true,'childRemove','canRemove','enable','disable');
                     }
                     else{
                         var form = this.up('box').down('form');
-                        var grid = this;
-                        var record = grid.getStore().createModel({});
-                        form.doLoadRecord(record);
+                        form.doLoadRecord(null);
                     }
                 }
             },
@@ -74,7 +82,6 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                     url:'/api/tab/save',
                     method:'POST',
                     doLoadRecord:function (record) {
-                        this.loadRecord(record);
                         var cmp = this.up('#zhiDuTabContainer');
                         var tab1 = cmp.down('#zhiDuTab1Container');
                         var tab2 = cmp.down('#zhiDuTab2Container');
@@ -82,14 +89,23 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         tab1.doRefresh(record);
                         tab2.doRefresh(record);
                         tab3.doRefresh(record);
+                        if(record){
+                            this.loadRecord(record);
+                            this.doSwitchComponent(false,'childEdit','editing','enable','disable');
+                            this.doSwitchComponent(false,'childAdd','adding','enable','disable');
+                        }
+                        else{
+                            this.reset();
+                            this.doSwitchComponent(true,'mainAdd','adding','enable','disable');
+                        }
                     },
                     doSwitchComponent: function (value,selector,groupid,trueFunc,falseFunc) {
-                        var cmp = this.up('#zhiDuBagContainer');
+                        var cmp = this.up('#zhiDuTabContainer');
                         cmp.doSwitchComponent(value,selector,groupid,trueFunc,falseFunc);
                     },
                     listeners: {
                         afterrender: function () {
-                            this.doSwitchComponent(false,'childEdit','editing','enable','disable');
+                            this.doSwitchComponent(false,'mainAdd','editing','enable','disable');
                         }
                     },
                     height: 2*80+50,
@@ -97,7 +113,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         xtype: 'toolbar',
                         itemId: 'cmdToolBar',
                         items: [
-                            {text:'新增',itemId:'toolbar_add',iconCls:'add',iconAlign: 'left', childEdit:'!editing',mainAdd:'!adding',handler:function(){
+                            {text:'新增',itemId:'toolbar_add',iconCls:'add',iconAlign: 'left', childEdit:'!editing',handler:function(){
                                 var form = this.up('form');
                                 var grid = form.up('box').down('grid');
                                 var cmp = this.up('#zhiDuTabContainer');
@@ -105,12 +121,13 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 form.reset();
                                 form.doLoadRecord(record);
                                 form.doSwitchComponent(true,'childEdit','editing','enable','disable');
+                                form.doSwitchComponent(true,'childAdd','adding','enable','disable');
                             }},
-                            {text:'修改',itemId:'toolbar_modify',iconCls:'application_edit',iconAlign: 'left', childEdit:'!editing',handler:function(){
+                            {text:'修改',itemId:'toolbar_modify',iconCls:'application_edit',iconAlign: 'left', childEdit:'!editing',mainAdd:'!adding',handler:function(){
                                 var form = this.up('form');
                                 form.doSwitchComponent(true,'childEdit','editing','enable','disable');
                             }},
-                            {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'left', childEdit:'editing',handler:function(){
+                            {text:'保存',itemId:'toolbar_save',iconCls:'save',iconAlign: 'left', childEdit:'editing',mainAdd:'!adding',handler:function(){
                                 var cmp = this.up('#zhiDuTabContainer');
                                 var grid = cmp.down('grid[region=west]');
                                 var form = cmp.down('form[region=north]');
@@ -127,7 +144,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                     },
                                 });
                             }},
-                            {text:'取消',itemId:'toolbar_cancel',iconCls:'cancel',iconAlign: 'left', childEdit:'editing',handler:function(){
+                            {text:'取消',itemId:'toolbar_cancel',iconCls:'cancel',iconAlign: 'left', childEdit:'editing',mainAdd:'!adding',handler:function(){
                                 var cmp = this.up('#zhiDuTabContainer');
                                 var grid = cmp.down('grid[region=west]');
                                 var form = cmp.down('form[region=north]');
@@ -136,20 +153,36 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 store.reload();
                                 form.doSwitchComponent(false,'childEdit','editing','enable','disable');
                             }},
-                            {text:'删除',itemId:'toolbar_remove',iconCls:'remove',iconAlign: 'left',disabled:true,childRemove:'canRemove',mainAdd:'!adding',handler:function(){
+                            {text:'删除',itemId:'toolbar_remove',iconCls:'remove',iconAlign: 'left',disabled:true,childRemove:'canRemove',childEdit:'!editing',mainAdd:'!adding',handler:function(){
                                 var cmp = this.up('#zhiDuTabContainer');
                                 var grid = cmp.down('grid[region=west]');
                                 var form = cmp.down('form[region=north]');
                                 var idValue = form.getForm().findField('id').getValue();
-                                Ext.Ajax.request({
-                                    url:'/api/tab/delete',
-                                    params:{id:idValue},
-                                    success:function (response) {
-                                        grid.getStore().load({
-                                            params : {
-                                                id : cmp.parentid
-                                            }
-                                        });
+                                Ext.Msg.show({
+                                    title: '提示',
+                                    message: '是否删除?',
+                                    buttons: Ext.Msg.YESNO,
+                                    icon: Ext.Msg.QUESTION,
+                                    fn: function (btn) {
+                                        if (btn === 'yes') {
+                                            Ext.Ajax.request({
+                                                url: '/api/tab/delete',
+                                                params: {id: idValue},
+                                                success: function (response) {
+                                                    var obj = JSON.parse(response.responseText);
+                                                    if(obj.success) {
+                                                        grid.getStore().load({
+                                                            params: {
+                                                                id: cmp.parentid
+                                                            }
+                                                        });
+                                                    }
+                                                    else{
+                                                        Ext.Msg.alert('提示', obj.data);
+                                                    }
+                                                }
+                                            });
+                                        }
                                     }
                                 });
                             }},
@@ -239,7 +272,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                             },
                             doRefresh:function (record) {
                                 var store = this.getStore();
-                                this.parentid = record.getId();
+                                this.parentid = record ? record.getId() : 'undefine';
                                 store.load({
                                     params:{
                                         id:this.parentid
@@ -250,14 +283,14 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 xtype: 'toolbar',
                                 itemId: 'hzToolBar',
                                 items: [
-                                    {text:'新增',iconCls:'add',iconAlign: 'left',handler:function () {
+                                    {text:'新增',iconCls:'add',iconAlign: 'left',childAdd:'!adding',mainAdd:'!adding',handler:function () {
                                         var grid = this.up('grid');
                                         var store = grid.getStore();
                                         var count = store.getCount();
                                         var record = store.createModel({tabid:grid.parentid,orderno:count+1});
                                         store.add(record);
                                     }},
-                                    {text:'保存',iconCls:'save',iconAlign: 'left', handler:function(){
+                                    {text:'保存',iconCls:'save',iconAlign: 'left',childAdd:'!adding',mainAdd:'!adding', handler:function(){
                                         var grid = this.up('grid');
                                         var store = grid.getStore();
                                         store.sync({
@@ -266,7 +299,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                             }
                                         });
                                     }},
-                                    {text:'删除',iconCls:'remove',iconAlign: 'left',handler:function () {
+                                    {text:'删除',iconCls:'remove',iconAlign: 'left',childAdd:'!adding',mainAdd:'!adding',handler:function () {
                                         var grid = this.up('grid');
                                         if(grid.currentId == null){
                                             alert('请选择一行再执行删除操作');
