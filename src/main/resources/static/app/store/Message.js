@@ -1,14 +1,18 @@
 Ext.define('Kits.store.Message', {
     extend: 'Ext.data.Store',
-    model: 'Kits.model.Message',
     proxy: {
-        type: 'rest',
-        url: '/data/Message.json',
+        type: 'ajax',
+        url: '/api/messageInfo',
         reader: {
-            type: 'json'
-        }
+            type: 'json',
+            rootProperty: 'list',
+            totalProperty: 'total'
+        },
+        limitParam:'limit',
+        pageParam:'page'
+
     },
     autoLoad: true,
-    autoSync: true
+    autoSync: false
 
 });

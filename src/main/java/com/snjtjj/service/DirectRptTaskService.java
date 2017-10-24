@@ -124,6 +124,31 @@ public class DirectRptTaskService {
         rptTaskObjectMapper.updateByPrimaryKeySelective(rptTaskObject);
     }
 
+
+    @Transactional
+    public void auditRptTaskObject(RptTaskObject rptTaskObject) {
+        //获取用户组织所在行政区划层级，0：区，1：镇，乡，2：村
+        String userLevel = UserUtils.getUserOrgAreaLevel();
+        if ("0".equals(userLevel)) {
+            if("0".equals(rptTaskObject.getAreaSuggestionsState())){
+                rptTaskObject.setReportState("qyswtg");
+                rptTaskObject.setAreaSuggestionsDate(new Date());
+            }else if("1".equals(rptTaskObject.getAreaSuggestionsState())){
+                rptTaskObject.setReportState("qystg");
+                rptTaskObject.setAreaSuggestionsDate(new Date());
+            }
+        } else if ("1".equals(userLevel)) {
+            if("0".equals(rptTaskObject.getTownSuggestionsState())){
+                rptTaskObject.setReportState("zyswtg");
+                rptTaskObject.setTownSuggestionsDate(new Date());
+            }else if("1".equals(rptTaskObject.getTownSuggestionsState())){
+                rptTaskObject.setReportState("zystg");
+                rptTaskObject.setTownSuggestionsDate(new Date());
+            }
+        }
+        updateRptTaskObject(rptTaskObject);
+    }
+
     @Transactional
     public void updateFillState(String id) {
         RptTaskObject rptTaskObject = new RptTaskObject();
