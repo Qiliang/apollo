@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -119,6 +120,20 @@ public class DirectRptTaskService {
     }
 
     @Transactional
+    public void updateRptTaskObject(RptTaskObject rptTaskObject) {
+        rptTaskObjectMapper.updateByPrimaryKeySelective(rptTaskObject);
+    }
+
+    @Transactional
+    public void updateFillState(String id) {
+        RptTaskObject rptTaskObject = new RptTaskObject();
+        rptTaskObject.setId(id);
+        rptTaskObject.setFillDate(new Date());
+        rptTaskObject.setReportState("ytb");
+        updateRptTaskObject(rptTaskObject);
+    }
+
+    @Transactional
     public void delete(String id) {
         //判断是否有用户填报
         RptTaskObjectExample ytbRptTaskObjectExample = new RptTaskObjectExample();
@@ -213,8 +228,17 @@ public class DirectRptTaskService {
     }
 
     private void fillSuggestionsStateStr(RptTaskObject rptTaskObject) {
-        rptTaskObject.setAreaSuggestionsStateStr("0".equals(rptTaskObject.getAreaSuggestionsState())?"未通过":"通过");
-        rptTaskObject.setTownSuggestionsStateStr("0".equals(rptTaskObject.getTownSuggestionsState())?"未通过":"通过");
+        if("0".equals(rptTaskObject.getAreaSuggestionsState())){
+            rptTaskObject.setAreaSuggestionsStateStr("未通过");
+        }else if("1".equals(rptTaskObject.getAreaSuggestionsState())){
+            rptTaskObject.setAreaSuggestionsStateStr("通过");
+        }
+
+        if("0".equals(rptTaskObject.getTownSuggestionsState())){
+            rptTaskObject.setTownSuggestionsStateStr("未通过");
+        }else if("1".equals(rptTaskObject.getTownSuggestionsState())){
+            rptTaskObject.setTownSuggestionsStateStr("通过");
+        }
     }
 
     public void fillReportState(RptTaskObject rptTaskObject) {

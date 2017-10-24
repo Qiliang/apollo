@@ -7,18 +7,18 @@ Ext.define('Kits.view.zhiDu.YanShouListView', {
         split: true,
         bodyPadding: 10
     },
-    listeners:{
-        afterrender:function (me) {
+    listeners: {
+        afterrender: function (me) {
         }
     },
-    initComponent: function() {
+    initComponent: function () {
         var me = this;
-        me.items[0].store.proxy.extraParams={id:me.recordId,state:me.state};
+        me.items[0].store.proxy.extraParams = {id: me.recordId, state: me.state};
         me.callParent();
     },
     items: [
         {
-            xtype:'grid',
+            xtype: 'grid',
             store: {
                 xtype: 'store.store',
                 proxy: {
@@ -62,60 +62,76 @@ Ext.define('Kits.view.zhiDu.YanShouListView', {
                 {
                     text: '行政区划/单位名称',
                     dataIndex: 'objName',
-                    width:150
-                },{
+                    width: 150
+                }, {
                     text: '报送任务名称',
                     dataIndex: 'name'
-                },{
+                }, {
                     text: '所属制度',
                     dataIndex: 'systemName'
-                },{
+                }, {
                     text: '所属表',
                     dataIndex: 'tableName'
-                },{
+                }, {
                     text: '区验收状态',
                     dataIndex: 'areaSuggestionsStateStr'
-                },{
+                }, {
                     text: '区验收意见',
-                    dataIndex: 'townSuggestions'
-                },{
+                    dataIndex: 'areaSuggestions'
+                }, {
                     text: '镇验收状态',
                     dataIndex: 'townSuggestionsStateStr'
-                },{
+                }, {
                     text: '镇验收意见',
-                    dataIndex: 'areaSuggestions'
-                },{
+                    dataIndex: 'townSuggestions'
+                }, {
                     text: '操作',
                     xtype: 'actioncolumn',
                     width: 70,
                     items: [{
                         iconCls: 'x-fa fa-check',
                         tooltip: '验收',
-                        handler: function (grid, rowIndex, colIndex) {
-                            Ext.create('Ext.window.Window', {
+                        handler: function (view, recIndex, cellIndex, item, e, record) {
+                            var btn = this;
+                            var win = Ext.create('Ext.window.Window', {
                                 title: '数据验收',
                                 height: 700,
                                 width: 900,
                                 layout: 'fit',
                                 modal: true,
-                                closeToolText:'关闭',
-                                items: Ext.create('Kits.view.zhiDu.YanShouView', {})
-                            }).show();
+                                closeToolText: '关闭',
+                                items: Ext.create('Kits.view.zhiDu.YanShouView', {
+                                    isView: false, recordData: record,
+                                    callBack: function () {
+                                        btn.up('grid').getStore().reload();
+                                        win.close();
+                                    }
+                                })
+                            });
+                            win.show();
                             // alert("查看 " + rec.get('id'));
                         }
                     }, '-', {
                         iconCls: 'x-fa fa-eye',
                         tooltip: '查看',
-                        handler: function (grid, rowIndex, colIndex) {
-                            Ext.create('Ext.window.Window', {
+                        handler: function (view, recIndex, cellIndex, item, e, record) {
+                            var btn = this;
+                            var win = Ext.create('Ext.window.Window', {
                                 title: '数据验收查看',
                                 height: 700,
                                 width: 900,
                                 layout: 'fit',
                                 modal: true,
-                                closeToolText:'关闭',
-                                items: Ext.create('Kits.view.zhiDu.YanShouView', {buttons:[]})
-                            }).show();
+                                closeToolText: '关闭',
+                                items: Ext.create('Kits.view.zhiDu.YanShouView', {
+                                    isView: true, recordData: record,
+                                    callBack: function () {
+                                        btn.up('grid').getStore().reload();
+                                        win.close();
+                                    }
+                                })
+                            });
+                            win.show();
                         }
                     }]
                 }

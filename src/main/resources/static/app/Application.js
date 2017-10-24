@@ -10,7 +10,8 @@ Ext.define('Kits.Application', {
         'Kits.view.UserLogin',
         'Kits.view.ChoiceLogin',
         'Kits.ux.ComboBoxTree',
-        'Kits.ux.BaseTextArea'
+        'Kits.ux.BaseTextArea',
+        'Kits.override.RequestBase'
     ],
 
     // controllers: [
