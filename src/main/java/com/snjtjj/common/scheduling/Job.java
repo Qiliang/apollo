@@ -1,10 +1,13 @@
 package com.snjtjj.common.scheduling;
 
 import com.snjtjj.entity.DirectRptRemindTask;
+import com.snjtjj.entity.MessageInfo;
 import com.snjtjj.service.AreaService;
 import com.snjtjj.service.CompanyService;
 import com.snjtjj.service.DirectRptRemindTaskService;
+import com.snjtjj.service.MessageInfoService;
 import com.snjtjj.utils.DateUtils;
+import com.snjtjj.utils.IdGen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -21,6 +24,8 @@ public class Job {
     private AreaService areaService;
     @Autowired
     private DirectRptRemindTaskService directRptRemindTaskService;
+    @Autowired
+    private MessageInfoService messageInfoService;
 
     /**
      * 创建企业账号
@@ -55,22 +60,23 @@ public class Job {
                 if ("2".equals(month)) {
                     String monthLastDay = DateUtils.getLastDayByMonth(today);
                     if (monthLastDay.equals(day) && directRptRemindTask.getRemindDay() >= Integer.valueOf(monthLastDay)) {
-                        System.out.println("2月份超过30号的提醒发送");
+                        messageInfoService.save(messageInfoService.getMessageInfoByTask(directRptRemindTask));
                     }
 
                 } else if (month.equals(directRptRemindTask.getRemindMonth().toString()) && day.equals(directRptRemindTask.getRemindDay().toString())) {
-                    System.out.println("添加报送消息");
+                    messageInfoService.save(messageInfoService.getMessageInfoByTask(directRptRemindTask));
                 }
             } else if ("month".equals(directRptRemindTask.getRemindType())) {
                 if ("2".equals(month)) {
                     String monthLastDay = DateUtils.getLastDayByMonth(today);
                     if (monthLastDay.equals(day) && directRptRemindTask.getRemindDay() >= Integer.valueOf(monthLastDay)) {
-                        System.out.println("2月份超过30号的提醒发送");
+                        messageInfoService.save(messageInfoService.getMessageInfoByTask(directRptRemindTask));
                     }
                 } else if (day.equals(directRptRemindTask.getRemindDay().toString())) {
-                    System.out.println("添加报送消息");
+                    messageInfoService.save(messageInfoService.getMessageInfoByTask(directRptRemindTask));
                 }
             }
         }
     }
+
 }

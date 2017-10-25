@@ -12,6 +12,11 @@ Ext.define('Kits.view.xiTong.Message', {
             }
         }
     ],
+    bbar: {
+        xtype: 'pagingtoolbar',
+        displayInfo: true,
+        emptyMsg: "无数据...",
+    },
     columns: [
         {
             xtype: 'rownumberer',
@@ -25,7 +30,7 @@ Ext.define('Kits.view.xiTong.Message', {
         {
             text: '来源',
             width:300,
-            dataIndex: 'source'
+            dataIndex: 'formName'
         },
         {
             text: '消息正文',
