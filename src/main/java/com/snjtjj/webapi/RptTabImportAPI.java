@@ -1,5 +1,7 @@
 package com.snjtjj.webapi;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.snjtjj.entity.RptTab;
 import com.snjtjj.entity.RptTabSetting;
 import com.snjtjj.mapper.RptTabMapper;
@@ -39,7 +41,7 @@ public class RptTabImportAPI {
     }
 
     @PostMapping("/hzxls")
-    public FormResponse<String> importXLS() throws IOException {
+    public FormResponse<String> hzXLS() throws IOException {
         String rptPath = buildPath("src/main/resources/static/ftl/2016年农村统计年报汇总表.xls");
         FileInputStream fs = FileUtils.openInputStream(new File(rptPath));
         Workbook wb = new HSSFWorkbook(fs);
@@ -246,7 +248,7 @@ public class RptTabImportAPI {
         return hzValue;
     }
 //    public static void main(String[] args) throws IOException {
-//        String rptPath = buildPath("src/main/resources/static/rpt/2016年农村统计年报汇总表(2).xls");
+//        String rptPath = buildPath("src/main/resources/static/rpt/2016年湖北农林牧渔业综合统计报表制度.xls");
 //        FileInputStream fs = FileUtils.openInputStream(new File(rptPath));
 //        Workbook wb = new HSSFWorkbook(fs);
 //        Map<String,String> groups = new HashMap<>();
