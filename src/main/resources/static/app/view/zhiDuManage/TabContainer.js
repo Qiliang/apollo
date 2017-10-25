@@ -243,14 +243,14 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         {
                             xtype:'zhiDuTabSetting',
                             itemId:'zhiDuTab1Container',
-                            title: '汇总表单',
+                            title: '汇总表头',
                             store: Ext.create('Kits.store.RptTabSetting', {}),
                             typeId:0,
                         },
                         {
                             xtype:'zhiDuTabSetting',
                             itemId:'zhiDuTab2Container',
-                            title: '提报表单',
+                            title: '提报表头',
                             store: Ext.create('Kits.store.RptTabSetting', {}),
                             typeId:1
                         },{

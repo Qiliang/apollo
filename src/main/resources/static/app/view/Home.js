@@ -8,8 +8,6 @@ Ext.define('Kits.view.Home', {
     ],
     initComponent: function () {
         var me = this;
-        // var grid = me.items[0];
-        // grid.bbar.store = grid.store;
         me.callParent();
     },
     listeners: {
@@ -22,6 +20,14 @@ Ext.define('Kits.view.Home', {
             type: 'refresh',
             tooltip: '刷新',
             callback: function (panel, tool, event) {
+                Ext.Ajax.request({
+                    url:'/api/rpt/import/hzxls',
+                    method:'POST',
+                    success:function (response) {
+                        var obj = JSON.parse(response.responseText);
+                        Ext.Msg.alert('提示', obj.data);
+                    }
+                });
             }
         }
     ],

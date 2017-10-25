@@ -36,7 +36,7 @@ public class CSVD {
 //        });
 //    }
 
-    static class Column {
+    public static class Column {
 
         int row1;
         int cell1;
