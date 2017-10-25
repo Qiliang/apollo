@@ -344,7 +344,7 @@
         a.id,a.task_id as taskId,a.obj_id as objId,a.xzqh_id as xzqhId,a.report_state as reportState,
         a.town_suggestions as townSuggestions,a.area_suggestions as areaSuggestions,a.fill_date as
         fillDate,a.town_suggestions_date as townSuggestionsDate,a.area_suggestions_date as
-        areaSuggestionsDate,b.name,b.start_date as startDate,b.end_date as endDate
+        areaSuggestionsDate,a.town_suggestions_state as townSuggestionsState,a.area_suggestions_state as areaSuggestionsState,b.name,b.start_date as startDate,b.end_date as endDate
         from rpt_task_object a LEFT join direct_rpt_task b on a.task_id=b.id WHERE type=#{type,jdbcType=VARCHAR} AND
         obj_id = #{objId,jdbcType=VARCHAR}
         <if test="name!= null and name !=''">
