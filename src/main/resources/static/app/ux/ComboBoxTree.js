@@ -51,7 +51,7 @@ Ext.define('Kits.ux.ComboBoxTree', {
         var self = this;
 
         self.picker = Ext.create('Ext.tree.Panel', {
-            //height: self.treeHeight == null ? 200 : self.treeHeight,
+            height: self.treeHeight == null ? 200 : self.treeHeight,
             autoScroll: true,
             floating: true,
             focusOnToFront: false,

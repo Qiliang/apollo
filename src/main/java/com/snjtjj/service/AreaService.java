@@ -62,8 +62,14 @@ public class AreaService {
             treeVo.setId(root.getId());
             treeVo.setText(root.getName());
             treeVo = getAreaList(treeVo,allAreaList);
+            treeVo.setAttrs(root);
         }
-        return treeVo;
+        TreeVo<Area> rootVo = new TreeVo<>();
+        rootVo.setId("-1");
+        List<TreeVo> list = new ArrayList<>();
+        list.add(treeVo);
+        rootVo.setChildren(list);
+        return rootVo;
     }
 
     public List<Area> getAllList(){

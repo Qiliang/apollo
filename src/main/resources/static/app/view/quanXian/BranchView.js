@@ -20,26 +20,49 @@ Ext.define('Kits.view.quanXian.BranchView', {
         afterrender: function (me) {
             var btn = this;
             if (this.paraId) {
-                this.getComponent('pid').setUrl('/api/org?excludeId='+this.paraId);
-                this.getComponent('pid').store.addAfterListener("load",function(){
-                    btn.load({
-                        url: '/api/org/getOrgById',
-                        method: 'get',
-                        params: {id: btn.paraId},
-                        success: function(form, action) {
-                            var res = JSON.parse(action.response.responseText);
-                            if(res.data.parentId&&res.data.parentId!='-1'){
-                                var defaultRecord = btn.getComponent('pid').store.getNodeById(res.data.parentId);
-                                btn.getComponent('pid').setDefaultValue(defaultRecord.get('id'), defaultRecord.get('text'));
-                            }else{
-                                btn.getComponent('pid').setDefaultValue('-1', '无上级组织');
+                this.getComponent('pid').setUrl('/api/org?excludeId=' + this.paraId);
+                var state = 0;
+                this.getComponent('pid').store.addAfterListener("load", function () {
+                    loadForm();
+                });
+
+                function loadForm(){
+                    state = state + 1;
+                    if (state == 2) {
+                        btn.load({
+                            url: '/api/org/getOrgById',
+                            method: 'get',
+                            params: {id: btn.paraId},
+                            success: function (form, action) {
+                                var res = JSON.parse(action.response.responseText);
+                                if (res.data.parentId && res.data.parentId != '-1') {
+                                    var defaultRecord = btn.getComponent('pid').store.getNodeById(res.data.parentId);
+                                    btn.getComponent('pid').setDefaultValue(defaultRecord.get('id'), defaultRecord.get('text'));
+                                } else {
+                                    btn.getComponent('pid').setDefaultValue('-1', '无上级组织');
+                                }
+
+                                if (res.data.code) {
+                                    var defaultRecord = btn.getComponent('code').store.getNodeById(res.data.code);
+                                    if(defaultRecord){
+                                        btn.getComponent('code').setDefaultValue(defaultRecord.get('id'), defaultRecord.get('text'));
+                                    }else{
+                                        btn.getComponent('code').setDefaultValue('', '');
+                                    }
+                                }else{
+                                    btn.getComponent('code').setDefaultValue('', '');
+                                }
+                            },
+                            failure: function (form, action) {
+                                Ext.Msg.alert('提示', "加载失败");
                             }
-                        },
-                        failure: function (form, action) {
-                            Ext.Msg.alert('提示', "加载失败");
-                        }
-                    });
-                })
+                        });
+                    }
+                }
+
+                this.getComponent('pid').store.addAfterListener("load", function () {
+                    loadForm();
+                });
 
             }
             else {
@@ -49,9 +72,9 @@ Ext.define('Kits.view.quanXian.BranchView', {
             }
         }
     },
-    initComponent: function() {
+    initComponent: function () {
         var me = this;
-        me.items[1].url='/api/org?excludeId='+this.paraId;
+        me.items[1].url = '/api/org?excludeId=' + this.paraId;
         me.callParent();
     },
 
@@ -60,12 +83,12 @@ Ext.define('Kits.view.quanXian.BranchView', {
         {xtype: 'hiddenfield', name: 'id'},
         {
             xtype: 'comboBoxTree',
-            itemId:'pid',
+            itemId: 'pid',
             name: 'parentId',
             fieldLabel: '所属组织',
             editable: false,
             emptyText: '请选择所属组织',
-            url:'/api/org'
+            url: '/api/org'
         },
         {
             xtype: 'textfield',
@@ -76,12 +99,15 @@ Ext.define('Kits.view.quanXian.BranchView', {
             maxLength: 50
         },
         {
-            xtype: 'textfield',
-            fieldLabel: '所属行政区划代码',
+            xtype: 'comboBoxTree',
+            itemId: 'code',
             name: 'code',
+            fieldLabel: '所属行政区划',
+            editable: false,
+            emptyText: '所属行政区划',
             allowBlank: false,
-            blankText: '所属行政区划代码为必填项',
-            maxLength: 50
+            blankText: '所属行政区划为必填项',
+            url: '/api/area'
         },
         {xtype: 'textfield', fieldLabel: '电话号码', name: 'phone', maxLength: 20, vtype: 'mobile'},
         {xtype: 'textfield', fieldLabel: '负责人', name: 'master', maxLength: 10}
@@ -96,8 +122,8 @@ Ext.define('Kits.view.quanXian.BranchView', {
                 form.submit({
                     url: '/api/org/saveOrUpdate',
                     method: 'POST',
-                    waitMsg:'提交中，请稍后...',
-                    waitTitle:'提示',
+                    waitMsg: '提交中，请稍后...',
+                    waitTitle: '提示',
                     success: function (form, action) {
                         Ext.Msg.alert('成功！', action.result.data);
                         callBack();

@@ -14,6 +14,8 @@ public class Organization extends DataEntity<Organization> {
 
     private String code;
 
+    private String codeStr;
+
     private String type;
 
     private String address;
@@ -134,4 +136,11 @@ public class Organization extends DataEntity<Organization> {
         this.useable = useable == null ? null : useable.trim();
     }
 
+    public String getCodeStr() {
+        return codeStr;
+    }
+
+    public void setCodeStr(String codeStr) {
+        this.codeStr = codeStr;
+    }
 }

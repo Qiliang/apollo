@@ -2,6 +2,7 @@ package com.snjtjj.common.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.snjtjj.entity.SystemInfo;
+import com.snjtjj.entity.User;
 import com.snjtjj.utils.Collections3;
 import com.snjtjj.utils.UserUtils;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
@@ -54,18 +55,23 @@ public class MyInterceptor implements Interceptor {
 
     private String buildSystemInfoSql(String sql) throws IOException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         //将sql替换为登录用户的角色对应的sysid
-        List<SystemInfo> list = UserUtils.getSystemInfoList();
-        String ids = "";
-        if(list!=null&&list.size()>0){
-           List<String> idList = Collections3.extractToList(list,"id");
-           idList.forEach(item->{
-               item = "'"+item+"'";
-           });
-            ids = Collections3.convertToString(idList,",");
-        }else{
-            ids = "'-1'";
+        User user = UserUtils.getUser();
+        if(user!=null&&"admin".equals(user.getLoginName())){
+            sql = sql.replace("@ids@", "select id from system_info where del_flag='0'");
+        }else {
+            List<SystemInfo> list = UserUtils.getSystemInfoList();
+            String ids = "";
+            if (list != null && list.size() > 0) {
+                List<String> idList = Collections3.extractToList(list, "id");
+                idList.forEach(item -> {
+                    item = "'" + item + "'";
+                });
+                ids = Collections3.convertToString(idList, ",");
+            } else {
+                ids = "'-1'";
+            }
+            sql = sql.replace("@ids@", ids);
         }
-        sql = sql.replace("@ids@",ids);
         return sql;
     }
 

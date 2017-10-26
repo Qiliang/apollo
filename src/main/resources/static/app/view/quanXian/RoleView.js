@@ -22,6 +22,8 @@ Ext.define('Kits.view.quanXian.RoleView', {
                         Ext.Msg.alert('提示', "加载失败");
                     }
                 });
+                this.getComponent('multiselector').getSearch().store.load();
+                this.getComponent('sysMultiselector').getSearch().store.load();
                 this.getComponent('multiselector').getStore().load({params:{roleId:this.paraId}});
                 this.getComponent('sysMultiselector').getStore().load({params:{roleId:this.paraId}});
             }else{

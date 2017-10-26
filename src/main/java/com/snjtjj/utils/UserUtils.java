@@ -150,13 +150,10 @@ public class UserUtils {
 			String code = organization.getCode();
 			//根据code查询用户对应的行政区划信息
 			if (StringUtils.isNotBlank(code)) {
-				AreaExample areaExample = new AreaExample();
-				AreaExample.Criteria criteria = areaExample.createCriteria();
-				criteria.andCodeEqualTo(code);
-				List<Area> areaList = areaMapper.selectByExample(areaExample);
-				if (areaList != null && areaList.size() > 0) {
-					simpleCode = areaList.get(0).getSimpleCode();
-				}
+					Area area = areaMapper.selectByPrimaryKey(code);
+					if(area!=null) {
+						simpleCode = area.getSimpleCode();
+					}
 			}
 		}
 		return simpleCode;

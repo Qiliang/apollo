@@ -14,5 +14,5 @@ Ext.define('Kits.view.diaoChaDuiXiang.xzqh', {
         }
     ],
     store: Ext.create('Kits.store.Xzqh'),
-    rootVisible: true,
+    rootVisible: false,
 });

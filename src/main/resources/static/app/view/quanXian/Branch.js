@@ -100,9 +100,9 @@ Ext.define('Kits.view.quanXian.Branch', {
                     dataIndex: 'name'
                 },
                 {
-                    text: '所属行政区划代码',
+                    text: '所属行政区划',
                     width: 150,
-                    dataIndex: 'code'
+                    dataIndex: 'codeStr'
                 },
                 {
                     text: '电话',

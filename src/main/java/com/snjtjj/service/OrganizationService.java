@@ -3,9 +3,11 @@ package com.snjtjj.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.snjtjj.common.utils.ResponseException;
+import com.snjtjj.entity.Area;
 import com.snjtjj.entity.Organization;
 import com.snjtjj.entity.OrganizationExample;
 import com.snjtjj.entity.base.BaseEntity;
+import com.snjtjj.mapper.AreaMapper;
 import com.snjtjj.mapper.OrganizationMapper;
 import com.snjtjj.utils.StringUtils;
 import com.snjtjj.vo.TreeVo;
@@ -23,6 +25,8 @@ import java.util.List;
 public class OrganizationService {
     @Autowired
     private OrganizationMapper organizationMapper;
+    @Autowired
+    private AreaMapper areaMapper;
 
     public TreeVo getOrgTreeList(TreeVo treeVo,List<Organization> allOrgList){
         List<Organization> removeList = new ArrayList<>();
@@ -68,6 +72,12 @@ public class OrganizationService {
         criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         PageHelper.startPage(page,limit);
         List<Organization> list = organizationMapper.selectByExample(organizationExample);
+        list.forEach(item->{
+           Area area =  areaMapper.selectByPrimaryKey(item.getCode());
+           if(area!=null){
+               item.setCodeStr(area.getName());
+           }
+        });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }

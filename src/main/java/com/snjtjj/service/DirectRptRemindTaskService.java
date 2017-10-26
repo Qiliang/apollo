@@ -32,18 +32,18 @@ public class DirectRptRemindTaskService {
         DirectRptRemindTaskExample contentExample = new DirectRptRemindTaskExample();
         DirectRptRemindTaskExample.Criteria criteria = contentExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
         if (StringUtils.isNotBlank(title)) {
-            criteria.andTitleLike("%"+title+"%");
+            criteria.andTitleLike("%" + title + "%");
         }
         PageHelper.startPage(page, limit);
         List<DirectRptRemindTask> list = directRptRemindTaskMapper.selectByExample(contentExample);
-        list.forEach(item->{
+        list.forEach(item -> {
             fillSystemAndTableInfo(item);
-            if("year".equals(item.getRemindType())){
+            if ("year".equals(item.getRemindType())) {
                 item.setRemindTypeStr("按年");
-                item.setRemindTime("每年"+item.getRemindMonth()+"月"+item.getRemindDay()+"日");
-            }else if("month".equals(item.getRemindType())){
+                item.setRemindTime("每年" + item.getRemindMonth() + "月" + item.getRemindDay() + "日");
+            } else if ("month".equals(item.getRemindType())) {
                 item.setRemindTypeStr("按月");
-                item.setRemindTime("每月"+item.getRemindDay()+"日");
+                item.setRemindTime("每月" + item.getRemindDay() + "日");
             }
         });
         PageInfo pageInfo = new PageInfo(list);
@@ -53,26 +53,29 @@ public class DirectRptRemindTaskService {
     private void fillSystemAndTableInfo(DirectRptRemindTask item) {
         //根据制度id查询制度名称
         SystemInfo systemInfo = systemInfoMapper.selectByPrimaryKey(item.getSystemId());
-        item.setSystemName(systemInfo.getName());
+        if (systemInfo != null)
+            item.setSystemName(systemInfo.getName());
 
         //根据表id查询表名称
+
         RptTab rptTab = rptTabMapper.selectByPrimaryKey(item.getTableId());
-        item.setTableName(rptTab.getTabname());
+        if (rptTab != null)
+            item.setTableName(rptTab.getTabname());
     }
 
-    public DirectRptRemindTask getDirectRptRemindTaskById(String id){
+    public DirectRptRemindTask getDirectRptRemindTaskById(String id) {
         DirectRptRemindTask directRptRemindTask = directRptRemindTaskMapper.selectByPrimaryKey(id);
         fillSystemAndTableInfo(directRptRemindTask);
         return directRptRemindTask;
     }
 
     @Transactional
-    public void save(DirectRptRemindTask content){
+    public void save(DirectRptRemindTask content) {
         content.preInsert();
         directRptRemindTaskMapper.insert(content);
     }
 
-    public void delete(String id){
+    public void delete(String id) {
         DirectRptRemindTask content = new DirectRptRemindTask();
         content.setId(id);
         content.setDelFlag(DataEntity.DEL_FLAG_DELETE);
@@ -80,7 +83,7 @@ public class DirectRptRemindTaskService {
     }
 
     @Transactional
-    public void edit(DirectRptRemindTask content){
+    public void edit(DirectRptRemindTask content) {
         content.preUpdate();
         directRptRemindTaskMapper.updateByPrimaryKeySelective(content);
     }
@@ -88,7 +91,7 @@ public class DirectRptRemindTaskService {
     /**
      * 获得所有未过期的报送任务
      */
-    public List<DirectRptRemindTask> getTaskList(){
+    public List<DirectRptRemindTask> getTaskList() {
         Date today = new Date();
         DirectRptRemindTaskExample contentExample = new DirectRptRemindTaskExample();
         DirectRptRemindTaskExample.Criteria criteria = contentExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
