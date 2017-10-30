@@ -187,8 +187,11 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 });
                             }},
                             {text:'生成',itemId:'toolbar_rept',iconCls:'arrow_out',iconAlign: 'left',handler:function(){
+                                var cmp = this.up('#zhiDuTabContainer');
+                                var form = cmp.down('form[region=north]');
+                                var tabcode = form.getForm().findField('tabcode').getValue();
                                 Ext.Ajax.request({
-                                    url: '/api/rpt/setting/build/END01',
+                                    url: '/api/rpt/setting/build/'+tabcode,
                                     method:'GET',
                                     success: function (response) {
                                         var obj = JSON.parse(response.responseText);
