@@ -248,6 +248,7 @@ public class DirectRptTaskService {
             item.setName(directRptTask.getName());
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
+            item.setTableCode(directRptTask.getTableCode());
             fillSuggestionsStateStr(item);
         });
         PageInfo pageInfo = new PageInfo(list);
