@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.A309', {
+Ext.define('Kits.view.tables.M302', {
     extend: 'Kits.view.tables.Base',
-    title: '年末茶叶水果园情况',
-    xtype: 'tablesA309',
+    title: '畜禽规模养殖情况',
+    xtype: 'tablesM302',
     hzcolumn:'hzcode',
-    tableid: '923004053769773056',
+    tableid: '923004094072840192',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -34,122 +34,104 @@ Ext.define('Kits.view.tables.A309', {
 } ],
         data: [ {
   "hzcode" : "1",
-  "unitcode" : "亩",
-  "itemcode" : "一、年末实有茶园面积",
+  "unitcode" : "家",
+  "itemcode" : "一、生猪规模养殖户（单位）个数",
   "num1" : "",
-  "i" : 0
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "其      中",
-  "num1" : "—",
   "i" : 0
 }, {
   "hzcode" : "2",
-  "unitcode" : "亩",
-  "itemcode" : "本年采  摘面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "3",
-  "unitcode" : "亩",
-  "itemcode" : "本年新                    植面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "4",
-  "unitcode" : "亩",
-  "itemcode" : "二、年末果园面积",
+  "unitcode" : "头",
+  "itemcode" : "生猪出栏",
   "num1" : "",
   "i" : 0
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "在年末果园面积中：",
-  "num1" : "—",
+  "hzcode" : "3",
+  "unitcode" : "头",
+  "itemcode" : "生猪存栏",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "4",
+  "unitcode" : "头",
+  "itemcode" : "其中：能繁母猪存栏",
+  "num1" : "",
   "i" : 0
 }, {
   "hzcode" : "5",
-  "unitcode" : "亩",
-  "itemcode" : "苹果园",
+  "unitcode" : "家",
+  "itemcode" : "二、牛规模养殖户（单位）个数",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "6",
-  "unitcode" : "亩",
-  "itemcode" : "柑橘园",
+  "unitcode" : "头",
+  "itemcode" : "牛出栏",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "7",
-  "unitcode" : "亩",
-  "itemcode" : "梨园",
+  "unitcode" : "头",
+  "itemcode" : "牛存栏",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "8",
-  "unitcode" : "亩",
-  "itemcode" : "葡萄园",
+  "unitcode" : "头",
+  "itemcode" : "其中：能繁母牛",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "9",
-  "unitcode" : "亩",
-  "itemcode" : "桃园",
+  "unitcode" : "家",
+  "itemcode" : "三、羊规模养殖户（单位）个数",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "10",
-  "unitcode" : "亩",
-  "itemcode" : "猕猴桃园",
+  "unitcode" : "只",
+  "itemcode" : "羊出栏",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "11",
-  "unitcode" : "亩",
-  "itemcode" : "其它                        果园",
+  "unitcode" : "只",
+  "itemcode" : "羊存栏",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "附报：当年零星植果树",
-  "num1" : "—",
   "i" : 0
 }, {
   "hzcode" : "12",
-  "unitcode" : "百株",
-  "itemcode" : "苹果",
+  "unitcode" : "家",
+  "itemcode" : "四、家禽规模养殖户（单位）个数",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "13",
-  "unitcode" : "百株",
-  "itemcode" : "梨子",
+  "unitcode" : "只",
+  "itemcode" : "家禽出笼",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "14",
-  "unitcode" : "百株",
-  "itemcode" : "桃子",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "15",
-  "unitcode" : "百株",
-  "itemcode" : "柰李",
-  "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "16",
-  "unitcode" : "百株",
-  "itemcode" : "核桃",
+  "unitcode" : "只",
+  "itemcode" : "其中：鸡",
   "num1" : "",
-  "i" : 1
+  "i" : 0
+}, {
+  "hzcode" : "15",
+  "unitcode" : "只",
+  "itemcode" : "家禽存笼",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "17",
+  "unitcode" : "公斤",
+  "itemcode" : "禽蛋产量",
+  "num1" : "",
+  "i" : 0
 } ]
     }),
     columns: [ {
-  "text" : "<div style='white-space:pre-line;height:22px'>指 标 名 称</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>指   标   名  称</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>甲</div>",
     "dataIndex" : "itemcode",
@@ -164,7 +146,7 @@ Ext.define('Kits.view.tables.A309', {
     "width" : 100
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:22px'>代码</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>代  码</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>丙</div>",
     "dataIndex" : "hzcode",

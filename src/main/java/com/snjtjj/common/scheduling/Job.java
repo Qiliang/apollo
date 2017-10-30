@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Component
+//@Component
 public class Job {
     @Autowired
     private CompanyService companyService;

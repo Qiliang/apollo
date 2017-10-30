@@ -38,62 +38,6 @@ Ext.define('Kits.view.tables.A303', {
         data: [ {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "指标名称",
-  "num1" : "—",
-  "i" : 0,
-  "num2" : "—"
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "统计核算单价",
-  "num1" : "—",
-  "i" : 1,
-  "num2" : "—"
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "总   收  入",
-  "num1" : "—",
-  "i" : 2,
-  "num2" : "—"
-}, {
-  "hzcode" : "汇总代码",
-  "unitcode" : "计算单位",
-  "itemcode" : "项          目",
-  "num1" : "",
-  "i" : 3,
-  "num2" : ""
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "编号",
-  "num1" : "—",
-  "i" : 0,
-  "num2" : "—"
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "A",
-  "num1" : "—",
-  "i" : 1,
-  "num2" : "—"
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "B",
-  "num1" : "—",
-  "i" : 2,
-  "num2" : "—"
-}, {
-  "hzcode" : "--",
-  "unitcode" : "--",
-  "itemcode" : "--",
-  "num1" : "",
-  "i" : 3,
-  "num2" : ""
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
   "itemcode" : "经济作物",
   "num1" : "—",
   "i" : 0,

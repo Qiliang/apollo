@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.SNN02', {
+Ext.define('Kits.view.tables.A301', {
     extend: 'Kits.view.tables.Base',
-    title: '农业生产条件（一）',
-    xtype: 'tablesSNN02',
+    title: '主要畜牧业生产情况表',
+    xtype: 'tablesA301',
     hzcolumn:'hzcode',
-    tableid: '923003985582972928',
+    tableid: '923004080521043968',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -35,253 +35,103 @@ Ext.define('Kits.view.tables.SNN02', {
         data: [ {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "一、耕地情况",
+  "itemcode" : "一、畜禽存栏",
   "num1" : "—",
   "i" : 0
 }, {
   "hzcode" : "1",
-  "unitcode" : "亩",
-  "itemcode" : "（一）年初耕地总资源",
+  "unitcode" : "头",
+  "itemcode" : "猪",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "2",
-  "unitcode" : "亩",
-  "itemcode" : "（二）年内增加",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "  其中：",
-  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "3",
-  "unitcode" : "亩",
-  "itemcode" : "新开荒地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "4",
-  "unitcode" : "亩",
-  "itemcode" : "园地改为耕地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "5",
-  "unitcode" : "亩",
-  "itemcode" : "（三）年内减少",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "6",
-  "unitcode" : "亩",
-  "itemcode" : "1、国家基建占地",
+  "unitcode" : "头",
+  "itemcode" : "牛",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "7",
-  "unitcode" : "亩",
-  "itemcode" : "2、其他基建占地",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "8",
-  "unitcode" : "亩",
-  "itemcode" : "3、退耕还林还草",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "9",
-  "unitcode" : "亩",
-  "itemcode" : "4、退耕还渔",
+  "unitcode" : "只",
+  "itemcode" : "羊",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "10",
-  "unitcode" : "亩",
-  "itemcode" : "5、退耕改园地",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "11",
-  "unitcode" : "亩",
-  "itemcode" : "（四）年末实有耕地总资源",
+  "unitcode" : "只",
+  "itemcode" : "活家禽",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "①常用耕地面积",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "12",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "13",
-  "unitcode" : "亩",
-  "itemcode" : "1、水田",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "14",
-  "unitcode" : "亩",
-  "itemcode" : "2、旱地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "②临时性耕地",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "16",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "17",
-  "unitcode" : "亩",
-  "itemcode" : "其中：25º以上坡耕地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "二、农村主要能源及物质消耗",
+  "itemcode" : "二、畜禽出栏",
   "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "18",
-  "unitcode" : "个",
-  "itemcode" : "（一）乡、村办水电站数",
+  "hzcode" : "15",
+  "unitcode" : "头",
+  "itemcode" : "猪",
   "num1" : "",
   "i" : 1
 }, {
-  "hzcode" : "19",
-  "unitcode" : "万千瓦",
-  "itemcode" : "装机容量",
+  "hzcode" : "16",
+  "unitcode" : "头",
+  "itemcode" : "牛",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "17",
+  "unitcode" : "只",
+  "itemcode" : "羊",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "20",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "发电量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "21",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "（二）农村用电量",
+  "unitcode" : "只",
+  "itemcode" : "活家禽",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "（三）农用化肥施用（实物）量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "22",
-  "unitcode" : "吨",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "23",
-  "unitcode" : "吨",
-  "itemcode" : "1、氮肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "24",
-  "unitcode" : "吨",
-  "itemcode" : "2、磷肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "25",
-  "unitcode" : "吨",
-  "itemcode" : "3、钾肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "26",
-  "unitcode" : "吨",
-  "itemcode" : "4、复合肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（四）农用簿膜使用量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "28",
-  "unitcode" : "公斤",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "  其中：",
-  "num1" : "—",
-  "i" : 2
-}, {
-  "hzcode" : "29",
-  "unitcode" : "公斤",
-  "itemcode" : "地膜",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "30",
-  "unitcode" : "亩",
-  "itemcode" : "地膜覆盖面积",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "31",
-  "unitcode" : "吨",
-  "itemcode" : "（五）农用柴油使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "27",
-  "unitcode" : "公斤",
-  "itemcode" : "（六）农药使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "三、农田水利建设情况",
+  "itemcode" : "三、畜禽产品产量",
   "num1" : "—",
   "i" : 0
 }, {
+  "hzcode" : "23",
+  "unitcode" : "吨",
+  "itemcode" : "猪肉",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "24",
+  "unitcode" : "吨",
+  "itemcode" : "牛肉",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "25",
+  "unitcode" : "吨",
+  "itemcode" : "羊肉",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "28",
+  "unitcode" : "吨",
+  "itemcode" : "禽肉",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "30",
+  "unitcode" : "吨",
+  "itemcode" : "禽蛋",
+  "num1" : "",
+  "i" : 1
+}, {
   "hzcode" : "32",
-  "unitcode" : "亩",
-  "itemcode" : "有效灌溉面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "33",
-  "unitcode" : "亩",
-  "itemcode" : "旱涝保收面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "34",
-  "unitcode" : "亩",
-  "itemcode" : "机电排灌面积",
+  "unitcode" : "吨",
+  "itemcode" : "生牛奶",
   "num1" : "",
   "i" : 1
 } ]

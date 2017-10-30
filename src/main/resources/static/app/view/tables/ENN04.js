@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.SNN01', {
+Ext.define('Kits.view.tables.ENN04', {
     extend: 'Kits.view.tables.Base',
-    title: '农村基层组织及户数、人口、从业人员情况（一）',
-    xtype: 'tablesSNN01',
+    title: '劳动力转移情况表（一）',
+    xtype: 'tablesENN04',
     hzcolumn:'hzcode',
-    tableid: '923003973515960320',
+    tableid: '923004098938232832',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -33,375 +33,405 @@ Ext.define('Kits.view.tables.SNN01', {
   "type" : "string"
 } ],
         data: [ {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "一、农村基层组织情况",
-  "num1" : "—",
+  "hzcode" : "1",
+  "unitcode" : "人",
+  "itemcode" : "一、 农村人口",
+  "num1" : "",
   "i" : 0
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（一）乡镇政府个数",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "1",
-  "unitcode" : "个",
-  "itemcode" : "",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "2",
-  "unitcode" : "个",
-  "itemcode" : "  1、乡政府",
-  "num1" : "",
-  "i" : 1
-}, {
   "hzcode" : "3",
-  "unitcode" : "个",
-  "itemcode" : "  2、镇政府",
+  "unitcode" : "人",
+  "itemcode" : "农村劳动力资源",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "4",
-  "unitcode" : "个",
-  "itemcode" : "（二）办事处",
+  "unitcode" : "人",
+  "itemcode" : "农村从业人数",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "5",
-  "unitcode" : "个",
-  "itemcode" : "（三）村 民委员会",
+  "unitcode" : "人",
+  "itemcode" : "在本乡镇从业人员",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "6",
-  "unitcode" : "个",
-  "itemcode" : "（四）村  民  小 组",
+  "unitcode" : "人",
+  "itemcode" : "1.从事农林牧渔业人员",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "二、农村社会基础设施",
-  "num1" : "—",
   "i" : 0
 }, {
   "hzcode" : "7",
-  "unitcode" : "个",
-  "itemcode" : "自来水受益村数",
+  "unitcode" : "人",
+  "itemcode" : "2.从事二、三产业人员",
   "num1" : "",
-  "i" : 1
+  "i" : 0
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "1、外出从业",
+  "num1" : "—",
+  "i" : 0
 }, {
   "hzcode" : "8",
-  "unitcode" : "个",
-  "itemcode" : "通汽车村数",
+  "unitcode" : "人",
+  "itemcode" : "总量",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "9",
-  "unitcode" : "个",
-  "itemcode" : "通有线电视村",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "10",
-  "unitcode" : "个",
-  "itemcode" : "通宽带村数",
+  "unitcode" : "人",
+  "itemcode" : "男",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "三、乡村、人口、户数及农村从业人员情况",
+  "itemcode" : "①.外出从业人员文化程度",
   "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "11",
-  "unitcode" : "户",
-  "itemcode" : "（一）乡村 户 数",
+  "hzcode" : "10",
+  "unitcode" : "人",
+  "itemcode" : "小学及以下",
   "num1" : "",
   "i" : 1
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（二）乡村人口数",
-  "num1" : "—",
+  "hzcode" : "11",
+  "unitcode" : "人",
+  "itemcode" : "初中",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "12",
   "unitcode" : "人",
-  "itemcode" : "",
+  "itemcode" : "高中及以上",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "13",
-  "unitcode" : "人",
-  "itemcode" : "男",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "14",
-  "unitcode" : "人",
-  "itemcode" : "女",
-  "num1" : "",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "（三）乡村劳动力资  源",
+  "itemcode" : "②按年龄状况分",
   "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "13",
+  "unitcode" : "人",
+  "itemcode" : "20岁以下",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "14",
+  "unitcode" : "人",
+  "itemcode" : "21岁—49岁",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "15",
   "unitcode" : "人",
-  "itemcode" : "",
+  "itemcode" : "50岁以上",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "16",
-  "unitcode" : "人",
-  "itemcode" : "男",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "17",
-  "unitcode" : "人",
-  "itemcode" : "女",
-  "num1" : "",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "（四）乡村从业人员数",
+  "itemcode" : "2.外出渠道",
   "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "16",
+  "unitcode" : "人",
+  "itemcode" : "①自发",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "17",
+  "unitcode" : "人",
+  "itemcode" : " ②政府有关部门组织",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "18",
   "unitcode" : "人",
-  "itemcode" : "",
+  "itemcode" : "③中介组织介绍",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "男",
-  "num1" : "—",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "19",
   "unitcode" : "人",
-  "itemcode" : "",
+  "itemcode" : "④企业招收",
   "num1" : "",
-  "i" : 3
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "3、外出从业时间",
+  "num1" : "—",
+  "i" : 0
 }, {
   "hzcode" : "20",
   "unitcode" : "人",
-  "itemcode" : "其中：从事农业人员数",
+  "itemcode" : "1个月-3个月",
   "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "女",
-  "num1" : "—",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "21",
   "unitcode" : "人",
-  "itemcode" : "",
+  "itemcode" : "3个月个月",
   "num1" : "",
-  "i" : 3
+  "i" : 1
 }, {
   "hzcode" : "22",
   "unitcode" : "人",
-  "itemcode" : "其中：从事农业人员数",
+  "itemcode" : "6个月以上",
   "num1" : "",
-  "i" : 3
+  "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "四、国有农林牧渔场情况",
+  "itemcode" : "4、外出从业地点",
   "num1" : "—",
   "i" : 0
 }, {
   "hzcode" : "23",
   "unitcode" : "人",
-  "itemcode" : "（一）国有农林牧渔场总人口",
+  "itemcode" : "①内乡外",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（二）国有农林牧渔场从业人员",
-  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "24",
   "unitcode" : "人",
-  "itemcode" : "",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "25",
-  "unitcode" : "人",
-  "itemcode" : "1、农业从业人员",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "26",
-  "unitcode" : "人",
-  "itemcode" : "2、非农业从业人员",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "五、农业用地情况",
-  "num1" : "—",
-  "i" : 0
-}, {
-  "hzcode" : "27",
-  "unitcode" : "亩",
-  "itemcode" : "1、耕地",
+  "itemcode" : "②省内外",
   "num1" : "",
   "i" : 1
 }, {
+  "hzcode" : "25",
+  "unitcode" : "人",
+  "itemcode" : "③省外",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "26",
+  "unitcode" : "人",
+  "itemcode" : "④港澳台",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "27",
+  "unitcode" : "人",
+  "itemcode" : "⑤境外",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "5.外出从业人员从事行业",
+  "num1" : "—",
+  "i" : 0
+}, {
   "hzcode" : "28",
-  "unitcode" : "亩",
-  "itemcode" : "2、园地",
+  "unitcode" : "人",
+  "itemcode" : "①第一产业",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "29",
-  "unitcode" : "亩",
-  "itemcode" : "3、林地",
+  "unitcode" : "人",
+  "itemcode" : "②第二产业",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "30",
-  "unitcode" : "亩",
-  "itemcode" : "4、草地",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "31",
-  "unitcode" : "亩",
-  "itemcode" : "5、农业设施用地",
+  "unitcode" : "人",
+  "itemcode" : "③第三产业",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "（接前三、）",
+  "itemcode" : "6.外出从业形式",
   "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（接前（四））",
-  "num1" : "—",
+  "hzcode" : "31",
+  "unitcode" : "人",
+  "itemcode" : "①务工",
+  "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "32",
   "unitcode" : "人",
-  "itemcode" : "e、仓储及邮电通讯业",
+  "itemcode" : "②经商",
   "num1" : "",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "33",
   "unitcode" : "人",
-  "itemcode" : "f、信息传输计算机服务和软件业",
+  "itemcode" : "③其他",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "34",
-  "unitcode" : "人",
-  "itemcode" : "g、批发零售贸易业",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "35",
-  "unitcode" : "人",
-  "itemcode" : "h、住宿和餐饮业",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "36",
-  "unitcode" : "人",
-  "itemcode" : "i、其它非农行业",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "45",
-  "unitcode" : "人",
-  "itemcode" : "③农林牧渔场从业人员合计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "46",
-  "unitcode" : "人",
-  "itemcode" : "a、农业从业人员",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "47",
-  "unitcode" : "人",
-  "itemcode" : "b、非农业从业人员",
-  "num1" : "",
-  "i" : 2
+  "i" : 1
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "四、人口与计划生育",
+  "itemcode" : "7.外出从业人员职业技能培训情况",
   "num1" : "—",
   "i" : 0
 }, {
+  "hzcode" : "34",
+  "unitcode" : "人",
+  "itemcode" : "①参加过职业技能培训",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "36",
+  "unitcode" : "人",
+  "itemcode" : "②持有职业技术资格证书",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "8、劳务收入",
+  "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "37",
+  "unitcode" : "人",
+  "itemcode" : "劳务经济总收入（万元）",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "38",
+  "unitcode" : "人",
+  "itemcode" : "其中：月收入500元以下",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "39",
+  "unitcode" : "人",
+  "itemcode" : "501-1000元",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "40",
+  "unitcode" : "人",
+  "itemcode" : "1001-2000元",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "41",
+  "unitcode" : "人",
+  "itemcode" : "  2001-3000元",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "42",
+  "unitcode" : "人",
+  "itemcode" : "3000元以上",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "9.外出从业人员从业环境",
+  "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "43",
+  "unitcode" : "人",
+  "itemcode" : "①雇主拖欠工资人数",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "44",
+  "unitcode" : "人",
+  "itemcode" : "②从事高危、有害工作人数",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "45",
+  "unitcode" : "人",
+  "itemcode" : "③致伤致残人数",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "46",
+  "unitcode" : "人",
+  "itemcode" : "④享受劳保补贴人数",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "10、外出人员社会保障",
+  "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "47",
+  "unitcode" : "人",
+  "itemcode" : "与雇主签定劳动合同",
+  "num1" : "",
+  "i" : 1
+}, {
   "hzcode" : "48",
   "unitcode" : "人",
-  "itemcode" : "（一）当年出生人口",
+  "itemcode" : "参与养老保险人数",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "49",
   "unitcode" : "人",
-  "itemcode" : "（二）当年死亡人口",
+  "itemcode" : "参与医疗保险人数",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "50",
   "unitcode" : "人",
-  "itemcode" : "（三）计划生育指标数",
+  "itemcode" : "参与失业保险人数",
   "num1" : "",
   "i" : 1
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "附报：农村总户数总人口中：",
-  "num1" : "—",
-  "i" : 0
-}, {
   "hzcode" : "51",
-  "unitcode" : "户",
-  "itemcode" : "享受五保的户数",
+  "unitcode" : "人",
+  "itemcode" : "参与生育保险人数",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "52",
   "unitcode" : "人",
-  "itemcode" : "享受五保的人数",
+  "itemcode" : "参与工伤保险人数",
   "num1" : "",
   "i" : 1
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "11、返回情况",
+  "num1" : "—",
+  "i" : 0
+}, {
   "hzcode" : "53",
-  "unitcode" : "户",
-  "itemcode" : "具有五保条件而实际未享受五保的户数",
+  "unitcode" : "人",
+  "itemcode" : "①全年外出返乡人员",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "54",
+  "unitcode" : "人",
+  "itemcode" : "②返乡人员再就业情况",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "55",
   "unitcode" : "人",
-  "itemcode" : "当年贫困人口数",
+  "itemcode" : "本地从事二、三产业",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "56",
+  "unitcode" : "人",
+  "itemcode" : "再次外出从业务",
   "num1" : "",
   "i" : 1
 } ]

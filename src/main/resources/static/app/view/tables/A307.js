@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.SNN02', {
+Ext.define('Kits.view.tables.A307', {
     extend: 'Kits.view.tables.Base',
-    title: '农业生产条件（一）',
-    xtype: 'tablesSNN02',
+    title: '林业生产情况表（一）',
+    xtype: 'tablesA307',
     hzcolumn:'hzcode',
-    tableid: '923003985582972928',
+    tableid: '923004058412867584',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -35,253 +35,259 @@ Ext.define('Kits.view.tables.SNN02', {
         data: [ {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "一、耕地情况",
+  "itemcode" : "一、荒山荒（沙）地造林面积",
   "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "1",
-  "unitcode" : "亩",
-  "itemcode" : "（一）年初耕地总资源",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "2",
-  "unitcode" : "亩",
-  "itemcode" : "（二）年内增加",
-  "num1" : "",
-  "i" : 1
-}, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "  其中：",
+  "itemcode" : "按造林方式分",
   "num1" : "—",
   "i" : 1
 }, {
-  "hzcode" : "3",
+  "hzcode" : "1",
   "unitcode" : "亩",
-  "itemcode" : "新开荒地",
+  "itemcode" : "1.人工造林",
   "num1" : "",
   "i" : 2
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中",
+  "num1" : "—",
+  "i" : 2
+}, {
+  "hzcode" : "2",
+  "unitcode" : "亩",
+  "itemcode" : "竹林面积",
+  "num1" : "",
+  "i" : 3
+}, {
+  "hzcode" : "3",
+  "unitcode" : "亩",
+  "itemcode" : "乔木林面积",
+  "num1" : "",
+  "i" : 3
+}, {
   "hzcode" : "4",
   "unitcode" : "亩",
-  "itemcode" : "园地改为耕地",
+  "itemcode" : "2.飞播造林",
   "num1" : "",
   "i" : 2
 }, {
   "hzcode" : "5",
   "unitcode" : "亩",
-  "itemcode" : "（三）年内减少",
+  "itemcode" : "3.无林地和疏林地新封",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "按经济成份分",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "6",
   "unitcode" : "亩",
-  "itemcode" : "1、国家基建占地",
+  "itemcode" : "1.公有经济造林",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "7",
-  "unitcode" : "亩",
-  "itemcode" : "2、其他基建占地",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "8",
-  "unitcode" : "亩",
-  "itemcode" : "3、退耕还林还草",
-  "num1" : "",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "9",
   "unitcode" : "亩",
-  "itemcode" : "4、退耕还渔",
+  "itemcode" : "2.非公有经济造林",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "按林种用途分",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "10",
   "unitcode" : "亩",
-  "itemcode" : "5、退耕改园地",
+  "itemcode" : "1.用材林",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中",
+  "num1" : "—",
+  "i" : 2
 }, {
   "hzcode" : "11",
   "unitcode" : "亩",
-  "itemcode" : "（四）年末实有耕地总资源",
+  "itemcode" : "速生丰产林",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "①常用耕地面积",
-  "num1" : "—",
-  "i" : 1
+  "i" : 3
 }, {
   "hzcode" : "12",
   "unitcode" : "亩",
-  "itemcode" : "合计",
+  "itemcode" : "2.经济林",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
   "hzcode" : "13",
   "unitcode" : "亩",
-  "itemcode" : "1、水田",
+  "itemcode" : "3.防护林",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
   "hzcode" : "14",
   "unitcode" : "亩",
-  "itemcode" : "2、旱地",
+  "itemcode" : "4.薪炭林",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "②临时性耕地",
-  "num1" : "—",
-  "i" : 1
+  "hzcode" : "15",
+  "unitcode" : "亩",
+  "itemcode" : "5.特种用途林",
+  "num1" : "",
+  "i" : 3
 }, {
   "hzcode" : "16",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
+  "unitcode" : "",
+  "itemcode" : "二、有林地和灌木林地新封",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "17",
-  "unitcode" : "亩",
-  "itemcode" : "其中：25º以上坡耕地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "二、农村主要能源及物质消耗",
-  "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "18",
-  "unitcode" : "个",
-  "itemcode" : "（一）乡、村办水电站数",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "19",
-  "unitcode" : "万千瓦",
-  "itemcode" : "装机容量",
-  "num1" : "",
-  "i" : 1
-}, {
   "hzcode" : "20",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "发电量",
+  "unitcode" : "亩",
+  "itemcode" : "三、更新造林",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "21",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "（二）农村用电量",
+  "unitcode" : "亩",
+  "itemcode" : "四、低产低效林改造面积",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（三）农用化肥施用（实物）量",
-  "num1" : "—",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "22",
-  "unitcode" : "吨",
-  "itemcode" : "合  计",
+  "unitcode" : "株",
+  "itemcode" : "五、四旁（零星）植树",
   "num1" : "",
-  "i" : 2
+  "i" : 0
 }, {
   "hzcode" : "23",
-  "unitcode" : "吨",
-  "itemcode" : "1、氮肥",
+  "unitcode" : "亩",
+  "itemcode" : "六、年末实有封山（沙）育林面积",
   "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "24",
-  "unitcode" : "吨",
-  "itemcode" : "2、磷肥",
-  "num1" : "",
-  "i" : 2
+  "i" : 0
 }, {
   "hzcode" : "25",
-  "unitcode" : "吨",
-  "itemcode" : "3、钾肥",
+  "unitcode" : "亩",
+  "itemcode" : "七、未成林抚育作业面积",
   "num1" : "",
-  "i" : 2
+  "i" : 0
 }, {
   "hzcode" : "26",
-  "unitcode" : "吨",
-  "itemcode" : "4、复合肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（四）农用簿膜使用量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "28",
-  "unitcode" : "公斤",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "  其中：",
-  "num1" : "—",
-  "i" : 2
-}, {
-  "hzcode" : "29",
-  "unitcode" : "公斤",
-  "itemcode" : "地膜",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "30",
   "unitcode" : "亩",
-  "itemcode" : "地膜覆盖面积",
+  "itemcode" : "八、未成林抚育实际面积",
   "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "31",
-  "unitcode" : "吨",
-  "itemcode" : "（五）农用柴油使用量",
-  "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "27",
-  "unitcode" : "公斤",
-  "itemcode" : "（六）农药使用量",
+  "unitcode" : "",
+  "itemcode" : "九、成林抚育面积",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "三、农田水利建设情况",
-  "num1" : "—",
+  "hzcode" : "29",
+  "unitcode" : "立方米",
+  "itemcode" : "十、抚育改造出材量",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "31",
+  "unitcode" : "公斤",
+  "itemcode" : "十一、林木种子采集量",
+  "num1" : "",
   "i" : 0
 }, {
   "hzcode" : "32",
-  "unitcode" : "亩",
-  "itemcode" : "有效灌溉面积",
+  "unitcode" : "株",
+  "itemcode" : "十二、当年苗木产量",
   "num1" : "",
-  "i" : 1
+  "i" : 0
 }, {
   "hzcode" : "33",
+  "unitcode" : "",
+  "itemcode" : "十三、育苗面积",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "35",
   "unitcode" : "亩",
-  "itemcode" : "旱涝保收面积",
+  "itemcode" : "十四、年末实有母树林面积",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "36",
+  "unitcode" : "亩",
+  "itemcode" : "十五、年末实有种子园面积",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "十七、竹林采伐",
+  "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "46",
+  "unitcode" : "立方米",
+  "itemcode" : "1.木材",
   "num1" : "",
   "i" : 1
 }, {
-  "hzcode" : "34",
-  "unitcode" : "亩",
-  "itemcode" : "机电排灌面积",
+  "hzcode" : "49",
+  "unitcode" : "根",
+  "itemcode" : "其中：村及村以下采伐",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "48",
+  "unitcode" : "根",
+  "itemcode" : "2.竹材",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "十八、其他补充产品产量",
+  "num1" : "—",
+  "i" : 0
+}, {
+  "hzcode" : "52",
+  "unitcode" : "吨",
+  "itemcode" : "1.核桃",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "52",
+  "unitcode" : "吨",
+  "itemcode" : "2.板栗",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "53",
+  "unitcode" : "吨",
+  "itemcode" : "3.松子",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "54",
+  "unitcode" : "吨",
+  "itemcode" : "4.花椒",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "56",
+  "unitcode" : "吨",
+  "itemcode" : "5.八角",
   "num1" : "",
   "i" : 1
 } ]

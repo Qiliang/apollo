@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.SNN02', {
+Ext.define('Kits.view.tables.M304', {
     extend: 'Kits.view.tables.Base',
-    title: '农业生产条件（一）',
-    xtype: 'tablesSNN02',
+    title: '其它畜牧业生产情况表',
+    xtype: 'tablesM304',
     hzcolumn:'hzcode',
-    tableid: '923003985582972928',
+    tableid: '923004088574107648',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -31,259 +31,237 @@ Ext.define('Kits.view.tables.SNN02', {
 }, {
   "name" : "num1",
   "type" : "string"
+}, {
+  "name" : "num2",
+  "type" : "string"
+}, {
+  "name" : "num3",
+  "type" : "string"
 } ],
         data: [ {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "一、耕地情况",
+  "itemcode" : "一、",
   "num1" : "—",
-  "i" : 0
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "1",
-  "unitcode" : "亩",
-  "itemcode" : "（一）年初耕地总资源",
+  "unitcode" : "头",
+  "itemcode" : "活牲畜（除猪、牛、羊外）",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "2",
-  "unitcode" : "亩",
-  "itemcode" : "（二）年内增加",
+  "unitcode" : "头",
+  "itemcode" : "其中：能繁母牛",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "  其中：",
+  "itemcode" : "二",
   "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "3",
-  "unitcode" : "亩",
-  "itemcode" : "新开荒地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "4",
-  "unitcode" : "亩",
-  "itemcode" : "园地改为耕地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "5",
-  "unitcode" : "亩",
-  "itemcode" : "（三）年内减少",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "6",
-  "unitcode" : "亩",
-  "itemcode" : "1、国家基建占地",
-  "num1" : "",
-  "i" : 1
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "7",
-  "unitcode" : "亩",
-  "itemcode" : "2、其他基建占地",
+  "unitcode" : "吨",
+  "itemcode" : "家兔",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "三",
+  "num1" : "—",
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "8",
-  "unitcode" : "亩",
-  "itemcode" : "3、退耕还林还草",
+  "unitcode" : "吨",
+  "itemcode" : "其它肉产量",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "四",
+  "num1" : "—",
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "9",
-  "unitcode" : "亩",
-  "itemcode" : "4、退耕还渔",
+  "unitcode" : "吨",
+  "itemcode" : "其它奶产量",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "五",
+  "num1" : "—",
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "10",
-  "unitcode" : "亩",
-  "itemcode" : "5、退耕改园地",
+  "unitcode" : "吨",
+  "itemcode" : "山羊毛产量",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "11",
-  "unitcode" : "亩",
-  "itemcode" : "（四）年末实有耕地总资源",
+  "unitcode" : "吨",
+  "itemcode" : "1.山羊粗毛",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "①常用耕地面积",
-  "num1" : "—",
-  "i" : 1
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "12",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
+  "unitcode" : "吨",
+  "itemcode" : "2.山羊绒",
   "num1" : "",
-  "i" : 2
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "六",
+  "num1" : "—",
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "13",
-  "unitcode" : "亩",
-  "itemcode" : "1、水田",
+  "unitcode" : "吨",
+  "itemcode" : "绵羊毛产量",
   "num1" : "",
-  "i" : 2
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "14",
-  "unitcode" : "亩",
-  "itemcode" : "2、旱地",
+  "unitcode" : "吨",
+  "itemcode" : "细羊毛",
   "num1" : "",
-  "i" : 2
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "15",
+  "unitcode" : "吨",
+  "itemcode" : "半细羊毛",
+  "num1" : "",
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "②临时性耕地",
+  "itemcode" : "七",
   "num1" : "—",
-  "i" : 1
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "16",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
+  "unitcode" : "吨",
+  "itemcode" : "天然蜂蜜产量",
   "num1" : "",
-  "i" : 2
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "八",
+  "num1" : "—",
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "17",
-  "unitcode" : "亩",
-  "itemcode" : "其中：25º以上坡耕地",
+  "unitcode" : "吨",
+  "itemcode" : "其他禽蛋产量（除鸡蛋）",
   "num1" : "",
-  "i" : 2
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "二、农村主要能源及物质消耗",
+  "itemcode" : "九",
   "num1" : "—",
-  "i" : 0
+  "i" : 0,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "18",
-  "unitcode" : "个",
-  "itemcode" : "（一）乡、村办水电站数",
+  "unitcode" : "",
+  "itemcode" : "蚕茧产量",
   "num1" : "",
-  "i" : 1
+  "i" : 1,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
 }, {
   "hzcode" : "19",
-  "unitcode" : "万千瓦",
-  "itemcode" : "装机容量",
+  "unitcode" : "",
+  "itemcode" : "桑蚕茧",
   "num1" : "",
-  "i" : 1
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
 }, {
   "hzcode" : "20",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "发电量",
+  "unitcode" : "",
+  "itemcode" : "柞蚕茧",
   "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "21",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "（二）农村用电量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（三）农用化肥施用（实物）量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "22",
-  "unitcode" : "吨",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "23",
-  "unitcode" : "吨",
-  "itemcode" : "1、氮肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "24",
-  "unitcode" : "吨",
-  "itemcode" : "2、磷肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "25",
-  "unitcode" : "吨",
-  "itemcode" : "3、钾肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "26",
-  "unitcode" : "吨",
-  "itemcode" : "4、复合肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（四）农用簿膜使用量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "28",
-  "unitcode" : "公斤",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "  其中：",
-  "num1" : "—",
-  "i" : 2
-}, {
-  "hzcode" : "29",
-  "unitcode" : "公斤",
-  "itemcode" : "地膜",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "30",
-  "unitcode" : "亩",
-  "itemcode" : "地膜覆盖面积",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "31",
-  "unitcode" : "吨",
-  "itemcode" : "（五）农用柴油使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "27",
-  "unitcode" : "公斤",
-  "itemcode" : "（六）农药使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "三、农田水利建设情况",
-  "num1" : "—",
-  "i" : 0
-}, {
-  "hzcode" : "32",
-  "unitcode" : "亩",
-  "itemcode" : "有效灌溉面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "33",
-  "unitcode" : "亩",
-  "itemcode" : "旱涝保收面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "34",
-  "unitcode" : "亩",
-  "itemcode" : "机电排灌面积",
-  "num1" : "",
-  "i" : 1
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
 } ]
     }),
     columns: [ {
@@ -310,10 +288,40 @@ Ext.define('Kits.view.tables.SNN02', {
     "width" : 100
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:22px'>数量</div>",
+  "text" : "<div style='white-space:pre-line;height:22px'>年末存栏数</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
     "dataIndex" : "num1",
+    "align" : "center",
+    "width" : 100,
+    "editor" : {
+      "field" : {
+        "allowBlank" : true,
+        "minValue" : 0,
+        "xtype" : "numberfield"
+      }
+    }
+  } ]
+}, {
+  "text" : "<div style='white-space:pre-line;height:22px'>当年出栏数</div>",
+  "columns" : [ {
+    "text" : "<div style='white-space:pre-line;height:22px'>2</div>",
+    "dataIndex" : "num2",
+    "align" : "center",
+    "width" : 100,
+    "editor" : {
+      "field" : {
+        "allowBlank" : true,
+        "minValue" : 0,
+        "xtype" : "numberfield"
+      }
+    }
+  } ]
+}, {
+  "text" : "<div style='white-space:pre-line;height:22px'>（肉、产品）产  量</div>",
+  "columns" : [ {
+    "text" : "<div style='white-space:pre-line;height:22px'>3</div>",
+    "dataIndex" : "num3",
     "align" : "center",
     "width" : 100,
     "editor" : {

@@ -1,9 +1,9 @@
-Ext.define('Kits.view.tables.SNN02', {
+Ext.define('Kits.view.tables.ENN06', {
     extend: 'Kits.view.tables.Base',
-    title: '农业生产条件（一）',
-    xtype: 'tablesSNN02',
+    title: '渔业生产情况',
+    xtype: 'tablesENN06',
     hzcolumn:'hzcode',
-    tableid: '923003985582972928',
+    tableid: '923004112859127808',
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -33,255 +33,177 @@ Ext.define('Kits.view.tables.SNN02', {
   "type" : "string"
 } ],
         data: [ {
+  "hzcode" : "代码总汇",
+  "unitcode" : "计量单位",
+  "itemcode" : "指标名称",
+  "num1" : "",
+  "i" : 0
+}, {
+  "hzcode" : "--",
+  "unitcode" : "--",
+  "itemcode" : "编码",
+  "num1" : "",
+  "i" : 0
+}, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "一、耕地情况",
+  "itemcode" : "一、水产品产量",
   "num1" : "—",
   "i" : 0
 }, {
-  "hzcode" : "1",
-  "unitcode" : "亩",
-  "itemcode" : "（一）年初耕地总资源",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "2",
-  "unitcode" : "亩",
-  "itemcode" : "（二）年内增加",
-  "num1" : "",
-  "i" : 1
-}, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "  其中：",
+  "itemcode" : "（一）淡水捕捞产量",
   "num1" : "—",
   "i" : 1
 }, {
+  "hzcode" : "1",
+  "unitcode" : "吨",
+  "itemcode" : "",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "2",
+  "unitcode" : "吨",
+  "itemcode" : "1.鱼类",
+  "num1" : "",
+  "i" : 2
+}, {
   "hzcode" : "3",
-  "unitcode" : "亩",
-  "itemcode" : "新开荒地",
+  "unitcode" : "吨",
+  "itemcode" : "2.虾类",
   "num1" : "",
   "i" : 2
 }, {
   "hzcode" : "4",
-  "unitcode" : "亩",
-  "itemcode" : "园地改为耕地",
+  "unitcode" : "吨",
+  "itemcode" : "3.贝类",
   "num1" : "",
   "i" : 2
 }, {
   "hzcode" : "5",
-  "unitcode" : "亩",
-  "itemcode" : "（三）年内减少",
+  "unitcode" : "吨",
+  "itemcode" : "4.其它类",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "（二）淡水养殖产量",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "6",
-  "unitcode" : "亩",
-  "itemcode" : "1、国家基建占地",
+  "unitcode" : "吨",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "7",
-  "unitcode" : "亩",
-  "itemcode" : "2、其他基建占地",
+  "unitcode" : "吨",
+  "itemcode" : "1.鱼类",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "2.虾蟹类",
+  "num1" : "—",
+  "i" : 2
 }, {
   "hzcode" : "8",
-  "unitcode" : "亩",
-  "itemcode" : "3、退耕还林还草",
+  "unitcode" : "吨",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 3
 }, {
   "hzcode" : "9",
-  "unitcode" : "亩",
-  "itemcode" : "4、退耕还渔",
+  "unitcode" : "吨",
+  "itemcode" : "其中：螃蟹",
   "num1" : "",
-  "i" : 1
+  "i" : 3
 }, {
   "hzcode" : "10",
-  "unitcode" : "亩",
-  "itemcode" : "5、退耕改园地",
+  "unitcode" : "吨",
+  "itemcode" : "克氏原螯虾",
   "num1" : "",
-  "i" : 1
+  "i" : 3
 }, {
   "hzcode" : "11",
-  "unitcode" : "亩",
-  "itemcode" : "（四）年末实有耕地总资源",
+  "unitcode" : "吨",
+  "itemcode" : "3.贝类",
   "num1" : "",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "①常用耕地面积",
+  "itemcode" : "4.其它类",
   "num1" : "—",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "12",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
+  "unitcode" : "吨",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
   "hzcode" : "13",
-  "unitcode" : "亩",
-  "itemcode" : "1、水田",
+  "unitcode" : "吨",
+  "itemcode" : "其中：龟鳖",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
   "hzcode" : "14",
-  "unitcode" : "亩",
-  "itemcode" : "2、旱地",
+  "unitcode" : "吨",
+  "itemcode" : "珍珠",
   "num1" : "",
-  "i" : 2
+  "i" : 3
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
-  "itemcode" : "②临时性耕地",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "16",
-  "unitcode" : "亩",
-  "itemcode" : "合计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "17",
-  "unitcode" : "亩",
-  "itemcode" : "其中：25º以上坡耕地",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "二、农村主要能源及物质消耗",
+  "itemcode" : "二、淡水养殖面积",
   "num1" : "—",
   "i" : 0
 }, {
+  "hzcode" : "15",
+  "unitcode" : "顷",
+  "itemcode" : "",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "16",
+  "unitcode" : "顷",
+  "itemcode" : "1.池塘养殖",
+  "num1" : "",
+  "i" : 1
+}, {
+  "hzcode" : "17",
+  "unitcode" : "顷",
+  "itemcode" : "2.湖泊养殖",
+  "num1" : "",
+  "i" : 1
+}, {
   "hzcode" : "18",
-  "unitcode" : "个",
-  "itemcode" : "（一）乡、村办水电站数",
+  "unitcode" : "顷",
+  "itemcode" : "3.河沟养殖",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "19",
-  "unitcode" : "万千瓦",
-  "itemcode" : "装机容量",
+  "unitcode" : "顷",
+  "itemcode" : "4.水库养殖",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "20",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "发电量",
+  "unitcode" : "顷",
+  "itemcode" : "5.其他养殖",
   "num1" : "",
   "i" : 1
 }, {
   "hzcode" : "21",
-  "unitcode" : "万千瓦时",
-  "itemcode" : "（二）农村用电量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（三）农用化肥施用（实物）量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "22",
-  "unitcode" : "吨",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "23",
-  "unitcode" : "吨",
-  "itemcode" : "1、氮肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "24",
-  "unitcode" : "吨",
-  "itemcode" : "2、磷肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "25",
-  "unitcode" : "吨",
-  "itemcode" : "3、钾肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "26",
-  "unitcode" : "吨",
-  "itemcode" : "4、复合肥",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "（四）农用簿膜使用量",
-  "num1" : "—",
-  "i" : 1
-}, {
-  "hzcode" : "28",
-  "unitcode" : "公斤",
-  "itemcode" : "合  计",
-  "num1" : "",
-  "i" : 2
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "  其中：",
-  "num1" : "—",
-  "i" : 2
-}, {
-  "hzcode" : "29",
-  "unitcode" : "公斤",
-  "itemcode" : "地膜",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "30",
-  "unitcode" : "亩",
-  "itemcode" : "地膜覆盖面积",
-  "num1" : "",
-  "i" : 3
-}, {
-  "hzcode" : "31",
-  "unitcode" : "吨",
-  "itemcode" : "（五）农用柴油使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "27",
-  "unitcode" : "公斤",
-  "itemcode" : "（六）农药使用量",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "—",
-  "unitcode" : "—",
-  "itemcode" : "三、农田水利建设情况",
-  "num1" : "—",
-  "i" : 0
-}, {
-  "hzcode" : "32",
-  "unitcode" : "亩",
-  "itemcode" : "有效灌溉面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "33",
-  "unitcode" : "亩",
-  "itemcode" : "旱涝保收面积",
-  "num1" : "",
-  "i" : 1
-}, {
-  "hzcode" : "34",
-  "unitcode" : "亩",
-  "itemcode" : "机电排灌面积",
+  "unitcode" : "顷",
+  "itemcode" : "附报：稻田养殖面积",
   "num1" : "",
   "i" : 1
 } ]

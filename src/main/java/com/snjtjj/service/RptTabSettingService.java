@@ -299,6 +299,7 @@ public class RptTabSettingService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
+        /* 生成表头 */
         RptTabSettingExample settingExample1 = new RptTabSettingExample();
         settingExample1.createCriteria()
                 .andTabidEqualTo(tab.getId())
@@ -334,6 +335,7 @@ public class RptTabSettingService {
             e.printStackTrace();
         }
 
+        /* 生成表体 */
         RptTabSettingExample settingExample2 = new RptTabSettingExample();
         settingExample2.createCriteria()
                 .andTabidEqualTo(tab.getId())
@@ -357,6 +359,7 @@ public class RptTabSettingService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
         String tabcode = tab.getTabcode();
         String tabname = tab.getTabname();
         model.put("tabcode",tabcode);
