@@ -186,6 +186,16 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                     }
                                 });
                             }},
+                            {text:'生成',itemId:'toolbar_rept',iconCls:'arrow_out',iconAlign: 'left',handler:function(){
+                                Ext.Ajax.request({
+                                    url: '/api/rpt/setting/build/END01',
+                                    method:'GET',
+                                    success: function (response) {
+                                        var obj = JSON.parse(response.responseText);
+                                        console.log(obj);
+                                    }
+                                });
+                            }}
                         ]
                     },
                     items:[

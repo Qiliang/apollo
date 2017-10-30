@@ -248,127 +248,40 @@ public class RptTabImportAPI {
         return hzValue;
     }
 //    public static void main(String[] args) throws IOException {
-//        String rptPath = buildPath("src/main/resources/static/rpt/2016年湖北农林牧渔业综合统计报表制度.xls");
+//        String rptPath = buildPath("src/main/resources/static/ftl/2016年湖北农林牧渔业综合统计报表制度.xls");
 //        FileInputStream fs = FileUtils.openInputStream(new File(rptPath));
 //        Workbook wb = new HSSFWorkbook(fs);
-//        Map<String,String> groups = new HashMap<>();
-//        Map<String,Map<String,String>> results = new HashMap<>();
-//        String firstRow1 = null,lastRow1 = null;
-//        for(int s = 2; s <= 27; s++){
-//            Sheet sheet = wb.getSheetAt(s);
-//            String sheetName = sheet.getSheetName();
-//            String fix1 = sheetName.length() >= 6 ? sheetName.substring(0,6) : sheetName;
-//            Map<String,String> measureRow = new HashMap<>();
-//            int lastRowNum = sheet.getLastRowNum();
-//            for(Integer r = lastRowNum; r > 0; r--){
-//                Cell cell = sheet.getRow(r).getCell(0);
-//                String val = cell != null ? getCellValue(cell) : "";
-//                if("汇总代码".equals(val) || "代码总汇".equals(val) || "甲".equals(val) || "代码".equals(val)){
-//                    measureRow.put("lastRow",r.toString());
-//                    lastRow1 = r.toString();
-//                }
-//                if("指标名称".equals(val)){
-//                    measureRow.put("firstRow",r.toString());
-//                    firstRow1 = r.toString();
-//                    break;
-//                }
-//                if(cell != null) {
-//                    CellStyle cStyle = cell.getCellStyle();
-//                    BorderStyle bStyle = cStyle.getBorderTopEnum();
-//                    if (bStyle == BorderStyle.THICK && val != "") {
-//                        measureRow.put("firstRow", r.toString());
-//                        firstRow1 = r.toString();
-//                        break;
-//                    }
-//                }
-//                if(r > 0){
-//                    Cell cell1 = sheet.getRow(r-1).getCell(0);
-//                    if(cell1 != null) {
-//                        String tmp = getCellValue(cell1);
-//                        if(tmp!=null && tmp.indexOf("填报单位")>=0){
-//                            measureRow.put("firstRow", r.toString());
-//                            firstRow1 = r.toString();
-//                            break;
-//                        }
-//                    }
-//                }
-//            }
-//            groups.put(fix1,null);
-//            if(measureRow.size() == 0){
-//                measureRow.put("firstRow",firstRow1);
-//                measureRow.put("lastRow",lastRow1);
-//            }
-//            results.put(sheetName,measureRow);
-//        }
 //        List<Map<String,String>> headList = null;
-//        String preSheetName = null;
-//        for(Integer s = 2; s <= 27; s++){
+//        for(Integer s = 0; s <= 21; s++){
 //            Sheet sheet = wb.getSheetAt(s);
 //            String sheetName = sheet.getSheetName();
-//            String fix1 = sheetName.length() >= 6 ? sheetName.substring(0,6) : sheetName;
-//            Map<String,String> measureRow = results.get(sheetName);
-//            Integer firstRow = Integer.parseInt(measureRow.get("firstRow"));
-//            Integer lastRow = Integer.parseInt(measureRow.get("lastRow"));
-//            String codeRow = groups.get(fix1);
-//            Integer beginCol = 0;
-//            Row row = sheet.getRow(lastRow);
-//            Short endCol = row.getLastCellNum();
-//            if(codeRow!=null){
-//                for(int c = 0; c <= endCol; c++){
-//                    Cell cell = row.getCell(c);
-//                    if(cell != null){
-//                        String val = getCellValue(cell);
-//                        Float hzValue = getNumeric(val);
-//                        if(hzValue != null && codeRow.equals(String.format("%d",hzValue.intValue()))){
-//                            beginCol = c;
+//            Cell cell = sheet.getRow(0).getCell(1);
+//            String rowString = getCellValue(cell);
+//            String[] rowArr = rowString.split(",");
+//            Integer firstRow = Integer.parseInt(rowArr[0]);
+//            Integer beginCol = Integer.parseInt(rowArr[1]);
+//            Integer endCol = Integer.parseInt(rowArr[2]);
+//            headList = new ArrayList<>();
+//            for(int c = beginCol; c <= endCol; c++){
+//                Map<String,String> colMap = new HashMap<>();
+//                List<String> itemList = new ArrayList<>();
+//                for(int r = firstRow; r <= firstRow+5; r++){
+//                    cell = sheet.getRow(r).getCell(c);
+//                    String val = cell != null ? getCellValue(cell) : null;
+//                    if(val != null){
+//                        CellStyle style = cell.getCellStyle();
+//                        BorderStyle borderStyle = style.getBorderBottomEnum();
+//                        if(borderStyle != BorderStyle.THICK && borderStyle != BorderStyle.MEDIUM){
 //                            break;
 //                        }
-//                    }
-//                }
-//            }
-//            else {
-//                if(headList!=null){
-//                    ObjectMapper mapper = new ObjectMapper();
-//                    mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-//                    System.out.println(String.format("========================%s=================================",preSheetName));
-//                    System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(headList));
-//                }
-//                preSheetName = sheetName;
-//                headList = new ArrayList<>();
-//            }
-//            for(int c = beginCol; c <= endCol; c++){
-//                int setp = 0;
-//                Map<String,String> colMap = new HashMap<>();
-//                Cell cell = sheet.getRow(lastRow).getCell(c);
-//                String val = cell!=null ? getCellValue(cell) : "";
-//                if(val == ""){
-//                    continue;
-//                }
-//                Float hzValue = getNumeric(val);
-//                if(hzValue != null) {
-//                    colMap.put("hzcode",String.format("%d",hzValue.intValue()));
-//                    groups.put(fix1,String.format("%d", hzValue.intValue() + 1));
-//                }
-//                else{
-//                    colMap.put("hzcode",val);
-//                }
-//                setp++;
-//                if(!"劳动力转移情".equals(fix1)){
-//                    cell = sheet.getRow(lastRow-1).getCell(c);
-//                    val = getCellValue(cell);
-//                    colMap.put("unitcode",val);
-//                    setp++;
-//                }
-//                else{
-//                    colMap.put("unitcode","人");
-//                }
-//                List<String> itemList = new ArrayList<>();
-//                for(int r = firstRow; r <= lastRow-setp; r++){
-//                    cell = sheet.getRow(r).getCell(c);
-//                    val = cell != null ? getCellValue(cell) : null;
-//                    if(val != null){
 //                        if(val != "") {
-//                            itemList.add(val);
+//                            Float hzValue = getNumeric(val);
+//                            if(hzValue != null) {
+//                                itemList.add(String.format("%d",hzValue.intValue()));
+//                            }
+//                            else {
+//                                itemList.add(val);
+//                            }
 //                        }
 //                        else{
 //                            val = "□";
@@ -409,11 +322,9 @@ public class RptTabImportAPI {
 //                    headList.add(colMap);
 //                }
 //            }
-//        }
-//        if(headList!=null){
 //            ObjectMapper mapper = new ObjectMapper();
 //            mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-//            System.out.println("=========================================================");
+//            System.out.println(String.format("========================%s=================================",sheetName));
 //            System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(headList));
 //        }
 //    }
