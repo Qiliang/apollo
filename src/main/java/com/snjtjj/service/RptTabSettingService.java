@@ -290,6 +290,13 @@ public class RptTabSettingService {
             e.printStackTrace();
         }
     }
+    public static Float getNumeric(String str){
+        Float hzValue = null;
+        try{
+            hzValue = Float.parseFloat(str);
+        }catch (Exception e){}
+        return hzValue;
+    }
     /**
      * 生成填报表单
      * @param tab
@@ -349,7 +356,10 @@ public class RptTabSettingService {
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
             String code = setting.getHzcode();
-            buildColumn(text,unit,code,0,tab.getTabdeep(),setting,null);
+            Float iVal = getNumeric(code);
+            if(iVal != null) {
+                buildColumn(text, unit, code, 0, tab.getTabdeep(), setting, null);
+            }
         }
         List<Map<String,Object>> datas = new ArrayList<>();
         buildData(datas,colList);

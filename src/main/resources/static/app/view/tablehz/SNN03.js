@@ -277,7 +277,7 @@ Ext.define('Kits.view.tablehz.SNN03', {
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>－－</div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:92px'>－－0</div>",
+        "text" : "<div style='white-space:pre-line;height:92px'>－－</div>",
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>亩</div>",
           "columns" : [ {

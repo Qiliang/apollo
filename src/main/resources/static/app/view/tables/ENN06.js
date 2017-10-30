@@ -33,18 +33,6 @@ Ext.define('Kits.view.tables.ENN06', {
   "type" : "string"
 } ],
         data: [ {
-  "hzcode" : "代码总汇",
-  "unitcode" : "计量单位",
-  "itemcode" : "指标名称",
-  "num1" : "",
-  "i" : 0
-}, {
-  "hzcode" : "--",
-  "unitcode" : "--",
-  "itemcode" : "编码",
-  "num1" : "",
-  "i" : 0
-}, {
   "hzcode" : "—",
   "unitcode" : "—",
   "itemcode" : "一、水产品产量",

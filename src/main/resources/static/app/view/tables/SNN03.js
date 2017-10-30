@@ -65,7 +65,7 @@ Ext.define('Kits.view.tables.SNN03', {
 }, {
   "hzcode" : "1",
   "unitcode" : "亩",
-  "itemcode" : "－－0",
+  "itemcode" : "－－",
   "num1" : "",
   "i" : 3,
   "num3" : "",
