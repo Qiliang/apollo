@@ -43,6 +43,8 @@ public class DirectRptTaskService {
     private InnerAsync innerAsync;
     @Autowired
     private CompanyMapper companyMapper;
+    @Autowired
+    private MessageInfoService messageInfoService;
 
     public PageInfo<DirectRptTask> getListByUserID(String name, Integer page, Integer limit) {
         //查询该行政区划代码下面的所有行政区划
@@ -112,7 +114,7 @@ public class DirectRptTaskService {
         return list;
     }
 
-    @Transactional
+//    @Transactional
     public void save(DirectRptTask directRptTask, String dcdxIds, String systemInfoFillPersonType) {
         directRptTask.preInsert();
         directRptTaskMapper.insert(directRptTask);
@@ -322,7 +324,10 @@ public class DirectRptTaskService {
         private RptTaskObjectMapper rptTaskObjectMapper;
         @Autowired
         private CompanyMapper companyMapper;
-
+        @Autowired
+        private DirectRptTaskMapper directRptTaskMapper;
+        @Autowired
+        private MessageInfoService messageInfoService;
         @Transactional
         @Async
         public void saveRptTaskObject(String id, String dcdxIds, String systemInfoFillPersonType) {
@@ -350,6 +355,7 @@ public class DirectRptTaskService {
                     rptTaskObjectMapper.insert(rptTaskObject);
                 }
             }
+            messageInfoService.save(messageInfoService.getMessageInfoBySendTask(directRptTaskMapper.selectByPrimaryKey(id)));
         }
     }
 

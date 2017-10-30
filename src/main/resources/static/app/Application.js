@@ -34,19 +34,19 @@ Ext.define('Kits.Application', {
                 xclass: 'Kits.view.Main'
             });
         }else{
-            if(Ext.String.startsWith(token,"Bearer ")){
-                this.setMainView({
-                    xclass: 'Kits.view.Login'
-                });
-            }else if(Ext.String.startsWith(token,"Users ")){
-                this.setMainView({
-                    xclass: 'Kits.view.UserLogin'
-                });
-            }else{
+            // if(Ext.String.startsWith(token,"Bearer ")){
+            //     this.setMainView({
+            //         xclass: 'Kits.view.Login'
+            //     });
+            // }else if(Ext.String.startsWith(token,"Users ")){
+            //     this.setMainView({
+            //         xclass: 'Kits.view.UserLogin'
+            //     });
+            // }else{
                 this.setMainView({
                     xclass: 'Kits.view.ChoiceLogin'
                 });
-            }
+            // }
         }
 
 

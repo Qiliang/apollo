@@ -8,7 +8,7 @@ Ext.define('Kits.view.Main', {
     bodyBorder: false,
     listeners: {
         afterRender: function (me, eOpts) {
-            var menu = Ext.ComponentQuery.query('#mainMenu')[0];
+            var menu = Ext.getCmp('mainMenuList');
             menu.getStore().addAfterListener("load",function(){
                 menu.setSelection(menu.getStore().getAt(0))
             })
@@ -22,6 +22,7 @@ Ext.define('Kits.view.Main', {
             height: 40,
             layout: 'border',
             bodyBorder: false,
+            margin: '0 0 5 0',
             items: [{region: 'center', html: '欢迎进入系统'},
                 {
                     region: 'east', xtype: 'button', text: '退出',
@@ -55,40 +56,9 @@ Ext.define('Kits.view.Main', {
                     region: 'west',
                     colspan: 2,
                     items: Ext.create('Kits.view.Menu', {}),
-                    tools: [
-                        {
-                            type: 'unpin',
-                            id: 'menuUnpin',
-                            tooltip: '收起菜单',
-                            callback: function (panel, tool, event) {
-                                panel.down('#menuPin').show();
-                                var menu = panel.down('#mainMenu');
-                                menu.setMicro(true);
-                                var ct = menu.ownerCt;
-                                ct.oldWidth = ct.width;
-                                ct.setWidth(44);
-                                this.hide();
-                            }
-                        },
-                        {
-                            type: 'pin',
-                            id: 'menuPin',
-                            hidden: true,
-                            tooltip: '展开菜单',
-                            callback: function (panel, tool, event) {
-                                panel.down('#menuUnpin').show();
-                                var menu = panel.down('#mainMenu');
-                                menu.setMicro(false);
-                                var ct = menu.ownerCt;
-                                if (ct.oldWidth) ct.setWidth(ct.oldWidth);
-                                this.hide();
-                            }
-                        }
-                    ],
-
                 },
                 {
-                    margin: '5 0 0 0',
+                    margin: '0 0 0 0',
                     id:'center',
                     region: 'center',
                     layout:'fit'

@@ -3,6 +3,7 @@ package com.snjtjj.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.snjtjj.entity.DirectRptRemindTask;
+import com.snjtjj.entity.DirectRptTask;
 import com.snjtjj.entity.MessageInfo;
 import com.snjtjj.entity.MessageInfoExample;
 import com.snjtjj.mapper.MessageInfoMapper;
@@ -42,6 +43,19 @@ public class MessageInfoService {
         messageInfo.setReadState("0");
         messageInfo.setToUserId(directRptRemindTask.getCreateBy());
         messageInfo.setType("zbtx");
+        return messageInfo;
+    }
+
+    public MessageInfo getMessageInfoBySendTask(DirectRptTask directRptTask){
+        MessageInfo messageInfo = new MessageInfo();
+        messageInfo.setId(IdGen.nextS());
+        messageInfo.setContent("《"+directRptTask.getName()+"》直报任务添加成功！");
+        messageInfo.setTitle("直报任务添加成功提醒");
+        messageInfo.setCreateTime(new Date());
+        messageInfo.setFormName("system");
+        messageInfo.setReadState("0");
+        messageInfo.setToUserId(directRptTask.getCreateBy());
+        messageInfo.setType("zbrwtjtx");
         return messageInfo;
     }
 }
