@@ -309,7 +309,7 @@ public class DirectRptTaskService {
             item.setName(directRptTask.getName());
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
-            item.setTableCode(item.getTableCode());
+            item.setTableCode(directRptTask.getTableCode());
             fillReportState(item);
         });
         PageInfo pageInfo = new PageInfo(list);

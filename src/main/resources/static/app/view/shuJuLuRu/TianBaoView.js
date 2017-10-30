@@ -23,16 +23,18 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             //加载验收意见
             me.loadRecord(me.recordData);
             //动态删除验收意见
-            if (me.recordData.data.tabcode) {
-                Ext.require(['Kits.view.tables.'+me.recordData.data.tabcode], function () {
+            if (me.recordData.data.tabcode!='') {
+                Ext.require(['Kits.view.tables.A301'], function () {
                     me.insert(0, {
                         title: me.recordData.data.tableName,
-                        xtype: 'tables' + me.recordData.data.tabcode, // tabcode
-                        height: 1900,
+                        xtype: 'tablesA301', // tabcode
+                        height: 1500,
                         commConfig: {
+                            autoHeight:true,
                             hiddenExport: true,
                             hiddenValidate: true,
                             hiddenSubmit: true,
+
                         },
                         usercode: me.recordData.data.id,
                         id: 'fillTable'
@@ -137,7 +139,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
                             params: {id: btn.recordData.id},
                             success: function (response, opts) {
                                 var res = JSON.parse(response.responseText);
-                                Ext.Msg.alert('成功！', res.message);
+                                Ext.Msg.alert('成功！', res.data);
                                 btn.callBack();
                             },
                             failure: function (response, opts) {
