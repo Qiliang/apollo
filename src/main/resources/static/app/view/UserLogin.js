@@ -1,5 +1,5 @@
 Ext.define('Kits.view.UserLogin', {
-    extend: 'Ext.container.Viewport',
+    extend: 'Ext.panel.Panel',
     layout: 'center',
     items: {
         title: '统计信息化基础建设及数据库管理应用系统',

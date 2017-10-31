@@ -2,6 +2,7 @@ package com.snjtjj.service;
 
 import com.snjtjj.common.security.JwtUser;
 import com.snjtjj.entity.Company;
+import com.snjtjj.entity.CompanyExample;
 import com.snjtjj.entity.FillUser;
 import com.snjtjj.mapper.CompanyMapper;
 import com.snjtjj.mapper.FillUserMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class FillUserService {
@@ -40,13 +42,15 @@ public class FillUserService {
         fillUser.setUpdateBy(jwtUser.getFillUser().getId());
         fillUserMapper.updateByPrimaryKeySelective(fillUser);
         if ("0".equals(fillUser.getObjType())) {
-            Company company = companyMapper.selectByPrimaryKey(fillUser.getObjId());
-            if (company != null) {
-                company.setMobile(fillUser.getMobile());
-                company.setEmail(fillUser.getEmail());
-                company.setTbrName(fillUser.getFillName());
-                company.setFzrMobile(fillUser.getLeaderMobile());
-                companyMapper.updateByPrimaryKeySelective(company);
+            CompanyExample companyExample = new CompanyExample();
+            companyExample.createCriteria().andDelFlagEqualTo("0").andZzjgdmEqualTo(fillUser.getLoginUserName());
+            List<Company> companyList = companyMapper.selectByExample(companyExample);
+            for(Company company:companyList) {
+                    company.setMobile(fillUser.getMobile());
+                    company.setEmail(fillUser.getEmail());
+                    company.setTbrName(fillUser.getFillName());
+                    company.setFzrMobile(fillUser.getLeaderMobile());
+                    companyMapper.updateByPrimaryKeySelective(company);
             }
         }
     }

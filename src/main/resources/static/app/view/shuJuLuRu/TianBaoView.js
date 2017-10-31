@@ -1,9 +1,6 @@
 Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
     extend: 'Ext.form.Panel',
     scrollable: true,
-    requires: [
-        'Kits.view.tables.01'
-    ],
     id: 'TianBaoView',
     layout: {
         type: 'table',
@@ -26,22 +23,26 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             //加载验收意见
             me.loadRecord(me.recordData);
             //动态删除验收意见
-            Ext.require(['Kits.view.tables.01'], function () {
-                me.insert(0, {
-                    title: me.recordData.data.tableName,
-                    xtype: 'tables01', // tabcode
-                    height: 1900,
-                    hiddenExport: me.isView,
-                    hiddenValidate: me.isView,
-                    hiddenSubmit: me.isView,
-                    usercode: me.recordData.data.id,
-                    id: 'fillTable'
-                })
-            }, me);
+            if (me.recordData.data.tableCode) {
+                Ext.require(['Kits.view.tables.'+me.recordData.data.tableCode], function () {
+                    me.insert(0, {
+                        title: me.recordData.data.tableName,
+                        xtype: 'tables' + me.recordData.data.tableCode, // tabcode
+                        height: 1900,
+                        commConfig: {
+                            hiddenExport: true,
+                            hiddenValidate: true,
+                            hiddenSubmit: true,
+                        },
+                        usercode: me.recordData.data.id,
+                        id: 'fillTable'
+                    })
+                }, me);
+            }
             //获得当前填报状态和是否是查看
             //如果是查看则删除按钮
             if (me.isView) {
-                me.queryById('dc').hide();
+                // me.queryById('dc').hide();
                 me.queryById('jc').hide();
                 me.queryById('tj').hide();
             }
@@ -66,7 +67,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
         itemId: 'zysyj',
         title: '镇验收意见',
         items: [{
-            itemId:'zysRadio',
+            itemId: 'zysRadio',
             xtype: 'radiogroup',
             fieldLabel: '镇是否验收通过',
             cls: 'x-check-group-alt',
@@ -79,7 +80,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             ]
         },
             {
-                itemId:'zysText',
+                itemId: 'zysText',
                 xtype: 'textareafield',
                 fieldLabel: '镇验收意见',
                 name: 'townSuggestions',

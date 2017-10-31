@@ -171,7 +171,7 @@ Ext.define('Kits.view.zhiDu.AddZhiBaoView', {
                     waitMsg:'提交中，请稍后...',
                     waitTitle:'提示',
                     success: function (form, action) {
-                        Ext.Msg.alert('成功！', action.result.data);
+                        Ext.Msg.alert('成功！', '定时任务执行中，请稍后在消息列表中查看添加结果');
                         callBack();
                     },
                     failure: function (form, action) {

@@ -1,5 +1,5 @@
 Ext.define('Kits.view.Login', {
-    extend: 'Ext.container.Viewport',
+    extend: 'Ext.panel.Panel',
     layout: 'center',
     items: {
         title: '统计信息化基础建设及数据库管理应用系统',
@@ -38,7 +38,6 @@ Ext.define('Kits.view.Login', {
                         },
                         callback: function (options, success, response) {
                             if (!success) {
-
                                 Ext.toast({
                                     html: '用户名或密码错误',
                                     align: 't'

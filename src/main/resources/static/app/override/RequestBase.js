@@ -16,7 +16,7 @@ Ext.define('Kits.override.RequestBase', function () {
                 }
             }
             me.completed = true;
-            if(result.status=='401'){
+            if(result.status=='401'&&me.url!='/api/auth'){
                 //跳转到登录页面
                 Ext.util.Cookies.set('token', '');
                 window.location.reload();

@@ -81,10 +81,10 @@ public class CompanyService {
     @Transactional
     public void saveSystemCompany(String systemId, String ids) {
         //删除从前的关联关系
-        SystemCompanyExample systemCompanyExample = new SystemCompanyExample();
-        SystemCompanyExample.Criteria criterion = systemCompanyExample.createCriteria();
-        criterion.andSystemIdEqualTo(systemId);
-        systemCompanyMapper.deleteByExample(systemCompanyExample);
+//        SystemCompanyExample systemCompanyExample = new SystemCompanyExample();
+//        SystemCompanyExample.Criteria criterion = systemCompanyExample.createCriteria();
+//        criterion.andSystemIdEqualTo(systemId);
+//        systemCompanyMapper.deleteByExample(systemCompanyExample);
         //添加关联关系
         String[] idArray = ids.split(",");
         for (String companyId : idArray) {
@@ -212,7 +212,7 @@ public class CompanyService {
     @Transactional
     public void edit(Company company) {
         FillUserExample fillUserExample = new FillUserExample();
-        fillUserExample.createCriteria().andObjIdEqualTo(company.getId()).andObjTypeEqualTo("0");
+        fillUserExample.createCriteria().andLoginUserNameEqualTo(company.getZzjgdm()).andObjTypeEqualTo("0").andDelFlagEqualTo("0");
         List<FillUser> fillUserList = fillUserMapper.selectByExample(fillUserExample);
         if(fillUserList!=null&&fillUserList.size()>0){
             FillUser fillUser = fillUserList.get(0);
@@ -229,22 +229,27 @@ public class CompanyService {
         List<Company> companyList = companyMapper.selectCompanyNotInFillUserList();
         //插入fill_user表
         for (Company company : companyList) {
-            FillUser fillUser = new FillUser();
-            fillUser.setId(IdGen.nextS());
-            fillUser.setCreateBy("1");
-            fillUser.setCreateDate(new Date());
-            fillUser.setDelFlag(DataEntity.DEL_FLAG_NORMAL);
-            fillUser.setUpdateBy("1");
-            fillUser.setUpdateDate(new Date());
-            fillUser.setEmail(company.getEmail());
-            fillUser.setFillName(company.getTbrName());
-            fillUser.setLeaderMobile(company.getFzrMobile());
-            fillUser.setLoginUserName(company.getZzjgdm());
-            fillUser.setLoginPassword(new BCryptPasswordEncoder().encode("123456"));
-            fillUser.setMobile(company.getMobile());
-            fillUser.setObjId(company.getId());
-            fillUser.setObjType("0");
-            fillUserMapper.insert(fillUser);
+            FillUserExample fillUserExample = new FillUserExample();
+            fillUserExample.createCriteria().andLoginUserNameEqualTo(company.getZzjgdm()).andObjTypeEqualTo("0").andDelFlagEqualTo("0");
+            List<FillUser> fillUserList = fillUserMapper.selectByExample(fillUserExample);
+            if(fillUserList==null||fillUserList.size()==0) {
+                FillUser fillUser = new FillUser();
+                fillUser.setId(IdGen.nextS());
+                fillUser.setCreateBy("1");
+                fillUser.setCreateDate(new Date());
+                fillUser.setDelFlag(DataEntity.DEL_FLAG_NORMAL);
+                fillUser.setUpdateBy("1");
+                fillUser.setUpdateDate(new Date());
+                fillUser.setEmail(company.getEmail());
+                fillUser.setFillName(company.getTbrName());
+                fillUser.setLeaderMobile(company.getFzrMobile());
+                fillUser.setLoginUserName(company.getZzjgdm());
+                fillUser.setLoginPassword(new BCryptPasswordEncoder().encode("123456"));
+                fillUser.setMobile(company.getMobile());
+                fillUser.setObjId(company.getId());
+                fillUser.setObjType("0");
+                fillUserMapper.insert(fillUser);
+            }
         }
     }
 }

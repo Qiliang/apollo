@@ -21,18 +21,22 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
             //加载验收意见
             me.loadRecord(me.recordData);
             //动态删除验收意见
-            Ext.require(['Kits.view.tables.01'], function () {
-                me.insert(0, {
-                    title: me.recordData.data.tableName,
-                    xtype: 'tables01', // tabcode
-                    height: 1900,
-                    hiddenExport: me.isView,
-                    hiddenValidate: me.isView,
-                    hiddenSubmit: me.isView,
-                    usercode: me.recordData.data.id,
-                    id: 'fillTable'
-                })
-            }, me);
+            if (me.recordData.data.tableCode) {
+                Ext.require(['Kits.view.tables.'+me.recordData.data.tableCode], function () {
+                    me.insert(0, {
+                        title: me.recordData.data.tableName,
+                        xtype: 'tables' + me.recordData.data.tableCode, // tabcode
+                        height: 1900,
+                        commConfig: {
+                            hiddenExport: true,
+                            hiddenValidate: true,
+                            hiddenSubmit: true,
+                        },
+                        usercode: me.recordData.data.id,
+                        id: 'fillTable'
+                    })
+                }, me);
+            }
             //获得当前填报状态和是否是查看
             //如果是查看则删除按钮
             if (me.isView) {
