@@ -81,10 +81,10 @@ public class CompanyService {
     @Transactional
     public void saveSystemCompany(String systemId, String ids) {
         //删除从前的关联关系
-//        SystemCompanyExample systemCompanyExample = new SystemCompanyExample();
-//        SystemCompanyExample.Criteria criterion = systemCompanyExample.createCriteria();
-//        criterion.andSystemIdEqualTo(systemId);
-//        systemCompanyMapper.deleteByExample(systemCompanyExample);
+        SystemCompanyExample systemCompanyExample = new SystemCompanyExample();
+        SystemCompanyExample.Criteria criterion = systemCompanyExample.createCriteria();
+        criterion.andSystemIdEqualTo(systemId);
+        systemCompanyMapper.deleteByExample(systemCompanyExample);
         //添加关联关系
         String[] idArray = ids.split(",");
         for (String companyId : idArray) {
@@ -248,6 +248,7 @@ public class CompanyService {
                 fillUser.setMobile(company.getMobile());
                 fillUser.setObjId(company.getId());
                 fillUser.setObjType("0");
+                fillUser.setFddbr(company.getFddbr());
                 fillUserMapper.insert(fillUser);
             }
         }

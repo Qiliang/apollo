@@ -91,9 +91,9 @@ public class DirectRptTaskAPI {
         return formResponse;
     }
 
-    @PostMapping("/update")
-    public FormResponse<String> update(RptTaskObject rptTaskObject) {
-        directRptTaskService.updateRptTaskObject(rptTaskObject);
+    @PostMapping("/auditRptTaskObject")
+    public FormResponse<String> auditRptTaskObject(RptTaskObject rptTaskObject) {
+        directRptTaskService.auditRptTaskObject(rptTaskObject);
         FormResponse formResponse = new FormResponse("保存成功！");
         return formResponse;
     }

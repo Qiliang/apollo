@@ -43,14 +43,15 @@ public class FillUserService {
         fillUserMapper.updateByPrimaryKeySelective(fillUser);
         if ("0".equals(fillUser.getObjType())) {
             CompanyExample companyExample = new CompanyExample();
-            companyExample.createCriteria().andDelFlagEqualTo("0").andZzjgdmEqualTo(fillUser.getLoginUserName());
+            companyExample.createCriteria().andDelFlagEqualTo("0").andZzjgdmEqualTo(jwtUser.getFillUser().getLoginUserName());
             List<Company> companyList = companyMapper.selectByExample(companyExample);
-            for(Company company:companyList) {
-                    company.setMobile(fillUser.getMobile());
-                    company.setEmail(fillUser.getEmail());
-                    company.setTbrName(fillUser.getFillName());
-                    company.setFzrMobile(fillUser.getLeaderMobile());
-                    companyMapper.updateByPrimaryKeySelective(company);
+            for (Company company : companyList) {
+                company.setMobile(fillUser.getMobile());
+                company.setEmail(fillUser.getEmail());
+                company.setTbrName(fillUser.getFillName());
+                company.setFzrMobile(fillUser.getLeaderMobile());
+                company.setFddbr(fillUser.getFddbr());
+                companyMapper.updateByPrimaryKeySelective(company);
             }
         }
     }

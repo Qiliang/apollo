@@ -61,6 +61,11 @@ Ext.define('Kits.view.shuJuLuRu.AddGeRenZhongXin', {
                 },
                 {
                     xtype: 'textfield',
+                    name: 'fddbr',
+                    fieldLabel: '法定代表人（单位负责人）'
+                },
+                {
+                    xtype: 'textfield',
                     fieldLabel: '法定代表人（单位负责人）移动电话',
                     allowBlank: false,
                     blankText: '法定代表人（单位负责人）移动电话为必填项',

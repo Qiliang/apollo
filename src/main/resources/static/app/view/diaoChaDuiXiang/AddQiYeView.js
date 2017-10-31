@@ -55,7 +55,7 @@ Ext.define('Kits.view.diaoChaDuiXiang.AddQiYeView', {
             fieldLabel: '行政区划代码',
             allowBlank: false,
             blankText: '行政区划代码为必填项',
-            maxLength: 9
+            maxLength: 12
         },
         {
             xtype: 'textfield',
@@ -82,6 +82,11 @@ Ext.define('Kits.view.diaoChaDuiXiang.AddQiYeView', {
             name: 'mobile',
             fieldLabel: '移动电话',
             vtype: 'mobile'
+        },
+        {
+            xtype: 'textfield',
+            name: 'fddbr',
+            fieldLabel: '法定代表人（单位负责人）'
         },
         {
             xtype: 'textfield',

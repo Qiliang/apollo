@@ -1124,6 +1124,76 @@ public class FillUserExample {
             addCriterion("password_reset_date not between", value1, value2, "passwordResetDate");
             return (Criteria) this;
         }
+
+        public Criteria andFddbrIsNull() {
+            addCriterion("fddbr is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrIsNotNull() {
+            addCriterion("fddbr is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrEqualTo(String value) {
+            addCriterion("fddbr =", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrNotEqualTo(String value) {
+            addCriterion("fddbr <>", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrGreaterThan(String value) {
+            addCriterion("fddbr >", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrGreaterThanOrEqualTo(String value) {
+            addCriterion("fddbr >=", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrLessThan(String value) {
+            addCriterion("fddbr <", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrLessThanOrEqualTo(String value) {
+            addCriterion("fddbr <=", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrLike(String value) {
+            addCriterion("fddbr like", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrNotLike(String value) {
+            addCriterion("fddbr not like", value, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrIn(List<String> values) {
+            addCriterion("fddbr in", values, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrNotIn(List<String> values) {
+            addCriterion("fddbr not in", values, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrBetween(String value1, String value2) {
+            addCriterion("fddbr between", value1, value2, "fddbr");
+            return (Criteria) this;
+        }
+
+        public Criteria andFddbrNotBetween(String value1, String value2) {
+            addCriterion("fddbr not between", value1, value2, "fddbr");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

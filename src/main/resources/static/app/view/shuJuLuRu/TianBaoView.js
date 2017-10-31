@@ -24,7 +24,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             me.loadRecord(me.recordData);
             //动态删除验收意见
             if (me.recordData.data.tableCode) {
-                Ext.require(['Kits.view.tables.'+me.recordData.data.tableCode], function () {
+                Ext.require(['Kits.view.tables.' + me.recordData.data.tableCode], function () {
                     me.insert(0, {
                         title: me.recordData.data.tableName,
                         xtype: 'tables' + me.recordData.data.tableCode, // tabcode
@@ -45,6 +45,10 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
                 // me.queryById('dc').hide();
                 me.queryById('jc').hide();
                 me.queryById('tj').hide();
+                me.queryById('zysRadio').setDisabled(true);
+                me.queryById('zysText').setDisabled(true);
+                me.queryById('qysRadio').setDisabled(true);
+                me.queryById('qysText').setDisabled(true);
             }
             switch (me.recordData.data.reportState) {
                 case 'wtb' :
@@ -90,6 +94,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
         itemId: 'qysyj',
         title: '区验收意见',
         items: [{
+            itemId: 'qysRadio',
             xtype: 'radiogroup',
             fieldLabel: '区是否验收通过',
             cls: 'x-check-group-alt',
@@ -102,6 +107,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             ]
         },
             {
+                itemId: 'qysText',
                 xtype: 'textareafield',
                 fieldLabel: '区验收意见',
                 name: 'areaSuggestions',
@@ -121,7 +127,31 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             itemId: 'jc',
             text: '检查',
             handler: function (e) {
-                Ext.getCmp('fillTable').commFunc.validate();
+                Ext.getCmp('fillTable').commFunc.validate(function (data) {
+                    if (data) {
+                        if (data.success) {
+                            Ext.Msg.alert('成功！', data.data);
+                        } else {
+                            var store = {
+                                xtype: 'store.store',
+                                data: data.data
+                            }
+                            var win = Ext.create('Ext.window.Window', {
+                                title: '错误信息',
+                                height: 400,
+                                width: 600,
+                                layout: 'fit',
+                                closeToolText: '关闭',
+                                // closeAction:'hide',
+                                modal: true,
+                                items: Ext.create('Kits.view.shuJuLuRu.ValidateDataView', {
+                                    store: store
+                                })
+                            });
+                            win.show();
+                        }
+                    }
+                });
             }
         }, {
             itemId: 'tj',
@@ -137,12 +167,12 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
                             params: {id: btn.recordData.id},
                             success: function (response, opts) {
                                 var res = JSON.parse(response.responseText);
-                                Ext.Msg.alert('成功！', res.message);
+                                Ext.Msg.alert('成功！', res.data);
                                 btn.callBack();
                             },
                             failure: function (response, opts) {
                                 var res = JSON.parse(response.responseText);
-                                Ext.MessageBox.alert('失败', '错误信息：' + res.message);
+                                Ext.MessageBox.alert('失败', '错误信息：' + res.data);
                             }
                         });
                     } else {

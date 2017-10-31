@@ -26,11 +26,11 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
                     me.insert(0, {
                         title: me.recordData.data.tableName,
                         xtype: 'tables' + me.recordData.data.tableCode, // tabcode
-                        height: 1900,
                         commConfig: {
                             hiddenExport: true,
                             hiddenValidate: true,
                             hiddenSubmit: true,
+                            autoHeight:true
                         },
                         usercode: me.recordData.data.id,
                         id: 'fillTable'
@@ -67,7 +67,31 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
             itemId: 'jc',
             text: '检查',
             handler: function (e) {
-                Ext.getCmp('fillTable').commFunc.validate();
+                Ext.getCmp('fillTable').commFunc.validate(function (data) {
+                    if (data) {
+                        if (data.success) {
+                            Ext.Msg.alert('成功！', data.data);
+                        } else {
+                            var store = {
+                                xtype: 'store.store',
+                                data: data.data
+                            }
+                            var win = Ext.create('Ext.window.Window', {
+                                title: '错误信息',
+                                height: 400,
+                                width: 600,
+                                layout: 'fit',
+                                closeToolText: '关闭',
+                                // closeAction:'hide',
+                                modal: true,
+                                items: Ext.create('Kits.view.shuJuLuRu.ValidateDataView', {
+                                    store: store
+                                })
+                            });
+                            win.show();
+                        }
+                    }
+                });
             }
         }, {
             itemId: 'tj',
@@ -80,7 +104,7 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
                         //提交成功
                         if (state) {
                             form.submit({
-                                url: '/api/directRptTask/updateRptTaskObject',
+                                url: '/api/directRptTask/auditRptTaskObject',
                                 method: 'POST',
                                 waitMsg: '提交中，请稍后...',
                                 waitTitle: '提示',
