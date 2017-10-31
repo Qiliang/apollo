@@ -103,11 +103,12 @@ Ext.define('Kits.view.tables.Base', {
             callFunc && callFunc();
         },
         validate:function (callFunc) {
+            var me = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
             Ext.Ajax.request({
                 url:'/api/rpt/collect/validate',
                 params:{
-                  tabid:this.tableid,
-                  usercode:this.usercode
+                  tabid:me.tableid,
+                  usercode:me.usercode
                 },
                 success: function(response, opts) {
                     var obj = Ext.decode(response.responseText);
