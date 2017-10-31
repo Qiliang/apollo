@@ -155,7 +155,7 @@ Ext.define('Kits.view.tables.Base', {
                     var obj = Ext.decode(response.responseText);
                     if(obj.success){
                         me.loadData();
-                        callFunc && callFunc(true,"提交成功");
+                        callFunc && callFunc({success:false,data:"提交成功"});
                     }
                 },
                 failure: function(response, opts) {
