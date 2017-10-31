@@ -32,7 +32,7 @@ Ext.define('Kits.view.tables.Base', {
                 handler: function () {
                     var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
                     if(cmp.commFunc.export){
-                        cmp.commFunc.export.call(this);
+                        cmp.commFunc.export.call(cmp);
                     }
                 }
             },
@@ -43,7 +43,7 @@ Ext.define('Kits.view.tables.Base', {
                 handler: function () {
                     var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
                     if(cmp.commFunc.validate){
-                        cmp.commFunc.validate.call(this);
+                        cmp.commFunc.validate.call(cmp);
                     }
                 }
             },
@@ -54,7 +54,7 @@ Ext.define('Kits.view.tables.Base', {
                 handler: function () {
                     var cmp = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
                     if(cmp.commFunc.submit){
-                        cmp.commFunc.submit.call(this);
+                        cmp.commFunc.submit.call(cmp);
                     }
                 }
             }
@@ -100,11 +100,23 @@ Ext.define('Kits.view.tables.Base', {
     },
     commFunc:{
         export:function (callFunc) {
-            alert('export');
             callFunc && callFunc();
         },
         validate:function (callFunc) {
-            alert('validate');
+            Ext.Ajax.request({
+                url:'/api/rpt/collect/validate',
+                params:{
+                  tabid:this.tableid,
+                  usercode:this.usercode
+                },
+                success: function(response, opts) {
+                    var obj = Ext.decode(response.responseText);
+                    callFunc && callFunc(obj);
+                },
+                failure: function(response, opts) {
+                    console.log('server-side failure with status code ' + response.status);
+                }
+            });
             callFunc && callFunc();
         },
         submit:function (callFunc) {
@@ -146,7 +158,7 @@ Ext.define('Kits.view.tables.Base', {
                     }
                 },
                 failure: function(response, opts) {
-                    callFunc && callFunc(false,"提交失败");
+                    callFunc && callFunc({success:false,data:"提交失败"});
                     console.log('server-side failure with status code ' + response.status);
                 }
             });
