@@ -4,6 +4,7 @@ Ext.define('Kits.view.tables.A301', {
     xtype: 'tablesA301',
     hzcolumn:'hzcode',
     tableid: '923004080521043968',
+    rowNum: 17,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',

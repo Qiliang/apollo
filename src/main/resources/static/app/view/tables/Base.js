@@ -3,7 +3,8 @@ Ext.define('Kits.view.tables.Base', {
     layout: 'border',
     hzcolumn:'hzcode',
     tableid: '',
-    usercode:'',
+    usercode:'1',
+    rowNum: 30,
     initComponent: function () {
         var me = this;
         Ext.apply(this.columns[0].columns[0],{
@@ -154,11 +155,16 @@ Ext.define('Kits.view.tables.Base', {
     commConfig:{
         hiddenExport:false,
         hiddenValidate:false,
-        hiddenSubmit:false
+        hiddenSubmit:false,
+        autoHeight:false
     },
     itemId:'zhiDuSubmitForm',
     listeners: {
         afterrender: function (me) {
+            var auto = this.commConfig.autoHeight;
+            if(auto){
+               me.setHeight(this.rowNum*30);
+            }
             me.loadData();
         }
     },

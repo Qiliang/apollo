@@ -4,6 +4,7 @@ Ext.define('Kits.view.tables.ENN04', {
     xtype: 'tablesENN04',
     hzcolumn:'hzcode',
     tableid: '923004098938232832',
+    rowNum: 67,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',

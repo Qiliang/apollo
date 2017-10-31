@@ -363,6 +363,7 @@ public class RptTabSettingService {
         }
         List<Map<String,Object>> datas = new ArrayList<>();
         buildData(datas,colList);
+        model.put("rowNum",datas.size());
         Collections.reverse(datas);
         try {
             model.put("datas",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(datas));

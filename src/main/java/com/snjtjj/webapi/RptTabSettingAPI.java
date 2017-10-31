@@ -43,7 +43,6 @@ public class RptTabSettingAPI {
 
     @PostMapping("/add")
     public FormResponse<String> add(@RequestBody List<RptTabSetting> list){
-
         String tabid = null,item=null;
         Integer type = null;
         Integer tabdeep = 0;

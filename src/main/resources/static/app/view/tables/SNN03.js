@@ -4,6 +4,7 @@ Ext.define('Kits.view.tables.SNN03', {
     xtype: 'tablesSNN03',
     hzcolumn:'hzcode',
     tableid: '923003994621698048',
+    rowNum: 143,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
