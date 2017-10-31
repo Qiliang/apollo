@@ -5,6 +5,9 @@ Ext.define('Kits.view.tables.Base', {
     tableid: '',
     usercode:'1',
     rowNum: 30,
+    requires: [
+        'Ext.grid.plugin.Exporter',
+    ],
     initComponent: function () {
         var me = this;
         Ext.apply(this.columns[0].columns[0],{
@@ -100,6 +103,19 @@ Ext.define('Kits.view.tables.Base', {
     },
     commFunc:{
         export:function (callFunc) {
+            var me = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+            var config = {
+                type: 'excel07',
+                ext: 'xlsx',
+                includeGroups: true,
+                includeSummary: true
+            };
+            var grid = me.down('grid');
+            var cfg = Ext.merge({
+                title: me.title,
+                fileName: me.title + '.xlsx'
+            }, config);
+            grid.saveDocumentAs(cfg);
             callFunc && callFunc();
         },
         validate:function (callFunc) {
@@ -157,6 +173,9 @@ Ext.define('Kits.view.tables.Base', {
                         me.loadData();
                         callFunc && callFunc({success:false,data:"提交成功"});
                     }
+                    else{
+                        callFunc && callFunc(obj);
+                    }
                 },
                 failure: function(response, opts) {
                     callFunc && callFunc({success:false,data:"提交失败"});
@@ -204,6 +223,7 @@ Ext.define('Kits.view.tables.Base', {
                 xtype: 'grid',
                 region: 'center',
                 plugins: {
+                    gridexporter: true,
                     cellediting: {
                         clicksToEdit: 1,
                         listeners: {
