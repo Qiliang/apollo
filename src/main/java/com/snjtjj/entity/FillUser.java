@@ -24,6 +24,8 @@ public class FillUser extends DataEntity<FillUser>{
 
     private Date passwordResetDate;
 
+    private String fddbr;
+
 
     public String getObjId() {
         return objId;
@@ -96,5 +98,13 @@ public class FillUser extends DataEntity<FillUser>{
 
     public void setPasswordResetDate(Date passwordResetDate) {
         this.passwordResetDate = passwordResetDate;
+    }
+
+    public String getFddbr() {
+        return fddbr;
+    }
+
+    public void setFddbr(String fddbr) {
+        this.fddbr = fddbr == null ? null : fddbr.trim();
     }
 }

@@ -59,19 +59,25 @@ Ext.define('Kits.view.zhiDu.YiTianBaoView', {
                     items: [{
                         iconCls: 'x-fa fa-eye',
                         tooltip: '查看',
-                        handler: function(grid, rowIndex, colIndex) {
-                            var rec = grid.getStore().getAt(rowIndex);
-                            Ext.create('Ext.window.Window', {
-                                title: '查看填报内容',
-                                height: 600,
-                                width: 700,
+                        handler: function(view, recIndex, cellIndex, item, e, record) {
+                            var btn = this;
+                            var win = Ext.create('Ext.window.Window', {
+                                title: '查看',
+                                height: 700,
+                                width: 1100,
                                 layout: 'fit',
-                                closeToolText:'关闭',
+                                closeToolText: '关闭',
                                 // closeAction:'hide',
-                                modal:true,
-                                items: Ext.create('Kits.view.zhiDu.TianBaoTableView',{a:rec.get('id')})
-                            }).show();
-                            // alert("查看 " + rec.get('id'));
+                                modal: true,
+                                items: Ext.create('Kits.view.shuJuLuRu.TianBaoView', {
+                                    isView: true, recordData: record,
+                                    callBack: function () {
+                                        btn.up('grid').getStore().reload();
+                                        win.close();
+                                    }
+                                })
+                            });
+                            win.show();
                         }
                     }]
                 }

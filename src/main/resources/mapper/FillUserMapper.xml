@@ -1,42 +1,43 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.snjtjj.mapper.FillUserMapper" >
-  <resultMap id="BaseResultMap" type="com.snjtjj.entity.FillUser" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="obj_id" property="objId" jdbcType="VARCHAR" />
-    <result column="obj_type" property="objType" jdbcType="VARCHAR" />
-    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
-    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
-    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
-    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
-    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
-    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
-    <result column="login_user_name" property="loginUserName" jdbcType="VARCHAR" />
-    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="leader_mobile" property="leaderMobile" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="fill_name" property="fillName" jdbcType="VARCHAR" />
-    <result column="password_reset_date" property="passwordResetDate" jdbcType="TIMESTAMP" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.snjtjj.mapper.FillUserMapper">
+  <resultMap id="BaseResultMap" type="com.snjtjj.entity.FillUser">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="obj_id" jdbcType="VARCHAR" property="objId" />
+    <result column="obj_type" jdbcType="VARCHAR" property="objType" />
+    <result column="login_password" jdbcType="VARCHAR" property="loginPassword" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="login_user_name" jdbcType="VARCHAR" property="loginUserName" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="leader_mobile" jdbcType="VARCHAR" property="leaderMobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="fill_name" jdbcType="VARCHAR" property="fillName" />
+    <result column="password_reset_date" jdbcType="TIMESTAMP" property="passwordResetDate" />
+    <result column="fddbr" jdbcType="VARCHAR" property="fddbr" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -47,25 +48,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -76,157 +77,11 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, obj_id, obj_type, login_password, create_by, create_date, update_by, update_date, 
-    del_flag, login_user_name, mobile, leader_mobile, email, fill_name, password_reset_date
+    del_flag, login_user_name, mobile, leader_mobile, email, fill_name, password_reset_date, 
+    fddbr
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.FillUserExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from fill_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from fill_user
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from fill_user
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.snjtjj.entity.FillUserExample" >
-    delete from fill_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.snjtjj.entity.FillUser" >
-    insert into fill_user (id, obj_id, obj_type, 
-      login_password, create_by, create_date, 
-      update_by, update_date, del_flag, 
-      login_user_name, mobile, leader_mobile, 
-      email, fill_name, password_reset_date
-      )
-    values (#{id,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, #{objType,jdbcType=VARCHAR}, 
-      #{loginPassword,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=CHAR}, 
-      #{loginUserName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{leaderMobile,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{fillName,jdbcType=VARCHAR}, #{passwordResetDate,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.snjtjj.entity.FillUser" >
-    insert into fill_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="objId != null" >
-        obj_id,
-      </if>
-      <if test="objType != null" >
-        obj_type,
-      </if>
-      <if test="loginPassword != null" >
-        login_password,
-      </if>
-      <if test="createBy != null" >
-        create_by,
-      </if>
-      <if test="createDate != null" >
-        create_date,
-      </if>
-      <if test="updateBy != null" >
-        update_by,
-      </if>
-      <if test="updateDate != null" >
-        update_date,
-      </if>
-      <if test="delFlag != null" >
-        del_flag,
-      </if>
-      <if test="loginUserName != null" >
-        login_user_name,
-      </if>
-      <if test="mobile != null" >
-        mobile,
-      </if>
-      <if test="leaderMobile != null" >
-        leader_mobile,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="fillName != null" >
-        fill_name,
-      </if>
-      <if test="passwordResetDate != null" >
-        password_reset_date,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=VARCHAR},
-      </if>
-      <if test="objId != null" >
-        #{objId,jdbcType=VARCHAR},
-      </if>
-      <if test="objType != null" >
-        #{objType,jdbcType=VARCHAR},
-      </if>
-      <if test="loginPassword != null" >
-        #{loginPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="createBy != null" >
-        #{createBy,jdbcType=VARCHAR},
-      </if>
-      <if test="createDate != null" >
-        #{createDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateBy != null" >
-        #{updateBy,jdbcType=VARCHAR},
-      </if>
-      <if test="updateDate != null" >
-        #{updateDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="delFlag != null" >
-        #{delFlag,jdbcType=CHAR},
-      </if>
-      <if test="loginUserName != null" >
-        #{loginUserName,jdbcType=VARCHAR},
-      </if>
-      <if test="mobile != null" >
-        #{mobile,jdbcType=VARCHAR},
-      </if>
-      <if test="leaderMobile != null" >
-        #{leaderMobile,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="fillName != null" >
-        #{fillName,jdbcType=VARCHAR},
-      </if>
-      <if test="passwordResetDate != null" >
-        #{passwordResetDate,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.snjtjj.entity.FillUserExample" resultType="java.lang.Integer" >
-    select count(*) from fill_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
 
   <select id="selectByLoginUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
@@ -235,60 +90,216 @@
     where login_user_name = #{loginUserName,jdbcType=VARCHAR} and del_flag='0'
   </select>
 
-  <update id="updateByExampleSelective" parameterType="map" >
+  <select id="selectByExample" parameterType="com.snjtjj.entity.FillUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from fill_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fill_user
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from fill_user
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.snjtjj.entity.FillUserExample">
+    delete from fill_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.snjtjj.entity.FillUser">
+    insert into fill_user (id, obj_id, obj_type, 
+      login_password, create_by, create_date, 
+      update_by, update_date, del_flag, 
+      login_user_name, mobile, leader_mobile, 
+      email, fill_name, password_reset_date, 
+      fddbr)
+    values (#{id,jdbcType=VARCHAR}, #{objId,jdbcType=VARCHAR}, #{objType,jdbcType=VARCHAR}, 
+      #{loginPassword,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=CHAR}, 
+      #{loginUserName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{leaderMobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{fillName,jdbcType=VARCHAR}, #{passwordResetDate,jdbcType=TIMESTAMP}, 
+      #{fddbr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.snjtjj.entity.FillUser">
+    insert into fill_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="objId != null">
+        obj_id,
+      </if>
+      <if test="objType != null">
+        obj_type,
+      </if>
+      <if test="loginPassword != null">
+        login_password,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="loginUserName != null">
+        login_user_name,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="leaderMobile != null">
+        leader_mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="fillName != null">
+        fill_name,
+      </if>
+      <if test="passwordResetDate != null">
+        password_reset_date,
+      </if>
+      <if test="fddbr != null">
+        fddbr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="objId != null">
+        #{objId,jdbcType=VARCHAR},
+      </if>
+      <if test="objType != null">
+        #{objType,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null">
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="loginUserName != null">
+        #{loginUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderMobile != null">
+        #{leaderMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fillName != null">
+        #{fillName,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordResetDate != null">
+        #{passwordResetDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fddbr != null">
+        #{fddbr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.snjtjj.entity.FillUserExample" resultType="java.lang.Integer">
+    select count(*) from fill_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
     update fill_user
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.objId != null" >
+      <if test="record.objId != null">
         obj_id = #{record.objId,jdbcType=VARCHAR},
       </if>
-      <if test="record.objType != null" >
+      <if test="record.objType != null">
         obj_type = #{record.objType,jdbcType=VARCHAR},
       </if>
-      <if test="record.loginPassword != null" >
+      <if test="record.loginPassword != null">
         login_password = #{record.loginPassword,jdbcType=VARCHAR},
       </if>
-      <if test="record.createBy != null" >
+      <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.createDate != null" >
+      <if test="record.createDate != null">
         create_date = #{record.createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updateBy != null" >
+      <if test="record.updateBy != null">
         update_by = #{record.updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="record.updateDate != null" >
+      <if test="record.updateDate != null">
         update_date = #{record.updateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.delFlag != null" >
+      <if test="record.delFlag != null">
         del_flag = #{record.delFlag,jdbcType=CHAR},
       </if>
-      <if test="record.loginUserName != null" >
+      <if test="record.loginUserName != null">
         login_user_name = #{record.loginUserName,jdbcType=VARCHAR},
       </if>
-      <if test="record.mobile != null" >
+      <if test="record.mobile != null">
         mobile = #{record.mobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.leaderMobile != null" >
+      <if test="record.leaderMobile != null">
         leader_mobile = #{record.leaderMobile,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
+      <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
-      <if test="record.fillName != null" >
+      <if test="record.fillName != null">
         fill_name = #{record.fillName,jdbcType=VARCHAR},
       </if>
-      <if test="record.passwordResetDate != null" >
+      <if test="record.passwordResetDate != null">
         password_reset_date = #{record.passwordResetDate,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.fddbr != null">
+        fddbr = #{record.fddbr,jdbcType=VARCHAR},
+      </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update fill_user
     set id = #{record.id,jdbcType=VARCHAR},
       obj_id = #{record.objId,jdbcType=VARCHAR},
@@ -304,60 +315,64 @@
       leader_mobile = #{record.leaderMobile,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       fill_name = #{record.fillName,jdbcType=VARCHAR},
-      password_reset_date = #{record.passwordResetDate,jdbcType=TIMESTAMP}
-    <if test="_parameter != null" >
+      password_reset_date = #{record.passwordResetDate,jdbcType=TIMESTAMP},
+      fddbr = #{record.fddbr,jdbcType=VARCHAR}
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.FillUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.snjtjj.entity.FillUser">
     update fill_user
-    <set >
-      <if test="objId != null" >
+    <set>
+      <if test="objId != null">
         obj_id = #{objId,jdbcType=VARCHAR},
       </if>
-      <if test="objType != null" >
+      <if test="objType != null">
         obj_type = #{objType,jdbcType=VARCHAR},
       </if>
-      <if test="loginPassword != null" >
+      <if test="loginPassword != null">
         login_password = #{loginPassword,jdbcType=VARCHAR},
       </if>
-      <if test="createBy != null" >
+      <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
       </if>
-      <if test="createDate != null" >
+      <if test="createDate != null">
         create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateBy != null" >
+      <if test="updateBy != null">
         update_by = #{updateBy,jdbcType=VARCHAR},
       </if>
-      <if test="updateDate != null" >
+      <if test="updateDate != null">
         update_date = #{updateDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="delFlag != null" >
+      <if test="delFlag != null">
         del_flag = #{delFlag,jdbcType=CHAR},
       </if>
-      <if test="loginUserName != null" >
+      <if test="loginUserName != null">
         login_user_name = #{loginUserName,jdbcType=VARCHAR},
       </if>
-      <if test="mobile != null" >
+      <if test="mobile != null">
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="leaderMobile != null" >
+      <if test="leaderMobile != null">
         leader_mobile = #{leaderMobile,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="fillName != null" >
+      <if test="fillName != null">
         fill_name = #{fillName,jdbcType=VARCHAR},
       </if>
-      <if test="passwordResetDate != null" >
+      <if test="passwordResetDate != null">
         password_reset_date = #{passwordResetDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fddbr != null">
+        fddbr = #{fddbr,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.FillUser" >
+  <update id="updateByPrimaryKey" parameterType="com.snjtjj.entity.FillUser">
     update fill_user
     set obj_id = #{objId,jdbcType=VARCHAR},
       obj_type = #{objType,jdbcType=VARCHAR},
@@ -372,7 +387,8 @@
       leader_mobile = #{leaderMobile,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       fill_name = #{fillName,jdbcType=VARCHAR},
-      password_reset_date = #{passwordResetDate,jdbcType=TIMESTAMP}
+      password_reset_date = #{passwordResetDate,jdbcType=TIMESTAMP},
+      fddbr = #{fddbr,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

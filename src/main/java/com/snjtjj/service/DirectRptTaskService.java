@@ -198,6 +198,14 @@ public class DirectRptTaskService {
         PageHelper.startPage(page, limit);
         List<RptTaskObject> list = rptTaskObjectMapper.selectByExample(rptTaskObjectExample);
         fillObjName(list);
+        list.forEach(item -> {
+            DirectRptTask directRptTask = directRptTaskMapper.selectByPrimaryKey(item.getTaskId());
+            fillSystemAndTableInfo(directRptTask);
+            item.setName(directRptTask.getName());
+            item.setSystemName(directRptTask.getSystemName());
+            item.setTableName(directRptTask.getTableName());
+            item.setTableCode(directRptTask.getTableCode());
+        });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }

@@ -121,7 +121,7 @@ public class OrganizationService {
     public void delete(String id){
         //判断是否有子节点
         OrganizationExample organizationExample = new OrganizationExample();
-        organizationExample.createCriteria().andParentIdEqualTo(id);
+        organizationExample.createCriteria().andParentIdEqualTo(id).andDelFlagEqualTo("0");
         List<Organization> list = organizationMapper.selectByExample(organizationExample);
         if(list.size()>0){
             throw new ResponseException("无法删除有下属节点的组织机构！", HttpStatus.INTERNAL_SERVER_ERROR);

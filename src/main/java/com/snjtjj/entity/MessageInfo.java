@@ -1,5 +1,7 @@
 package com.snjtjj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class MessageInfo {
@@ -16,7 +18,7 @@ public class MessageInfo {
     private String formName;
 
     private String toUserId;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private Date readTime;
