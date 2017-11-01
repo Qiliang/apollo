@@ -9,6 +9,7 @@
     <result column="makedept" property="makedept" jdbcType="VARCHAR" />
     <result column="approvalno" property="approvalno" jdbcType="VARCHAR" />
     <result column="validitydate" property="validitydate" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
     <result column="tabdeep" property="tabdeep" jdbcType="INTEGER" />
     <result column="tabdeep1" property="tabdeep1" jdbcType="INTEGER" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
@@ -76,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, systeminfoid, tabcode, tabname, makedept, approvalno, validitydate, tabdeep, 
-    tabdeep1, create_date, create_by, update_by, update_date, del_flag
+    id, systeminfoid, tabcode, tabname, makedept, approvalno, validitydate, comment, 
+    tabdeep, tabdeep1, create_date, create_by, update_by, update_date, del_flag
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTabExample" >
     select
@@ -112,14 +113,16 @@
   <insert id="insert" parameterType="com.snjtjj.entity.RptTab" >
     insert into rpt_tab (id, systeminfoid, tabcode, 
       tabname, makedept, approvalno, 
-      validitydate, tabdeep, tabdeep1, 
-      create_date, create_by, update_by, 
-      update_date, del_flag)
+      validitydate, comment, tabdeep, 
+      tabdeep1, create_date, create_by, 
+      update_by, update_date, del_flag
+      )
     values (#{id,jdbcType=VARCHAR}, #{systeminfoid,jdbcType=VARCHAR}, #{tabcode,jdbcType=VARCHAR}, 
       #{tabname,jdbcType=VARCHAR}, #{makedept,jdbcType=VARCHAR}, #{approvalno,jdbcType=VARCHAR}, 
-      #{validitydate,jdbcType=VARCHAR}, #{tabdeep,jdbcType=INTEGER}, #{tabdeep1,jdbcType=INTEGER}, 
-      #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
-      #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})
+      #{validitydate,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{tabdeep,jdbcType=INTEGER}, 
+      #{tabdeep1,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.snjtjj.entity.RptTab" >
     insert into rpt_tab
@@ -144,6 +147,9 @@
       </if>
       <if test="validitydate != null" >
         validitydate,
+      </if>
+      <if test="comment != null" >
+        comment,
       </if>
       <if test="tabdeep != null" >
         tabdeep,
@@ -188,6 +194,9 @@
       </if>
       <if test="validitydate != null" >
         #{validitydate,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
       </if>
       <if test="tabdeep != null" >
         #{tabdeep,jdbcType=INTEGER},
@@ -242,6 +251,9 @@
       <if test="record.validitydate != null" >
         validitydate = #{record.validitydate,jdbcType=VARCHAR},
       </if>
+      <if test="record.comment != null" >
+        comment = #{record.comment,jdbcType=VARCHAR},
+      </if>
       <if test="record.tabdeep != null" >
         tabdeep = #{record.tabdeep,jdbcType=INTEGER},
       </if>
@@ -277,6 +289,7 @@
       makedept = #{record.makedept,jdbcType=VARCHAR},
       approvalno = #{record.approvalno,jdbcType=VARCHAR},
       validitydate = #{record.validitydate,jdbcType=VARCHAR},
+      comment = #{record.comment,jdbcType=VARCHAR},
       tabdeep = #{record.tabdeep,jdbcType=INTEGER},
       tabdeep1 = #{record.tabdeep1,jdbcType=INTEGER},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
@@ -308,6 +321,9 @@
       </if>
       <if test="validitydate != null" >
         validitydate = #{validitydate,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
       </if>
       <if test="tabdeep != null" >
         tabdeep = #{tabdeep,jdbcType=INTEGER},
@@ -341,6 +357,7 @@
       makedept = #{makedept,jdbcType=VARCHAR},
       approvalno = #{approvalno,jdbcType=VARCHAR},
       validitydate = #{validitydate,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
       tabdeep = #{tabdeep,jdbcType=INTEGER},
       tabdeep1 = #{tabdeep1,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=TIMESTAMP},
@@ -350,12 +367,11 @@
       del_flag = #{delFlag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-
   <!-- 周博添加的sql -->
   <select id="selectByUserRole" resultMap="BaseResultMap" parameterType="com.snjtjj.entity.RptTabExample" >
     select
     <include refid="Base_Column_List" />
     from rpt_tab where del_flag='0' AND systeminfoid in (@ids@)
-   order by create_date DESC
+    order by create_date DESC
   </select>
 </mapper>

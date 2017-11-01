@@ -242,7 +242,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                                 columnWidth:3/4,layout:'form',
                                 margin:'2 10 2 10',
                                 items:[
-                                    {fieldLabel:'规则描述',name:'remark',itemId:'remark',dataIndex:'remark',childEdit:'editing',xtype:'textarea'}
+                                    {fieldLabel:'规则描述',name:'comment',itemId:'comment',dataIndex:'comment',childEdit:'editing',xtype:'textarea'}
                                 ]
                             }
                         ]}

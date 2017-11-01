@@ -39,7 +39,7 @@ public class RptTabAPI {
         }
         else{
             tab.preUpdate();
-            rptTabMapper.updateByPrimaryKey(tab);
+            rptTabMapper.updateByPrimaryKeySelective(tab);
             formResponse = new FormResponse("更新成功！");
         }
         return formResponse;

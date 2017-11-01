@@ -20,6 +20,8 @@ public class RptTab extends DataEntity<RptTab> {
 
     private String validitydate;
 
+    private String comment;
+
     private Integer tabdeep;
 
     private Integer tabdeep1;
@@ -72,6 +74,14 @@ public class RptTab extends DataEntity<RptTab> {
 
     public void setValiditydate(String validitydate) {
         this.validitydate = validitydate == null ? null : validitydate.trim();
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment == null ? null : comment.trim();
     }
 
     public Integer getTabdeep() {

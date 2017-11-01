@@ -385,7 +385,14 @@ public class RptTabSettingService {
         model.put("tabcode",tabcode);
         model.put("tabname",tabname);
         model.put("tabid",tab.getId());
-
+        model.put("makedept",tab.getMakedept());
+        model.put("approvalno",tab.getApprovalno());
+        model.put("validitydate",tab.getValiditydate());
+        String comment = tab.getComment();
+        if(comment != null){
+            comment= comment.replaceAll("[\\t\\n\\r]", "</br>");
+        }
+        model.put("comment",comment);
         String tplPath = buildPath("src/main/resources/static/ftl");
         String appPath = buildPath(String.format("src/main/resources/static/app/view/tables/%s.js",tabcode));
         //noinspection Duplicates
