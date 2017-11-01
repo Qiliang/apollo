@@ -158,6 +158,7 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
             text: '提交',
             handler: function (e) {
                 var btn = this.up('panel');
+                btn.mask();
                 Ext.getCmp('fillTable').commFunc.submit(function (state, msg) {
                     //提交成功
                     if (state) {
@@ -169,14 +170,17 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
                                 var res = JSON.parse(response.responseText);
                                 Ext.Msg.alert('成功！', res.data);
                                 btn.callBack();
+                                btn.unmask();
                             },
                             failure: function (response, opts) {
                                 var res = JSON.parse(response.responseText);
                                 Ext.MessageBox.alert('失败', '错误信息：' + res.data);
+                                btn.unmask();
                             }
                         });
                     } else {
                         Ext.Msg.alert('提交失败！', msg);
+                        btn.unmask();
                     }
                 });
             }
