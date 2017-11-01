@@ -47,6 +47,14 @@ public class RptTaskObject {
 
     private Date fillDate;
 
+    private Date fillDateStr;
+
+    private String fillName;
+
+    private String fddbr;
+
+    private String xxmc;
+
     private Date townSuggestionsDate;
 
     private Date areaSuggestionsDate;
@@ -238,5 +246,38 @@ public class RptTaskObject {
 
     public void setTableCode(String tableCode) {
         this.tableCode = tableCode;
+    }
+
+    @JsonFormat(pattern="yyyy年MM月dd日")
+    public Date getFillDateStr() {
+        return fillDateStr;
+    }
+
+    public void setFillDateStr(Date fillDateStr) {
+        this.fillDateStr = fillDateStr;
+    }
+
+    public String getFillName() {
+        return fillName;
+    }
+
+    public void setFillName(String fillName) {
+        this.fillName = fillName;
+    }
+
+    public String getFddbr() {
+        return fddbr;
+    }
+
+    public void setFddbr(String fddbr) {
+        this.fddbr = fddbr;
+    }
+
+    public String getXxmc() {
+        return xxmc;
+    }
+
+    public void setXxmc(String xxmc) {
+        this.xxmc = xxmc;
     }
 }

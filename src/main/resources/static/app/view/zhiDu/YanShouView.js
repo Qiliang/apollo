@@ -30,7 +30,11 @@ Ext.define('Kits.view.zhiDu.YanShouView', {
                             hiddenExport: true,
                             hiddenValidate: true,
                             hiddenSubmit: true,
-                            autoHeight:true
+                            autoHeight:true,
+                            fillDate:me.recordData.data.fillDateStr?me.recordData.data.fillDateStr:Ext.Date.format(new Date(), 'Y年m月d日'),
+                            fillName:me.recordData.data.fillName,
+                            fddbr:me.recordData.data.fddbr,
+                            xxmc:me.recordData.data.xxmc
                         },
                         usercode: me.recordData.data.id,
                         id: 'fillTable'

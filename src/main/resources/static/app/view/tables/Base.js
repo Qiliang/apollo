@@ -23,6 +23,27 @@ Ext.define('Kits.view.tables.Base', {
         });
         var config = Ext.clone(me.commConfig);
         var items = Ext.clone(me.defConfig.items);
+        //替换headerItems
+        if(this.headerItems&&this.headerItems.length==3){
+            if(this.commConfig.xxmc){
+                this.headerItems[0].html='<br /><br /><br />综合机关名称：'+this.commConfig.xxmc;
+            }
+        }
+        //替换footerItems
+        if(this.footerItems&&this.footerItems.length==4){
+            if(this.commConfig.fddbr){
+                this.footerItems[0].html='单位负责人：'+this.commConfig.fddbr;
+            }
+            if(this.commConfig.fillName){
+                this.footerItems[1].html='填报人：'+this.commConfig.fillName;
+            }
+            if(this.commConfig.fillDate){
+                this.footerItems[2].html='填报日期：'+this.commConfig.fillDate;
+            }
+            // else{
+            //     this.footerItems[2].html='填报日期：'+Ext.Date.format(new Date(), 'Y年m月d日');
+            // }
+        }
         Ext.apply(items[0].items, this.headerItems);
         Ext.apply(items[1].store, this.store);
         Ext.apply(items[1].columns.items, this.columns);
@@ -188,7 +209,12 @@ Ext.define('Kits.view.tables.Base', {
         hiddenExport:false,
         hiddenValidate:false,
         hiddenSubmit:false,
-        autoHeight:false
+        autoHeight:false,
+        fillName:'',
+        fillDate:'',
+        fddbr:'',
+        xxmc:''
+
     },
     itemId:'zhiDuSubmitForm',
     listeners: {

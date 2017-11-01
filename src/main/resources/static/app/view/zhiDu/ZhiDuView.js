@@ -27,7 +27,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuView', {
                     url: '/api/tab/list',
                     reader: {
                         type: 'json',
-                        root: 'data'
+                        rootProperty: 'data',
                     }
 
                 },

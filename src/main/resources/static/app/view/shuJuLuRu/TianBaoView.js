@@ -28,11 +28,15 @@ Ext.define('Kits.view.shuJuLuRu.TianBaoView', {
                     me.insert(0, {
                         title: me.recordData.data.tableName,
                         xtype: 'tables' + me.recordData.data.tableCode, // tabcode
-                        height: 1900,
                         commConfig: {
                             hiddenExport: true,
                             hiddenValidate: true,
                             hiddenSubmit: true,
+                            autoHeight:true,
+                            fillDate:me.recordData.data.fillDateStr?me.recordData.data.fillDateStr:Ext.Date.format(new Date(), 'Y年m月d日'),
+                            fillName:me.recordData.data.fillName,
+                            fddbr:me.recordData.data.fddbr,
+                            xxmc:me.recordData.data.xxmc
                         },
                         usercode: me.recordData.data.id,
                         id: 'fillTable'

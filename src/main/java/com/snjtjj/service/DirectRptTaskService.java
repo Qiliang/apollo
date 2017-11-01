@@ -45,6 +45,8 @@ public class DirectRptTaskService {
     private CompanyMapper companyMapper;
     @Autowired
     private MessageInfoService messageInfoService;
+    @Autowired
+    private FillUserMapper fillUserMapper;
 
     public PageInfo<DirectRptTask> getListByUserID(String name, Integer page, Integer limit) {
         //查询该行政区划代码下面的所有行政区划
@@ -205,6 +207,7 @@ public class DirectRptTaskService {
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
             item.setTableCode(directRptTask.getTableCode());
+            fillUserInfo(item);
         });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
@@ -258,6 +261,7 @@ public class DirectRptTaskService {
             item.setTableName(directRptTask.getTableName());
             item.setTableCode(directRptTask.getTableCode());
             fillSuggestionsStateStr(item);
+            fillUserInfo(item);
         });
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
@@ -303,6 +307,39 @@ public class DirectRptTaskService {
         }
     }
 
+    public void fillUserInfo(RptTaskObject rptTaskObject){
+        FillUserExample fillUserExample = new FillUserExample();
+        fillUserExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL).andObjIdEqualTo(rptTaskObject.getObjId());
+        List<FillUser> fillUserList = fillUserMapper.selectByExample(fillUserExample);
+        if(fillUserList!=null&&fillUserList.size()>0) {
+            FillUser fillUser = fillUserList.get(0);
+            if (rptTaskObject.getFillDate() != null) {
+                rptTaskObject.setFillDateStr(rptTaskObject.getFillDate());
+            }
+            if (StringUtils.isBlank(rptTaskObject.getFddbr())) {
+                rptTaskObject.setFddbr(fillUser.getFddbr());
+            }
+            if (StringUtils.isBlank(rptTaskObject.getFillName())) {
+                rptTaskObject.setFillName(fillUser.getFillName());
+            }
+            if (StringUtils.isBlank(rptTaskObject.getXxmc())) {
+                //企业名称
+                if ("0".equals(fillUser.getObjType())) {
+                    Company company = companyMapper.selectByPrimaryKey(fillUser.getObjId());
+                    if (company != null) {
+                        rptTaskObject.setXxmc(company.getXxmc());
+                    }
+                } else {
+                    Area area = areaMapper.selectByPrimaryKey(fillUser.getObjId());
+                    if (area != null) {
+                        rptTaskObject.setXxmc(area.getName());
+                    }
+                }
+
+            }
+        }
+    }
+
     public PageInfo<RptTaskObject> getFillList(String name, Integer page, Integer limit, String state) {
         //获得当前登录用户
         JwtUser jwtUser = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -319,6 +356,7 @@ public class DirectRptTaskService {
             item.setSystemName(directRptTask.getSystemName());
             item.setTableName(directRptTask.getTableName());
             item.setTableCode(directRptTask.getTableCode());
+            fillUserInfo(item);
             fillReportState(item);
         });
         PageInfo pageInfo = new PageInfo(list);
