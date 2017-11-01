@@ -65,6 +65,7 @@ Ext.define('Kits.view.zhiDuManage.zhiDuMain', {
                     split : true,
                     deferRowRender:true,
                     autoScroll : false,
+                    lastSelectIndex:0,
                     columns:[
                         {text:'No.',xtype: 'rownumberer',width:32},
                         {text:'制度列表',dataIndex:'name',flex:1}
@@ -85,6 +86,9 @@ Ext.define('Kits.view.zhiDuManage.zhiDuMain', {
                                 var record = grid.getStore().createModel({});
                                 form.doLoadRecord(record);
                             }
+                        },
+                        select: function (grid, record, index) {
+                            this.lastSelectIndex = index;
                         }
                     },
                     store: Ext.create('Kits.store.SystemInfo',{
@@ -94,7 +98,19 @@ Ext.define('Kits.view.zhiDuManage.zhiDuMain', {
                                 var grid = cmp.down('grid[region=east]');
                                 var selModel = grid.getSelectionModel();
                                 if (records && records.length > 0){
-                                    selModel.selectRange(records.length-1,records.length-1);
+                                    if (!selModel.hasSelection()){
+                                        if (grid.lastSelectIndex >= records.length){
+                                            grid.lastSelectIndex = records.length-1;
+                                        }
+                                        else if (grid.lastSelectIndex < 0){
+                                            grid.lastSelectIndex = 0;
+                                        }
+                                        selModel.selectRange(grid.lastSelectIndex,grid.lastSelectIndex);
+                                    }
+                                    else {
+                                        records = selModel.getSelection();
+                                        this.fireEvent('selectionchange',selModel,records);
+                                    }
                                 }
                                 else {
                                     grid.fireEvent('selectionchange',selModel,null);

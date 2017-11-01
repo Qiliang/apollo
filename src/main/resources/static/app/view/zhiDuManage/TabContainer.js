@@ -40,6 +40,7 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
             split : true,
             deferRowRender:true,
             autoScroll : false,
+            lastSelectIndex: 0,
             listeners:{
                 selectionchange: function (selmodel,selected) {
                     if (selected && selected.length > 0){
@@ -51,6 +52,9 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         var form = this.up('box').down('form');
                         form.doLoadRecord(null);
                     }
+                },
+                select: function (grid, record, index) {
+                    this.lastSelectIndex = index;
                 }
             },
             store: Ext.create('Kits.store.RptTab', {
@@ -60,7 +64,19 @@ Ext.define('Kits.view.zhiDuManage.TabContainer',{
                         var grid = cmp.down('grid[region=west]');
                         var selModel = grid.getSelectionModel();
                         if (records && records.length > 0){
-                            selModel.selectRange(records.length-1,records.length-1);
+                            if (!selModel.hasSelection()){
+                                if (grid.lastSelectIndex >= records.length){
+                                    grid.lastSelectIndex = records.length-1;
+                                }
+                                else if (grid.lastSelectIndex < 0){
+                                    grid.lastSelectIndex = 0;
+                                }
+                                selModel.selectRange(grid.lastSelectIndex,grid.lastSelectIndex);
+                            }
+                            else {
+                                records = selModel.getSelection();
+                                this.fireEvent('selectionchange',selModel,records);
+                            }
                         }
                         else {
                             grid.fireEvent('selectionchange',selModel,null);
