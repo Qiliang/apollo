@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.A309', {
     extend: 'Kits.view.tablehz.Base',
     title: '年末茶叶水果园情况',
     xtype: 'tablehzA309',
+    tableid: '923004053769773056',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'

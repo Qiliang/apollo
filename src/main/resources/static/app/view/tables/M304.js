@@ -4,7 +4,7 @@ Ext.define('Kits.view.tables.M304', {
     xtype: 'tablesM304',
     hzcolumn:'hzcode',
     tableid: '923004088574107648',
-    rowNum: 28,
+    rowNum: 36,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -56,11 +56,51 @@ Ext.define('Kits.view.tables.M304', {
   "num3" : "",
   "num2" : ""
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "其中：能繁母牛",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
+}, {
   "hzcode" : "2",
   "unitcode" : "头",
-  "itemcode" : "其中：能繁母牛",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1,
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "3",
+  "unitcode" : "头",
+  "itemcode" : "1.马",
+  "num1" : "",
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "4",
+  "unitcode" : "只",
+  "itemcode" : "2.驴",
+  "num1" : "",
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "5",
+  "unitcode" : "头",
+  "itemcode" : "3.骡",
+  "num1" : "",
+  "i" : 2,
+  "num3" : "",
+  "num2" : ""
+}, {
+  "hzcode" : "6",
+  "unitcode" : "吨",
+  "itemcode" : "4.骆驼",
+  "num1" : "",
+  "i" : 2,
   "num3" : "",
   "num2" : ""
 }, {
@@ -120,11 +160,19 @@ Ext.define('Kits.view.tables.M304', {
   "num3" : "—",
   "num2" : "—"
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "山羊毛产量",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
+}, {
   "hzcode" : "10",
   "unitcode" : "吨",
-  "itemcode" : "山羊毛产量",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1,
+  "i" : 2,
   "num3" : "",
   "num2" : ""
 }, {
@@ -160,11 +208,19 @@ Ext.define('Kits.view.tables.M304', {
   "num3" : "—",
   "num2" : "—"
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "绵羊毛产量",
+  "num1" : "—",
+  "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
+}, {
   "hzcode" : "13",
   "unitcode" : "吨",
-  "itemcode" : "绵羊毛产量",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1,
+  "i" : 2,
   "num3" : "",
   "num2" : ""
 }, {
@@ -232,11 +288,19 @@ Ext.define('Kits.view.tables.M304', {
   "num3" : "—",
   "num2" : "—"
 }, {
-  "hzcode" : "18",
-  "unitcode" : "",
+  "hzcode" : "—",
+  "unitcode" : "—",
   "itemcode" : "蚕茧产量",
-  "num1" : "",
+  "num1" : "—",
   "i" : 1,
+  "num3" : "—",
+  "num2" : "—"
+}, {
+  "hzcode" : "18",
+  "unitcode" : "吨",
+  "itemcode" : "",
+  "num1" : "",
+  "i" : 2,
   "num3" : "",
   "num2" : ""
 }, {
@@ -249,7 +313,7 @@ Ext.define('Kits.view.tables.M304', {
   "num2" : "—"
 }, {
   "hzcode" : "19",
-  "unitcode" : "",
+  "unitcode" : "吨",
   "itemcode" : "桑蚕茧",
   "num1" : "",
   "i" : 2,
@@ -257,7 +321,7 @@ Ext.define('Kits.view.tables.M304', {
   "num2" : ""
 }, {
   "hzcode" : "20",
-  "unitcode" : "",
+  "unitcode" : "吨",
   "itemcode" : "柞蚕茧",
   "num1" : "",
   "i" : 2,

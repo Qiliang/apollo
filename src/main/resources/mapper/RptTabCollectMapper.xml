@@ -358,7 +358,7 @@
     sum(num6) as num6,sum(num7) as num7,
     sum(num8) as num8,sum(num9) as num9,sum(num10) as num10
     from rpt_tab_collect a left join rpt_task_object b on a.usercode=b.id left join area c on c.code = b.xzqh_id
-    where a.tabid = #{tabid}
+    where a.tabid = #{tabid} and b.report_state='qystg'
     group by left(c.simple_code,9) ,a.hzcode) p left join area q on p.usercode = q.simple_code
   </select>
 </mapper>

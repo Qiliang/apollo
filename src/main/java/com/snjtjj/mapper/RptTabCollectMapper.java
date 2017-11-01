@@ -29,4 +29,6 @@ public interface RptTabCollectMapper {
     int updateByPrimaryKeySelective(RptTabCollect record);
 
     int updateByPrimaryKey(RptTabCollect record);
+
+    List<RptTabCollect> selectGroupByTab(@Param("tabid") String tabid);
 }

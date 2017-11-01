@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.A303', {
     extend: 'Kits.view.tablehz.Base',
     title: '经济作物生产情况',
     xtype: 'tablehzA303',
+    tableid: '923004012028059648',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'

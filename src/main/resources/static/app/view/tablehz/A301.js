@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.A301', {
     extend: 'Kits.view.tablehz.Base',
     title: '主要畜牧业生产情况表',
     xtype: 'tablehzA301',
+    tableid: '923004080521043968',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -16,7 +18,7 @@ Ext.define('Kits.view.tablehz.A301', {
     ],
     store: Ext.create('Ext.data.Store', {
         fields: [ {
-  "name" : "代码总汇",
+  "name" : "汇总代码",
   "type" : "string"
 }, {
   "name" : "1",
@@ -118,12 +120,12 @@ Ext.define('Kits.view.tablehz.A301', {
         data: []
     }),
     columns: [ {
-  "text" : "<div style='white-space:pre-line;height:57px'>指标名称</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>指标名称</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>计量单位</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>代码总汇</div>",
-      "dataIndex" : "代码总汇",
+      "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+      "dataIndex" : "汇总代码",
       "width" : 300
     } ]
   } ]
@@ -132,15 +134,18 @@ Ext.define('Kits.view.tablehz.A301', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>猪</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
-        "dataIndex" : "1",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
+          "dataIndex" : "1",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：能繁殖母猪</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：能繁殖母猪</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -154,15 +159,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>牛</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>3</div>",
-        "dataIndex" : "3",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>3</div>",
+          "dataIndex" : "3",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.肉牛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.肉牛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -173,7 +181,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.奶牛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.奶牛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -184,7 +192,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>3.役用牛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>3.役用牛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -198,15 +206,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>羊</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>7</div>",
-        "dataIndex" : "7",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>7</div>",
+          "dataIndex" : "7",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.山羊</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.山羊</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -217,7 +228,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.绵羊</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.绵羊</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -231,15 +242,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>活家禽</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
-        "dataIndex" : "10",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
+          "dataIndex" : "10",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：活鸡</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：活鸡</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -250,7 +264,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：肉鸡</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：肉鸡</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -261,7 +275,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>蛋鸡</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>蛋鸡</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -272,7 +286,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>活鸭</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>活鸭</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -287,7 +301,7 @@ Ext.define('Kits.view.tablehz.A301', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>二、畜禽出栏</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>猪</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>猪</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
       "columns" : [ {
@@ -298,7 +312,7 @@ Ext.define('Kits.view.tablehz.A301', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>牛</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>牛</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
       "columns" : [ {
@@ -311,15 +325,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>羊</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>17</div>",
-        "dataIndex" : "17",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>17</div>",
+          "dataIndex" : "17",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.山羊</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.山羊</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -330,7 +347,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.绵羊</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.绵羊</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -344,15 +361,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>活家禽</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
-        "dataIndex" : "20",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
+          "dataIndex" : "20",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：活鸡</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：活鸡</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -363,7 +383,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>活鸭</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>活鸭</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -378,7 +398,7 @@ Ext.define('Kits.view.tablehz.A301', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>三、畜禽产品产量</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>猪肉</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>猪肉</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -389,7 +409,7 @@ Ext.define('Kits.view.tablehz.A301', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>牛肉</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>牛肉</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -402,15 +422,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>羊肉</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>25</div>",
-        "dataIndex" : "25",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>25</div>",
+          "dataIndex" : "25",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.山羊肉</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.山羊肉</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -421,7 +444,7 @@ Ext.define('Kits.view.tablehz.A301', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.绵羊肉</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.绵羊肉</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -435,15 +458,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>禽肉</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>28</div>",
-        "dataIndex" : "28",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>28</div>",
+          "dataIndex" : "28",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：鸡肉</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：鸡肉</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -457,15 +483,18 @@ Ext.define('Kits.view.tablehz.A301', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>禽蛋</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>30</div>",
-        "dataIndex" : "30",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>30</div>",
+          "dataIndex" : "30",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：鸡收</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：鸡收</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -477,7 +506,7 @@ Ext.define('Kits.view.tablehz.A301', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>生牛奶</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>生牛奶</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {

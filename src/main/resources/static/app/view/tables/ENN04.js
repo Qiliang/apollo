@@ -4,7 +4,7 @@ Ext.define('Kits.view.tables.ENN04', {
     xtype: 'tablesENN04',
     hzcolumn:'hzcode',
     tableid: '923004098938232832',
-    rowNum: 67,
+    rowNum: 71,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -34,11 +34,23 @@ Ext.define('Kits.view.tables.ENN04', {
   "type" : "string"
 } ],
         data: [ {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "一、 农村人口",
+  "num1" : "—",
+  "i" : 0
+}, {
   "hzcode" : "1",
   "unitcode" : "人",
-  "itemcode" : "一、 农村人口",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 0
+  "i" : 1
+}, {
+  "hzcode" : "2",
+  "unitcode" : "人",
+  "itemcode" : "其中：男",
+  "num1" : "",
+  "i" : 1
 }, {
   "hzcode" : "3",
   "unitcode" : "人",
@@ -280,11 +292,23 @@ Ext.define('Kits.view.tables.ENN04', {
   "num1" : "—",
   "i" : 0
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "①参加过职业技能培训",
+  "num1" : "—",
+  "i" : 1
+}, {
   "hzcode" : "34",
   "unitcode" : "人",
-  "itemcode" : "①参加过职业技能培训",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "35",
+  "unitcode" : "人",
+  "itemcode" : "其中：参加过政府举办的技能培训",
+  "num1" : "",
+  "i" : 2
 }, {
   "hzcode" : "36",
   "unitcode" : "人",

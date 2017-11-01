@@ -4,7 +4,7 @@ Ext.define('Kits.view.tables.SNN01', {
     xtype: 'tablesSNN01',
     hzcolumn:'hzcode',
     tableid: '923003973515960320',
-    rowNum: 62,
+    rowNum: 64,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -56,13 +56,13 @@ Ext.define('Kits.view.tables.SNN01', {
   "unitcode" : "个",
   "itemcode" : "  1、乡政府",
   "num1" : "",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "3",
   "unitcode" : "个",
   "itemcode" : "  2、镇政府",
   "num1" : "",
-  "i" : 1
+  "i" : 2
 }, {
   "hzcode" : "4",
   "unitcode" : "个",
@@ -394,11 +394,23 @@ Ext.define('Kits.view.tables.SNN01', {
   "num1" : "",
   "i" : 1
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "具有五保条件而实际未享受五保的户数",
+  "num1" : "—",
+  "i" : 1
+}, {
   "hzcode" : "53",
   "unitcode" : "户",
-  "itemcode" : "具有五保条件而实际未享受五保的户数",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "54",
+  "unitcode" : "人",
+  "itemcode" : "人口",
+  "num1" : "",
+  "i" : 2
 }, {
   "hzcode" : "55",
   "unitcode" : "人",

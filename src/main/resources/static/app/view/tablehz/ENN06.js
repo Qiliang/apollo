@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.ENN06', {
     extend: 'Kits.view.tablehz.Base',
     title: '渔业生产情况',
     xtype: 'tablehzENN06',
+    tableid: '923004112859127808',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -16,7 +18,7 @@ Ext.define('Kits.view.tablehz.ENN06', {
     ],
     store: Ext.create('Ext.data.Store', {
         fields: [ {
-  "name" : "代码总汇",
+  "name" : "汇总代码",
   "type" : "string"
 }, {
   "name" : "--",
@@ -92,8 +94,8 @@ Ext.define('Kits.view.tablehz.ENN06', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>计量单位</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>代码总汇</div>",
-      "dataIndex" : "代码总汇",
+      "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+      "dataIndex" : "汇总代码",
       "width" : 300
     } ]
   } ]

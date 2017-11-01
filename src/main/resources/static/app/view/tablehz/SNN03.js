@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.SNN03', {
     extend: 'Kits.view.tablehz.Base',
     title: '粮食作物生产情况（一）',
     xtype: 'tablehzSNN03',
+    tableid: '923003994621698048',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -16,7 +18,7 @@ Ext.define('Kits.view.tablehz.SNN03', {
     ],
     store: Ext.create('Ext.data.Store', {
         fields: [ {
-  "name" : "代码",
+  "name" : "汇总代码",
   "type" : "string"
 }, {
   "name" : "--",
@@ -242,8 +244,8 @@ Ext.define('Kits.view.tablehz.SNN03', {
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>计算单位</div>",
           "columns" : [ {
-            "text" : "<div style='white-space:pre-line;height:22px'>代码</div>",
-            "dataIndex" : "代码",
+            "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+            "dataIndex" : "汇总代码",
             "width" : 300
           } ]
         } ]

@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.M302', {
     extend: 'Kits.view.tablehz.Base',
     title: '畜禽规模养殖情况',
     xtype: 'tablehzM302',
+    tableid: '923004094072840192',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'

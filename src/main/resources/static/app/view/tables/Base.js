@@ -3,7 +3,7 @@ Ext.define('Kits.view.tables.Base', {
     layout: 'border',
     hzcolumn:'hzcode',
     tableid: '',
-    usercode:'1',
+    usercode:'2',
     rowNum: 30,
     requires: [
         'Ext.grid.plugin.Exporter',

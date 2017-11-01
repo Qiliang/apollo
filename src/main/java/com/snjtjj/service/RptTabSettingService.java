@@ -246,6 +246,7 @@ public class RptTabSettingService {
         columnsList.clear();
         List<Map<String,String>> fields = new ArrayList<>();
         //noinspection Duplicates
+
         for(RptTabSetting setting : list){
             String text = setting.getItemcode();
             String unit = setting.getUnitcode();
@@ -258,6 +259,12 @@ public class RptTabSettingService {
         }
         String tabcode = tab.getTabcode();
         String tabname = tab.getTabname();
+        String tabid = tab.getId();
+        String itemcode = "汇总代码";
+        if(list.size() > 0){
+            RptTabSetting rptTab = list.get(0);
+            itemcode = rptTab.getHzcode();
+        }
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
@@ -266,6 +273,8 @@ public class RptTabSettingService {
         Map<String,Object> model = new HashMap<>();
         model.put("tabcode",tabcode);
         model.put("tabname",tabname);
+        model.put("tabid",tabid);
+        model.put("itemcode",itemcode);
         try {
             model.put("fields",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(fields));
             model.put("columns",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(columnsList));

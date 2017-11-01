@@ -149,7 +149,4 @@ public class RptTabCollectAPI {
             return new FormResponse("验证成功！");
         }
     }
-    public static void main(String[] args){
-        String test = "[1]=[ENN06:2]+[3:1]";
-    }
 }

@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.M304', {
     extend: 'Kits.view.tablehz.Base',
     title: '其它畜牧业生产情况表',
     xtype: 'tablehzM304',
+    tableid: '923004088574107648',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -19,7 +21,7 @@ Ext.define('Kits.view.tablehz.M304', {
   "name" : "汇总代码",
   "type" : "string"
 }, {
-  "name" : "丙",
+  "name" : "--",
   "type" : "string"
 }, {
   "name" : "1",
@@ -85,7 +87,7 @@ Ext.define('Kits.view.tablehz.M304', {
         data: []
     }),
     columns: [ {
-  "text" : "<div style='white-space:pre-line;height:57px'>指标名称</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>指标名称</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>计算单位</div>",
     "columns" : [ {
@@ -95,12 +97,12 @@ Ext.define('Kits.view.tablehz.M304', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>编 号</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>编 号</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>乙</div>",
+    "text" : "<div style='white-space:pre-line;height:22px'>--</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>丙</div>",
-      "dataIndex" : "丙",
+      "text" : "<div style='white-space:pre-line;height:22px'>--</div>",
+      "dataIndex" : "--",
       "align" : "center",
       "width" : 100
     } ]
@@ -108,7 +110,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>一、</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>活牲畜（除猪、牛、羊外）</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>活牲畜（除猪、牛、羊外）</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
       "columns" : [ {
@@ -121,15 +123,18 @@ Ext.define('Kits.view.tablehz.M304', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>其中：能繁母牛</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>2</div>",
-        "dataIndex" : "2",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>2</div>",
+          "dataIndex" : "2",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.马</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.马</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -140,7 +145,7 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.驴</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.驴</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>只</div>",
         "columns" : [ {
@@ -151,7 +156,7 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>3.骡</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>3.骡</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>头</div>",
         "columns" : [ {
@@ -162,7 +167,7 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>4.骆驼</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>4.骆驼</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -177,7 +182,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>二</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>家兔</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>家兔</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -191,7 +196,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>三</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>其它肉产量</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>其它肉产量</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -205,7 +210,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>四</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>其它奶产量</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>其它奶产量</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -221,18 +226,21 @@ Ext.define('Kits.view.tablehz.M304', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>山羊毛产量</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
-        "dataIndex" : "10",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>10</div>",
+          "dataIndex" : "10",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:-13px'>1.山羊粗毛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>1.山羊粗毛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -243,7 +251,7 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>2.山羊绒</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>2.山羊绒</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -260,18 +268,21 @@ Ext.define('Kits.view.tablehz.M304', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>绵羊毛产量</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>13</div>",
-        "dataIndex" : "13",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>13</div>",
+          "dataIndex" : "13",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:-13px'>细羊毛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>细羊毛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -282,7 +293,7 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>半细羊毛</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>半细羊毛</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
@@ -297,7 +308,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>七</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>天然蜂蜜产量</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>天然蜂蜜产量</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -311,7 +322,7 @@ Ext.define('Kits.view.tablehz.M304', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>八</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>其他禽蛋产量（除鸡蛋）</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>其他禽蛋产量（除鸡蛋）</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
       "columns" : [ {
@@ -327,20 +338,23 @@ Ext.define('Kits.view.tablehz.M304', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>蚕茧产量</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'></div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>18</div>",
-        "dataIndex" : "18",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>18</div>",
+          "dataIndex" : "18",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     } ]
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>其中</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:-13px'>桑蚕茧</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>桑蚕茧</div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'></div>",
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>19</div>",
           "dataIndex" : "19",
@@ -349,9 +363,9 @@ Ext.define('Kits.view.tablehz.M304', {
         } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>柞蚕茧</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>柞蚕茧</div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'></div>",
+        "text" : "<div style='white-space:pre-line;height:22px'>吨</div>",
         "columns" : [ {
           "text" : "<div style='white-space:pre-line;height:22px'>20</div>",
           "dataIndex" : "20",

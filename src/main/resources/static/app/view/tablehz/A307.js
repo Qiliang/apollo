@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.A307', {
     extend: 'Kits.view.tablehz.Base',
     title: '林业生产情况表（一）',
     xtype: 'tablehzA307',
+    tableid: '923004058412867584',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -16,10 +18,7 @@ Ext.define('Kits.view.tablehz.A307', {
     ],
     store: Ext.create('Ext.data.Store', {
         fields: [ {
-  "name" : "代码总汇",
-  "type" : "string"
-}, {
-  "name" : "丙",
+  "name" : "汇总代码",
   "type" : "string"
 }, {
   "name" : "--",
@@ -195,12 +194,11 @@ Ext.define('Kits.view.tablehz.A307', {
     columns: [ {
   "text" : "<div style='white-space:pre-line;height:162px'>指标名称</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>乙</div>",
+    "text" : "<div style='white-space:pre-line;height:22px'>计量单位</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>丙</div>",
-      "dataIndex" : "丙",
-      "align" : "center",
-      "width" : 100
+      "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+      "dataIndex" : "汇总代码",
+      "width" : 300
     } ]
   } ]
 }, {

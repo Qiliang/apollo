@@ -4,7 +4,7 @@ Ext.define('Kits.view.tables.A301', {
     xtype: 'tablesA301',
     hzcolumn:'hzcode',
     tableid: '923004080521043968',
-    rowNum: 17,
+    rowNum: 44,
     headerItems:[
         {
             html: '<br /><br /><br />综合机关名称：',
@@ -40,29 +40,113 @@ Ext.define('Kits.view.tables.A301', {
   "num1" : "—",
   "i" : 0
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "猪",
+  "num1" : "—",
+  "i" : 1
+}, {
   "hzcode" : "1",
   "unitcode" : "头",
-  "itemcode" : "猪",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "2",
+  "unitcode" : "头",
+  "itemcode" : "其中：能繁殖母猪",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "牛",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "3",
   "unitcode" : "头",
-  "itemcode" : "牛",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "4",
+  "unitcode" : "头",
+  "itemcode" : "1.肉牛",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "5",
+  "unitcode" : "头",
+  "itemcode" : "2.奶牛",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "6",
+  "unitcode" : "头",
+  "itemcode" : "3.役用牛",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "羊",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "7",
   "unitcode" : "只",
-  "itemcode" : "羊",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "8",
+  "unitcode" : "只",
+  "itemcode" : "1.山羊",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "9",
+  "unitcode" : "只",
+  "itemcode" : "2.绵羊",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "活家禽",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "10",
   "unitcode" : "只",
-  "itemcode" : "活家禽",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "11",
+  "unitcode" : "只",
+  "itemcode" : "其中：活鸡",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "12",
+  "unitcode" : "只",
+  "itemcode" : "其中：肉鸡",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "13",
+  "unitcode" : "只",
+  "itemcode" : "蛋鸡",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "14",
+  "unitcode" : "只",
+  "itemcode" : "活鸭",
+  "num1" : "",
+  "i" : 2
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
@@ -82,17 +166,53 @@ Ext.define('Kits.view.tables.A301', {
   "num1" : "",
   "i" : 1
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "羊",
+  "num1" : "—",
+  "i" : 1
+}, {
   "hzcode" : "17",
   "unitcode" : "只",
-  "itemcode" : "羊",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "18",
+  "unitcode" : "只",
+  "itemcode" : "1.山羊",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "19",
+  "unitcode" : "只",
+  "itemcode" : "2.绵羊",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "活家禽",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "20",
   "unitcode" : "只",
-  "itemcode" : "活家禽",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "21",
+  "unitcode" : "只",
+  "itemcode" : "其中：活鸡",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "22",
+  "unitcode" : "只",
+  "itemcode" : "活鸭",
+  "num1" : "",
+  "i" : 2
 }, {
   "hzcode" : "—",
   "unitcode" : "—",
@@ -112,23 +232,65 @@ Ext.define('Kits.view.tables.A301', {
   "num1" : "",
   "i" : 1
 }, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "羊肉",
+  "num1" : "—",
+  "i" : 1
+}, {
   "hzcode" : "25",
   "unitcode" : "吨",
-  "itemcode" : "羊肉",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "26",
+  "unitcode" : "吨",
+  "itemcode" : "1.山羊肉",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "27",
+  "unitcode" : "吨",
+  "itemcode" : "2.绵羊肉",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "禽肉",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "28",
   "unitcode" : "吨",
-  "itemcode" : "禽肉",
+  "itemcode" : "",
   "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "29",
+  "unitcode" : "吨",
+  "itemcode" : "其中：鸡肉",
+  "num1" : "",
+  "i" : 2
+}, {
+  "hzcode" : "—",
+  "unitcode" : "—",
+  "itemcode" : "禽蛋",
+  "num1" : "—",
   "i" : 1
 }, {
   "hzcode" : "30",
   "unitcode" : "吨",
-  "itemcode" : "禽蛋",
+  "itemcode" : "",
   "num1" : "",
-  "i" : 1
+  "i" : 2
+}, {
+  "hzcode" : "31",
+  "unitcode" : "吨",
+  "itemcode" : "其中：鸡收",
+  "num1" : "",
+  "i" : 2
 }, {
   "hzcode" : "32",
   "unitcode" : "吨",

@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.SNN01', {
     extend: 'Kits.view.tablehz.Base',
     title: '农村基层组织及户数、人口、从业人员情况（一）',
     xtype: 'tablehzSNN01',
+    tableid: '923003973515960320',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -201,27 +203,27 @@ Ext.define('Kits.view.tablehz.SNN01', {
           "width" : 100
         } ]
       } ]
-    } ]
-  }, {
-    "text" : "<div style='white-space:pre-line;height:127px'>  1、乡政府</div>",
-    "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+    }, {
+      "text" : "<div style='white-space:pre-line;height:92px'>  1、乡政府</div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>2</div>",
-        "dataIndex" : "2",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>2</div>",
+          "dataIndex" : "2",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
-    } ]
-  }, {
-    "text" : "<div style='white-space:pre-line;height:127px'>  2、镇政府</div>",
-    "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+    }, {
+      "text" : "<div style='white-space:pre-line;height:92px'>  2、镇政府</div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>3</div>",
-        "dataIndex" : "3",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>个</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>3</div>",
+          "dataIndex" : "3",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     } ]
   }, {
@@ -720,12 +722,15 @@ Ext.define('Kits.view.tablehz.SNN01', {
   }, {
     "text" : "<div style='white-space:pre-line;height:22px'>具有五保条件而实际未享受五保的户数</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>户</div>",
+      "text" : "<div style='white-space:pre-line;height:92px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>53</div>",
-        "dataIndex" : "53",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>户</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>53</div>",
+          "dataIndex" : "53",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
       "text" : "<div style='white-space:pre-line;height:92px'>人口</div>",

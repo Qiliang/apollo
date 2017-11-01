@@ -1,11 +1,9 @@
 Ext.define('Kits.view.tablehz.Base', {
     extend: 'Ext.panel.Panel',
     layout: 'border',
-
+    itemcode:'汇总代码',
     initComponent: function () {
         var me = this;
-
-
         var items = Ext.clone(me.defConfig.items);
         Ext.apply(items[0].items, this.headerItems);
         Ext.apply(items[1].store, this.store);
@@ -61,9 +59,37 @@ Ext.define('Kits.view.tablehz.Base', {
                         },
                     }
                 },
+                fillData:function(data){
+                    var panel = this.up('panel');
+                    var store = this.getStore();
+                    Ext.Array.map(data,function (item) {
+                        var model = store.findRecord(panel.itemcode,item.usercode);
+                        if(!model){
+                            var obj = {};
+                            obj[panel.itemcode] = item.usercode;
+                            model = store.createModel(obj);
+                            store.add(model);
+                        }
+                        model.set(item.hzcode,item.num1);
+                        model.commit();
+                    })
+                },
                 listeners: {
                     afterrender: function (me) {
-
+                        var parent = me.up('panel');
+                        Ext.Ajax.request({
+                            url:'/api/rpt/hz/list',
+                            params:{
+                                tabid:parent.tableid
+                            },
+                            success: function(response, opts) {
+                                var data = Ext.decode(response.responseText);
+                                me.fillData(data);
+                            },
+                            failure: function(response, opts) {
+                                console.log('server-side failure with status code ' + response.status);
+                            }
+                        });
                     }
                 },
 

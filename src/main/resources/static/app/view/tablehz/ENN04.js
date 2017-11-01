@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.ENN04', {
     extend: 'Kits.view.tablehz.Base',
     title: '劳动力转移情况表（一）',
     xtype: 'tablehzENN04',
+    tableid: '923004098938232832',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
@@ -16,7 +18,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     ],
     store: Ext.create('Ext.data.Store', {
         fields: [ {
-  "name" : "甲",
+  "name" : "汇总代码",
   "type" : "string"
 }, {
   "name" : "1",
@@ -190,27 +192,30 @@ Ext.define('Kits.view.tablehz.ENN04', {
         data: []
     }),
     columns: [ {
-  "text" : "<div style='white-space:pre-line;height:57px'>指标名称</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>指标名称</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+    "text" : "<div style='white-space:pre-line;height:22px'>计算单位</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>甲</div>",
-      "dataIndex" : "甲",
+      "text" : "<div style='white-space:pre-line;height:22px'>汇总代码</div>",
+      "dataIndex" : "汇总代码",
       "width" : 300
     } ]
   } ]
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>一、 农村人口</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'></div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
-      "dataIndex" : "1",
-      "align" : "center",
-      "width" : 100
+      "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+      "columns" : [ {
+        "text" : "<div style='white-space:pre-line;height:22px'>1</div>",
+        "dataIndex" : "1",
+        "align" : "center",
+        "width" : 100
+      } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>其中：男</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>其中：男</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -222,7 +227,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>农村劳动力资源</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>农村劳动力资源</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
     "columns" : [ {
@@ -233,7 +238,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>农村从业人数</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>农村从业人数</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
     "columns" : [ {
@@ -244,7 +249,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>在本乡镇从业人员</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>在本乡镇从业人员</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
     "columns" : [ {
@@ -255,7 +260,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>1.从事农林牧渔业人员</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>1.从事农林牧渔业人员</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
     "columns" : [ {
@@ -266,7 +271,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
     } ]
   } ]
 }, {
-  "text" : "<div style='white-space:pre-line;height:57px'>2.从事二、三产业人员</div>",
+  "text" : "<div style='white-space:pre-line;height:127px'>2.从事二、三产业人员</div>",
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
     "columns" : [ {
@@ -279,7 +284,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>1、外出从业</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>总量</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>总量</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -290,7 +295,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>男</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>男</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -304,7 +309,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>①.外出从业人员文化程度</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>小学及以下</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>小学及以下</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -315,7 +320,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>初中</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>初中</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -326,7 +331,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>高中及以上</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>高中及以上</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -340,7 +345,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>②按年龄状况分</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>20岁以下</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>20岁以下</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -351,7 +356,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>21岁—49岁</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>21岁—49岁</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -362,7 +367,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>50岁以上</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>50岁以上</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -376,7 +381,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>2.外出渠道</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①自发</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①自发</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -387,7 +392,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'> ②政府有关部门组织</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'> ②政府有关部门组织</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -398,7 +403,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>③中介组织介绍</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>③中介组织介绍</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -409,7 +414,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>④企业招收</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>④企业招收</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -423,7 +428,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>3、外出从业时间</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>1个月-3个月</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>1个月-3个月</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -434,7 +439,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>3个月个月</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>3个月个月</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -445,7 +450,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>6个月以上</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>6个月以上</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -459,7 +464,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>4、外出从业地点</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①内乡外</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①内乡外</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -470,7 +475,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②省内外</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②省内外</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -481,7 +486,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>③省外</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>③省外</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -492,7 +497,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>④港澳台</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>④港澳台</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -503,7 +508,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>⑤境外</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>⑤境外</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -517,7 +522,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>5.外出从业人员从事行业</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①第一产业</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①第一产业</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -528,7 +533,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②第二产业</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②第二产业</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -539,7 +544,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>③第三产业</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>③第三产业</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -553,7 +558,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>6.外出从业形式</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①务工</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①务工</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -564,7 +569,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②经商</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②经商</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -575,7 +580,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>③其他</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>③其他</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -591,15 +596,18 @@ Ext.define('Kits.view.tablehz.ENN04', {
   "columns" : [ {
     "text" : "<div style='white-space:pre-line;height:22px'>①参加过职业技能培训</div>",
     "columns" : [ {
-      "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'></div>",
       "columns" : [ {
-        "text" : "<div style='white-space:pre-line;height:22px'>34</div>",
-        "dataIndex" : "34",
-        "align" : "center",
-        "width" : 100
+        "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
+        "columns" : [ {
+          "text" : "<div style='white-space:pre-line;height:22px'>34</div>",
+          "dataIndex" : "34",
+          "align" : "center",
+          "width" : 100
+        } ]
       } ]
     }, {
-      "text" : "<div style='white-space:pre-line;height:-13px'>其中：参加过政府举办的技能培训</div>",
+      "text" : "<div style='white-space:pre-line;height:57px'>其中：参加过政府举办的技能培训</div>",
       "columns" : [ {
         "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
         "columns" : [ {
@@ -611,7 +619,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②持有职业技术资格证书</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②持有职业技术资格证书</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -625,7 +633,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>8、劳务收入</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>劳务经济总收入（万元）</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>劳务经济总收入（万元）</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -636,7 +644,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>其中：月收入500元以下</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>其中：月收入500元以下</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -647,7 +655,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>501-1000元</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>501-1000元</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -658,7 +666,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>1001-2000元</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>1001-2000元</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -669,7 +677,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>  2001-3000元</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>  2001-3000元</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -680,7 +688,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>3000元以上</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>3000元以上</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -694,7 +702,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>9.外出从业人员从业环境</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①雇主拖欠工资人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①雇主拖欠工资人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -705,7 +713,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②从事高危、有害工作人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②从事高危、有害工作人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -716,7 +724,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>③致伤致残人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>③致伤致残人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -727,7 +735,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>④享受劳保补贴人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>④享受劳保补贴人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -741,7 +749,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>10、外出人员社会保障</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>与雇主签定劳动合同</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>与雇主签定劳动合同</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -752,7 +760,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>参与养老保险人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>参与养老保险人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -763,7 +771,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>参与医疗保险人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>参与医疗保险人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -774,7 +782,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>参与失业保险人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>参与失业保险人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -785,7 +793,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>参与生育保险人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>参与生育保险人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -796,7 +804,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>参与工伤保险人数</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>参与工伤保险人数</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -810,7 +818,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
 }, {
   "text" : "<div style='white-space:pre-line;height:22px'>11、返回情况</div>",
   "columns" : [ {
-    "text" : "<div style='white-space:pre-line;height:22px'>①全年外出返乡人员</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>①全年外出返乡人员</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -821,7 +829,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>②返乡人员再就业情况</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>②返乡人员再就业情况</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -832,7 +840,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>本地从事二、三产业</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>本地从事二、三产业</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {
@@ -843,7 +851,7 @@ Ext.define('Kits.view.tablehz.ENN04', {
       } ]
     } ]
   }, {
-    "text" : "<div style='white-space:pre-line;height:22px'>再次外出从业务</div>",
+    "text" : "<div style='white-space:pre-line;height:92px'>再次外出从业务</div>",
     "columns" : [ {
       "text" : "<div style='white-space:pre-line;height:22px'>人</div>",
       "columns" : [ {

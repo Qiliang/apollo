@@ -2,6 +2,8 @@ Ext.define('Kits.view.tablehz.SNN02', {
     extend: 'Kits.view.tablehz.Base',
     title: '农业生产条件（一）',
     xtype: 'tablehzSNN02',
+    tableid: '923003985582972928',
+    itemcode:'汇总代码',
     headerItems: [
         {
             html: '<br />填报单位：'
