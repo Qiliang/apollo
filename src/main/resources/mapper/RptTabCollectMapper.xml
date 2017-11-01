@@ -350,4 +350,15 @@
       num10 = #{num10,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+  <!-- 周方明添加的sql -->
+  <select id="selectGroupByTab" resultMap="BaseResultMap" parameterType="String" >
+    select q.name as usercode,p.hzcode,p.num1,p.num2,p.num3,p.num4,p.num5,p.num6,p.num7,p.num8,p.num9,p.num10 from
+    (select left(c.simple_code,9) as usercode,a.hzcode,sum(num1) as num1,sum(num2) as num2,sum(num3) as num3,
+    sum(num4) as num4,sum(num5) as num5,
+    sum(num6) as num6,sum(num7) as num7,
+    sum(num8) as num8,sum(num9) as num9,sum(num10) as num10
+    from rpt_tab_collect a left join rpt_task_object b on a.usercode=b.id left join area c on c.code = b.xzqh_id
+    where a.tabid = #{tabid}
+    group by left(c.simple_code,9) ,a.hzcode) p left join area q on p.usercode = q.simple_code
+  </select>
 </mapper>
