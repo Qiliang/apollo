@@ -1,7 +1,7 @@
 Ext.define('Kits.view.zhiDu.ZhiDuList', {
     extend: 'Ext.grid.Panel',
     title: '制度列表',
-    store: Ext.create('Kits.store.ZhiDu', {pageSize: 3}),
+    store: Ext.create('Kits.store.ZhiDu'),
     tools: [
         {
             type: 'refresh',
@@ -13,31 +13,44 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
     ],
     tbar: [
         {
+            itemId:'searchName',
             xtype: 'textfield',
             fieldLabel: '制度名称',
-            name: 'zdmc',
+            name: 'name',
         },
         {
+            itemId:'searchReleaseYear',
             xtype: 'combobox',
             fieldLabel: '发布年份',
             queryMode: 'local',
-            name:'fbnf',
-            displayField: 'value',
-            valueField: 'key',
+            name: 'releaseYear',
+            displayField: 'key',
+            valueField: 'value',
             editable: false,
             emptyText: "--请选择年份--",
-            store: [
-                { key: '', value: '全部' },
-                { key: '2017', value: '2017年' },
-                { key: '2016', value: '2016年' },
-                { key: '2015', value: '2015年' }
-            ]
+            store: {
+                xtype: 'store.store',
+                proxy: {
+                    type: 'ajax',
+                    url: '/api/systemInfo/yearList',
+                    reader: {
+                        type: 'json'
+                    }
+                },
+                autoLoad: true,
+                autoSync: false
+            }
         },
         {
             xtype: 'button',
             text: '查询',
-            handler:function () {
-                alert('查询！！！');
+            handler: function () {
+                var grid = this.up('grid');
+                grid.getStore().getProxy().setExtraParams({
+                    name: grid.queryById('searchName').getValue(),
+                    releaseYear:grid.queryById('searchReleaseYear').getValue()
+                })
+                grid.getStore().load();
             }
         }],
     bbar: {
@@ -50,37 +63,52 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
         },
         {
             text: '制度名称',
-            dataIndex: 'zdmc'
+            dataIndex: 'name',
+            width: 200
         },
         {
             text: '发布年份',
-            dataIndex: 'fbnf'
+            dataIndex: 'releaseYear',
+            width: 200
+        },
+        {
+            text: '填报类型',
+            dataIndex: 'fillPersonType',
+            renderer: function (value) {
+                if(value){
+                    if("qy"==value){
+                        return "企业";
+                    }else if("xzqh"==value){
+                        return "行政区划";
+                    }
+                }else{
+                    return "无"
+                }
+                return Ext.util.Format.plural(value, 'person', 'people');
+            }
         },
         {
             text: '创建时间',
-            dataIndex: 'cjsj'
-        },
-        {
-            text: '创建人',
-            dataIndex: 'cjr'
+            dataIndex: 'createDate',
+            width: 200
         },
         {
             text: '操作',
-            xtype:'actioncolumn',
-            width:50,
+            xtype: 'actioncolumn',
+            width: 50,
             items: [{
                 iconCls: 'x-fa fa-eye',
                 tooltip: '查看',
-                handler: function(grid, rowIndex, colIndex) {
+                handler: function (view, recIndex, cellIndex, item, e, record) {
                     Ext.create('Ext.window.Window', {
                         title: '查看制度',
                         height: 600,
                         width: 900,
                         layout: 'fit',
-                        closeToolText:'关闭',
+                        closeToolText: '关闭',
                         // closeAction:'hide',
-                        modal:true,
-                        items: Ext.create('Kits.view.zhiDu.ZhiDuView',{a:new Date()})
+                        modal: true,
+                        items: Ext.create('Kits.view.zhiDu.ZhiDuView', {recordId:record.data.id})
                     }).show();
                     // alert("查看 " + rec.get('id'));
                 }

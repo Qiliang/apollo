@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/systemInfo")
@@ -16,8 +17,8 @@ public class SystemInfoAPI {
     private SystemInfoService systemInfoService;
 
     @GetMapping("/all")
-    public List<SystemInfo> systemInfo() {
-        return systemInfoService.getAllSystemInfo();
+    public List<SystemInfo> systemInfo(String name,String releaseYear) {
+        return systemInfoService.getAllSystemInfo(name, releaseYear);
     }
 
     @GetMapping("/fillPersonType")
@@ -30,4 +31,8 @@ public class SystemInfoAPI {
         return systemInfoService.getSystemInfoListByRoleId(roleId);
     }
 
+    @GetMapping("/yearList")
+    public List<Map<String,String>> yearList(){
+        return systemInfoService.yearList();
+    }
 }

@@ -32,4 +32,6 @@ public interface SystemInfoMapper {
     List<SystemInfo> getSystemInfoListByRoleId(String roleId);
 
     List<SystemInfo> selectByExampleAndRoles(SystemInfoExample example);
+
+    List<String> selectAllYear();
 }
