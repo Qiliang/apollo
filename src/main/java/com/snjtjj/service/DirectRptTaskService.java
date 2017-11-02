@@ -213,6 +213,19 @@ public class DirectRptTaskService {
         return pageInfo;
     }
 
+    public RptTaskObject getRptTaskObjectById(String id){
+        RptTaskObject rptTaskObject = rptTaskObjectMapper.selectByPrimaryKey(id);
+        DirectRptTask directRptTask = directRptTaskMapper.selectByPrimaryKey(rptTaskObject.getTaskId());
+        fillSystemAndTableInfo(directRptTask);
+        rptTaskObject.setName(directRptTask.getName());
+        rptTaskObject.setSystemName(directRptTask.getSystemName());
+        rptTaskObject.setTableName(directRptTask.getTableName());
+        rptTaskObject.setTableCode(directRptTask.getTableCode());
+        fillSuggestionsStateStr(rptTaskObject);
+        fillUserInfo(rptTaskObject);
+        return rptTaskObject;
+    }
+
     public void fillObjName(List<RptTaskObject> list) {
         //根据id查询名称
         list.forEach(item -> {

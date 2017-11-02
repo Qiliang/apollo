@@ -103,7 +103,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuList', {
                     Ext.create('Ext.window.Window', {
                         title: '查看制度',
                         height: 600,
-                        width: 900,
+                        width: 1100,
                         layout: 'fit',
                         closeToolText: '关闭',
                         // closeAction:'hide',

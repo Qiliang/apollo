@@ -40,6 +40,18 @@ public class RptTabCollectAPI {
         return new FormResponse("保存成功！");
     }
 
+    @GetMapping("/table/list")
+    public Object findListByTable(String tableId,String searchJson,String fieldJson,Integer page,Integer limit){
+        //如果为空查询所有的字段
+        return rptTabCollectService.findListByTable(tableId, searchJson, fieldJson,page,limit);
+    }
+
+    @GetMapping("/table/list/columns")
+    public Object findColumnsByTable(String tableId,String searchJson,String fieldJson,Integer page,Integer limit){
+        //如果为空查询所有的字段
+        return rptTabCollectService.findColumnsByTable(tableId);
+    }
+
     @Autowired
     private RptTabRuleMapper rptTabRuleMapper;
     @Autowired

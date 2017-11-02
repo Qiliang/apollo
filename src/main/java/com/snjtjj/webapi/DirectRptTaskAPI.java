@@ -97,4 +97,9 @@ public class DirectRptTaskAPI {
         FormResponse formResponse = new FormResponse("保存成功！");
         return formResponse;
     }
+
+    @GetMapping("/getRptTaskObjectById")
+    public RptTaskObject getRptTaskObjectById(String id) {
+        return directRptTaskService.getRptTaskObjectById(id);
+    }
 }

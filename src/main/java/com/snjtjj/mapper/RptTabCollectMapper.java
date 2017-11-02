@@ -3,6 +3,7 @@ package com.snjtjj.mapper;
 import com.snjtjj.entity.RptTabCollect;
 import com.snjtjj.entity.RptTabCollectExample;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +32,6 @@ public interface RptTabCollectMapper {
     int updateByPrimaryKey(RptTabCollect record);
 
     List<RptTabCollect> selectGroupByTab(@Param("tabid") String tabid);
+
+    List<Map<String,Object>> selectByTableId(@Param("fieldSql") String fieldSql,@Param("tabid") String tabid,@Param("searchList") String searchList);
 }

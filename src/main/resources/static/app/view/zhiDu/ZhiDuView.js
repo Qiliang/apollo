@@ -46,7 +46,7 @@ Ext.define('Kits.view.zhiDu.ZhiDuView', {
                     var cmp = Ext.getCmp('ZhiDuViewCenter');
                     cmp.removeAll(true);
                     cmp.add(Ext.create("Kits.view.tables." + record.get("tabcode"), {
-                        width:650,
+                        width:850,
                         commConfig: {
                             hiddenExport: true,
                             hiddenValidate: true,
