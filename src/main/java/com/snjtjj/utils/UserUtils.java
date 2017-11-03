@@ -118,6 +118,24 @@ public class UserUtils {
 		return new User();
 	}
 
+	public static String getUserSystemIds() throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+		User user = getUser();
+		String ids = "";
+		if(user!=null&&!"admin".equals(user.getLoginName())){
+			List<SystemInfo> list = getSystemInfoList();
+			if (list != null && list.size() > 0) {
+				List<String> idList = Collections3.extractToList(list, "id");
+				idList.forEach(item -> {
+					item = "'" + item + "'";
+				});
+				ids = Collections3.convertToString(idList, ",");
+			} else {
+				ids = "'-1'";
+			}
+		}
+		return ids;
+	}
+
 	/**
 	 * 获取用户所在组织机构层级
 	 * 0:区

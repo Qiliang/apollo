@@ -6,7 +6,7 @@ Ext.define('Kits.store.BranchTree', {
         method:'get'
     },
     root: {
-        text: '神龙架统计局',
+        text: '神农架统计局',
         id: '-1',
         expanded: true
     },

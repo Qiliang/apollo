@@ -11,8 +11,10 @@ import com.snjtjj.mapper.RptTabCollectMapper;
 import com.snjtjj.mapper.RptTabCollectMapper;
 import com.snjtjj.mapper.RptTabMapper;
 import com.snjtjj.mapper.RptTabSettingMapper;
+import com.snjtjj.utils.Collections3;
 import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
+import com.snjtjj.utils.UserUtils;
 import com.snjtjj.vo.BaseSearchListVo;
 import com.snjtjj.vo.BaseSearchVo;
 import com.snjtjj.vo.ColumnVo;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 @Service
@@ -75,7 +78,7 @@ public class RptTabCollectService {
         return columnVoList;
     }
 
-    public PageInfo findListByTable(String tableId, String searchJson, String fieldJson,Integer page,Integer limit) {
+    public PageInfo findListByTable(String tableId, String searchJson, String fieldJson,Integer page,Integer limit) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         List<BaseSearchVo> baseSearchVoList = null;
         String searchList = null;
         if(StringUtils.isNotBlank(searchJson)) {
@@ -112,7 +115,14 @@ public class RptTabCollectService {
         });
         String fieldSql = StringUtils.join(sqlList, ",");
         PageHelper.startPage(page, limit);
-        List<Map<String,Object>> data = rptTabCollectMapper.selectByTableId(fieldSql,tableId,searchList);
+        List<String> codeList = UserUtils.getUserAreaCodeList();
+        List<String> cloneCodeList = new ArrayList<>(codeList);
+        codeList.forEach(item -> {
+            item = "'" + item + "'";
+        });
+        String xzqhIds = Collections3.convertToString(codeList, ",");
+        String ids = UserUtils.getUserSystemIds();
+        List<Map<String,Object>> data = rptTabCollectMapper.selectByTableId(fieldSql,tableId,searchList,xzqhIds,ids);
         PageInfo pageInfo = new PageInfo(data);
         return pageInfo;
     }

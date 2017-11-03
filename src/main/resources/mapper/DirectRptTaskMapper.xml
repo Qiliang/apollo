@@ -96,6 +96,9 @@
     select
     <include refid="Base_Column_List" />
     from direct_rpt_task where del_flag='0'
+    <if test="ids!= null and ids !=''" >
+      AND system_id in (${ids})
+    </if>
     <if test="name!= null and name !=''" >
       and name LIKE #{name,jdbcType=VARCHAR}
     </if>

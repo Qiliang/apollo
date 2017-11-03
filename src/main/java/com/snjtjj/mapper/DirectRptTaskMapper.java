@@ -28,5 +28,5 @@ public interface DirectRptTaskMapper {
 
     int updateByPrimaryKey(DirectRptTask record);
 
-    List<DirectRptTask> selectListByUserID(@Param("name") String name,@Param("xzqhIds") String xzqh_ids);
+    List<DirectRptTask> selectListByUserID(@Param("name") String name,@Param("xzqhIds") String xzqh_ids,@Param("ids") String ids);
 }

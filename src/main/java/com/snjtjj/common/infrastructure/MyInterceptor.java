@@ -1,9 +1,7 @@
 package com.snjtjj.common.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.snjtjj.entity.SystemInfo;
 import com.snjtjj.entity.User;
-import com.snjtjj.utils.Collections3;
 import com.snjtjj.utils.UserUtils;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -18,8 +16,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 @Intercepts({@Signature(type = StatementHandler. class, method = "prepare", args = {Connection. class, Integer.class}),
@@ -59,17 +55,7 @@ public class MyInterceptor implements Interceptor {
         if(user!=null&&"admin".equals(user.getLoginName())){
             sql = sql.replace("@ids@", "select id from system_info where del_flag='0'");
         }else {
-            List<SystemInfo> list = UserUtils.getSystemInfoList();
-            String ids = "";
-            if (list != null && list.size() > 0) {
-                List<String> idList = Collections3.extractToList(list, "id");
-                idList.forEach(item -> {
-                    item = "'" + item + "'";
-                });
-                ids = Collections3.convertToString(idList, ",");
-            } else {
-                ids = "'-1'";
-            }
+            String ids = UserUtils.getUserSystemIds();
             sql = sql.replace("@ids@", ids);
         }
         return sql;

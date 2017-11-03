@@ -41,7 +41,7 @@ public class RptTabCollectAPI {
     }
 
     @GetMapping("/table/list")
-    public Object findListByTable(String tableId,String searchJson,String fieldJson,Integer page,Integer limit){
+    public Object findListByTable(String tableId,String searchJson,String fieldJson,Integer page,Integer limit) throws IllegalAccessException, NoSuchMethodException, InvocationTargetException {
         //如果为空查询所有的字段
         return rptTabCollectService.findListByTable(tableId, searchJson, fieldJson,page,limit);
     }

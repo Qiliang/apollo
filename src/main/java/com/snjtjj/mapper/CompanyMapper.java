@@ -34,4 +34,6 @@ public interface CompanyMapper {
     List<Company> selectCompanyByNotInSystemId(@Param("systemId") String systemId,@Param("xxmc") String xxmc,@Param("zzjgdm") String zzjgdm);
 
     List<Company> selectCompanyNotInFillUserList();
+
+    Company selectCompanyByZzjgdm(@Param("zzjgdm") String zzjgdm);
 }

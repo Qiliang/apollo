@@ -1,6 +1,6 @@
-Ext.define('Kits.view.zhiDu.ZhiBaoList', {
+Ext.define('Kits.view.zhiDu.ZhenZhiBaoList', {
     extend: 'Ext.grid.Panel',
-    title: '直报管理',
+    title: '直报验收',
     store: Ext.create('Kits.store.ZhiBao', {}),
     tools: [
         {
@@ -27,28 +27,6 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
                     name: Ext.getCmp('viewName').getValue()
                 })
                 grid.getStore().load();
-            }
-        },
-        {
-            xtype: 'button',
-            text: '添加',
-            handler: function () {
-                var btn = this;
-                var win = Ext.create('Ext.window.Window', {
-                    title: '添加直报',
-                    height: 400,
-                    width: 600,
-                    layout: 'fit',
-                    modal: true,
-                    closeToolText: '关闭',
-                    items: Ext.create('Kits.view.zhiDu.AddZhiBaoView', {
-                        callBack: function () {
-                            win.close();
-                            btn.up('grid').getStore().load();
-                        }
-                    })
-                });
-                win.show();
             }
         }
     ],
@@ -146,27 +124,20 @@ Ext.define('Kits.view.zhiDu.ZhiBaoList', {
             text: '操作',
             xtype: 'actioncolumn',
             width: 220,
-            items: [ {
-                iconCls: 'x-fa fa-trash-o',
-                tooltip: '删除',
+            items: [{
+                iconCls: 'x-fa fa-check',
+                tooltip: '数据验收',
                 handler: function (view, recIndex, cellIndex, item, e, record) {
-                    var btn=this;
-                    Ext.Msg.confirm('确认', '确认删除?', function (r) {
-                        if (r == 'yes') {
-                            Ext.Ajax.request({
-                                url: '/api/directRptTask/deleteById',
-                                params: { id: record.data.id},
-                                method: 'POST',
-                                success: function (response, options) {
-                                    btn.up('grid').getStore().reload();
-                                },
-                                failure: function (response, options) {
-                                    var res = JSON.parse(response.responseText);
-                                    Ext.MessageBox.alert('失败', '错误信息：' + res.message);
-                                }
-                            });
-                        }
-                    }, this);
+                    Ext.create('Ext.window.Window', {
+                        title: '数据验收',
+                        height: 600,
+                        width: 1000,
+                        layout: 'fit',
+                        modal: true,
+                        closeToolText: '关闭',
+                        items: Ext.create('Kits.view.zhiDu.YanShouListView', {recordId:record.data.id})
+                    }).show();
+                    // alert("查看 " + rec.get('id'));
                 }
             }]
         }

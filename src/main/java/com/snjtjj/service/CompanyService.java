@@ -75,7 +75,13 @@ public class CompanyService {
     @Transactional
     public void save(Company company) {
         company.preInsert();
-        companyMapper.insert(company);
+        //判断组织机构代码是否重复
+        Company company1 = companyMapper.selectCompanyByZzjgdm(company.getZzjgdm());
+        if(company1==null){
+            companyMapper.insert(company);
+        }else{
+            throw new ResponseException("组织机构代码重复！", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Transactional
@@ -103,6 +109,12 @@ public class CompanyService {
         Company company = new Company();
         company.setId(id);
         company.setDelFlag("1");
+        //删除企业账户
+        FillUser fillUser = fillUserMapper.selectByLoginUserName(company.getZzjgdm());
+        if(fillUser!=null){
+            fillUser.setDelFlag(BaseEntity.DEL_FLAG_DELETE);
+            fillUserMapper.updateByPrimaryKeySelective(fillUser);
+        }
         companyMapper.updateByPrimaryKeySelective(company);
     }
 
@@ -149,7 +161,11 @@ public class CompanyService {
                                 company.setGsfrxxmc(data.get(19));
                                 company.setGsfrxxdz(data.get(20));
                                 company.setFromType("crhddw_dr");
-                                save(company);
+                                try {
+                                    save(company);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                             }
 
                         } catch (Exception e) {
@@ -180,7 +196,11 @@ public class CompanyService {
                                 company.setZt(data.get(14));
                                 company.setTjjdm(data.get(15));
                                 company.setFromType("frdw_dr");
-                                save(company);
+                                try {
+                                    save(company);
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
                             }
                         } catch (Exception e) {
                             throw new ResponseException("解析excel错误！", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -218,6 +238,7 @@ public class CompanyService {
             FillUser fillUser = fillUserList.get(0);
             fillUser.setFillName(company.getTbrName());
             fillUser.setMobile(company.getMobile());
+            fillUser.setLoginUserName(company.getZzjgdm());
             fillUser.setLeaderMobile(company.getFzrMobile());
             fillUser.setEmail(company.getEmail());
             fillUser.preUpdate();

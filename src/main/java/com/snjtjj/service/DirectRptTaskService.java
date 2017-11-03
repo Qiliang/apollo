@@ -51,6 +51,7 @@ public class DirectRptTaskService {
     public PageInfo<DirectRptTask> getListByUserID(String name, Integer page, Integer limit) {
         //查询该行政区划代码下面的所有行政区划
         try {
+            String ids = UserUtils.getUserSystemIds();
             List<String> codeList = UserUtils.getUserAreaCodeList();
             List<String> cloneCodeList = new ArrayList<>(codeList);
             codeList.forEach(item -> {
@@ -58,7 +59,7 @@ public class DirectRptTaskService {
             });
             String xzqhIds = Collections3.convertToString(codeList, ",");
             PageHelper.startPage(page, limit);
-            List<DirectRptTask> list = directRptTaskMapper.selectListByUserID(name, xzqhIds);
+            List<DirectRptTask> list = directRptTaskMapper.selectListByUserID(name, xzqhIds,ids);
             list.forEach(item -> {
                 RptTaskObjectExample ytbRptTaskObjectExample = new RptTaskObjectExample();
                 RptTaskObjectExample.Criteria ytbCriteria = ytbRptTaskObjectExample.createCriteria();

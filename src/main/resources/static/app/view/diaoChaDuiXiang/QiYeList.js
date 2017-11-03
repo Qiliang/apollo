@@ -86,7 +86,8 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
     },
     columns: [
         {
-            xtype: 'rownumberer'
+            xtype: 'rownumberer',
+            width:50
         },
         {
             text: '详细名称',

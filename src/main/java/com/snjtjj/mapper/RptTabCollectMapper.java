@@ -33,5 +33,5 @@ public interface RptTabCollectMapper {
 
     List<RptTabCollect> selectGroupByTab(@Param("tabid") String tabid);
 
-    List<Map<String,Object>> selectByTableId(@Param("fieldSql") String fieldSql,@Param("tabid") String tabid,@Param("searchList") String searchList);
+    List<Map<String,Object>> selectByTableId(@Param("fieldSql") String fieldSql,@Param("tabid") String tabid,@Param("searchList") String searchList,@Param("xzqhIds") String xzqhIds,@Param("ids") String ids);
 }

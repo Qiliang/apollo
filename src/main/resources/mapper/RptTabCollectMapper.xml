@@ -98,8 +98,11 @@
     <select id="selectByTableId" resultType="java.util.HashMap" parameterType="java.lang.String">
         select * from (select a.tabid,a.usercode,
         ${fieldSql}
-        from rpt_tab_collect a LEFT JOIN rpt_task_object b on a.usercode=b.id
-        where a.tabid = #{tabid,jdbcType=VARCHAR} AND b.report_state='qystg'
+        from rpt_tab_collect a LEFT JOIN rpt_task_object b on a.usercode=b.id LEFT JOIN direct_rpt_task c on c.id = b.task_id
+        where a.tabid = #{tabid,jdbcType=VARCHAR} AND b.report_state='qystg' and b.xzqh_id in (${xzqhIds})
+        <if test="ids!= null and ids !=''" >
+            AND c.system_id in (${ids})
+        </if>
         GROUP BY tabid,usercode
         ) tb
         <if test="searchList != null">
