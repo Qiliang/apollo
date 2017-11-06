@@ -47,7 +47,7 @@ public class RptTabCollectAPI {
     }
 
     @GetMapping("/table/list/columns")
-    public Object findColumnsByTable(String tableId,String searchJson,String fieldJson,Integer page,Integer limit){
+    public Object findColumnsByTable(String tableId){
         //如果为空查询所有的字段
         return rptTabCollectService.findColumnsByTable(tableId);
     }
