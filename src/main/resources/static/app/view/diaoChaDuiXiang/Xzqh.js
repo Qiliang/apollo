@@ -1,4 +1,4 @@
-Ext.define('Kits.view.diaoChaDuiXiang.xzqh', {
+Ext.define('Kits.view.diaoChaDuiXiang.Xzqh', {
     extend: 'Ext.tree.Panel',
     layout: 'fit',
     bodyBorder: false,
