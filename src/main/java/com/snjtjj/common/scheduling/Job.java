@@ -1,13 +1,11 @@
 package com.snjtjj.common.scheduling;
 
 import com.snjtjj.entity.DirectRptRemindTask;
-import com.snjtjj.entity.MessageInfo;
 import com.snjtjj.service.AreaService;
 import com.snjtjj.service.CompanyService;
 import com.snjtjj.service.DirectRptRemindTaskService;
 import com.snjtjj.service.MessageInfoService;
 import com.snjtjj.utils.DateUtils;
-import com.snjtjj.utils.IdGen;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -16,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-//@Component
+@Component
 public class Job {
     @Autowired
     private CompanyService companyService;
