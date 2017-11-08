@@ -154,69 +154,69 @@ Ext.define('Kits.view.zhiDuManage.TabSetting',{
                 store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
             }
         },
-        {text:'3',sortable:false,dataIndex:'num3',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num3',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'4',sortable:false,dataIndex:'num4',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num4',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'5',sortable:false,dataIndex:'num5',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num5',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'6',sortable:false,dataIndex:'num6',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num6',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'7',sortable:false,dataIndex:'num7',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num7',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'8',sortable:false,dataIndex:'num8',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num8',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'9',sortable:false,dataIndex:'num9',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num9',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        },
-        {text:'10',sortable:false,dataIndex:'num10',width:60,align:'center',
-            editor:{
-                xtype:'combobox',
-                dataIndex:'num10',
-                displayField:'name',
-                store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
-            }
-        }
+        // {text:'3',sortable:false,dataIndex:'num3',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num3',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'4',sortable:false,dataIndex:'num4',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num4',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'5',sortable:false,dataIndex:'num5',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num5',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'6',sortable:false,dataIndex:'num6',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num6',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'7',sortable:false,dataIndex:'num7',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num7',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'8',sortable:false,dataIndex:'num8',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num8',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'9',sortable:false,dataIndex:'num9',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num9',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // },
+        // {text:'10',sortable:false,dataIndex:'num10',width:60,align:'center',
+        //     editor:{
+        //         xtype:'combobox',
+        //         dataIndex:'num10',
+        //         displayField:'name',
+        //         store:Ext.create('Ext.data.ArrayStore',{fields:['name'],data:[['—']]})
+        //     }
+        // }
     ]
 })
