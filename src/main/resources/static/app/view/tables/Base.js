@@ -218,10 +218,11 @@ Ext.define('Kits.view.tables.Base', {
     },
     itemId:'zhiDuSubmitForm',
     listeners: {
-        afterrender: function (me) {
+        beforerender: function (me) {
+            debugger
             var auto = this.commConfig.autoHeight;
             if(auto){
-               me.setHeight(this.rowNum*30);
+               me.setHeight(250+this.rowNum*38);
             }
             me.loadData();
         }
