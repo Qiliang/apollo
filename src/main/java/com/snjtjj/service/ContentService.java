@@ -24,7 +24,7 @@ public class ContentService {
             criteria.andTitleLike("%"+title+"%");
         }
         PageHelper.startPage(page, limit);
-        List<Content> list = contentMapper.selectByExample(contentExample);
+        List<Content> list = contentMapper.selectByExampleWithBLOBs(contentExample);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
     }
