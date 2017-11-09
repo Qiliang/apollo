@@ -92,7 +92,8 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
         {
             text: '详细名称',
             dataIndex: 'xxmc',
-            width:350
+            width:350,
+            locked: true
         },
         {
             text: '组织机构代码',
@@ -110,6 +111,67 @@ Ext.define('Kits.view.diaoChaDuiXiang.QiYeList', {
         {
             text: '登记注册类别',
             dataIndex: 'djzclx'
+        },
+
+        {
+            text: '社会信用代码',
+            dataIndex: 'shxydm'
+        },
+        {
+            text: '行政区划代码',
+            dataIndex: 'xzqhdm'
+        },
+        {
+            text: '法定代表人/单位负责人',
+            dataIndex: 'fddbr'
+        },
+        {
+            text: '长途区号',
+            dataIndex: 'ctqh'
+        },
+        {
+            text: '固定电话',
+            dataIndex: 'gddh'
+        },
+        {
+            text: '行业代码_11',
+            dataIndex: 'hydm11'
+        },
+        {
+            text: '主要业务活动1_11',
+            dataIndex: 'zyywhd11'
+        },
+        {
+            text: '登记注册类型',
+            dataIndex: 'djzclx'
+        },
+        {
+            text: '开业年份',
+            dataIndex: 'kynf'
+        },
+        {
+            text: '开业月份',
+            dataIndex: 'kyyf'
+        },
+        {
+            text: '状态',
+            dataIndex: 'zt'
+        },
+        {
+            text: '统计局代码',
+            dataIndex: 'tjjdm'
+        },
+        {
+            text: '归属法人行政区划代码',
+            dataIndex: 'gsfrxzqhdm'
+        },
+        {
+            text: '归属法人详细名称',
+            dataIndex: 'gsfrxxmc'
+        },
+        {
+            text: '归属法人详细地址',
+            dataIndex: 'gsfrxxdz'
         },
         {
             text: '操作',
