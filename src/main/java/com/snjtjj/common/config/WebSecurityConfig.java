@@ -66,7 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js",
                         "/theme-triton/**",
-                        "/company/downloadModel"
+                        "/company/downloadModel",
+                        "/api/app/**"
                 ).permitAll()
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated().and()
