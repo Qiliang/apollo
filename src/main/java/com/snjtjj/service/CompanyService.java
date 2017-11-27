@@ -14,6 +14,8 @@ import com.snjtjj.utils.ExcelUtil;
 import com.snjtjj.utils.IdGen;
 import com.snjtjj.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@CacheConfig(cacheNames = "company")
 public class CompanyService {
     @Autowired
     private CompanyMapper companyMapper;
@@ -48,6 +51,20 @@ public class CompanyService {
         List<Company> list = companyMapper.selectByExample(companyExample);
         PageInfo pageInfo = new PageInfo(list);
         return pageInfo;
+    }
+
+    @Cacheable
+    public List<Company> allCompany(String xxmc, String zzjgdm) {
+        CompanyExample companyExample = new CompanyExample();
+        CompanyExample.Criteria criteria = companyExample.createCriteria().andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
+        if (StringUtils.isNotBlank(xxmc)) {
+            criteria.andXxmcLike("%" + xxmc + "%");
+        }
+        if (StringUtils.isNotBlank(zzjgdm)) {
+            criteria.andZzjgdmEqualTo(zzjgdm);
+        }
+        List<Company> list = companyMapper.selectByExample(companyExample);
+        return list;
     }
 
     public PageInfo getCompanyBySystemId(String xxmc, String zzjgdm, String systemId, Integer page, Integer limit) {

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/app")
@@ -33,6 +34,16 @@ public class AppAPI {
     @GetMapping("/company")
     public PageInfo company(String xxmc, String zzjgdm, Integer page, Integer limit) {
         return companyService.allCompany(xxmc, zzjgdm, page, limit);
+    }
+
+    /**
+     * 获取所有的企业信息
+     *
+     * @return
+     */
+    @GetMapping("/allCompany")
+    public List<Company> allCompany(String xxmc, String zzjgdm) {
+        return companyService.allCompany(xxmc, zzjgdm);
     }
 
 
