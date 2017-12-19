@@ -16,7 +16,7 @@ Ext.define('Kits.view.shuJuChaXun.BaseQuery', {
             valueField: 'id',
             displayField: 'name',
             queryMode: 'local',
-            store: Ext.create('Kits.store.ZhiDuQiYe'),
+            store: Ext.create('Kits.store.ZhiDuAll'),
             typeAhead: true,
             triggerAction: 'all',
             emptyText: '选制度...',

@@ -41,7 +41,9 @@ public class SystemInfoService {
         SystemInfoExample systemInfoExample = new SystemInfoExample();
         SystemInfoExample.Criteria criteria = systemInfoExample.createCriteria();
         criteria.andDelFlagEqualTo(BaseEntity.DEL_FLAG_NORMAL);
-        criteria.andFillPersonTypeEqualTo(fillPersonType);
+        if(StringUtils.isNotBlank(fillPersonType)){
+            criteria.andFillPersonTypeEqualTo(fillPersonType);
+        }
         return systemInfoMapper.selectByExampleAndRoles(systemInfoExample);
     }
 
