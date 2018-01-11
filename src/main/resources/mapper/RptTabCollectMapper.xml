@@ -376,5 +376,11 @@
     from rpt_tab_collect a left join rpt_task_object b on a.usercode=b.id left join area c on c.code = b.xzqh_id
     where a.tabid = #{tabid} and b.report_state='qystg'
     group by left(c.simple_code,9) ,a.hzcode) p left join area q on p.usercode = q.simple_code
-  </select>
+</select>
+
+    <select id="selectTabByTabCode" resultMap="BaseResultMap" parameterType="String">
+        select * from
+         rpt_tab_collect where tabid=#{tabid} and hzcode=#{hzcode} and usercode
+         in(select id from rpt_task_object where obj_id = (select obj_id from rpt_task_object where id=#{tabcode}))
+    </select>
 </mapper>

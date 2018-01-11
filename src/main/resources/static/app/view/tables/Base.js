@@ -141,11 +141,35 @@ Ext.define('Kits.view.tables.Base', {
         },
         validate:function (callFunc) {
             var me = Ext.ComponentQuery.query('#zhiDuSubmitForm')[0];
+            var grid = me.down('grid');
+            var store = grid.getStore();
+            var data = [];
+            store.each(function (model) {
+                if(model.data[me.hzcolumn]!='—'){
+                    data.push({
+                        id:model.data['id'],
+                        tabid: me.tableid,
+                        usercode:me.usercode,
+                        hzcode:model.data[me.hzcolumn],
+                        num1:model.data['num1'],
+                        num2:model.data['num2'],
+                        num3:model.data['num3'],
+                        num4:model.data['num4'],
+                        num5:model.data['num5'],
+                        num6:model.data['num6'],
+                        num7:model.data['num7'],
+                        num8:model.data['num8'],
+                        num9:model.data['num9'],
+                        num10:model.data['num10']
+                    })
+                }
+            });
             Ext.Ajax.request({
                 url:'/api/rpt/collect/validate',
                 params:{
-                  tabid:me.tableid,
-                  usercode:me.usercode
+                    tabInfo:Ext.JSON.encode(data),
+                    tabid:me.tableid,
+                    usercode:me.usercode
                 },
                 success: function(response, opts) {
                     var obj = Ext.decode(response.responseText);
@@ -219,7 +243,6 @@ Ext.define('Kits.view.tables.Base', {
     itemId:'zhiDuSubmitForm',
     listeners: {
         beforerender: function (me) {
-            debugger
             var auto = this.commConfig.autoHeight;
             if(auto){
                me.setHeight(250+this.rowNum*38);
