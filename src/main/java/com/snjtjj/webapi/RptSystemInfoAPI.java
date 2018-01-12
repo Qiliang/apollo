@@ -29,6 +29,7 @@ public class RptSystemInfoAPI {
         FormResponse formResponse;
         if(id != null && (id.toUpperCase().indexOf("KIT") >= 0 || id.toUpperCase().indexOf("EXT") >= 0)){
             info.preInsert();
+            info.setDelFlag("0");
             systemInfoMapper.insert(info);
             formResponse = new FormResponse("保存成功！");
         }

@@ -39,7 +39,8 @@ public class RptTabSettingService {
         File directory = new File("");
         String fullPath = null;
         try{
-            fullPath = directory.getAbsolutePath()+"/"+path;
+            fullPath = RptTabSettingService.class.getResource("/").getPath()+path;
+//            fullPath = directory.getAbsolutePath()+"/"+path;
         }catch (Exception e){}
         return fullPath;
     }
@@ -268,8 +269,8 @@ public class RptTabSettingService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
-        String tplPath = buildPath("src/main/resources/static/ftl");
-        String appPath = buildPath(String.format("src/main/resources/static/app/view/tablehz/%s.js",tabcode));
+        String tplPath = buildPath("/static/ftl");
+        String appPath = buildPath(String.format("/static/app/view/tablehz/%s.js",tabcode));
         Map<String,Object> model = new HashMap<>();
         model.put("tabcode",tabcode);
         model.put("tabname",tabname);
@@ -393,8 +394,8 @@ public class RptTabSettingService {
             comment= comment.replaceAll("[\\t\\n\\r]", "</br>");
         }
         model.put("comment",comment);
-        String tplPath = buildPath("src/main/resources/static/ftl");
-        String appPath = buildPath(String.format("src/main/resources/static/app/view/tables/%s.js",tabcode));
+        String tplPath = buildPath("/static/ftl");
+        String appPath = buildPath(String.format("/static/app/view/tables/%s.js",tabcode));
         //noinspection Duplicates
         try {
             Configuration cfg = new Configuration();
